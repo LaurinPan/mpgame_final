@@ -1,0 +1,727 @@
+# 02_Game/content/theory/P5.yaml — chapter 5 of the theory section, "Labour market, unemployment and the Phillips relation" (scripts appendix §14),
+# its texts written as the scripts appendix §8 asks (the glossary's terms and explanations, "government spending", "the rate
+# the economy needs", no mention of a game). Read by 02_Game/ui/theory.R.
+#   chapter  id, title, the learning objectives
+#   cards    the term cards: term, core (the explanation; the glossary's own, lower case, where `glossary: true`), example,
+#            aliases, see_also (a preview card's full card), box (false: never shown as a box), step (where the text defines it)
+#   topics   id, title, objectives, steps: id, sources ({key, loc} into references.yaml), text (Markdown: [label](term:P4:id)
+#            marks a term, [label](theory:P2-s1d) links a chapter, topic or step), details (a More Detail panel), module (one of
+#            the ten modules of modules.yaml with this step's controls and view), figure (a static figure drawn from economy.yaml)
+
+chapter:
+  id: P5
+  title: "Labour market, unemployment and the Phillips relation"
+  objectives:
+    LO1: "Explain how unemployment is measured: the labour force, the participation rate and the unemployment rate, and who counts as unemployed."
+    LO2: "Explain unemployment as the result of flows into and out of jobs, and why the rate settles where u* = s/(s + f)."
+    LO3: "Explain how wages are set and why the wage obtained falls as unemployment rises and rises with the expected price level."
+    LO4: "Explain price setting with a markup, how wage setting and price setting together determine the natural rate of unemployment, and why the flow and the wage-setting/price-setting explanations complement each other."
+    LO5: "Explain Okun's law, the link between output growth and changes in unemployment."
+    LO6: "Explain why nominal wages rarely fall and what this implies for real wages and for a small positive inflation rate."
+    LO7: "Explain the Phillips relation between unemployment and inflation, the role of expected inflation, and why unemployment cannot stay below the natural rate without rising inflation."
+
+cards:
+  working_age_population: {term: "Working-age population", core: "Everyone old enough to work, in the example economy everyone aged 15 or over.", box: false, step: s1a}
+  labour_force: {term: "Labour force (L)", core: "Everyone who has a job or is actively looking for one. People who neither work nor look for work, such as most students and retirees, are outside it.", example: "Of 16,000 people of working age, 9,600 work and 400 look for work: a labour force of 10,000.", step: s1a}
+  participation_rate: {term: "Participation rate", core: "The share of the working-age population that takes part in the labour market, by working or by looking for work.", example: "10,000 of 16,000 people of working age: 62.5%.", step: s1a}
+  unemployment_rate: {term: "Unemployment rate (u)", core: "the share of people who want to work but have no job", example: "400 of a labour force of 10,000 are looking in vain: 4%.", glossary: true, step: s1b}
+  discouraged_workers: {term: "Discouraged workers", core: "People who would like a job but have stopped looking because they expect to find none. They leave the labour force, so the unemployment rate falls although nobody found work.", example: "If 100 of the 400 unemployed give up, the rate falls from 4% to 3%.", step: s1b}
+  job_separation_rate: {term: "Job-separation rate (s)", core: "The share of people with a job who lose or leave it in a month, through dismissals, closures or quitting.", example: "Each month 96 of the 9,600 employed lose their job: 1%.", step: s2a}
+  job_finding_rate: {term: "Job-finding rate (f)", core: "The share of unemployed people who find a job in a month. It is high when firms hire a lot and low in a slump.", example: "Each month 96 of the 400 unemployed find work: 24%.", step: s2a}
+  steady_state_unemployment: {term: "Steady-state unemployment rate", core: "The unemployment rate at which as many people find jobs each month as lose them, so the rate stays put although people keep moving in and out of jobs.", example: "96 people lose their job and 96 find one each month: unemployment stays at 4%.", aliases: ["steady state"], step: s2a}
+  unemployment_duration: {term: "Duration of unemployment", core: "How long a person stays unemployed, on average about one divided by the monthly job-finding rate.", box: false, step: s2b}
+  frictional_unemployment: {term: "Frictional unemployment", core: "Unemployment that arises because finding a suitable job takes time, even when jobs are available: people search, compare and move.", example: "A baker who left one bakery spends three months finding the right job in another.", step: s2b}
+  real_wage: {term: "Real wage", core: "wages measured by what they can buy", example: "A wage of $62,500 at a price level of 1 buys as much as $63,750 when prices are 2% higher.", aliases: ["real wages"], glossary: true, step: s3a}
+  bargaining_power: {term: "Bargaining power", core: "How strong workers' position is when wages are agreed: how easily they could find another job, or how costly it would be for the firm to replace them.", example: "When few people are out of work, the bakery's staff know they could quickly find a job elsewhere.", step: s3a}
+  reservation_wage: {term: "Reservation wage", core: "The lowest wage at which a person is willing to take a job rather than stay unemployed. It depends on what the person can live on without work.", example: "A worker whose unemployment benefit is generous will turn down a poorly paid job.", step: s3a}
+  efficiency_wage: {term: "Efficiency wage", core: "A wage that a firm pays above the lowest wage it could get away with, because better-paid workers quit less, work harder and are more loyal.", example: "The mill pays more than it must, so that its trained millers do not move to the bakery.", step: s3a}
+  expected_price_level: {term: "Expected price level (Pᵉ)", core: "The price level that wage setters expect over the period of the wage agreement.", box: false, step: s3b}
+  wage_setting_factors: {term: "Wage-setting factors (z)", core: "Everything besides unemployment that strengthens workers' position in wage talks, such as unemployment benefits or protection against dismissal. When they rise, workers ask for more at any unemployment rate.", example: "Higher unemployment benefits let the unemployed wait for a better offer, so wage claims rise.", step: s3b}
+  wage_setting_relation: {term: "Wage-setting relation (WS)", core: "How the real wage that workers obtain depends on unemployment: when many people look for work, workers are in a weaker position and settle for less.", example: "At 4% unemployment workers obtain $62,500; at 6% only $61,875.", step: s3b}
+  labour_productivity: {term: "Labour productivity", core: "How much an average worker produces in a year, measured as output divided by the number of workers.", example: "Output of $900 million made by 9,600 workers: $93,750 per worker.", step: s4a}
+  markup: {term: "Markup", core: "How much more firms charge than their costs, here than their labour costs. Firms that face little competition can charge more.", example: "Wages of $600 million, sales of $900 million: prices are 50% above labour costs.", step: s4a}
+  price_setting_relation: {term: "Price-setting relation (PS)", core: "The real wage that firms' prices leave for workers: what a worker produces, less the firm's markup. It does not depend on unemployment.", example: "A worker produces $93,750 a year; with a 50% markup, prices leave a real wage of $62,500.", step: s4a}
+  natural_rate: {term: "Natural rate of unemployment (uₙ)", core: "the unemployment rate the economy settles at once wages have adjusted", example: "Wage setting and price setting agree at 4% unemployment.", aliases: ["natural rate", "natural rates"], glossary: true, step: s4b}
+  natural_employment: {term: "Natural employment", core: "The number of people with a job when unemployment is at its natural rate.", example: "With a labour force of 10,000 and a natural rate of 4%: 9,600 people.", step: s4b}
+  structural_unemployment: {term: "Structural unemployment", core: "Unemployment that lasts because wages settle above the level at which everyone looking for work would be hired, for reasons built into the labour market rather than a passing slump.", example: "Workers' strong position in wage talks keeps 4% of the labour force without a job even in normal times.", step: s4b}
+  okuns_law: {term: "Okun's law", core: "The rule of thumb that unemployment falls when output grows faster than normal and rises when it grows more slowly, because firms need more or fewer workers.", example: "Output grows by 4% instead of the normal 2%: unemployment falls by one point.", step: s5a}
+  normal_growth_rate: {term: "Normal growth rate", core: "The growth of output at which unemployment stays the same, because the extra output needs exactly the extra workers and productivity the economy gains each year.", example: "In the example economy, output must grow by 2% a year to keep unemployment at 4%.", step: s5a}
+  cyclical_unemployment: {term: "Cyclical unemployment", core: "Unemployment above or below the natural rate because output has grown faster or slower than normal; it disappears when the economy returns to normal.", example: "After a year without growth, unemployment is 5%: one point is cyclical.", step: s5b}
+  downward_nominal_wage_rigidity: {term: "Downward nominal wage rigidity", core: "The fact that wages, counted in dollars, are rarely cut even when demand is weak, while they are often raised. Firms freeze wages or dismiss workers instead.", example: "The bakery's sales fall, but it keeps wages at $62,500 rather than cutting them.", step: s6a}
+  reference_wage: {term: "Reference wage", core: "The wage a worker compares any new offer with, usually the current wage. A cut below it feels like a loss and is judged unfair, even if prices have fallen.", example: "A baker earning $62,500 sees $61,250 as a cut, but $62,500 with prices 2% higher as no change.", step: s6a}
+  grease_effect: {term: "\"Grease\" effect of inflation", core: "The way moderate inflation lets real wages fall where they must without anyone's pay being cut: wages stay put in dollars while prices rise.", example: "Prices rise 2% and the bakery freezes pay: the real wage falls 2%, and nobody's wage is cut.", aliases: ["grease effect"], step: s6b}
+  phillips_curve: {term: "Phillips curve", core: "The observation that inflation tends to be high when unemployment is low, and low when unemployment is high: a tight labour market pushes up wages and with them prices.", example: "In the example economy, 3% unemployment goes with 2.5% inflation, 5% with 1.5%.", aliases: ["Phillips curves"], step: s7a}
+  expectations_augmented_phillips: {term: "Expectations-augmented Phillips relation", core: "Inflation equals the inflation people expect, plus a push when unemployment is below its natural rate. Wage setters build expected inflation into their claims; a tight labour market adds more.", example: "Expected inflation 2%, unemployment one point below normal: inflation 2.5%.", aliases: ["Phillips relation"], step: s7b}
+  anchored_expectations: {term: "Anchored inflation expectations", core: "Expectations of inflation that stay at the central bank's target even when inflation moves for a while, because people trust the bank to bring it back.", example: "Inflation rises to 2.5%, but wage setters still expect 2% for next year.", step: s7c}
+  nairu: {term: "NAIRU", core: "Non-accelerating-inflation rate of unemployment: another name for the natural rate, stressing that only there does inflation stay steady when expectations follow past inflation.", example: "Below 4% unemployment, inflation rises year after year; at 4% it stays put.", step: s7b}
+  inflation_inertia: {term: "Inflation inertia", core: "Inflation's tendency to persist: when people expect this year's inflation to continue, they set wages and prices accordingly, so it does continue.", example: "Inflation of 3% last year leads wage setters to build 3% into this year's claims.", step: s7c}
+  search_and_matching: {term: "Search and matching", core: "A theory in which job finding depends on how many jobs are open and how many people search: firms and workers need time to find each other.", example: "When firms open more vacancies, the unemployed find jobs faster.", step: s2b}
+  hysteresis: {term: "Hysteresis", core: "The idea that a long period of high unemployment can raise the natural rate itself, so unemployment does not return to its old level when the cause has gone.", example: "After a slump, the workers who kept their jobs bargain for their own pay, and unemployment stays high.", step: s4c}
+  insiders_outsiders: {term: "Insiders and outsiders", core: "Insiders are workers who have a job and take part in wage talks; outsiders are the unemployed, whose interests the talks may ignore.", example: "The bakery's staff bargain for higher pay, not for jobs for the unemployed.", aliases: [insiders, outsiders], step: s4c}
+  stagflation: {term: "Stagflation", core: "High inflation and high unemployment at the same time, as in many economies in the 1970s.", box: false, step: s7a}
+  cost_push_shock: {term: "Cost-push shock", core: "a change in firms' costs, for example for energy, that firms pass on to their prices", example: "The markup rises from 50% to 51%: at 4% unemployment, inflation rises by about two thirds of a point.", aliases: ["cost-push shocks", "supply shock", "supply shocks"], glossary: true, step: s7b}
+  wage_inflation: {term: "Wage inflation", core: "how fast wages rise, in percent a year", glossary: true, step: s7a}
+
+topics:
+
+  - id: s1
+    title: "Measuring Unemployment"
+    objectives: [LO1]
+    steps:
+      - id: s1a
+        sources:
+          - {key: blanchard_illing_2021, loc: "2.3, 7.1"}
+          - {key: legge_2023, loc: "5.2"}
+          - {key: mankiw_2025, loc: "ch. 2"}
+        text: |
+          ### Who belongs to the labour force
+
+          Suppose the statistics office of the example economy reports: "[Output](term:P1:output_GDP) grew by 4% last
+          year. Unemployment fell from 4% to 3%, and [inflation](term:P4:inflation_rate) rose from 2% to 2.5%." The
+          [central bank](term:P1:central_bank) says it is concerned. Why should falling unemployment worry anyone? This
+          chapter explains each number in turn: how unemployment is measured, what moves it, why it settles at a certain
+          level, how it is linked to output, and why low unemployment can push up inflation. Each topic can be read on
+          its own; [the last topic](theory:P5-s7c) returns to the report.
+
+          The chapter is about the **[medium run](term:P3:medium_run)**, a period of about a decade. In the [short
+          run](term:P3:short_run), prices and wages adjust only slowly, so output follows demand ([the time horizons in
+          chapter 3](theory:P3-s1a)). Over the medium run, prices and wages do adjust, and what the economy settles at
+          depends on how wages and prices are set in the labour market. The first step is to measure that market.
+
+          Not everyone in a country can or wants to work. Statisticians therefore start from the **[working-age
+          population](term:P5:working_age_population)**, in the example economy everyone aged 15 or over, and divide it
+          into three groups: people who have a job (the employed), people who have no job but are actively looking for
+          one and could start soon (the unemployed), and everyone else, for example students, retirees and people who
+          look after their families. The employed and the unemployed together form the **[labour
+          force](term:P5:labour_force)** L. The share of the working-age population that belongs to the labour force is
+          the **[participation rate](term:P5:participation_rate)** (Blanchard & Illing, 2021, 7.1; Mankiw, 2025, ch. 2).
+
+          The example economy has 20,000 inhabitants. Of the 16,000 people of working age, 9,600 have a job and 400 are
+          looking for one, so the labour force is 10,000 and the participation rate is 10,000 / 16,000 = 62.5%. The
+          remaining 6,000 people of working age are outside the labour force. The 9,600 jobs are the jobs of the
+          economy's six firms: with an average wage of $62,500 a year, their wage bill of $600 million pays the farm's
+          1,120 workers, the mill's 1,600, the bakery's 2,400, the steel works' 640, the machine maker's 1,600 and the
+          construction firm's 2,240 ([the firms' accounts in chapter 2](theory:P2-s1d)).
+        figure: {kind: labour_force, description: "The population of the example economy split into those below working age, people outside the labour force, the employed and the unemployed."}
+      - id: s1b
+        sources:
+          - {key: blanchard_illing_2021, loc: "2.3, 7.1"}
+          - {key: legge_2023, loc: "5.2, 5.3"}
+          - {key: mankiw_2025, loc: "ch. 2"}
+        text: |
+          ### Who counts as unemployed
+
+          The **[unemployment rate](term:P5:unemployment_rate)** u is the number of unemployed divided by the labour
+          force:
+
+          > u = unemployed / labour force
+
+          In the example economy, u = 400 / 10,000 = 4%. The definition is narrower than the everyday word suggests. A
+          person counts as unemployed only if three conditions hold: the person has no job, is available to start work
+          soon, and has actively looked for work in the recent past. A student who would like a job but does not look
+          for one is not unemployed in this sense; neither is a retiree. Statistics offices find out who meets the
+          conditions by asking a sample of households each month or quarter (Mankiw, 2025, ch. 2). Many countries also
+          publish the number of people registered with the employment office, which follows the rules of the benefit
+          system and can differ noticeably from the survey count (Legge, 2023, 5.3).
+
+          The definition matters for interpreting the numbers. Some people would like a job but have stopped looking
+          because they expect to find none. These **[discouraged workers](term:P5:discouraged_workers)** leave the
+          labour force and are no longer counted as unemployed. Suppose that 100 of the 400 unemployed in the example
+          economy give up. The labour force shrinks to 9,900 and the number of unemployed to 300, so the unemployment
+          rate falls to 300 / 9,900 = 3.0%, although nobody has found a job. A falling unemployment rate is therefore a
+          good sign only if employment rises as well. For the same reason, statisticians also report the employment rate
+          and broader measures that include discouraged workers (Blanchard & Illing, 2021, 7.1).
+
+  - id: s2
+    title: "Flows in the Labour Market"
+    objectives: [LO2]
+    steps:
+      - id: s2a
+        sources:
+          - {key: mankiw_2025, loc: "ch. 8"}
+          - {key: blanchard_illing_2021, loc: "7.1, 7.2"}
+        text: |
+          ### Separations, job finding and the steady state
+
+          An [unemployment rate](term:P5:unemployment_rate) of 4% looks like a fixed pool of 400 people without work. In
+          fact the pool is constantly emptied and refilled. Every month some people lose or leave their jobs and become
+          unemployed, while some of the unemployed find work. In real economies these monthly movements are large
+          compared with the number of unemployed: much of unemployment consists of many short spells, not of a few
+          people who never work (Blanchard & Illing, 2021, 7.1–7.2).
+
+          A simple model captures this (Mankiw, 2025, ch. 8). Leave aside people who enter or leave the [labour
+          force](term:P5:labour_force), so that the labour force L stays at 10,000. Each month a fraction s of the
+          employed lose their job; this is the **[job-separation rate](term:P5:job_separation_rate)**. Each month a
+          fraction f of the unemployed find one; this is the **[job-finding rate](term:P5:job_finding_rate)**. Both
+          rates are taken as given here: they are [exogenous](term:P1:exogenous) to the model. Unemployment stays the
+          same when as many people find a job as lose one:
+
+          > s × employed = f × unemployed
+
+          This condition defines the **[steady-state unemployment rate](term:P5:steady_state_unemployment)**. Since the
+          employed are the labour force minus the unemployed, it can be solved for the unemployment rate:
+
+          > u* = s / (s + f)
+
+          In the example economy, s = 1% and f = 24%. Each month 1% of the 9,600 employed, that is 96 people, lose their
+          job, and 24% of the 400 unemployed, again 96 people, find one. The inflow and the outflow balance, and
+          unemployment stays at u* = 0.01 / (0.01 + 0.24) = 4%. The formula shows what can move the steady state:
+          unemployment is higher when more people lose their jobs or when the unemployed find jobs more slowly.
+        module: {kind: labour_flows, controls: []}
+      - id: s2b
+        sources:
+          - {key: mankiw_2025, loc: "ch. 8"}
+          - {key: blanchard_illing_2021, loc: "7.2"}
+        text: |
+          ### Duration and frictional unemployment
+
+          The job-finding rate also tells how long people stay unemployed. If 24% of the unemployed find a job each
+          month, the average **[duration of unemployment](term:P5:unemployment_duration)** is about 1 / 0.24, a little
+          over four months. Even in a healthy labour market, unemployment does not fall to zero, because finding a
+          suitable job takes time. Workers differ in their skills and wishes, jobs differ in their requirements, and
+          both sides need time to find each other, to compare offers and sometimes to move. Unemployment that arises
+          from this search is called **[frictional unemployment](term:P5:frictional_unemployment)** (Mankiw, 2025, ch.
+          8).
+
+          The model's main use is to describe how unemployment moves. Suppose that firms in the example economy hire
+          more slowly in a slump, so that the job-finding rate falls from 24% to 16%. The steady state rises to 0.01 /
+          (0.01 + 0.16) = 5.9%, and an average spell lasts more than six months. Unemployment does not jump there at
+          once. In the first month, 96 people still lose their job, but only 64 find one, so the number of unemployed
+          grows by 32. As the pool grows, more people find work each month, and the gap narrows: after six months the
+          rate is about 5.3%, after a year about 5.7%. When hiring returns to normal, the same movements run in reverse.
+          In real slumps, both rates move: the unemployed find work more slowly, and somewhat more people lose their job
+          (Blanchard & Illing, 2021, 7.2).
+
+          The flow model shows how fast unemployment moves and why a constant rate hides large movements. It does not
+          say why s and f are what they are, and so why unemployment settles at 4% rather than at 2% or 8%. That level
+          depends on how wages and prices are set, which the following topics explain ([the natural
+          rate](theory:P5-s4b)).
+        details:
+          title: "Why are there jobless people and empty jobs at the same time?"
+          sources:
+            - {key: nobel_2010}
+            - {key: mankiw_2025, loc: "ch. 8"}
+          text: |
+            The flow model takes the [job-finding rate](term:P5:job_finding_rate) as given. A whole branch of research
+            asks where it comes from. In every economy, some people look for work while some firms look for workers and
+            cannot fill their vacancies. If the labour market worked like a market for a single good, the two could not
+            exist side by side: the unemployed would simply take the open jobs. They coexist because workers and jobs
+            differ and because finding the right match takes time and effort.
+
+            Peter Diamond, Dale Mortensen and Christopher Pissarides built this idea into a theory of **[search and
+            matching](term:P5:search_and_matching)**, for which they received the Nobel Prize in Economic Sciences in 2010
+            (Nobel Prize Outreach, 2010). In their models, the number of new jobs filled each month depends on how many
+            people search and how many vacancies firms open. When firms open more vacancies, the unemployed find work
+            faster, so the job-finding rate rises. The theory shows how unemployment, vacancies and wages respond to
+            economic policy, for example to the rules on hiring and firing, and it explains why more generous unemployment
+            benefits tend to lengthen search and raise unemployment: people can afford to wait for a better offer.
+
+            The main text of this chapter keeps the simpler model with given rates, as textbooks do when they introduce
+            the flows (Mankiw, 2025, ch. 8), and explains the level of unemployment through wage setting and price setting
+            instead. The two approaches answer related questions: the matching models explain how fast workers and jobs
+            meet, the wage-setting model why the labour market settles at a certain level of unemployment.
+        module: {kind: labour_flows, controls: [s, f]}
+
+  - id: s3
+    title: "Wage Setting"
+    objectives: [LO3]
+    steps:
+      - id: s3a
+        sources:
+          - {key: blanchard_illing_2021, loc: "7.3"}
+          - {key: mankiw_2025, loc: "ch. 8"}
+          - {key: shapiro_stiglitz_1984}
+        text: |
+          ### How wages are set
+
+          A wage is paid in dollars: the average worker in the example economy earns $62,500 a year. Economists call
+          this amount the nominal wage W. What matters to workers, however, is what the wage buys. The **[real
+          wage](term:P5:real_wage)** is the nominal wage compared with the [price level](term:P4:price_level): W / P. If
+          wages and prices both rise by 2%, the real wage is unchanged; if prices rise by 2% and wages stay the same,
+          the real wage falls by about 2%.
+
+          In a market for a uniform good, the price would settle where supply equals demand. Wages are set differently
+          (Blanchard & Illing, 2021, 7.3). Some are agreed in collective bargaining between unions and employers, often
+          for a year or more; others are negotiated between a firm and each worker, or set by the firm alone. Two forces
+          push wages above the lowest level at which people would accept work.
+
+          The first is **[bargaining power](term:P5:bargaining_power)**. Workers with skills that are hard to replace,
+          or who could easily find another job, can ask for more. A firm that would lose output, time and training costs
+          if a worker left will pay to keep him or her. Every worker also has a **[reservation
+          wage](term:P5:reservation_wage)**, the lowest wage at which he or she prefers a job to unemployment, which
+          depends on what the person can live on without work.
+
+          The second force is that firms may want to pay more than they must. A worker who earns more than he or she
+          could get elsewhere has more to lose from being dismissed, quits less often and may work harder. A wage set
+          above the lowest possible level for these reasons is called an **[efficiency wage](term:P5:efficiency_wage)**
+          (Mankiw, 2025, ch. 8). In one well-known version, firms cannot watch every worker, and a high wage together
+          with the risk of unemployment makes shirking costly (Shapiro & Stiglitz, 1984).
+        details:
+          title: "Henry Ford's five-dollar day: an efficiency wage?"
+          sources:
+            - {key: raff_summers_1987}
+            - {key: henry_ford_nd}
+            - {key: shapiro_stiglitz_1984}
+          text: |
+            In January 1914 the Ford Motor Company announced that it would pay its workers five dollars a day, roughly
+            twice the $2.34 a day that most of them had earned before. The company's own account gives the main reason as
+            reducing turnover (The Henry Ford, n.d.): Ford's problem was not finding workers but keeping them, and
+            absenteeism among those it had was high.
+
+            Daniel Raff and Lawrence Summers (1987) examined the episode as a test of efficiency-wage theory. They argue
+            that the five-dollar day is best explained by the labour problems that the theory emphasises: it was designed
+            to make the job valuable enough that workers would stay and work steadily. After its introduction, applicants
+            queued for Ford jobs, which shows that the wage was above what workers needed to accept them, and Ford's
+            productivity and profits rose. The higher wage appears to have paid for itself, at least in part.
+
+            The episode illustrates the logic of [efficiency wages](term:P5:efficiency_wage) rather than proving it for
+            all firms. Ford's assembly line was an extreme case: effort was hard to monitor, and a worker who quit took
+            training with him. Shapiro and Stiglitz (1984) show the general point in a model: when firms cannot observe
+            effort, they pay above the market-clearing wage, and some unemployment remains even in equilibrium, because
+            the threat of losing a well-paid job is what makes workers keep their effort up.
+      - id: s3b
+        sources:
+          - {key: blanchard_illing_2021, loc: "7.3"}
+          - {key: mankiw_2025, loc: "ch. 8"}
+        text: |
+          ### The wage-setting relation
+
+          Whatever the form of wage setting, three things shape the outcome (Blanchard & Illing, 2021, 7.3).
+
+          First, wages are set in dollars and usually for some time ahead, often a year. What workers care about is the
+          real wage over that period, so they take into account how high they expect prices to be. The **[expected price
+          level](term:P5:expected_price_level)** Pᵉ therefore enters wage setting: if workers and firms expect prices to
+          be 2% higher next year, they agree on wages about 2% higher than they otherwise would.
+
+          Second, wages depend on unemployment. When many people are looking for work, a worker who leaves or is
+          dismissed takes longer to find a new job, and the firm finds replacements more easily. Workers' bargaining
+          power is weaker, and they settle for less. When unemployment is low, the opposite holds.
+
+          Third, everything else that strengthens workers' position: the level of unemployment benefits, protection
+          against dismissal, the strength of unions, minimum wages. Economists collect these in a catch-all variable z,
+          the **[wage-setting factors](term:P5:wage_setting_factors)**. Higher benefits, for example, raise the
+          reservation wage and so the wages workers can obtain at any [unemployment rate](term:P5:unemployment_rate).
+
+          Together these give the **[wage-setting relation](term:P5:wage_setting_relation)** (WS): the real wage that
+          workers obtain in wage setting falls as unemployment rises, and rises with the wage-setting factors. In the
+          example economy, the real wage that wage setting produces is
+
+          > real wage claimed = $63,750 − $312.50 × u (u in percent)
+
+          At 4% unemployment, workers obtain $63,750 − $1,250 = $62,500; at 6%, only $61,875; at 2%, $63,125. The
+          numbers are an illustration of the shape the theory predicts, not an estimate.
+
+  - id: s4
+    title: "Price Setting and the Natural Rate of Unemployment"
+    objectives: [LO4]
+    steps:
+      - id: s4a
+        sources:
+          - {key: blanchard_illing_2021, loc: "7.4"}
+          - {key: mankiw_2025, loc: "ch. 8"}
+        text: |
+          ### Price setting
+
+          Wage setting is only half of the story. The other half is how firms set their prices (Blanchard & Illing,
+          2021, 7.4). Assume, as a simplification, that firms produce with labour alone. Each worker then produces a
+          certain amount of [output](term:P1:output_GDP) a year, the **[labour
+          productivity](term:P5:labour_productivity)**. In the example economy, 9,600 workers produce output of $900
+          million, so each worker produces $93,750 worth of goods a year, at the prices of the [base
+          year](term:P2:base_year).
+
+          Firms do not sell at cost. Most face some competition but not enough to drive their price down to their costs,
+          and they add a **[markup](term:P5:markup)** to their labour costs. In the example economy, firms pay wages of
+          $600 million and sell output worth $900 million: their prices are 50% above their labour costs. (In the model,
+          labour is the only input, so the markup also covers what the firms pay for their machines; the example
+          economy's profits of $300 million contain both; [the production function in chapter 6](theory:P6-s1c)
+          separates them.)
+
+          This fixes the [real wage](term:P5:real_wage) that prices leave for workers. If each worker produces $93,750
+          worth of goods and firms charge 50% more than their labour costs, the real wage must be $93,750 / 1.5 =
+          $62,500. This is the **[price-setting relation](term:P5:price_setting_relation)** (PS):
+
+          > real wage allowed by prices = labour productivity / (1 + markup)
+
+          The price-setting relation does not depend on unemployment. It says that, given productivity and the markup,
+          firms' pricing leaves room for a real wage of $62,500, no more. If wages were higher, firms would raise their
+          prices until the real wage was back at $62,500; a higher markup, for example because competition weakens,
+          would lower it.
+      - id: s4b
+        sources:
+          - {key: blanchard_illing_2021, loc: "7.5"}
+          - {key: layard_etal_1991}
+          - {key: legge_2023, loc: "5.4"}
+          - {key: mankiw_2025, loc: "ch. 8"}
+        text: |
+          ### The natural rate of unemployment
+
+          There are now two statements about the real wage. Wage setting says what real wage workers obtain at each
+          [unemployment rate](term:P5:unemployment_rate): in the example economy, $63,750 − $312.50 × u, falling as
+          unemployment rises ([wage setting](theory:P5-s3b)). Price setting says what real wage firms' prices leave for
+          workers: $62,500, whatever the unemployment rate ([price setting](theory:P5-s4a)). Both can hold at once only
+          at one unemployment rate. Setting the two equal:
+
+          > $63,750 − $312.50 × u = $62,500, so u = 4%
+
+          This is the **[natural rate of unemployment](term:P5:natural_rate)** uₙ: the rate at which what workers obtain
+          in wage setting equals what firms' prices leave for them (Blanchard & Illing, 2021, 7.5). At this rate, nobody
+          has a reason to push wages or prices up faster than expected. The number of people employed at the natural
+          rate is **[natural employment](term:P5:natural_employment)**: 96% of the [labour force](term:P5:labour_force)
+          of 10,000, that is 9,600 people. The framework of wage setting and price setting was developed above all by
+          Layard, Nickell and Jackman (1991), who used it to explain unemployment and
+          [inflation](term:P4:inflation_rate) across industrial countries.
+
+          The word "natural" can mislead. It does not mean that this unemployment is desirable or fixed by nature. It
+          means that it is the rate to which the labour market tends when prices and wages have adjusted. Part of it is
+          frictional ([flows in the labour market](theory:P5-s2b)); part of it arises because wage setting keeps wages
+          above the level at which everyone who looks for work would be hired. Unemployment of this second kind, built
+          into the way the labour market works rather than caused by a passing slump, is called **[structural
+          unemployment](term:P5:structural_unemployment)** (Mankiw, 2025, ch. 8; Legge, 2023, 5.4).
+
+          The output the economy produces at natural employment is the normal level of output around which it
+          fluctuates; how that level grows over time is the subject of [chapter 6](theory:P6-s4c).
+        module: {kind: ws_ps, controls: []}
+      - id: s4c
+        sources:
+          - {key: blanchard_illing_2021, loc: "7.5"}
+          - {key: mankiw_2025, loc: "ch. 8"}
+        text: |
+          ### What changes the natural rate, and how the two explanations fit together
+
+          Because the natural rate results from [wage setting](term:P5:wage_setting_relation) and price setting,
+          anything that shifts one of them moves it (Blanchard & Illing, 2021, 7.5). Suppose that unemployment benefits
+          in the example economy are raised, so that workers obtain $625 more at every unemployment rate. Wage setting
+          now gives $64,375 − $312.50 × u. Price setting still leaves $62,500, so the two agree only at u = 6%: the
+          natural rate rises by two points, and natural employment falls to 9,400. Workers do not end up with a higher
+          real wage; prices leave no room for one. What changes is the unemployment needed to bring wage claims back in
+          line with what prices allow.
+
+          A higher markup works through price setting. If firms raise their markup from 50% to 51%, for example because
+          competition weakens, prices leave a real wage of only $93,750 / 1.51 = $62,086, and the natural rate rises to
+          about 5.3%. Stronger competition, which lowers the markup, or weaker [wage-setting
+          factors](term:P5:wage_setting_factors) lower the natural rate.
+
+          How does this fit with the flow model of the earlier topic, in which unemployment settles where s × employed =
+          f × unemployed ([the steady state](theory:P5-s2a))? The two explanations answer different questions and
+          complement each other. Wage setting and price setting explain the level: they say at which unemployment rate
+          the labour market comes to rest. The flows describe the movement: how fast unemployment moves towards that
+          level after a shock, and why a constant rate hides large monthly movements in and out of jobs. At the natural
+          rate of 4%, the flows balance: 96 people lose their job each month and 96 find one. If unemployment were below
+          the natural rate, wage claims would exceed what prices allow; how wages and prices then respond is the subject
+          of [the last topic](theory:P5-s7b).
+        details:
+          title: "Can high unemployment become natural? Hysteresis"
+          sources:
+            - {key: blanchard_summers_1986}
+            - {key: layard_etal_1991}
+          text: |
+            In the model of this topic, the [natural rate](term:P5:natural_rate) is set by [wage-setting
+            factors](term:P5:wage_setting_factors) and the [markup](term:P5:markup), and actual unemployment returns to it
+            after a shock. European experience in the 1970s and 1980s put this view to the test. Unemployment in several
+            large European economies rose steadily for fifteen years and was expected to stay high for years to come.
+
+            Olivier Blanchard and Lawrence Summers (1986) argued that such persistence calls for a different idea:
+            **[hysteresis](term:P5:hysteresis)**, the possibility that a long period of high unemployment raises the
+            natural rate itself. Their explanation rests on wage bargaining. If wages are negotiated mainly by
+            **[insiders](term:P5:insiders_outsiders)**, the workers who have a job, the unemployed have little influence
+            on the outcome. After a shock reduces employment, the remaining insiders bargain for their own pay rather than
+            for the jobs of those who lost theirs, and unemployment stays high: shocks that affect actual unemployment
+            also move the [unemployment rate](term:P5:unemployment_rate) that wage setting makes consistent, the natural
+            rate.
+
+            Layard, Nickell and Jackman (1991) read the same facts mainly through institutions: the generosity of
+            unemployment benefits and the structure of wage bargaining raised the natural rate in some countries and not
+            in others. The two views are not exclusive. Both agree that the natural rate is not a constant of nature; they
+            differ on whether past unemployment itself moves it. If hysteresis is strong, a slump is more costly than the
+            simple model suggests, because its effects do not fade on their own.
+        module: {kind: ws_ps, controls: [z, markup]}
+
+  - id: s5
+    title: "Okun's Law"
+    objectives: [LO5]
+    steps:
+      - id: s5a
+        sources:
+          - {key: blanchard_illing_2021, loc: "2.3, 2.4"}
+          - {key: mankiw_2025, loc: "ch. 12"}
+          - {key: okun_1962}
+        text: |
+          ### Output growth and unemployment
+
+          Firms need workers to produce. When [output](term:P1:output_GDP) grows faster, firms hire more, and
+          unemployment falls; when output stagnates, they hire less, and unemployment rises. The economist Arthur Okun
+          (1962) quantified this link for the United States, and the regularity has since been known as **[Okun's
+          law](term:P5:okuns_law)**, although it is a rule of thumb observed in the data rather than a law of nature
+          (Mankiw, 2025, ch. 12).
+
+          Output must grow by a certain amount each year just to keep unemployment where it is, because the [labour
+          force](term:P5:labour_force) grows and each worker produces a little more every year. This is the **[normal
+          growth rate](term:P5:normal_growth_rate)**. Only growth above it lowers unemployment. In the form used by
+          Blanchard & Illing (2021, 2.3) and Mankiw (2025, ch. 12), Okun's law states that the change in the
+          [unemployment rate](term:P5:unemployment_rate) from one year to the next is proportional to the gap between
+          output growth g and normal growth:
+
+          > change in u = − 0.5 × (g − normal growth)
+
+          In the example economy, normal growth is 2% a year, and the coefficient is 0.5. If output grows by 4%,
+          unemployment falls by 0.5 × (4 − 2) = 1 percentage point, for example from 4% to 3%. If output does not grow
+          at all, unemployment rises by one point. If it grows by 3%, unemployment falls by half a point. Growth of
+          [real GDP](term:P2:real_GDP) is the measure of output here: the value of production at the constant prices of
+          a [base year](term:P2:base_year) ([introduced in chapter 2](theory:P2-s2a)).
+        figure: {kind: okun, description: "The change in unemployment against output growth in the example economy, with the worked points of the text."}
+      - id: s5b
+        sources:
+          - {key: blanchard_illing_2021, loc: "2.3, 2.4"}
+          - {key: mankiw_2025, loc: "ch. 12"}
+          - {key: ball_etal_2017}
+        text: |
+          ### Cyclical unemployment and the size of the coefficient
+
+          Unemployment that differs from the [natural rate](term:P5:natural_rate) because output has grown faster or
+          slower than normal is **[cyclical unemployment](term:P5:cyclical_unemployment)**. The natural rate is the
+          unemployment rate at which wage setting and price setting are consistent, 4% in the example economy ([the
+          natural rate](theory:P5-s4b)). After a year without growth, unemployment is 5%: one point of it is cyclical.
+          It disappears when output grows faster than normal again and the economy returns to its normal level.
+
+          Why does unemployment fall by only half a point for each point of extra growth, not by a full point? Several
+          things absorb part of the change in output (Blanchard & Illing, 2021, 2.3). Firms do not dismiss workers at
+          the first sign of a slump: training new staff is costly, so they keep some workers on and let them work less
+          hard or fewer hours. When output picks up, they first use these workers more fully before hiring. Hours per
+          worker adjust as well as the number of workers. And when jobs become easier to find, some people who were
+          outside the labour force start looking, so unemployment falls by less than employment rises.
+
+          The coefficient is not a constant. Blanchard & Illing (2021, 2.3) report a value of about 0.4 for the United
+          States, Mankiw (2025, ch. 12) one of about 0.5. Ball et al. (2017), who estimated Okun's law for the United
+          States and twenty other advanced economies, find that it fits the data well in most of them and is fairly
+          stable within each, but that the coefficient differs substantially between countries, depending on how their
+          labour markets adjust. The example economy uses 0.5, a value within the range of these estimates.
+
+  - id: s6
+    title: "Downward Wage Rigidity"
+    objectives: [LO6]
+    steps:
+      - id: s6a
+        sources:
+          - {key: akerlof_etal_1996}
+          - {key: bewley_1999}
+          - {key: kahneman_etal_1986}
+          - {key: blanchard_illing_2021, loc: "8.4"}
+        text: |
+          ### Why nominal wages rarely fall
+
+          Wages can fall in two ways: in dollars, or in what they buy. The difference matters a great deal in practice.
+          Studies of wage records find that wages counted in dollars are rarely cut, even when demand is weak and
+          unemployment is high, while they are raised often. Many workers simply get no raise in a bad year; few get a
+          cut (Akerlof et al., 1996). This asymmetry is called **[downward nominal wage
+          rigidity](term:P5:downward_nominal_wage_rigidity)**.
+
+          Why do firms not cut wages when they need to save costs? Truman Bewley (1999) put the question to more than
+          three hundred managers, union leaders and recruiters during a [recession](term:P2:recession). Most managers
+          were firmly against wage cuts, mainly because they damage morale: workers who feel badly treated cooperate
+          less, take less initiative and are more likely to leave when times improve. Managers preferred to dismiss some
+          workers, which hurts those who go, rather than cut the pay of all, which demoralises those who stay.
+
+          Workers' sense of fairness lies behind this. In telephone surveys, Kahneman, Knetsch and Thaler (1986) asked
+          people to judge situations such as this one: a firm makes a small profit; there is unemployment but no
+          [inflation](term:P4:inflation_rate); the firm cuts wages by 7%. Most respondents, 62%, judged this unfair.
+          When the same firm instead raised wages by 5% while prices rose by 12%, which lowers the real wage by more,
+          only 22% judged it unfair. People judge a wage against a **[reference wage](term:P5:reference_wage)**, usually
+          the wage they earn now: a cut in dollars feels like a loss, while a raise smaller than inflation does not.
+
+          Consider the bakery of the example economy, which employs 2,400 people at an average wage of $62,500. Its
+          sales fall, and to keep all its workers it would need its [real wage](term:P5:real_wage) costs to fall by 2%.
+          If prices are rising by 2% a year, it can simply freeze pay: the real wage falls by about 2%, and nobody's
+          wage is cut. If prices are stable, the same fall in the real wage requires a cut of 2% in dollars. The bakery
+          avoids the cut and hires fewer people instead (Blanchard & Illing, 2021, 8.4).
+      - id: s6b
+        sources:
+          - {key: akerlof_etal_1996}
+          - {key: fehr_gotte_2005}
+          - {key: blanchard_illing_2021, loc: "8.4"}
+          - {key: legge_2023, loc: "6.3"}
+        text: |
+          ### Consequences for unemployment and inflation
+
+          Downward wage rigidity matters most when inflation is low. Real wages need to fall from time to time in some
+          firms and industries, for example when demand shifts away from their products. With moderate inflation, this
+          happens without anyone's pay being cut: wages stay the same in dollars while prices rise. Economists call this
+          the **["grease" effect of inflation](term:P5:grease_effect)**: a little inflation helps the labour market
+          adjust (Akerlof et al., 1996). At very low inflation, or with falling prices, the rigidity binds more often,
+          and the adjustment comes through fewer jobs instead.
+
+          Akerlof et al. (1996) built this into a model of the labour market and concluded that permanently very low
+          inflation would raise unemployment permanently, because firms that need lower real wages could not get them.
+          One objection is that workers would get used to wage cuts if inflation stayed low for long. Evidence from
+          Switzerland in the 1990s, when inflation was low, suggests otherwise: nominal wage cuts remained rare (Fehr &
+          Götte, 2005).
+
+          This is one of the reasons why most [central banks](term:P1:central_bank) aim at a small positive inflation
+          rate, about 2%, rather than at zero (Legge, 2023, 6.3), a point taken up with the costs and benefits of
+          inflation ([the optimal inflation rate](theory:P4-s5c)). It also affects how inflation responds to
+          unemployment: when unemployment is high and inflation is already low, wages fall little, so inflation falls
+          less than it would otherwise ([the Phillips curve](theory:P5-s7b); Blanchard & Illing, 2021, 8.4).
+        details:
+          title: "Do Swiss wages fall when inflation is low?"
+          sources:
+            - {key: fehr_gotte_2005}
+            - {key: akerlof_etal_1996}
+          text: |
+            A common objection to the importance of [downward nominal wage
+            rigidity](term:P5:downward_nominal_wage_rigidity) runs as follows. Wage cuts are rare, the argument goes, only
+            because they have seldom been necessary: with [inflation](term:P4:inflation_rate) of several percent a year,
+            [real wages](term:P5:real_wage) can fall without them. If inflation stayed low for long, nominal cuts would
+            become customary, workers' resistance would fade, and firms would cut wages when they needed to. On this view,
+            the rigidity matters little: when inflation is high there is no need for cuts, and when it is low the cuts
+            would happen.
+
+            Ernst Fehr and Lorenz Götte (2005) tested this argument with Swiss data from the early and mid-1990s, a period
+            of very low inflation and rising unemployment. Switzerland was a good test case for a second reason: Swiss
+            employers could legally propose a lower wage to the workers they already employed, so the rigidity could not
+            be blamed on the law. Fehr and Götte found that nominal wage cuts remained rare even in this low-inflation
+            environment, and that many wages that would otherwise have fallen were held at their old level. As a result,
+            real wages were higher than they would have been without the rigidity.
+
+            They also compared regions and industries. Where the rigidity held up wages most, unemployment was higher,
+            which suggests that the rigidity did cost jobs, as Akerlof et al. (1996) had argued. The evidence comes from
+            one country and one period, but it answers the objection that the rigidity would disappear on its own once
+            inflation was low.
+
+  - id: s7
+    title: "The Phillips Curve"
+    objectives: [LO7]
+    steps:
+      - id: s7a
+        sources:
+          - {key: phillips_1958}
+          - {key: samuelson_solow_1960}
+          - {key: blanchard_illing_2021, loc: "8.1, 8.2"}
+          - {key: legge_2023, loc: "6.4.2"}
+        text: |
+          ### The original Phillips curve
+
+          In 1958 the economist A. W. Phillips plotted almost a century of British data and found a striking regularity:
+          in years when unemployment was low, **[wage inflation](term:P5:wage_inflation)**, how fast wages rise, was
+          high; in years when it was high, wages rose slowly or even fell (Phillips, 1958). Two years later, Paul
+          Samuelson and Robert Solow (1960) found a similar relation for the United States between unemployment and the
+          rate of price inflation. The relation between unemployment and [inflation](term:P4:inflation_rate) has been
+          called the **[Phillips curve](term:P5:phillips_curve)** ever since (Blanchard & Illing, 2021, 8.1).
+
+          The reason lies in the labour market. When unemployment is low, workers are in a strong position in wage
+          setting and firms compete for staff, so wages rise fast; firms pass the higher labour costs on to their
+          prices, so prices rise fast too. When unemployment is high, the opposite holds. In the example economy, the
+          relation is
+
+          > inflation = 2% − 0.5 × (u − 4%)
+
+          At 4% unemployment, inflation is 2%; at 3%, it is 2.5%; at 5%, it is 1.5%. In the 1960s, relations of this
+          kind seemed to describe the data of several countries well, and they suggested that a country could have lower
+          unemployment if it accepted higher inflation (Legge, 2023, 6.4.2). The next step shows why this view had to be
+          revised.
+        details:
+          title: "From Phillips's curve to stagflation"
+          sources:
+            - {key: phillips_1958}
+            - {key: samuelson_solow_1960}
+            - {key: forder_2010}
+            - {key: bollard_2016}
+            - {key: friedman_1968}
+            - {key: phelps_1967}
+            - {key: blanchard_illing_2021, loc: "8.2"}
+          text: |
+            A. W. Phillips, an engineer who had turned to economics at the London School of Economics (Bollard, 2016),
+            published his paper on wages and unemployment in Britain from 1861 to 1957 in 1958 (Phillips, 1958). Samuelson
+            and Solow (1960) drew a similar curve for the United States, with price inflation instead of [wage
+            inflation](term:P5:wage_inflation), and discussed the choices it seemed to offer. Later accounts often say
+            that they presented the curve as a stable menu from which governments could pick their preferred combination;
+            a closer look at the paper and at how it was read in the 1960s suggests that they did not present it that way
+            (Forder, 2010).
+
+            At the end of the 1960s, Milton Friedman (1968) and Edmund Phelps (1967) argued that the trade-off could not
+            last. Workers and firms care about [real wages](term:P5:real_wage); if [inflation](term:P4:inflation_rate)
+            stays high, they come to expect it and build it into their wage claims. Unemployment can then be kept below
+            its natural level only as long as inflation keeps surprising people, which requires ever higher inflation. In
+            the [long run](term:P3:long_run), there is no trade-off between inflation and unemployment.
+
+            The 1970s seemed to confirm them. After the oil price shocks of 1973 and 1979, many countries experienced high
+            inflation and high unemployment at the same time, a combination called **[stagflation](term:P5:stagflation)**,
+            which the original curve could not explain. In the United States, [expected
+            inflation](term:P4:expected_inflation) began to follow past inflation, and the curve that fitted the data
+            became a relation between unemployment and the change in inflation (Blanchard & Illing, 2021, 8.2). The
+            expectations-augmented relation of the next step is the textbook form of their argument.
+      - id: s7b
+        sources:
+          - {key: blanchard_illing_2021, loc: "8.1, 8.3"}
+          - {key: mankiw_2025, loc: "ch. 16"}
+          - {key: legge_2023, loc: "6.4.3"}
+        text: |
+          ### Expected inflation and the natural rate
+
+          The wage-setting and [price-setting relations](term:P5:price_setting_relation) explain the Phillips curve and
+          show what is missing from its original form (Blanchard & Illing, 2021, 8.1). Workers obtain in wage setting a
+          [real wage](term:P5:real_wage) that falls with unemployment: in the example economy $63,750 − $312.50 × u.
+          Firms' prices leave a real wage of $62,500, the [output](term:P1:output_GDP) per worker of $93,750 divided by
+          1 plus the markup of 50%. At the [natural rate](term:P5:natural_rate) of 4%, the two agree ([the natural
+          rate](theory:P5-s4b)). Because wages are agreed in dollars for a year ahead, wage setters build in the
+          inflation they expect, [expected inflation](term:P4:expected_inflation) πᵉ ([introduced in chapter
+          4](theory:P4-s6a)).
+
+          Suppose unemployment is 3%, one point below the natural rate. Workers then obtain $63,750 − $937.50 =
+          $62,812.50, which is 0.5% more in real terms than prices allow. Wages therefore rise by expected inflation
+          plus 0.5%; firms pass the extra labour cost on, and prices rise faster than expected. This gives the
+          **[expectations-augmented Phillips relation](term:P5:expectations_augmented_phillips)**:
+
+          > inflation = expected inflation − 0.5 × (u − natural rate)
+
+          With expected inflation of 2%, the [inflation target](term:P4:inflation_target) of the example economy's
+          [central bank](term:P1:central_bank), 3% unemployment gives inflation of 2.5%, 5% gives 1.5%. The original
+          curve of the earlier step is the special case in which expected inflation stays at 2%. When unemployment
+          equals the natural rate, inflation equals expected inflation: wage claims and prices are consistent, and
+          nobody is surprised. If people expect last year's inflation to continue, this is the only rate at which
+          inflation stays steady, so the natural rate is also called the **[NAIRU](term:P5:nairu)**, the
+          non-accelerating-inflation rate of unemployment (Mankiw, 2025, ch. 16; Legge, 2023, 6.4.3).
+
+          Inflation can also change for reasons that start with firms rather than with the labour market. If energy
+          becomes dearer, firms' costs and markups change, and inflation rises at any [unemployment
+          rate](term:P5:unemployment_rate). Such an event is a **[cost-push shock](term:P5:cost_push_shock)**, a change
+          in firms' costs, for example for energy, that firms pass on to their prices; textbooks also call it a supply
+          shock (Mankiw, 2025, ch. 16). In the example economy, a rise of the [markup](term:P5:markup) from 50% to 51%
+          raises inflation by about two thirds of a point at 4% unemployment, and raises the natural rate to about 5.3%
+          (Blanchard & Illing, 2021, 8.3).
+        module: {kind: phillips, controls: [pi_e], view: curve}
+      - id: s7c
+        sources:
+          - {key: blanchard_illing_2021, loc: "8.2, 8.3"}
+          - {key: mankiw_2025, loc: "ch. 16"}
+          - {key: okun_1962}
+        text: |
+          ### Anchored and unanchored expectations
+
+          The expectations-augmented relation leaves one question open: what do people expect? How expectations are
+          formed is one of the central questions of monetary policy. Two cases, which textbooks use to describe
+          different periods, show why the answer matters (Blanchard & Illing, 2021, 8.2).
+
+          In the first case, people trust the central bank to keep inflation at its target of 2%, and they expect 2%
+          whatever happened last year. Expectations are then **[anchored](term:P5:anchored_expectations)**. Suppose
+          unemployment in the example economy is held at 3% for four years. Each year, inflation is 2% + 0.5 × 1 = 2.5%:
+          higher than the target, but stable. In the second case, people expect this year's inflation to equal last
+          year's. Inflation then feeds on itself, which economists call **[inflation
+          inertia](term:P5:inflation_inertia)**. With unemployment held at 3%, inflation is 2.5% in the first year; wage
+          setters then expect 2.5%, so inflation becomes 3.0% in the second year, 3.5% in the third and 4.0% in the
+          fourth. As long as unemployment stays below the natural rate, inflation keeps rising (Mankiw, 2025, ch. 16).
+          Only at the natural rate does it stay put.
+
+          This explains the report at the start of the chapter. With normal growth of 2%, output growth of 4% lowers
+          unemployment by 0.5 × (4 − 2) = 1 point, from 4% to 3%, as [Okun's law](term:P5:okuns_law) predicts ([Okun's
+          law](theory:P5-s5a); Okun, 1962). At 3% unemployment and expected inflation of 2%, inflation is 2.5%. The
+          central bank is concerned because unemployment below the natural rate keeps pushing inflation above what
+          people expect, and if expectations begin to follow inflation, inflation will keep rising.
+
+          Two links to other chapters close the topic. Over the [medium run](term:P3:medium_run), unemployment returns
+          to the natural rate, and inflation then equals expected inflation. Its level is set by monetary policy: with a
+          [money stock](term:P4:money_stock) growing by 4% and output by 2%, the [quantity
+          theory](term:P4:quantity_theory) gives inflation of about 2%, the central bank's target ([the quantity
+          theory](theory:P4-s5b)). What brings unemployment and output back is not the labour market alone: it takes a
+          change in demand, for example when the central bank raises its [policy rate](term:P4:policy_rate) and firms
+          invest less ([investment and the interest rate](theory:P4-s7b)). Larger models connect the goods market, the
+          interest rate and the labour market in one system; the chapters here take them one at a time.
+        module: {kind: phillips, controls: [pi_e], view: years}

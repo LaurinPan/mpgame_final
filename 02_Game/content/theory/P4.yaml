@@ -1,0 +1,702 @@
+# 02_Game/content/theory/P4.yaml — chapter 4 of the theory section, "Money, prices and interest" (scripts appendix §14),
+# its texts written as the scripts appendix §8 asks (the glossary's terms and explanations, "government spending", "the rate
+# the economy needs", no mention of a game). Read by 02_Game/ui/theory.R.
+#   chapter  id, title, the learning objectives
+#   cards    the term cards: term, core (the explanation; the glossary's own, lower case, where `glossary: true`), example,
+#            aliases, see_also (a preview card's full card), box (false: never shown as a box), step (where the text defines it)
+#   topics   id, title, objectives, steps: id, sources ({key, loc} into references.yaml), text (Markdown: [label](term:P4:id)
+#            marks a term, [label](theory:P2-s1d) links a chapter, topic or step), details (a More Detail panel), module (one of
+#            the ten modules of modules.yaml with this step's controls and view), figure (a static figure drawn from economy.yaml)
+
+chapter:
+  id: P4
+  title: "Money, prices and interest"
+  objectives:
+    LO1: "Explain how price indices measure the price level, how the GDP deflator and the consumer price index differ, and how the inflation rate is computed."
+    LO2: "Explain what money is, its three functions, and what the money stock contains."
+    LO3: "Explain how commercial banks create money by lending and what limits money creation."
+    LO4: "Explain how the central bank sets the policy rate, using the demand for money and the supply of money, and why central banks steer the interest rate rather than the money stock."
+    LO5: "Explain the quantity theory as a long-run account of inflation, and the costs of expected and unexpected inflation."
+    LO6: "Distinguish nominal and real interest rates using expected inflation, and explain the risk premium."
+    LO7: "Explain why investment falls when the real interest rate rises."
+
+cards:
+  price_level: {term: "Price level (P)", core: "The average level of prices in the economy, compared with a base year. When it rises by 5%, the things people buy cost on average 5% more than before.", example: "A price level of 1.10 means that things cost on average 10% more than in the base year.", step: s1a}
+  GDP_deflator: {term: "GDP deflator", core: "A measure of the prices of everything an economy produces: how much more this year's output costs at this year's prices than it would at the prices of the base year.", example: "Year 2's output costs $793 million at its own prices and $730 million at year-1 prices: prices are about 8.6% higher.", aliases: [deflator], step: s1a}
+  consumer_price_index: {term: "Consumer price index (CPI)", core: "A measure of the cost of living: statisticians price the same basket of goods that a typical household buys, year after year, and compare its cost with the base year.", example: "If the basket cost $100 in the base year and costs $110 now, the index is 110.", aliases: [CPI], step: s1b}
+  inflation_rate: {term: "Inflation rate (π)", core: "how fast prices rise, in percent a year", example: "The GDP deflator rises from 100 to 108.6: inflation of 8.6% a year.", aliases: ["inflation rate", inflation], glossary: true, step: s1b}
+  deflation: {term: "Deflation", core: "A fall in the average level of prices, so that the same money buys more over time. It is not the same as lower inflation, in which prices still rise, only more slowly.", example: "If the price index falls from 110 to 108, there is deflation.", step: s1b}
+  money: {term: "Money", core: "Whatever people generally accept as payment: banknotes, coins and bank deposits. In economics, money is not the same as wealth or income: a house is wealth, but you cannot pay for bread with it.", example: "The public holds $50 million in banknotes and $250 million in bank deposits.", step: s2a}
+  medium_of_exchange: {term: "Medium of exchange", core: "Money's use as the thing everyone accepts in exchange for goods, so that a baker who wants shoes need not find a shoemaker who wants bread.", example: "The bakery is paid in dollars and pays the mill in dollars.", step: s2a}
+  unit_of_account: {term: "Unit of account", core: "Money's use as the common measure in which prices, wages and debts are stated, so that very different things can be compared.", example: "A loaf costs $1.10 and a machine $10 million: both prices are stated in dollars.", step: s2a}
+  store_of_value: {term: "Store of value", core: "Money's use for keeping purchasing power from today until later. Money is safe and can be spent at once, but it earns no interest and loses value when prices rise.", example: "A household keeps $500 in its account to pay next month's bills.", step: s2a}
+  fiat_money: {term: "Fiat money", core: "Money with no value of its own, such as paper notes, accepted because the state declares it legal tender and because everyone trusts that others will accept it too.", example: "A $10 note costs a few cents to print but buys $10 worth of goods.", step: s2b}
+  money_stock: {term: "Money stock (M)", core: "All the money held by households and firms at a point in time: banknotes and coins in their hands plus their bank deposits that can be used for payments.", example: "$50 million in banknotes plus $250 million in deposits: $300 million.", step: s2b}
+  bank_balance_sheet: {term: "Bank balance sheet", core: "A list of what a bank owns, such as loans to customers and reserves, and of what it owes, mainly its customers' deposits; the difference is the bank's own capital.", example: "The banks own reserves of $25 million and loans of $245 million and owe deposits of $250 million.", aliases: ["balance sheet"], step: s3a}
+  reserves: {term: "Reserves", core: "The money that banks keep as cash or in their own account at the central bank. They use it to pay other banks when customers transfer money.", example: "Banks hold $25 million in reserves against $250 million of deposits.", step: s3a}
+  fractional_reserve_banking: {term: "Fractional-reserve banking", core: "Banks keep only a small part of their customers' deposits as reserves and lend out the rest, because on any day only a few customers withdraw their money.", example: "Banks keep $25 million of their $250 million in deposits, one tenth.", step: s3a}
+  deposit_creation: {term: "Deposit creation", core: "When a bank grants a loan, it credits the borrower's account with new money; no one else's deposit is reduced. Lending thus creates money, and repaying a loan removes it.", example: "The bakery borrows $10 million for vans: its account grows by $10 million, and so does the money stock.", step: s3b}
+  money_multiplier: {term: "Money multiplier", core: "Why the money in bank accounts is a multiple of the money the central bank creates: each loan creates a new deposit, banks keep only a little of it as reserves, and people keep only a little as cash.", example: "Central bank money of $75 million goes with a money stock of $300 million, four times as much.", aliases: [multiplier], step: s3b}
+  central_bank_money: {term: "Central bank money", core: "The money that only the central bank can create: the banknotes and coins in circulation and the reserves that banks hold in their accounts at the central bank.", example: "$50 million in banknotes plus $25 million in reserves: $75 million.", step: s4a}
+  bond: {term: "Bond", core: "A promise to pay fixed amounts on fixed dates, which can be bought and sold. When interest rates rise, existing bonds are worth less, because new ones pay more.", example: "A bond that pays $103 in a year is worth $100 at 3% interest, but only $99.04 at 4%.", step: s4a}
+  money_demand: {term: "Demand for money", core: "How much people want to keep as money rather than in bonds that pay interest. They want more when they buy more, and less when interest rates are high, because holding money then costs more interest.", example: "At an interest rate of 3%, people want to hold $300 million.", aliases: ["money demand"], step: s4b}
+  money_market_equilibrium: {term: "Money-market equilibrium", core: "The interest rate at which people want to hold exactly the money there is. If there is more money, people buy bonds with it, and the interest rate falls until they are content to hold it.", example: "With $325 million instead of $300 million, the rate falls from 3% to 2.5%.", step: s4b}
+  open_market_operation: {term: "Open-market operation", core: "The central bank buys bonds from banks and pays with newly created money, or sells bonds and takes money out of the economy.", example: "To raise its rate to 4%, the central bank sells bonds for $12.5 million.", step: s4b}
+  policy_rate: {term: "Policy rate (i)", core: "the short-term interest rate the central bank sets each quarter", example: "When the central bank raises it from 3% to 4%, a firm's new loan becomes dearer.", glossary: true, step: s4c}
+  interest_rate_steering: {term: "Interest-rate steering", core: "The way central banks work today: they announce the interest rate they want and supply as much money as banks ask for at that rate, instead of fixing the amount of money.", example: "The central bank announces 3% and lends banks whatever they need at about that rate.", step: s4c}
+  quantity_equation: {term: "Quantity equation", core: "A bookkeeping fact linking money and spending: everything bought in a year is paid for with the money in the economy, each dollar being used several times.", example: "$300 million of money, each dollar spent three times, pays for $900 million of goods.", step: s5a}
+  velocity_of_money: {term: "Velocity of money (V)", core: "How often an average dollar is used in a year to buy goods: money passes from buyer to seller, who spends it again.", example: "Output of $900 million paid for with $300 million of money: each dollar is used three times.", aliases: [velocity], step: s5a}
+  quantity_theory: {term: "Quantity theory of money", core: "The view that over many years prices rise when the amount of money grows faster than the amount of goods it can buy: more money chasing the same goods drives prices up.", example: "Money grows by 4% a year and goods by 2%: prices rise by about 2% a year.", aliases: ["quantity theory"], step: s5b}
+  costs_of_expected_inflation: {term: "Costs of expected inflation", core: "Even foreseen inflation costs effort and distorts: shoe-leather and menu costs, tax distortions, confusion about relative prices.", box: false, step: s5c}
+  costs_of_unexpected_inflation: {term: "Costs of unexpected inflation", core: "Unforeseen inflation shifts wealth from lenders to borrowers and makes planning uncertain.", box: false, step: s5c}
+  optimal_inflation_rate: {term: "Optimal inflation rate", core: "The inflation rate that balances inflation's costs against the benefits of a small positive rate; central banks mostly aim at about 2%.", box: false, step: s5c}
+  expected_inflation: {term: "Expected inflation (πᵉ)", core: "the inflation the public expects for the coming period, in percent a year", example: "People in the example economy expect prices to rise by 2% a year.", glossary: true, step: s6a}
+  real_interest_rate: {term: "Real interest rate (r)", core: "the policy rate minus the inflation people expect", example: "You borrow $100 at 3% while prices rise by 2%: the $103 you repay buys only about 1% more than the $100 did.", glossary: true, step: s6a}
+  fisher_equation: {term: "Fisher equation", core: "Irving Fisher's rule that lenders add the inflation they expect to the return they want in goods, so the real interest rate is about the interest rate minus expected inflation.", example: "A lender who wants 1% in real terms and expects 2% inflation asks for 3%.", step: s6a}
+  risk_premium: {term: "Risk premium", core: "The extra interest a lender demands because a borrower might not pay back in full: the riskier the borrower, the higher the premium.", example: "Banks borrow at the central bank's 3%; firms, which may fail, pay 2 points more.", aliases: ["risk premia"], step: s6b}
+  investment_project: {term: "Investment project", core: "A firm's possible purchase of new capital goods, such as a machine or a building.", box: false, step: s7a}
+  expected_rate_of_return: {term: "Expected rate of return", core: "The yearly real return a firm expects a project to earn, in percent of its cost.", aliases: ["expected return"], box: false, step: s7a}
+  investment_demand_curve: {term: "Investment demand curve", core: "How much firms invest at each interest rate: when borrowing gets dearer, fewer projects earn enough to cover it, firms drop them, and investment falls.", example: "At a cost of finance of 3%, firms invest $220 million; at 4%, two projects no longer pay, and they invest $180 million.", step: s7b}
+  commodity_money: {term: "Commodity money", core: "Money that is also a useful or valuable thing in itself, such as gold or silver coins, or cigarettes in a prisoner-of-war camp.", example: "A gold coin keeps its value even if no one uses it as money.", step: s2b}
+  double_coincidence_of_wants: {term: "Double coincidence of wants", core: "The problem of barter: a trade only happens if each side has exactly what the other wants, at the same time.", example: "A baker who wants shoes must find a shoemaker who wants bread.", step: s2a}
+  nominal_interest_rate: {term: "Nominal interest rate", core: "An interest rate stated in money: how many more dollars are paid back for each dollar borrowed, without regard to what those dollars will buy.", example: "A loan at 3% means paying back $103 for every $100 borrowed.", step: s6a}
+  ex_ante_real_rate: {term: "Ex ante real interest rate", core: "The real interest rate that borrowers and lenders expect when they agree a loan, based on the inflation they expect; it guides their decisions.", example: "A loan at 3% with 2% expected inflation has an ex ante real rate of about 1%.", aliases: ["ex ante"], step: s6a}
+  ex_post_real_rate: {term: "Ex post real interest rate", core: "The real interest rate as it turns out after the loan, based on the inflation that actually occurred.", example: "If prices rise by 3% instead of 2%, the loan at 3% has cost nothing in real terms.", aliases: ["ex post"], step: s6a}
+  neutrality_of_money: {term: "Neutrality of money", core: "The idea that, in the long run, more money only raises prices and leaves real things, such as output and employment, unchanged.", example: "Doubling all money would in the long run double all prices and change nothing else.", step: s5b}
+  shoe_leather_costs: {term: "Shoe-leather costs", core: "The time and effort people spend to keep less cash when inflation is high, for example going to the bank more often; the name refers to shoes worn out on the way.", example: "With high inflation, a shop banks its takings every day instead of once a week.", step: s5c}
+  menu_costs: {term: "Menu costs", core: "The costs of changing prices: printing new menus and price tags, and informing customers. They make firms change prices only now and then.", example: "A restaurant that reprints its menu for every price change pays menu costs.", step: s5c}
+  hyperinflation: {term: "Hyperinflation", core: "Inflation of more than 50% per month.", box: false, step: s5b}
+  cost_of_finance: {term: "Real cost of finance", core: "What it really costs a firm to fund a project, whether it borrows or uses its own money: the real interest rate plus the risk premium.", example: "A real policy rate of 1% plus a risk premium of 2%: 3%.", aliases: ["cost of finance"], step: s6b}
+  marginal_efficiency_of_capital: {term: "Marginal efficiency of capital", core: "Keynes's name for the return a firm expects from one more machine or building, compared with its price.", example: "The bakery expects its new production line to earn 7.25% a year.", aliases: ["marginal efficiency"], step: s7b}
+  user_cost_of_capital: {term: "User cost of capital", core: "What it costs a firm to use a machine for a year: the interest it could have earned on the money, plus the wear and tear of the machine.", example: "A $10 million machine that wears out by 10% a year, at a real interest rate of 3%, costs about $1.3 million a year to use.", step: s7b}
+  tobins_q: {term: "Tobin's q", core: "The stock-market value of a firm's machines and buildings compared with what it would cost to buy them new. If the market values them above that cost, investing pays.", example: "If investors value a $100 million factory at $120 million, building another one pays.", step: s7b}
+  inflation_target: {term: "Inflation target", core: "the inflation rate the central bank aims at, 2 percent a year", glossary: true, step: s5c}
+  rate_economy_needs: {term: "The rate the economy needs", core: "the real interest rate at which spending neither grows nor shrinks, so that output stays at its potential; economists call it the natural rate of interest. It is never called \"natural rate\" alone, which always means the natural rate of unemployment", aliases: ["rate the economy needs"], glossary: true, step: s6a}
+
+topics:
+
+  - id: s1
+    title: "Price Indices and Inflation"
+    objectives: [LO1]
+    steps:
+      - id: s1a
+        sources:
+          - {key: mankiw_2025, loc: "ch. 2"}
+          - {key: legge_2023, loc: "1.7"}
+          - {key: blanchard_illing_2021, loc: "2.2"}
+        text: |
+          ### The price level and the GDP deflator
+
+          Suppose the [central bank](term:P1:central_bank) of the example economy announces: "The [policy
+          rate](term:P4:policy_rate) rises from 3% to 4%." To understand what such a decision means, one must know what
+          prices and inflation are, what [money](term:P4:money) is and who creates it, what a policy rate is, and why
+          the interest rate matters for firms' [investment](term:P2:investment). This chapter builds up these pieces one
+          topic at a time, and each topic can be read on its own; [the last topic](theory:P4-s7b) returns to the
+          announcement.
+
+          When people say that "prices have risen", they rarely mean one price. They mean that, on average, goods and
+          services have become more expensive. [Macroeconomics](term:P1:macroeconomics) measures this average by the
+          **[price level](term:P4:price_level)** P, a weighted average of many prices expressed relative to a [base
+          year](term:P2:base_year), in which it is set to 1 (or to 100).
+
+          The first measure follows directly from the distinction between nominal and [real GDP](term:P2:real_GDP)
+          ([introduced in chapter 2](theory:P2-s2a)). [Nominal GDP](term:P2:nominal_GDP) values each year's
+          [output](term:P1:output_GDP) at that year's prices; real GDP values it at the constant prices of a base year,
+          so it changes only when quantities change. Their ratio therefore isolates the change in prices:
+
+          > GDP deflator = nominal GDP / real GDP × 100
+
+          Consider the example economy, which produces two [final goods](term:P2:final_good): bread and machines. In
+          year 1, the base year, it produces 520 million loaves at $1.00 and 20 machines at $10 million each; in year 2,
+          530 million loaves at $1.10 and 20 machines at $10.5 million; in year 3, 546 million loaves at $1.15 and 20
+          machines at $11 million ([the same example in chapter 2](theory:P2-s2b)). Nominal output is $720, 793 and 848
+          million (rounded); real output, at year-1 prices, is $720, 730 and 746 million. The **[GDP
+          deflator](term:P4:GDP_deflator)** is therefore 100 in year 1, 793 / 730 × 100 = 108.6 in year 2 and 848 / 746
+          × 100 = 113.7 in year 3. Because it is computed from [GDP](term:P2:GDP_definition), the deflator covers every
+          good the economy produces, including machines bought by firms and goods bought by the government, and it uses
+          the quantities of the current year (Mankiw, 2025, ch. 2).
+      - id: s1b
+        sources:
+          - {key: mankiw_2025, loc: "ch. 2"}
+          - {key: legge_2023, loc: "1.7, 6.2"}
+          - {key: blanchard_illing_2021, loc: "2.2"}
+        text: |
+          ### The consumer price index and the inflation rate
+
+          Households care about the prices of what they buy, not about the price of machines. The **[consumer price
+          index](term:P4:consumer_price_index)** (CPI) measures these prices. Statisticians fix a basket of the goods
+          and services a typical household buys in the base year and price the same basket every period. The CPI is the
+          cost of the basket in a given year relative to its cost in the base year, times 100.
+
+          In the example economy, households buy only bread, so the basket is bread alone. Its price rises from $1.00 to
+          $1.10 and $1.15: the CPI is 100, 110 and 115. Real statistics offices price baskets of several hundred goods
+          and services, weighted by their shares in household spending; the principle is the same.
+
+          The **[inflation rate](term:P4:inflation_rate)** π is the percentage change of the price level from one year
+          to the next. Measured with the deflator, inflation in year 2 is (108.6 − 100) / 100 = 8.6%, and 4.6% in year
+          3; measured with the CPI, it is 10% and 4.5%. The two measures differ because they cover different goods: the
+          price of machines, which rose by only 5%, enters the deflator but not the CPI. They also weight differently:
+          the CPI keeps the base-year basket fixed, whereas the deflator uses current quantities (Mankiw, 2025, ch. 2).
+          When the price level falls, inflation is negative, and economists speak of **[deflation](term:P4:deflation)**.
+        details:
+          title: "Does the CPI overstate inflation?"
+          sources:
+            - {key: boskin_etal_1996}
+            - {key: mankiw_2025, loc: "ch. 2"}
+          text: |
+            Because the [CPI](term:P4:consumer_price_index) prices a fixed basket, it is meant to show how much more a
+            household must spend to live as before. Several features of a fixed basket make it overstate this increase in
+            the cost of living (Mankiw, 2025, ch. 2).
+
+            The first is **substitution**. Suppose tea becomes dearer while coffee does not. Households drink more coffee
+            and less tea and so escape part of the price rise, but the fixed basket still contains the old quantity of
+            tea. A similar bias arises when households shift to cheaper shops. The second is **new goods**: a new product
+            widens the choice available for each dollar, which a basket fixed in the past does not contain. The third is
+            **quality**: when a car becomes safer or a computer faster at the same price, the price of what the household
+            receives has in fact fallen, but the index registers no change.
+
+            In the United States, a commission of five economists chaired by Michael Boskin examined these biases for the
+            Senate Finance Committee. Its final report concluded that the CPI overstated the rise in the cost of living by
+            about 1.1 percentage points a year, within a plausible range of 0.8 to 1.6 points, and by about 1.3 points
+            before 1996 (Boskin et al., 1996). The finding mattered because pensions and tax brackets were indexed to the
+            CPI. Statistics offices have since changed their methods, for example by updating baskets more often and
+            adjusting for quality, so the size of the bias today is smaller; the estimate belongs to its time, but the
+            reasons for the bias remain.
+        figure: {kind: price_indices, description: "The GDP deflator and the CPI of the example economy over three years."}
+
+  - id: s2
+    title: "Money"
+    objectives: [LO2]
+    steps:
+      - id: s2a
+        sources:
+          - {key: mankiw_2025, loc: "ch. 5"}
+          - {key: legge_2023, loc: "3.3"}
+          - {key: blanchard_illing_2021, loc: "4.1"}
+        text: |
+          ### What money is
+
+          In everyday language, "money" often means wealth or income: someone who "makes a lot of money" earns a high
+          income. Economists use the word more narrowly. **[Money](term:P4:money)** is the set of assets that are
+          generally accepted in payment for goods, services and debts. A house is wealth, but it is not money, because
+          nobody can pay for bread with a house.
+
+          Money is defined by three functions (Mankiw, 2025, ch. 5). As a **[medium of
+          exchange](term:P4:medium_of_exchange)**, it is what buyers hand to sellers. Without it, every trade would
+          require a [double coincidence of wants](term:P4:double_coincidence_of_wants): a baker who wants shoes would
+          have to find a shoemaker who wants bread. As a **[unit of account](term:P4:unit_of_account)**, it is the
+          measure in which prices are stated and debts are written, so that the prices of bread, machines and haircuts
+          can be compared directly. As a **[store of value](term:P4:store_of_value)**, it carries purchasing power from
+          today into the future. Money is not the best store of value, since [bonds](term:P4:bond) or shares usually
+          earn more, but it is the most liquid: it can be used for payment at once and without cost.
+        details:
+          title: "Cigarettes as money in a prisoner-of-war camp"
+          sources:
+            - {key: radford_1945, loc: "pp. 189–191"}
+            - {key: mankiw_2025, loc: "ch. 5"}
+          text: |
+            The functions of [money](term:P4:money) can be seen most clearly where there is no state to issue it. During
+            the Second World War, the economist R. A. Radford was held in prisoner-of-war camps, and in 1945 he published
+            an account of their economy (Radford, 1945). The prisoners received parcels from the Red Cross with food,
+            chocolate and cigarettes, but not everyone wanted the same goods. Trade began as barter: cheese for jam,
+            chocolate for biscuits.
+
+            Barter was cumbersome, and soon one good took over the role of money. Cigarettes, Radford reports, rose from
+            the status of an ordinary commodity to that of a currency. Prices of all other goods came to be quoted in
+            cigarettes, so cigarettes served as the [unit of account](term:P4:unit_of_account); they were handed over in
+            nearly every trade, so they were the [medium of exchange](term:P4:medium_of_exchange); and they were kept for
+            later purchases, so they were a [store of value](term:P4:store_of_value). Cigarettes suited the role because
+            they were uniform, easy to count, light, and wanted by many prisoners.
+
+            The camp also showed what happens to prices when the quantity of money changes. When a large delivery of
+            cigarettes arrived, prices quoted in cigarettes rose; when cigarettes ran short, because they were smoked,
+            prices fell. The camp is an illustration, not a history of how money began, a question on which economists and
+            anthropologists disagree.
+      - id: s2b
+        sources:
+          - {key: mankiw_2025, loc: "ch. 5"}
+          - {key: legge_2023, loc: "3.3"}
+        text: |
+          ### Forms of money and the money stock
+
+          For most of history, money was **[commodity money](term:P4:commodity_money)**: a good with value of its own,
+          such as gold or silver coins, or the cigarettes of the camp. Modern economies use **[fiat
+          money](term:P4:fiat_money)**, banknotes and coins whose material is almost worthless. Fiat money is accepted
+          because the state declares it legal tender, because taxes must be paid in it, and above all because everyone
+          expects that others will accept it in turn. Its value therefore rests on trust, and protecting that trust is
+          one of the tasks of the [central bank](term:P1:central_bank), the institution that issues the country's
+          banknotes.
+
+          Most payments today are made not with banknotes but by transferring deposits from one bank account to another.
+          Deposits at commercial banks that can be used for payments are therefore money as well. The **[money
+          stock](term:P4:money_stock)** M is the amount of money in the hands of the public: currency, the banknotes and
+          coins held by households and firms, plus these deposits. Statistics offices publish several measures, which
+          differ in how many kinds of deposits they include (Mankiw, 2025, ch. 5); this chapter uses the narrow one.
+
+          In the example economy, the public holds $50 million in currency and $250 million in bank deposits. The money
+          stock is 50 + 250 = $300 million, a third of annual [output](term:P1:output_GDP) of $900 million.
+
+  - id: s3
+    title: "Banks and Money Creation"
+    objectives: [LO3]
+    steps:
+      - id: s3a
+        sources:
+          - {key: mankiw_2025, loc: "ch. 5"}
+          - {key: legge_2023, loc: "3.6"}
+          - {key: blanchard_illing_2021, loc: "4.3, 6.3"}
+        text: |
+          ### The bank's balance sheet
+
+          Commercial banks take deposits from households and firms and lend to households and firms ([banks among the
+          actors of the economy, chapter 1](theory:P1-s3a)). What a bank does can be read from its **[balance
+          sheet](term:P4:bank_balance_sheet)**. On one side are its assets: the loans it has granted, the
+          [bonds](term:P4:bond) it holds and its **[reserves](term:P4:reserves)**, which are the cash in its vaults and
+          the balance on its account at the [central bank](term:P1:central_bank). On the other side are its liabilities,
+          above all the deposits of its customers, and its own capital, the amount by which assets exceed liabilities.
+
+          Reserves are the [money](term:P4:money) banks use to pay each other. When a customer of one bank pays a
+          customer of another, the first bank's reserves fall and the second bank's rise. Because on any day only a
+          small part of deposits is withdrawn or transferred elsewhere, banks hold reserves equal to only a fraction of
+          their deposits and lend the rest. This is **[fractional-reserve
+          banking](term:P4:fractional_reserve_banking)**. In the example economy, deposits are $250 million and banks
+          hold reserves of $25 million, a reserve ratio of 10%; the rest of their assets are loans (Mankiw, 2025, ch.
+          5).
+        figure: {kind: balance_sheet, description: "The balance sheets of a bank and a borrower, before and after a loan."}
+      - id: s3b
+        sources:
+          - {key: mankiw_2025, loc: "ch. 5"}
+          - {key: legge_2023, loc: "3.6"}
+          - {key: blanchard_illing_2021, loc: "4.3"}
+        text: |
+          ### How lending creates money
+
+          When a bank grants a loan, it does not hand over banknotes taken from someone else's deposit. It credits the
+          borrower's account. Suppose the bakery borrows $10 million to buy delivery vans. On the bank's balance sheet,
+          loans rise by $10 million on the asset side and the bakery's deposit rises by $10 million on the liability
+          side. Since deposits are money, the [money stock](term:P4:money_stock) has grown by $10 million: lending
+          creates money. This is **[deposit creation](term:P4:deposit_creation)**. When the bakery pays the machine
+          maker, the deposit moves to the machine maker's account, and if that account is at another bank, reserves move
+          with it. When a loan is repaid, the process runs in reverse and money disappears.
+
+          What limits money creation? The textbook model links the money stock to **[central bank
+          money](term:P4:central_bank_money)**, the currency and reserves that only the central bank can create (Mankiw,
+          2025, ch. 5). If the public holds currency equal to a share cr of deposits and banks hold reserves equal to a
+          share rr of deposits, the money stock is a fixed multiple of central bank money, the **[money
+          multiplier](term:P4:money_multiplier)** (1 + cr) / (cr + rr). In the example economy, currency is 50 and
+          deposits 250, so cr = 0.2; reserves are 25, so rr = 0.1. Central bank money is 50 + 25 = 75, the multiplier is
+          (1 + 0.2) / (0.2 + 0.1) = 4, and the money stock is 4 × 75 = $300 million.
+        details:
+          title: "Do banks lend out deposits?"
+          sources:
+            - {key: mcleay_etal_2014}
+            - {key: mankiw_2025, loc: "ch. 5"}
+          text: |
+            The [money multiplier](term:P4:money_multiplier) is often read as a recipe: the [central
+            bank](term:P1:central_bank) creates [reserves](term:P4:reserves), banks lend them out, the loans return as
+            deposits, part is lent again, and after many rounds the [money stock](term:P4:money_stock) is a multiple of
+            what the central bank created. Central banks describe the process differently. In an article for the Bank of
+            England's quarterly bulletin, McLeay et al. (2014) set out two common misconceptions: that banks merely pass
+            on the deposits of savers, and that they multiply up [central bank money](term:P4:central_bank_money)
+            mechanically.
+
+            In their account, the causation runs the other way. Banks lend when they find borrowers they judge
+            creditworthy and when lending is profitable at the interest rates they face; the loan creates the deposit at
+            the moment it is granted. Banks then obtain the reserves they need, from other banks or from the central bank,
+            at an interest rate the central bank steers. What limits [money](term:P4:money) creation is therefore not the
+            quantity of reserves but the price of borrowing: the interest rate set by monetary policy, together with
+            banks' need to remain profitable and safe and with regulation.
+
+            The two accounts agree on the balance-sheet mechanics of the previous step and on the ratios: in the example
+            economy, the money stock is still four times central bank money. They differ on what moves first. In the
+            multiplier story, the central bank fixes the quantity of central bank money and the money stock follows; in
+            the central banks' account, the central bank fixes an interest rate, lending and the money stock respond, and
+            the quantity of central bank money adjusts to what banks demand. Why the second description fits how central
+            banks work today is explained under [interest-rate steering](theory:P4-s4c).
+
+  - id: s4
+    title: "The Central Bank and the Policy Rate"
+    objectives: [LO4]
+    steps:
+      - id: s4a
+        sources:
+          - {key: blanchard_illing_2021, loc: "4.1–4.2"}
+          - {key: legge_2023, loc: "3.4"}
+          - {key: mankiw_2025, loc: "ch. 5"}
+        text: |
+          ### Central bank money and bonds
+
+          The [central bank](term:P1:central_bank) is the bank of the banks and of the state ([the central bank among
+          the actors, chapter 1](theory:P1-s3a)). Only it can create **[central bank
+          money](term:P4:central_bank_money)**: the currency held by the public and the [reserves](term:P4:reserves)
+          that banks hold on their accounts at the central bank. In the example economy, central bank money is 50 + 25 =
+          $75 million.
+
+          To understand how the central bank influences interest rates, a second financial asset is needed. A
+          **[bond](term:P4:bond)** is a promise to make fixed payments in the future. Suppose a bond pays $103 in one
+          year. If the interest rate is 3%, an investor pays $100 for it today, because $100 lent at 3% also yields
+          $103. If the interest rate rises to 4%, the same $103 is worth only 103 / 1.04 = $99.04 today, and the bond's
+          price falls. Bond prices and interest rates therefore move in opposite directions (Blanchard & Illing, 2021,
+          4.2). A household that holds its wealth in [money](term:P4:money) gives up this interest; a household that
+          holds bonds earns it but cannot pay with them.
+      - id: s4b
+        sources:
+          - {key: blanchard_illing_2021, loc: "4.1–4.2"}
+          - {key: legge_2023, loc: "3.5"}
+          - {key: mankiw_2025, loc: "ch. 5"}
+        text: |
+          ### The money market
+
+          How much of their wealth do people want to hold as money? The **[demand for money](term:P4:money_demand)**
+          depends on two things (Blanchard & Illing, 2021, 4.1). It rises with nominal income, because more transactions
+          require more means of payment. And it falls with the interest rate, because every dollar held as money forgoes
+          the interest a bond would pay. In the example economy, the demand for money is
+
+          > money demand = $Y × (0.5 − i / 18),
+
+          where $Y is nominal income of $900 million and i is the interest rate in percent. At an interest rate of 3%,
+          people want to hold 900 × (0.5 − 3 / 18) = $300 million.
+
+          In the simplest version of the model, the central bank fixes the supply of money. The **[money-market
+          equilibrium](term:P4:money_market_equilibrium)** is the interest rate at which the money people want to hold
+          equals the money supplied: with $300 million supplied, it is 3%. The central bank changes the supply through
+          an **[open-market operation](term:P4:open_market_operation)**: it buys bonds and pays with newly created
+          central bank money, or it sells bonds and withdraws money. If it raises the [money stock](term:P4:money_stock)
+          to $325 million, people hold more money than they want at 3%; they try to buy bonds, bond prices rise, and the
+          interest rate falls until money demand has risen to 325, at an interest rate of 2.5%. The model holds
+          [output](term:P1:output_GDP) and the [price level](term:P4:price_level) fixed: it describes the money market
+          on its own.
+        module: {kind: money_market, controls: [M]}
+      - id: s4c
+        sources:
+          - {key: blanchard_illing_2021, loc: "4.2.3"}
+          - {key: mankiw_2025, loc: "ch. 20"}
+          - {key: legge_2023, loc: "3.5"}
+        text: |
+          ### Interest-rate steering
+
+          In the money-market model, choosing a money stock and choosing an interest rate are the same decision: each
+          money stock corresponds to exactly one interest rate, and each interest rate to one money stock. A central
+          bank can therefore just as well announce the interest rate it wants and supply whatever money is demanded at
+          that rate. Central banks today do exactly this (Blanchard & Illing, 2021, 4.2.3). They announce a **[policy
+          rate](term:P4:policy_rate)**, a short-term [nominal interest rate](term:P4:nominal_interest_rate) at which
+          banks can borrow and lend central bank money, and they keep the market rate close to it with open-market
+          operations and standing facilities.
+
+          In the example economy, the central bank's policy rate is 3%. Suppose it raises the rate to 4%. At 4%, people
+          want to hold only 900 × (0.5 − 4 / 18) = $250 million. With a [money multiplier](term:P4:money_multiplier) of
+          4, the central bank withdraws $12.5 million of central bank money by selling bonds, and the money stock falls
+          from 300 to 250. In practice, the announcement does most of the work: banks and markets adjust their rates to
+          the new policy rate, and the quantity of money follows. This is **[interest-rate
+          steering](term:P4:interest_rate_steering)**: the interest rate is the instrument, and the money stock is the
+          result. The reason for the change of practice is that the demand for money shifts often and unpredictably, for
+          example with new means of payment; a fixed money stock would then make the interest rate jump, while a fixed
+          rate lets the money stock absorb the shifts.
+        module: {kind: money_market, controls: [i]}
+
+  - id: s5
+    title: "Inflation: Causes and Costs"
+    objectives: [LO5]
+    steps:
+      - id: s5a
+        sources:
+          - {key: mankiw_2025, loc: "ch. 6"}
+          - {key: legge_2023, loc: "6.4.1"}
+        text: |
+          ### The quantity equation
+
+          The oldest explanation of [inflation](term:P4:inflation_rate) links prices to the quantity of
+          [money](term:P4:money). Its starting point is an identity. In a year, every dollar of money changes hands
+          several times in purchases of [final goods](term:P2:final_good). The number of times is the **[velocity of
+          money](term:P4:velocity_of_money)** V, defined as nominal output divided by the [money
+          stock](term:P4:money_stock). Multiplying both sides by the money stock gives the **[quantity
+          equation](term:P4:quantity_equation)**:
+
+          > M × V = P × Y
+
+          Money times velocity equals the [price level](term:P4:price_level) times real output, which is nominal output
+          (Mankiw, 2025, ch. 6). In the example economy, the money stock is $300 million, the price level in the [base
+          year](term:P2:base_year) is 1, and real output is $900 million, so velocity is 900 / 300 = 3: each dollar is
+          spent on final goods three times a year. As defined, the equation always holds; it becomes a theory only with
+          an assumption about velocity.
+      - id: s5b
+        sources:
+          - {key: mankiw_2025, loc: "ch. 6"}
+          - {key: legge_2023, loc: "6.4.1"}
+          - {key: blanchard_illing_2021, loc: "23.3"}
+        text: |
+          ### The quantity theory
+
+          The **[quantity theory of money](term:P4:quantity_theory)** assumes that velocity is stable, because it
+          depends on payment habits and technology, which change slowly. Then the quantity equation, written in growth
+          rates, says that money growth plus the (zero) change in velocity equals inflation plus real output growth.
+          Inflation is therefore approximately money growth minus real output growth. In the example economy, if the
+          money stock grows by 4% a year and real output by 2%, prices rise by about 2% a year. Real output is not
+          determined by money here: it depends on labour, capital and technology ([explained further in chapter
+          6](theory:P6-s1a)). This separation, real variables determined by real factors and money determining only
+          prices, is called the [neutrality of money](term:P4:neutrality_of_money) (Mankiw, 2025, ch. 6).
+
+          The quantity theory is a statement about the **[long run](term:P3:long_run)**. It fits large differences
+          between countries and periods well: economies whose money stock grows very fast have high inflation. Over
+          months and quarters, velocity is far from stable, and changes in the money stock affect
+          [output](term:P1:output_GDP) before they affect prices; short-run inflation depends on demand, wages and
+          expectations ([explained further in chapter 5](theory:P5-s7c)). And when the [central
+          bank](term:P1:central_bank) steers the interest rate ([interest-rate steering](theory:P4-s4c)), the money
+          stock is itself the result of policy rather than its starting point. The quantity theory therefore explains
+          why sustained high inflation is always accompanied by fast money growth, but not how a modern central bank
+          controls inflation from year to year.
+        details:
+          title: "When money stops working: hyperinflation"
+          sources:
+            - {key: cagan_1956, loc: "pp. 25–117"}
+            - {key: mankiw_2025, loc: "ch. 6"}
+          text: |
+            The [quantity theory](term:P4:quantity_theory) is seen in its purest form in
+            [hyperinflations](term:P4:hyperinflation). In a classic study, the economist Phillip Cagan defined a
+            hyperinflation as a period in which prices rise by more than 50% per month (Cagan, 1956). At that pace, prices
+            multiply roughly 130-fold within a year, an annual [inflation rate](term:P4:inflation_rate) of about 13,000%.
+            Cagan examined the hyperinflations that followed the two world wars in Europe, in which prices eventually rose
+            by many thousand percent per month.
+
+            The cause of every hyperinflation is a government that finances large deficits by creating
+            [money](term:P4:money), usually because it can no longer borrow or raise taxes, for example after a war
+            (Mankiw, 2025, ch. 6). The new money raises prices; higher prices raise the government's spending in dollars;
+            the deficit grows and is financed by still more money. Cagan's contribution was to show how the [demand for
+            money](term:P4:money_demand) drives the process. When people expect prices to rise fast, holding money becomes
+            very costly, so they spend it as soon as they receive it. [Velocity](term:P4:velocity_of_money) rises, and
+            prices rise even faster than the [money stock](term:P4:money_stock).
+
+            Money then loses its functions one by one. It stops being a [store of value](term:P4:store_of_value), because
+            it loses value within days. It stops being a [unit of account](term:P4:unit_of_account), because prices are
+            restated in a foreign currency or in goods. Finally it stops being a [medium of
+            exchange](term:P4:medium_of_exchange), and trade falls back on barter. Hyperinflations end not gradually but
+            with a reform: a new currency, an end to deficit financing by the [central bank](term:P1:central_bank), and a
+            central bank that is credibly independent of the government's financing needs.
+      - id: s5c
+        sources:
+          - {key: mankiw_2025, loc: "ch. 6"}
+          - {key: legge_2023, loc: "6.3"}
+          - {key: blanchard_illing_2021, loc: "23.3"}
+        text: |
+          ### The costs of inflation
+
+          If all prices and incomes rose at the same pace, people would be no poorer. Why, then, do economists and
+          central banks want to keep inflation low? The textbooks distinguish costs that arise even when inflation is
+          expected from costs that arise when it is not (Mankiw, 2025, ch. 6; Blanchard & Illing, 2021, 23.3).
+
+          The **[costs of expected inflation](term:P4:costs_of_expected_inflation)** include the effort of holding less
+          money and visiting the bank more often, known as [shoe-leather costs](term:P4:shoe_leather_costs); the cost of
+          changing prices often, known as [menu costs](term:P4:menu_costs); taxes that are set in nominal terms and so
+          rise in real terms with inflation; and the difficulty of telling a change in a relative price from a change in
+          the price level, which makes it harder for prices to guide decisions. The **[costs of unexpected
+          inflation](term:P4:costs_of_unexpected_inflation)** are mainly redistributive: a loan contract fixes nominal
+          repayments, so unexpectedly high inflation lowers what the lender receives in goods and benefits the borrower;
+          unexpectedly low inflation does the opposite. Uncertain inflation also makes long-term contracts and plans
+          riskier.
+
+          Yet most central banks do not aim at zero inflation. A small positive rate has benefits: the
+          [CPI](term:P4:consumer_price_index) tends to overstate inflation, so measured zero inflation may be true
+          [deflation](term:P4:deflation); nominal wages are rarely cut, so a little inflation lets [real
+          wages](term:P5:real_wage) fall where they must ([explained further in chapter 5](theory:P5-s6b)); and a
+          positive inflation rate keeps [nominal interest rates](term:P4:nominal_interest_rate) above zero, leaving the
+          central bank room to lower them in a [recession](term:P2:recession). The **[optimal inflation
+          rate](term:P4:optimal_inflation_rate)** balances these benefits against the costs. Central banks of most
+          advanced economies have chosen an **[inflation target](term:P4:inflation_target)**, an inflation rate they aim
+          at, of about 2% (Blanchard & Illing, 2021, 23.3); the central bank of the example economy aims at 2% as well.
+
+  - id: s6
+    title: "Nominal and Real Interest Rates"
+    objectives: [LO6]
+    steps:
+      - id: s6a
+        sources:
+          - {key: blanchard_illing_2021, loc: "6.1"}
+          - {key: mankiw_2025, loc: "ch. 6"}
+          - {key: legge_2023, loc: "7.1"}
+          - {key: fisher_1930}
+        text: |
+          ### The real interest rate
+
+          An interest rate stated in dollars, such as the [central bank](term:P1:central_bank)'s [policy
+          rate](term:P4:policy_rate), is a **[nominal interest rate](term:P4:nominal_interest_rate)**. It says how many
+          more dollars a lender receives in a year for each dollar lent today. What matters for a decision to borrow or
+          save, however, is how many more **goods** the lender can buy, and that depends on how prices change over the
+          year. Because the future is not known, decisions rest on **[expected inflation](term:P4:expected_inflation)**
+          πᵉ, the [inflation rate](term:P4:inflation_rate) people expect for the period of the loan.
+
+          The **[real interest rate](term:P4:real_interest_rate)** r measures the interest rate in goods. Irving Fisher
+          showed that it is approximately the nominal rate minus expected inflation (Fisher, 1930). This is the
+          **[Fisher equation](term:P4:fisher_equation)**:
+
+          > r ≈ i − πᵉ
+
+          In the example economy, the policy rate is 3% and people expect inflation of 2%, so the real policy rate is
+          about 3 − 2 = 1%. (The exact relation is 1 + r = (1 + i) / (1 + πᵉ), which gives 0.98%; for low rates the
+          approximation is close.) Because the real rate requires expected inflation, it can only be stated after
+          inflation has been defined.
+
+          Economists distinguish the **[ex ante](term:P4:ex_ante_real_rate)** real rate, computed with expected
+          inflation, which guides decisions, from the **[ex post](term:P4:ex_post_real_rate)** real rate, computed
+          afterwards with the inflation that actually occurred. If inflation turns out to be 3% instead of 2%, the ex
+          post real rate in the example is 3 − 3 = 0%: the borrower gains and the lender loses, the redistribution that
+          makes unexpected inflation costly ([costs of inflation](theory:P4-s5c)) (Blanchard & Illing, 2021, 6.1).
+
+          One real interest rate has a special role for a central bank: **[the rate the economy
+          needs](term:P4:rate_economy_needs)**, the real interest rate at which spending neither grows nor shrinks, so
+          that [output](term:P1:output_GDP) stays at its potential. Economists call it the natural rate of interest or
+          the neutral rate. In the example economy, whose output is at its potential, it is the real policy rate of 1%.
+          When the real policy rate lies above it, firms invest less and output falls below its potential; when it lies
+          below, they invest more and output rises above its potential ([investment and the interest
+          rate](theory:P4-s7b)).
+      - id: s6b
+        sources:
+          - {key: blanchard_illing_2021, loc: "6.2"}
+          - {key: legge_2023, loc: "7.1"}
+          - {key: mankiw_2025, loc: "ch. 6"}
+        text: |
+          ### The risk premium
+
+          The central bank's policy rate is the rate for the safest borrowers, banks borrowing for a day. Firms that
+          borrow for years pay more. A lender who may not be repaid in full demands compensation for that risk, the
+          **[risk premium](term:P4:risk_premium)**: the difference between the interest rate on a risky loan and the
+          rate on a safe one (Blanchard & Illing, 2021, 6.2). The premium is larger the more likely a default and the
+          more lenders dislike risk; in financial crises, both rise at once.
+
+          The cost at which firms finance an [investment](term:P2:investment) is therefore the real policy rate plus a
+          risk premium. In the example economy, the real policy rate is 1% and firms pay a risk premium of 2%, so the
+          [real cost of finance](term:P4:cost_of_finance) is 1 + 2 = 3%. A firm that uses its own [money](term:P4:money)
+          instead of borrowing faces the same cost in another form: it gives up the return it could earn by lending the
+          money out. This rate is the hurdle every investment project must clear ([investment projects](theory:P4-s7a)).
+          The chart below shows the economy's possible projects and the line at 3%.
+        details:
+          title: "From tulip mania to 2008"
+          sources:
+            - {key: garber_2000}
+            - {key: goldgar_2007}
+            - {key: blanchard_illing_2021, loc: "6.2, 6.5"}
+          text: |
+            [Risk premia](term:P4:risk_premium) tell lenders and borrowers what risk is worth. Financial history is full
+            of episodes in which that price seemed to have gone astray. The most famous is the tulip mania in the Dutch
+            Republic of the 1630s. In the popular story, retold since the nineteenth century, Dutch citizens of every
+            class mortgaged their houses to buy single tulip bulbs, until prices collapsed in February 1637 and ruined the
+            country.
+
+            Historians and economists who returned to the sources tell a different story. Garber (2000) argues that the
+            very high prices of rare new varieties, and their rapid decline as the bulbs multiplied, follow a pattern seen
+            in later markets for new flower varieties and need no assumption of collective madness. Goldgar (2007),
+            working through the archives, finds that speculation in bulbs was real, but confined to a network of merchants
+            and craftsmen, that the crash was far less dramatic than the legend claims, and that few bankruptcies can be
+            traced to it. The tulip mania is thus less an example of irrational crowds than of how a good story outlives
+            its evidence.
+
+            The crisis of 2007 to 2008 had much wider consequences. After a long rise, house prices in the United States
+            began to fall, and loans to borrowers with weak credit, which had been bundled into securities held by banks
+            around the world, turned out to be worth far less than assumed. Banks financed with little capital of their
+            own suddenly faced losses, and lenders demanded much higher risk premia or stopped lending altogether
+            (Blanchard & Illing, 2021, 6.5). [Central banks](term:P1:central_bank) cut their [policy
+            rates](term:P4:policy_rate) sharply, but the rates firms paid fell much less, because the risk premium rose.
+            The [cost of finance](term:P4:cost_of_finance) is the sum of both parts, and in a crisis the second can
+            outweigh the first.
+        module: {kind: project_pool, controls: []}
+
+  - id: s7
+    title: "Investment and the Interest Rate"
+    objectives: [LO7]
+    steps:
+      - id: s7a
+        sources:
+          - {key: mankiw_2025, loc: "ch. 3"}
+          - {key: keynes_1936, loc: "ch. 11, p. 136"}
+          - {key: blanchard_illing_2021, loc: "5.1"}
+        text: |
+          ### Investment projects and their return
+
+          In [macroeconomics](term:P1:macroeconomics), [investment](term:P2:investment) means firms' spending on new
+          capital goods, such as machines and buildings, plus the change in their inventories; buying shares or
+          [bonds](term:P4:bond) is not investment in this sense ([introduced in chapter 2](theory:P2-s1d)). A firm
+          invests when it expects a capital good to earn more than the [money](term:P4:money) would earn elsewhere. Each
+          possible purchase is an **[investment project](term:P4:investment_project)**, and its **[expected rate of
+          return](term:P4:expected_rate_of_return)** is the yearly income it is expected to bring, in real terms and
+          after costs, in percent of its price.
+
+          In the example economy, the six firms consider twelve projects, from a second production line for the bakery
+          ($40 million, expected return 7.25%) to an office building for the construction firm ($40 million, 0.75%).
+          Ranked by expected return, they form a staircase: the most profitable projects on the left, the least
+          profitable on the right. A project is carried out if its expected return exceeds the [real cost of
+          finance](term:P4:cost_of_finance), the [real interest rate](term:P4:real_interest_rate) plus the [risk
+          premium](term:P4:risk_premium) ([introduced with the risk premium](theory:P4-s6b)): in the example economy, a
+          real [policy rate](term:P4:policy_rate) of 1% (the policy rate of 3% minus [expected
+          inflation](term:P4:expected_inflation) of 2%) plus a risk premium of 2%. At this cost of 3%, seven projects
+          clear the line: the production line, grinding machinery for the mill, a harvester for the farm, a crane and an
+          excavator for the construction firm, furnace equipment for the steel works and delivery vans for the bakery.
+          Together they cost $200 million. With the $20 million of bread the bakery adds to its stocks, which this topic
+          takes as given, investment is $220 million, the figure the national accounts of the example economy record.
+          Keynes described firms' investment in the same way: it is pushed to the point where no remaining project's
+          expected return exceeds the rate of interest (Keynes, 1936, ch. 11).
+        module: {kind: project_pool, controls: []}
+      - id: s7b
+        sources:
+          - {key: mankiw_2025, loc: "ch. 3"}
+          - {key: blanchard_illing_2021, loc: "5.1, 6.1"}
+          - {key: legge_2023, loc: "7.1"}
+        text: |
+          ### The investment demand curve
+
+          If the cost of finance falls, projects that did not clear the line now do, and investment rises; if it rises,
+          projects drop out, and investment falls. Total investment at each real interest rate is the **[investment
+          demand curve](term:P4:investment_demand_curve)**, and it slopes downward (Mankiw, 2025, ch. 3). In the example
+          economy, investment is $290 million at a cost of finance of 2%, $220 million at 3%, $180 million at 4% and
+          $110 million at 5%. Because each project is indivisible, the curve is a staircase; with the thousands of
+          projects of a real economy, the steps become so small that the curve looks smooth.
+
+          The relevant rate is the **real** one, because projects earn their return in goods: a machine that bakes more
+          bread pays off in bread. If the [central bank](term:P1:central_bank) raises its nominal rate by one point
+          while expected inflation rises by one point as well, the real cost of finance is unchanged, and so is
+          investment. The same reasoning shows why the risk premium matters: a rise in the premium raises the cost of
+          finance just as a rise in the policy rate does.
+
+          This explains the announcement with which this chapter opens: "The central bank raises its policy rate from 3%
+          to 4%." With expected inflation unchanged at 2% and the risk premium at 2%, the real policy rate rises from 1%
+          to 2%, one point above the [rate the economy needs](term:P4:rate_economy_needs), and the real cost of finance
+          rises from 3% to 4%. The furnace equipment (3.75%) and the delivery vans (3.25%) no longer clear the line, and
+          investment falls from $220 million to $180 million. What a fall in investment does to
+          [output](term:P1:output_GDP) and employment links this chapter to [the multiplier of chapter
+          3](theory:P3-s4a): with a multiplier of 2.5, a fall in investment of $40 million lowers output by $100
+          million. In practice, investment also depends on firms' sales and on their expectations of future profits,
+          which this topic holds fixed.
+        details:
+          title: "From Keynes's marginal efficiency of capital to Jorgenson and Tobin"
+          sources:
+            - {key: keynes_1936, loc: "ch. 11, pp. 136, 140"}
+            - {key: fisher_1930}
+            - {key: jorgenson_1963}
+            - {key: brainard_tobin_1968}
+            - {key: tobin_1969}
+            - {key: mankiw_2025, loc: "ch. 22"}
+          text: |
+            The project pool of this topic follows Keynes. He called the expected return of a capital good its [marginal
+            efficiency](term:P4:marginal_efficiency_of_capital), ranked capital goods into an
+            [investment](term:P2:investment) demand-schedule, and concluded that investment is pushed to the point at
+            which the marginal efficiency of capital equals the market rate of interest (Keynes, 1936, ch. 11). He noted
+            that Irving Fisher had defined the same concept as the "rate of return over cost" (Fisher, 1930).
+
+            Two later theories refine the comparison. Jorgenson (1963) derived investment from the firm's choice of its
+            [capital stock](term:P6:capital_stock). A firm wants as much capital as makes the extra
+            [output](term:P1:output_GDP) of one more machine just equal to the cost of using it for a year: the [real
+            interest rate](term:P4:real_interest_rate) plus the rate at which the machine wears out, times the price of
+            the machine. This cost is called the [user cost of capital](term:P4:user_cost_of_capital). A lower real
+            interest rate lowers it, so firms want more capital and invest to reach it. The theory explains the same
+            downward slope as the project pool, adds [depreciation](term:P6:depreciation) and the price of capital goods,
+            and needs a [production function](term:P6:production_function), which this chapter does not use (Mankiw, 2025,
+            ch. 22).
+
+            Brainard and Tobin (1968) and Tobin (1969) looked at the stock market instead. If the market value of a firm's
+            capital exceeds what it would cost to buy the same capital new, investors value an extra machine at more than
+            its price, and the firm should invest. Tobin called this ratio [q](term:P4:tobins_q). A lower interest rate
+            raises the present value of future profits, and with it share prices and q. The theory has the advantage that
+            q summarises firms' expectations in one observable number, and the drawback that share prices swing far more
+            than investment does, and that q can be measured only for listed firms.
+
+            All three theories rest on one comparison: a project's return against the cost of the funds it ties up. They
+            differ in how they measure the two sides.
+        module: {kind: project_pool, controls: [i, pi_e, premium]}

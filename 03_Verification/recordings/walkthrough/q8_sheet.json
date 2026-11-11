@@ -1,0 +1,301 @@
+{
+  "q": 8,
+  "t": 7,
+  "step": 2,
+  "figures": {
+    "t": 7,
+    "inflation": 2.257368,
+    "inflation_change": -0.030245,
+    "inflation_gap": 0.257368,
+    "inflation_before": 2.287612,
+    "wage_inflation": 4.257918,
+    "wage_change": -0.026816,
+    "wage_gap": 0.257918,
+    "wage_real": 2.000551,
+    "growth": 1.932959,
+    "growth_gap": -0.067041,
+    "output_level": 4138.38447,
+    "output_trend": 4142.478835,
+    "output_fell": false,
+    "recession": false,
+    "unemployment": 5.176679,
+    "unemployment_change": 0.025726,
+    "unemployment_gap": 0.150391,
+    "unemployed_persons": 2070671.68371,
+    "population": 80000000,
+    "labour_force": 40000000,
+    "quarters_above_natural": 0,
+    "rate": 6.09,
+    "rate_change": -0.28,
+    "loss": {
+      "inflation": 0.066238,
+      "output": 0.002919,
+      "total": 0.069157
+    }
+  },
+  "history": [
+    {
+      "t": 0,
+      "inflation": 2.966805,
+      "wage_inflation": 4.979912,
+      "growth": 2,
+      "output_level": 4001.189245,
+      "output_trend": 4000,
+      "unemployment": 4.981387,
+      "rate": 5.97,
+      "loss_inflation": 0.934712,
+      "loss_output": 0.000264,
+      "expected_inflation": 2.968116,
+      "poll": null,
+      "purchases": null
+    },
+    {
+      "t": 1,
+      "inflation": 2.950971,
+      "wage_inflation": 4.935143,
+      "growth": 0.762794,
+      "output_level": 4008.826734,
+      "output_trend": 4020.050083,
+      "unemployment": 5.454188,
+      "rate": 6.61,
+      "loss_inflation": 0.904346,
+      "loss_output": 0.023333,
+      "expected_inflation": 2.961528,
+      "poll": null,
+      "purchases": null
+    },
+    {
+      "t": 2,
+      "inflation": 2.747778,
+      "wage_inflation": 4.738019,
+      "growth": 1.96284,
+      "output_level": 4028.546789,
+      "output_trend": 4040.200668,
+      "unemployment": 5.467944,
+      "rate": 6.74,
+      "loss_inflation": 0.559171,
+      "loss_output": 0.024909,
+      "expected_inflation": 2.758292,
+      "poll": null,
+      "purchases": null
+    },
+    {
+      "t": 3,
+      "inflation": 2.461924,
+      "wage_inflation": 4.459237,
+      "growth": 2.328773,
+      "output_level": 4052.069119,
+      "output_trend": 4060.452258,
+      "unemployment": 5.341783,
+      "rate": 6.29,
+      "loss_inflation": 0.213374,
+      "loss_output": 0.012751,
+      "expected_inflation": 2.469474,
+      "poll": null,
+      "purchases": null
+    },
+    {
+      "t": 4,
+      "inflation": 2.228277,
+      "wage_inflation": 4.23033,
+      "growth": 2.364896,
+      "output_level": 4076.09688,
+      "output_trend": 4080.80536,
+      "unemployment": 5.202013,
+      "rate": 5.76,
+      "loss_inflation": 0.05211,
+      "loss_output": 0.003979,
+      "expected_inflation": 2.232639,
+      "poll": null,
+      "purchases": null
+    },
+    {
+      "t": 5,
+      "inflation": 2.075298,
+      "wage_inflation": 4.078792,
+      "growth": 2.927422,
+      "output_level": 4106.03745,
+      "output_trend": 4101.260482,
+      "unemployment": 4.846691,
+      "rate": 6.28,
+      "loss_inflation": 0.00567,
+      "loss_output": 0.004045,
+      "expected_inflation": 2.072698,
+      "poll": null,
+      "purchases": null
+    },
+    {
+      "t": 6,
+      "inflation": 2.287612,
+      "wage_inflation": 4.284735,
+      "growth": 1.20586,
+      "output_level": 4118.434394,
+      "output_trend": 4121.818136,
+      "unemployment": 5.150953,
+      "rate": 6.37,
+      "loss_inflation": 0.082721,
+      "loss_output": 0.002013,
+      "expected_inflation": 2.291175,
+      "poll": null,
+      "purchases": null
+    },
+    {
+      "t": 7,
+      "inflation": 2.257368,
+      "wage_inflation": 4.257918,
+      "growth": 1.932959,
+      "output_level": 4138.38447,
+      "output_trend": 4142.478835,
+      "unemployment": 5.176679,
+      "rate": 6.09,
+      "loss_inflation": 0.066238,
+      "loss_output": 0.002919,
+      "expected_inflation": 2.261313,
+      "poll": null,
+      "purchases": null
+    }
+  ],
+  "shocks": {
+    "shocks": [],
+    "path_started": false,
+    "path_class": null,
+    "path_words": null,
+    "path_length": null,
+    "path_depth": null,
+    "vote_due": false
+  },
+  "public": {
+    "expected_inflation": 2.261313,
+    "perceived_aim": 0.170338,
+    "aim_change": -0.101179,
+    "trust": 0.843284,
+    "trust_percent": 84.328423,
+    "trust_change": 1.929559,
+    "spell": 0
+  },
+  "word": {
+    "has_path": true,
+    "path": [
+      {
+        "q": 8,
+        "rate": 5.72
+      },
+      {
+        "q": 9,
+        "rate": 5.39
+      },
+      {
+        "q": 10,
+        "rate": 5.18
+      },
+      {
+        "q": 11,
+        "rate": 5.06
+      },
+      {
+        "q": 12,
+        "rate": 5.02
+      },
+      {
+        "q": 13,
+        "rate": 5.09
+      },
+      {
+        "q": 14,
+        "rate": 5.09
+      }
+    ],
+    "due": 5.72,
+    "announced": 6.1,
+    "set": 6.09,
+    "judged": true,
+    "kept": true,
+    "departure": -0.01,
+    "miss": 0,
+    "record": [
+      {
+        "q": 1,
+        "announced": null,
+        "set": 6.61,
+        "miss": null,
+        "entry": null
+      },
+      {
+        "q": 2,
+        "announced": 6.76,
+        "set": 6.74,
+        "miss": 0,
+        "entry": "kept"
+      },
+      {
+        "q": 3,
+        "announced": 6.3,
+        "set": 6.29,
+        "miss": 0,
+        "entry": "kept"
+      },
+      {
+        "q": 4,
+        "announced": 5.76,
+        "set": 5.76,
+        "miss": 0,
+        "entry": "kept"
+      },
+      {
+        "q": 5,
+        "announced": 5.35,
+        "set": 6.28,
+        "miss": 0,
+        "entry": "kept"
+      },
+      {
+        "q": 6,
+        "announced": 6.18,
+        "set": 6.37,
+        "miss": 0,
+        "entry": "kept"
+      },
+      {
+        "q": 7,
+        "announced": 6.1,
+        "set": 6.09,
+        "miss": 0,
+        "entry": "kept"
+      }
+    ],
+    "room": [0, 0, 0, 0, 0, 0, 0, 0],
+    "room_due": 0,
+    "news": false,
+    "cone": [0.53033, 0.75, 0.918559, 1.06066, 1.185854, 1.299038, 1.403122, 1.5]
+  },
+  "government": null,
+  "drivers": {
+    "output": "none",
+    "inflation": "none",
+    "output_words": "no single cause",
+    "inflation_words": "no single cause",
+    "table": [
+      [0.070062, 0.002561],
+      [-0.01676, -0.030245]
+    ]
+  },
+  "pressing": {
+    "variable": null,
+    "direction": null,
+    "severity": null,
+    "distance": null
+  },
+  "law": {
+    "target": 2,
+    "trend_growth": 2,
+    "natural_unemployment": 5.026289,
+    "floor": 0,
+    "cap": 20,
+    "H": 8,
+    "cone_width": 0.53033,
+    "election_interval": 8,
+    "boost_window": 3,
+    "wage_normal": 4,
+    "weight_on_output": 0.298516
+  }
+}

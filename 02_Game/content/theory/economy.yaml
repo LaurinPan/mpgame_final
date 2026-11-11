@@ -1,0 +1,107 @@
+# 02_Game/content/theory/economy.yaml — the example economy of the theory section (scripts appendix §14): the datasets of
+# chapters 2 to 6, one block per chapter. The economy is fictional
+# closed; amounts in its dollar, "$", in million a year at base-year prices unless a block says otherwise. The static figures
+# (02_Game/ui/theory.R) and the modules (02_Game/web/theory.js) are drawn from these numbers; the texts of the chapter files quote them.
+# Blocks named `quoted` hold figures the texts state, as the formulas give them, so that a check can compare the two.
+
+P2:   # the six firms, the accounts and the two-good price example (Chapter 2)
+  units: "$ million a year"
+  population: 20000
+  firms:
+    - {id: farm, name: "Farm", sales: {wheat_to_mill: 100}, inputs: {}, wages: 70, profits: 30}
+    - {id: mill, name: "Mill", sales: {flour_to_bakery: 250}, inputs: {wheat: 100}, wages: 100, profits: 50}
+    - {id: bakery, name: "Bakery", sales: {bread_sold: 500, bread_to_stock: 20}, inputs: {flour: 250}, wages: 150, profits: 120}
+    - {id: steel_works, name: "Steel works", sales: {steel_to_machine_maker: 50}, inputs: {}, wages: 40, profits: 10}
+    - {id: machine_maker, name: "Machine maker", sales: {machines_to_bakery: 60, machines_to_mill: 30, machines_to_farm: 20, machines_to_construction: 70, machines_to_steel_works: 20}, inputs: {steel: 50}, wages: 100, profits: 50}
+    - {id: construction, name: "Construction firm", sales: {road_for_government: 180}, inputs: {}, wages: 140, profits: 40}
+  chain: [farm, mill, bakery]          # the bread's production chain of topic 1 (the stacked bar)
+  expenditure:
+    C: {bread: 500}
+    I: {bakery_production_line: 40, bakery_delivery_vans: 20, mill_grinding_machinery: 30, farm_harvester: 20, construction_crane: 40, construction_excavator: 30, steel_works_furnace_equipment: 20, change_in_inventories: 20}
+    G: {road: 180}
+  goods:                               # quantities and prices in years 1 to 3; year 1 is the base year
+    - {id: bread, name: "Bread", unit: "million loaves", q: [520, 530, 546], p: [1.00, 1.10, 1.15]}
+    - {id: machines, name: "Machines", unit: "machines", q: [20, 20, 20], p: [10, 10.5, 11]}
+  quoted: {production: 900, expenditure: 900, income: 900, nominal: [720, 793, 848], real: [720, 730, 746], growth_nominal: 10.1, growth_real: 1.4}
+
+P3:   # the goods market: P2's economy with taxes and a consumption function (Chapter 3)
+  units: "$ million a year"
+  params: {c0: 68, c1: 0.6, I: 220, G: 180, "T": 180}
+  rounds: {change: 10, shown: 8}       # the multiplier rounds of a $10 million rise in government spending
+  horizons:                            # the schematic output path of topic 1: a downturn fading back to a rising trend
+    years: 40
+    trend_growth: 2                    # % a year (the trend of scripts appendix §8.2)
+    downturn_start: 8                  # years
+    trough_after: 2.5                  # years after the start
+    depth: 14                          # % below the trend at the trough
+  quoted: {"Y": 900, YD: 720, C: 500, S_private: 220, S_public: 0, autonomous: 360, multiplier: 2.5, G_plus_10: 925, T_plus_10: 885, c0_minus_10: 875, output_950_demand: 930, output_850_demand: 870}
+
+P4:   # money, banks and interest: the economy of chapters 2 and 3 with money, banks and an interest rate (Chapter 4)
+  units: "$ million; rates in % a year"
+  output: 900                          # nominal income in the base year
+  basket: [bread]                      # the consumer price index's basket
+  money: {currency: 50, deposits: 250, reserves: 25, currency_ratio: 0.2, reserve_ratio: 0.1, central_bank_money: 75, money_stock: 300}
+  bank: {reserves: 25, loans: 245, deposits: 250, capital: 20}     # the banking system's balance sheet
+  loan: {amount: 10, borrower: "Bakery", purpose: "delivery vans"}  # the loan of topic 3
+  money_demand: {share_at_zero: 0.5, divisor: 18}                   # money demand = $Y x (0.5 - i / 18), i in %
+  bond: {payment: 103}
+  quantity_theory: {velocity: 3, money_growth: 4, real_growth: 2}
+  rates: {i: 3, pi_e: 2, premium: 2}
+  ex_post: {actual_inflation: 3}
+  target: 2                            # the central bank's inflation target, % a year
+  inventories: 20                      # planned inventory investment, held fixed in Chapter 4
+  projects:                            # size in $ million, expected real return in % a year
+    - {id: production_line, firm: "Bakery", name: "Second production line", size: 40, return: 7.25}
+    - {id: grinding, firm: "Mill", name: "Grinding machinery", size: 30, return: 6.25}
+    - {id: harvester, firm: "Farm", name: "Harvester", size: 20, return: 5.75}
+    - {id: crane, firm: "Construction firm", name: "Crane", size: 40, return: 4.75}
+    - {id: excavator, firm: "Construction firm", name: "Excavator", size: 30, return: 4.25}
+    - {id: furnace, firm: "Steel works", name: "Furnace equipment", size: 20, return: 3.75}
+    - {id: vans, firm: "Bakery", name: "Delivery vans", size: 20, return: 3.25}
+    - {id: warehouse, firm: "Mill", name: "Warehouse", size: 30, return: 2.75}
+    - {id: branch, firm: "Bakery", name: "New branch", size: 40, return: 2.25}
+    - {id: irrigation, firm: "Farm", name: "Irrigation system", size: 20, return: 1.75}
+    - {id: test_workshop, firm: "Machine maker", name: "Test workshop", size: 30, return: 1.25}
+    - {id: office, firm: "Construction firm", name: "Office building", size: 40, return: 0.75}
+  quoted: {deflator: [100, 108.6, 113.7], cpi: [100, 110, 115], inflation_deflator: [8.6, 4.6], inflation_cpi: [10, 4.5], multiplier: 4, money_after_loan: 310, rate_at_money_325: 2.5, money_at_rate_4: 250, central_bank_money_at_rate_4: 62.5, open_market_sale: 12.5, bond_price_at_3: 100, bond_price_at_4: 99.04, real_rate: 1, cost_of_finance: 3, real_rate_ex_post: 0, investment_at_cost: {"0": 380, "1": 340, "2": 290, "3": 220, "4": 180, "5": 110, "6": 90, "7": 60}}
+
+P5:   # the labour market of the example economy (Chapter 5); persons, $ per worker a year, rates in % (flows per month)
+  units: "persons; $ per worker a year; rates in %"
+  population: 20000
+  working_age_population: 16000
+  labour_force: 10000
+  employed: 9600
+  unemployed: 400
+  wage_bill: 600                       # $ million, the six firms' wages (Chapter 2)
+  output: 900                          # $ million
+  average_wage: 62500
+  employment_by_firm: {farm: 1120, mill: 1600, bakery: 2400, steel_works: 640, machine_maker: 1600, construction: 2240}
+  productivity: 93750                  # output per worker, $
+  markup: 50                           # % on labour cost
+  flows: {separation_rate: 1, finding_rate: 24, months: 24, per_dot: 16}
+  slump: {finding_rate: 16}
+  wage_setting: {intercept: 63750, slope_per_point: 312.5}         # real wage claimed = 63,750 + z - 312.50 x u (u in %)
+  natural_rate: 4                      # % (wage setting meets price setting)
+  okun: {coefficient: 0.5, normal_growth: 2, examples: [4, 0, 3]}  # change in u = -0.5 x (g - 2), the text's growth rates
+  phillips: {slope: 0.5, expected_inflation: 2, held_unemployment: 3, years: 4}   # inflation = expected - 0.5 x (u - 4)
+  quoted: {participation_rate: 62.5, unemployment_rate: 4, discouraged_rate: 3.0, steady_state: 4, spell: 4.2, slump_steady_state: 5.9, slump_after_6: 5.3, slump_spell: 6.25, ws_shift_natural_rate: 6, ws_shift_employment: 9400, markup_51_natural_rate: 5.3, phillips_u3: 2.5, phillips_u5: 1.5, adaptive_years: [2.5, 3.0, 3.5, 4.0]}
+
+P6:   # capital and growth: the economy of chapters 2 to 5 with capital, depreciation and growth (Chapter 6)
+  units: "$ million at base-year prices; persons; rates in % a year"
+  output: 900
+  wages: 600
+  profits: 300                         # gross: they include what replaces worn-out machines
+  investment: 220                      # = national saving; public saving is zero
+  capital: 2200
+  natural_employment: 9600
+  labour_force: 10000
+  depreciation_rate: 8
+  labour_force_growth: 1               # n
+  technology_growth: 1                 # g_A
+  potential_output: 900
+  capital_steps: {add: 220, steps: 3}  # equal additions of capital with 9,600 workers (topic 1's figure)
+  gaps:                                # topic 2's worked cases, output in $ million, the case's label in two lines
+    - {output: 900, label: ["The example", "economy"]}
+    - {output: 925, label: ["Government spends", "$10 million more"]}
+    - {output: 875, label: ["Households consume", "$10 million less"]}
+  quoted: {saving_rate: 24.4, capital_per_worker: 229167, marginal_product_labour: 62500, marginal_product_capital: 13.6, depreciation: 176, net_investment: 44, break_even: [176, 22, 22, 220], output_growth: 2, capital_steps: [929.1, 956.4, 982.3], stage_a_capital: 3075, stage_a_output: 1006, stage_a_half_years: 13, stage_a_growth_year_1: 0.7, stage_a_saving_30_output: 1115, stage_a_saving_30_growth_year_1: 1.4, saving_30_level_rise: 10.8, saving_30_growth: [2.8, 2.4, 2.1], growth_accounting: [0.67, 0.67, 0.67], golden_rule_consumption: [680, 701, 644], workers_for_925: 10003}

@@ -1,0 +1,405 @@
+# 02_Game/content/theory/P2.yaml — chapter 2 of the theory section, "Measuring output: GDP" (scripts appendix §14),
+# its texts written as the scripts appendix §8 asks (the glossary's terms and explanations, "government spending", "the rate
+# the economy needs", no mention of a game). Read by 02_Game/ui/theory.R.
+#   chapter  id, title, the learning objectives
+#   cards    the term cards: term, core (the explanation; the glossary's own, lower case, where `glossary: true`), example,
+#            aliases, see_also (a preview card's full card), box (false: never shown as a box), step (where the text defines it)
+#   topics   id, title, objectives, steps: id, sources ({key, loc} into references.yaml), text (Markdown: [label](term:P4:id)
+#            marks a term, [label](theory:P2-s1d) links a chapter, topic or step), details (a More Detail panel), module (one of
+#            the ten modules of modules.yaml with this step's controls and view), figure (a static figure drawn from economy.yaml)
+
+chapter:
+  id: P2
+  title: "Measuring output: GDP"
+  objectives:
+    LO1: "Explain what GDP measures, why it was invented and what it is used for."
+    LO2: "Describe the production, expenditure and income approaches and explain why they give the same total."
+    LO3: "Distinguish nominal from real GDP and explain what a growth rate of real GDP means."
+    LO4: "Explain what GDP fails to measure and why it is nevertheless the central measure of economic activity."
+
+cards:
+  GDP_definition: {term: "GDP (gross domestic product)", core: "Gross domestic product: the value, at market prices, of all final goods and services produced in a country in a year. It measures the economy's output and, equally, the incomes earned from it.", example: "The example economy's GDP is $900 million: bread for $520 million, machines for $200 million and a road for $180 million.", aliases: ["gross domestic product"], step: s1a}
+  final_good: {term: "Final good", core: "A good bought by its last user, a household, a firm buying equipment or the government, rather than used up in making another product. Only final goods count in GDP.", example: "Bread bought by a household is a final good; flour bought by the bakery is not.", step: s1b}
+  intermediate_good: {term: "Intermediate good", core: "A good that a firm buys and uses up in making its own product within the year. It is not counted in GDP separately, because its value is already part of the final product.", example: "The flour the bakery buys for $250 million is an intermediate good.", step: s1b}
+  flow_vs_stock: {term: "Flow vs stock", core: "A flow is measured per period of time, like income per year; a stock is measured at a point in time, like the money in an account today. GDP is a flow.", example: "Output of $900 million a year is a flow; the machines the economy owns today are a stock.", step: s1b}
+  value_added: {term: "Value added", core: "What a firm adds to the value of the things it buys from other firms: its sales minus those purchases. Adding up the value added of all firms gives GDP.", example: "The mill buys wheat for $100 million and sells flour for $250 million: it adds $150 million.", step: s1c}
+  production_approach: {term: "Production approach", core: "Measuring GDP by adding up the value added of every firm in the economy.", example: "The farm adds $100 million, the mill $150 million, the bakery $270 million and so on: $900 million in total.", step: s1c}
+  expenditure_approach: {term: "Expenditure approach", core: "Measuring GDP by adding up what is spent on final goods: households' consumption, firms' investment and government spending.", example: "500 + 220 + 180 = $900 million.", step: s1d}
+  consumption: {term: "Consumption (C)", core: "In economics, households' spending on goods and services, from bread to haircuts. Buying a newly built home counts as investment, not consumption.", example: "Households in the example economy spend $500 million on bread.", step: s1d}
+  investment: {term: "Investment (I)", core: "In economics, investment is spending on new machines, buildings and stocks of goods that will be used to produce more later. Buying shares or bonds is not investment in this sense: it only changes who owns existing things.", example: "The bakery buys a second production line for $40 million.", step: s1d}
+  income_approach: {term: "Income approach", core: "Measuring GDP by adding up the incomes earned in production: wages for workers, and profits, interest and rents for owners.", example: "Wages of $600 million plus profits of $300 million: $900 million.", step: s1d}
+  three_approaches: {term: "Three approaches, one number", core: "Production, expenditure and income measure the same flow and therefore give the same GDP.", box: false, step: s1d}
+  nominal_GDP: {term: "Nominal GDP", core: "GDP valued at the prices of the same year. It rises when more is produced, but also when the same things simply become dearer.", example: "In the two-good price example, output worth $720 million in year 1 is worth $793 million in year 2, partly because a loaf costs $1.10 instead of $1.00.", step: s2a}
+  real_GDP: {term: "Real GDP", core: "GDP valued at the fixed prices of one base year, so that it changes only when the quantities produced change. It shows whether the economy really produces more.", example: "Valued at year-1 prices, output rises only from $720 million to $730 million.", step: s2a}
+  growth_rate: {term: "Growth rate", core: "The percentage change of a variable from one period to the next.", box: false, step: s2c}
+  GDP_per_capita: {term: "GDP per capita", core: "GDP divided by the population; an average, not the income of a typical person.", box: false, step: s2c}
+  non_market_production: {term: "Non-market production", core: "Valuable activity without a market price, such as unpaid care; not in GDP.", box: false, step: s3a}
+  shadow_economy: {term: "Shadow economy", core: "Market activity hidden from the authorities; only partly estimated in GDP.", box: false, step: s3a}
+  distribution: {term: "Distribution", core: "How income and wealth are shared across households; GDP says nothing about it.", box: false, step: s3b}
+  leisure: {term: "Leisure", core: "Time not spent working; it raises well-being but not GDP.", box: false, step: s3b}
+  environmental_damage: {term: "Environmental damage", core: "Pollution and resource depletion are not deducted from GDP.", box: false, step: s3b}
+  GDP_vs_welfare: {term: "GDP vs welfare", core: "GDP measures market production, not well-being.", box: false, step: s3a}
+  reasons_still_used: {term: "Why GDP prevails", core: "It is standardised, timely, comparable, closely related to many dimensions of welfare and the key measure of the business cycle.", box: false, step: s3c}
+  business_cycle: {term: "Business cycle", core: "The recurring ups and downs of the economy: years in which output grows fast and jobs are easy to find, followed by slowdowns or recessions.", example: "Output grows by 3% one year and falls by 1% two years later.", step: s1a}
+  base_year: {term: "Base year", core: "The year whose prices are used to value the quantities of every year when real GDP is computed.", example: "With year 1 as the base year, a loaf is counted at $1.00 in every year.", step: s2a}
+  recession: {term: "Recession", core: "output falls for two quarters in a row", aliases: [recessions], glossary: true, step: s2c}
+  economic_growth: {term: "Economic growth", core: "The growth rate of real GDP.", box: false, step: s2c}
+  chain_linking: {term: "Chain-linking", core: "Measuring real growth from each year to the next at the prices of those two years, and linking the growth rates into one series, instead of keeping one old base year.", example: "Statistics offices use it so that new products such as computers are valued at up-to-date prices.", aliases: ["chain-linked"], step: s2c}
+  labour_income: {term: "Labour income", core: "Wages and salaries paid for work.", box: false, step: s1d}
+  capital_income: {term: "Capital income", core: "The income of those who own capital: firms' profits, interest on loans, and rents for land and buildings.", example: "In the example economy, profits are $300 million.", step: s1d}
+  wealth: {term: "Wealth", core: "The value of what households own at a point in time, minus their debts: a stock, not a flow.", box: false, step: s3b}
+  government_spending: {term: "Government spending (G)", core: "what the government buys", example: "The government buys a road for $180 million. Pensions and other transfers do not count, because the government receives nothing in return.", glossary: true, step: s1d}
+
+topics:
+
+  - id: s1
+    title: "GDP"
+    objectives: [LO1, LO2]
+    steps:
+      - id: s1a
+        sources:
+          - {key: legge_2023, loc: "1.5"}
+          - {key: blanchard_illing_2021, loc: "2.1"}
+          - {key: mankiw_2025, loc: "ch. 2"}
+          - {key: kuznets_1934}
+          - {key: coyle_2014, loc: "ch. 1–2"}
+        text: |
+          ### What GDP is, and why it was invented
+
+          Of all the numbers in [macroeconomics](term:P1:macroeconomics), **[gross domestic
+          product](term:P2:GDP_definition) (GDP)** is the most important. It measures the total value of what an economy
+          produces, and it is the variable that the word "[output](term:P1:output_GDP)" refers to throughout these
+          chapters. Its standard definition is:
+
+          > **GDP is the market value of all final goods and services produced within a country in a given period.**
+
+          The measure is younger than one might expect. Until the 1930s, governments had no systematic estimate of how
+          much their economies produced. When the Great Depression struck, nobody could say with any precision how deep
+          the collapse was, and policy was made on the basis of scattered indicators such as freight traffic and share
+          prices. The first official estimates of national income, prepared by Simon Kuznets for the US Senate in 1934,
+          changed this. During the Second World War, Britain and the United States extended them into full systems of
+          national accounts to plan how much of their economies' output could be devoted to the war. After the war these
+          accounts became an international standard.
+
+          Today GDP serves three main purposes. It measures the **size** of an economy, it measures its **growth** over
+          time, and, above all for monetary policy, it shows the state of the **[business
+          cycle](term:P2:business_cycle)**: whether the economy is expanding, stagnating or in a
+          [recession](term:P2:recession). [Central banks](term:P1:central_bank), governments and financial markets
+          therefore watch each new GDP release closely.
+        details:
+          title: "The invention of national accounting"
+          sources:
+            - {key: coyle_2014, loc: "ch. 1 (Petty and King)"}
+            - {key: kuznets_1934, loc: "pp. 6–7"}
+            - {key: berndt_2020}
+            - {key: meade_stone_1941}
+            - {key: nobel_1984}
+            - {key: pigou_1932, loc: "Part I, ch. III"}
+          text: |
+            The idea of measuring a nation's income is old: William Petty and Gregory King made rough estimates for
+            England in the seventeenth century. What was new in the 1930s and 1940s was a consistent system. Kuznets's
+            report of 1934, *National Income, 1929–1932*, estimated the income earned in each industry and made visible
+            how far American income had fallen in the Depression. Kuznets was acutely aware of the limits of his measure.
+            He warned that the welfare of a nation "can scarcely be inferred" from a measurement of national income, and
+            he explicitly excluded the unpaid work of families and illegal activities (Kuznets, 1934).
+
+            The second impulse came from the war economy. In Britain, James Meade and Richard Stone prepared estimates in
+            1941 that connected production, income and expenditure in one framework, answering Keynes's question of how
+            the country could pay for the war. Stone's work became the basis of the United Nations' *System of National
+            Accounts*, the international standard that statistics offices still follow, and earned him the Nobel Prize in
+            1984 (Nobel Prize Outreach, 1984).
+
+            One principle of the system is older still: the rule against double counting. Britain's Census of Production
+            of 1907 already computed each industry's "net output" by subtracting the materials it bought from the value of
+            what it produced, and Pigou (1920) used this to argue that materials must never be counted again once the
+            finished product is counted. This is the concept of [value added](term:P2:value_added) introduced below.
+      - id: s1b
+        sources:
+          - {key: legge_2023, loc: "1.5"}
+          - {key: blanchard_illing_2021, loc: "2.1"}
+          - {key: mankiw_2025, loc: "ch. 2"}
+        text: |
+          ### Final goods, market value and the period
+
+          Each element of the definition is chosen with care.
+
+          GDP adds up **market values** because there is no other way to add bread, haircuts and machines: each is
+          counted at the price at which it is sold. Services that are provided without a price, such as those of the
+          police or public schools, are counted at their cost of production, mainly the wages of the people who provide
+          them.
+
+          GDP counts only **[final goods](term:P2:final_good) and services**, those bought by their last user, and not
+          **[intermediate goods](term:P2:intermediate_good)**, which are used up in producing something else. The flour
+          a bakery buys is intermediate: its value is already contained in the price of the bread. Counting both would
+          count the flour twice. Whether a good is final or intermediate depends on its use, not on its nature. A new
+          production line bought by the bakery is a final good, although a firm buys it, because it is not used up in
+          this year's production; it will bake bread for many years.
+
+          GDP measures **production** in the given period. A used car sold this year was produced, and counted, in an
+          earlier year, so its resale adds nothing. Conversely, goods produced this year but not yet sold do count: they
+          are added to the firms' inventories.
+
+          Finally, GDP is a **[flow](term:P2:flow_vs_stock)**, measured per period, usually a year or a quarter, like
+          the amount of water that runs through a pipe in an hour. It must not be confused with a **stock**, such as the
+          wealth of households or the machines an economy owns, which is measured at a point in time, like the water in
+          a tank.
+      - id: s1c
+        sources:
+          - {key: legge_2023, loc: "1.5"}
+          - {key: blanchard_illing_2021, loc: "2.1"}
+          - {key: mankiw_2025, loc: "ch. 2"}
+        text: |
+          ### Three ways to measure GDP: production
+
+          Because every final good is produced by someone, bought by someone and generates income for someone, GDP can
+          be measured in three equivalent ways.
+
+          The **[production approach](term:P2:production_approach)** adds up the **[value added](term:P2:value_added)**
+          of all producers: the value of each firm's output minus the value of the intermediate inputs it buys from
+          other firms. Consider a simple chain. A farm grows wheat worth $100 million and sells it to a mill. The mill
+          grinds it into flour worth $250 million, adding $150 million. A bakery bakes bread worth $520 million from the
+          flour, adding $270 million. The value added along the chain, 100 + 150 + 270, equals $520 million, exactly the
+          value of the final good. Adding up the sales instead (100 + 250 + 520) would count the wheat three times and
+          the flour twice.
+        figure: {kind: stacked_bar, description: "The $520 million of bread split into the value added by the farm, the mill and the bakery."}
+      - id: s1d
+        sources:
+          - {key: legge_2023, loc: "1.5–1.6"}
+          - {key: blanchard_illing_2021, loc: "2.1"}
+          - {key: mankiw_2025, loc: "ch. 2"}
+          - {key: keynes_1936, loc: "ch. 11"}
+        text: |
+          ### Three ways to measure GDP: expenditure and income
+
+          The **[expenditure approach](term:P2:expenditure_approach)** adds up spending on final goods by the groups
+          that buy them. **[Consumption](term:P2:consumption) (C)** is households' spending on goods and services.
+          **[Investment](term:P2:investment) (I)** is spending on new capital goods, such as machines and buildings,
+          including newly built homes, plus the change in firms' inventories. In economics, "investment" therefore does
+          not mean buying shares or [bonds](term:P4:bond): such purchases only change who owns existing assets. A firm
+          invests in the economic sense when it buys a new production line, and it does so if the production line is
+          expected to earn more than the [money](term:P4:money) would earn elsewhere, for example in a bond; [chapter
+          4](theory:P4-s7a) returns to this comparison. **[Government spending](term:P2:government_spending) (G)** is
+          what the government buys: goods and services such as roads, schools and the work of its employees. Transfers
+          such as pensions are excluded, because the government receives nothing in return. In a [closed
+          economy](term:P1:closed_economy) such as the example economy, the expenditure approach gives
+
+          > **Y = C + I + G**
+
+          The **[income approach](term:P2:income_approach)** adds up the incomes earned in production. Each firm's value
+          added is paid out as **[labour income](term:P2:labour_income)**, the wages and salaries of its employees, and
+          what remains is **[capital income](term:P2:capital_income)**, the profits, interest and rents received by the
+          owners of capital.
+
+          In the example economy, households consume bread for $500 million. Firms invest $220 million: they buy new
+          machines for $200 million from the machine maker, from a second production line and delivery vans for the
+          bakery to a crane and an excavator for the construction firm, and the bakery adds $20 million of bread to its
+          stocks. The government buys a road for $180 million.
+
+          All [three approaches](term:P2:three_approaches) give the same total of $900 million. This is not a
+          coincidence. It follows from the **[circular flow](term:P1:circular_flow)** of the economy ([introduced in
+          chapter 1](theory:P1-s3b)): what one actor spends on final goods is what producers receive, and what producers
+          receive is paid out as income. GDP is the size of this flow, measured at three different points of the circle.
+          This is why economists use "output" and "income" almost interchangeably for an economy as a whole.
+        details:
+          title: "Why the three approaches must agree, and why in practice they do not"
+          sources:
+            - {key: blanchard_illing_2021, loc: "App. A"}
+            - {key: mankiw_2025, loc: "ch. 2"}
+          text: |
+            The equality of production and income holds by construction. A firm's [value added](term:P2:value_added) is
+            its revenue minus its purchases of intermediate inputs. Out of this amount it pays wages, and profit is
+            defined as the remainder. Value added and income are therefore equal firm by firm, and so are their totals.
+            The equality of production and expenditure follows from two accounting conventions. First, the value added
+            along every production chain adds up to the value of the [final good](term:P2:final_good) at its end. Second,
+            [output](term:P1:output_GDP) that is produced but not sold is treated as if the producer had bought it: it is
+            recorded as [investment](term:P2:investment) in inventories, so that expenditure always equals production.
+
+            In an open economy one more convention is needed: exports are added, because they are produced at home but
+            bought abroad, and imports are subtracted, because they are contained in C, I and G but produced abroad. This
+            gives Y = C + I + G + X − IM.
+
+            In practice, statistics offices estimate the three sides from different sources: surveys of firms, household
+            surveys, tax records, customs data. Each source has gaps and errors, so the three estimates never match
+            exactly. Some offices, such as the US Bureau of Economic Analysis, publish the difference as a "statistical
+            discrepancy"; others reconcile the sources into a single figure. Real accounts also contain items that our
+            example leaves out, such as taxes on products, which appear as a separate item in the [income
+            approach](term:P2:income_approach) (Blanchard & Illing, 2021, App. A; Mankiw, 2025, ch. 2).
+        figure: {kind: three_bars, description: "Three bars of $900 million: value added by firm; C, I and G; wages and profits."}
+
+  - id: s2
+    title: "Nominal and real GDP"
+    objectives: [LO3]
+    steps:
+      - id: s2a
+        sources:
+          - {key: legge_2023, loc: "1.5.3"}
+          - {key: blanchard_illing_2021, loc: "2.1"}
+          - {key: mankiw_2025, loc: "ch. 2"}
+        text: |
+          ### Quantities and prices
+
+          Because [GDP](term:P2:GDP_definition) is a sum of quantities multiplied by prices, it can rise for two quite
+          different reasons: because the economy produces more goods and services, or because the same goods and
+          services have become more expensive. Only the first reason makes a country richer in the things people consume
+          and use. To tell the two apart, economists distinguish **nominal** from **real** GDP.
+
+          **[Nominal GDP](term:P2:nominal_GDP)** values the [output](term:P1:output_GDP) of each year at the prices of
+          that same year. **[Real GDP](term:P2:real_GDP)** values the output of each year at the constant prices of one
+          chosen **[base year](term:P2:base_year)**. Because prices are held fixed, real GDP changes only when
+          quantities change.
+      - id: s2b
+        sources:
+          - {key: legge_2023, loc: "1.5.3"}
+          - {key: blanchard_illing_2021, loc: "2.1"}
+          - {key: mankiw_2025, loc: "ch. 2"}
+        text: |
+          ### An example
+
+          Suppose the example economy's bakery bakes 520 million loaves in year 1 and 530 million in year 2, while the
+          price of a loaf rises from $1.00 to $1.10; the 20 machines built each year rise in price from $10 million to
+          $10.5 million each. Valued at each year's own prices, output rises from $720 million to $793 million. Valued
+          at year-1 prices, it rises only to $730 million. Switch between the two ways of valuing output below.
+        module: {kind: price_toggle}
+      - id: s2c
+        sources:
+          - {key: legge_2023, loc: "1.5.3"}
+          - {key: blanchard_illing_2021, loc: "2.1"}
+          - {key: mankiw_2025, loc: "ch. 2"}
+        text: |
+          ### Growth rates
+
+          The **[growth rate](term:P2:growth_rate)** of a variable is its change in percent of its earlier value. In the
+          example, nominal output grew by (793 − 720) / 720 ≈ 10.1%, but real output by only (730 − 720) / 720 ≈ 1.4%;
+          the rest was higher prices. When economists and newspapers speak of **[economic
+          growth](term:P2:economic_growth)**, they mean the growth rate of real GDP, and when real GDP falls for two
+          quarters in a row, they speak of a **[recession](term:P2:recession)**. Over longer periods, living standards
+          are compared with **[GDP per capita](term:P2:GDP_per_capita)**, GDP divided by the population, because a
+          larger population produces more even if nobody is better off. GDP per capita is an average; it does not
+          describe the income of a typical person.
+
+          The gap between nominal and real GDP is itself informative: it reflects how much prices have risen. [Chapter
+          4](theory:P4-s1a) uses it as a measure of [inflation](term:P4:inflation_rate).
+        details:
+          title: "The base-year problem and chain-linking"
+          sources:
+            - {key: mankiw_2025, loc: "ch. 2"}
+            - {key: landefeld_parker_1997}
+          text: |
+            Valuing [output](term:P1:output_GDP) at the prices of a fixed [base year](term:P2:base_year) raises a
+            difficulty: the result depends on which base year is chosen. Relative prices change over time. Goods whose
+            production becomes much cheaper, such as computers, tend to be produced in rapidly growing quantities. If the
+            base year lies far in the past, when such goods were expensive, their fast growth receives a large weight and
+            real growth is overstated; with a recent base year it receives a small weight. The same economy can thus show
+            noticeably different real growth rates depending on the base year.
+
+            Statistics offices have therefore moved to **[chain-linked](term:P2:chain_linking)** measures. Instead of
+            keeping one base year for decades, they compute the growth rate between each pair of adjacent years at the
+            prices of those years and link the growth rates into one series. The United States, for example, adopted
+            chain-weighted [real GDP](term:P2:real_GDP) in the 1990s, and European countries followed. Chain-linking keeps
+            the weights up to date, at the cost that the components of a chain-linked [aggregate](term:P1:aggregate) no
+            longer add up exactly to the total (Mankiw, 2025, ch. 2). The principle is unchanged: separate the change in
+            quantities from the change in prices.
+        figure: {kind: line, description: "Nominal and real output over three years; the nominal line rises faster."}
+
+  - id: s3
+    title: "Limits of GDP"
+    objectives: [LO4]
+    steps:
+      - id: s3a
+        sources:
+          - {key: mankiw_2025, loc: "ch. 2"}
+          - {key: kuznets_1934}
+          - {key: pigou_1932, loc: "Part I, ch. III"}
+          - {key: abramsky_drew_2014}
+          - {key: schneider_enste_2000}
+        text: |
+          ### Production is not well-being
+
+          [GDP](term:P2:GDP_definition) measures the market value of production. It was never designed to measure [how
+          well people live](term:P2:GDP_vs_welfare), and its inventor said so from the start. Every element of the
+          definition that makes GDP precise also marks one of its limits.
+
+          **[Non-market production](term:P2:non_market_production).** GDP counts what is sold at a price. Cooking,
+          cleaning, caring for children and relatives and voluntary work create real value, but because no price is
+          paid, they are not counted. In rich countries this unpaid work is very large. It also means that GDP can rise
+          without anyone being better off: when a family starts to buy meals instead of cooking them, measured
+          production rises although the same meals are eaten. The economist Arthur Pigou described the paradox in 1920:
+          if a man marries his housekeeper and she continues the same work unpaid, national income is "diminished",
+          although nothing real has changed.
+
+          **The [shadow economy](term:P2:shadow_economy).** Some market activity is hidden from the authorities:
+          undeclared cash work, sales that avoid taxes, and illegal trade. International rules say that illegal
+          transactions to which both parties consent belong in GDP, and since 2014 European statistics offices estimate
+          some of them. In the United Kingdom, including illegal drugs and prostitution added about 0.7% to GDP
+          (Abramsky & Drew, 2014). Such estimates rest on bold assumptions, and the size of the shadow economy differs
+          considerably across countries, which makes international comparisons harder.
+      - id: s3b
+        sources:
+          - {key: mankiw_2025, loc: "ch. 2"}
+          - {key: stiglitz_etal_2009}
+        text: |
+          ### Distribution, leisure and the environment
+
+          **[Distribution](term:P2:distribution).** GDP is a total, and GDP per capita an average. Neither says how
+          income is shared. GDP can grow while most households earn the same or less, if the gains go to a few. GDP also
+          says nothing about **[wealth](term:P2:wealth)**, which is a stock: two countries with the same GDP can have
+          very different distributions of savings, housing and financial assets.
+
+          **[Leisure](term:P2:leisure).** If an economy produces the same [output](term:P1:output_GDP) with fewer
+          working hours, people are better off, but GDP is unchanged. If they work longer to produce a little more, GDP
+          rises even if they would have preferred the free time.
+
+          **[The environment](term:P2:environmental_damage).** GDP counts the value of production but does not deduct
+          the damage it causes: pollution, emissions, the depletion of forests, fish stocks and mineral resources.
+          Worse, repairing damage is counted as new production. A storm that destroys houses lowers a country's wealth,
+          yet rebuilding them raises GDP.
+      - id: s3c
+        sources:
+          - {key: mankiw_2025, loc: "ch. 2"}
+          - {key: jones_klenow_2016}
+        text: |
+          ### Why GDP nevertheless prevails
+
+          These limits are well known, and yet GDP remains the central measure of economic activity. There are [four
+          reasons](term:P2:reasons_still_used).
+
+          First, it is **standardised**: almost every country compiles it with the same international rules, so it can
+          be compared across countries and over decades. Second, it is **timely**: many countries publish quarterly
+          estimates within weeks, whereas broader measures of well-being take much longer to collect. Third, it is
+          **closely related to many dimensions of welfare**: across countries, higher GDP per capita generally goes
+          together with longer life expectancy, better health care and more education, and broader welfare measures
+          built by economists turn out to be strongly correlated with GDP per capita, though with important exceptions
+          (Jones & Klenow, 2016). Fourth, and decisive for monetary policy, GDP is the right measure for the **[business
+          cycle](term:P2:business_cycle)**. When a [central bank](term:P1:central_bank) sets interest rates, it needs to
+          know whether the economy is producing more or less than it normally can. [Chapter 6](theory:P6-s2b) compares
+          actual GDP with this normal level, which economists call [potential output](term:P6:potential_output).
+
+          The fair conclusion is that GDP measures an economy's production well, and production matters for jobs and
+          incomes, but it is not a measure of how well people live. For that purpose, statistics offices publish other
+          indicators alongside it.
+        details:
+          title: "Beyond GDP: can welfare be measured?"
+          sources:
+            - {key: stiglitz_etal_2009}
+            - {key: undp_1990}
+            - {key: jones_klenow_2016}
+          text: |
+            Attempts to complement [GDP](term:P2:GDP_definition) take three forms. The first is a **dashboard** of
+            separate indicators. In 2009 a commission led by Joseph Stiglitz, Amartya Sen and Jean-Paul Fitoussi
+            recommended that statistics offices shift emphasis from production to the well-being of households: to report
+            household income and [consumption](term:P2:consumption) rather than only [output](term:P1:output_GDP), to
+            publish the distribution of income and wealth, to value unpaid work and leisure, and to measure health,
+            education, environmental conditions and people's own assessment of their lives (Stiglitz, Sen & Fitoussi,
+            2009). Many offices now publish such dashboards.
+
+            The second is a **composite index** that combines several dimensions into one number. The best known is the
+            United Nations' Human Development Index, which combines income per person with life expectancy and education.
+            Its weakness is that the weights given to each dimension are a matter of judgement.
+
+            The third translates the other dimensions into the units of consumption. Jones and Klenow (2016) ask how much
+            consumption a person would need in one country to be as well off as in another, taking account of consumption,
+            leisure, inequality and life expectancy. Their measure is strongly correlated with GDP per capita, but some
+            countries rank quite differently: Western European countries, with longer life expectancy, more leisure and
+            more equal incomes, come much closer to the United States than their GDP suggests. The debate shows why GDP is
+            best understood as a measure of production, to be read together with other indicators when the question is
+            well-being.

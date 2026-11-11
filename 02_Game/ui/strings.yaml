@@ -1,0 +1,1467 @@
+# 02_Game/ui/strings.yaml: every visible text of the game's own interface (each key with text, where and why; {name} placeholders the
+# code fills). The texts of the content (briefings, walk-throughs, the newspaper, the chat, the debrief) come from 02_Game/content/ and
+# the views, never from here. The words follow the scripts appendix §8.
+app.title:
+  text: "Monetary policy game"
+  where: the browser's title
+  why: the game's name
+# --- the login --------------------------------------------------------------------------------------------------------------
+login.title:
+  text: "Monetary Policy Game"
+  where: the login card's title
+  why: the game's name
+login.lede:
+  text: "Select your account and type in the password."
+  where: under the title
+  why: what to do
+login.user_label:
+  text: "Account"
+  where: the drop-down's label
+  why: the six accounts, three players and three developers
+login.password_label:
+  text: "Password"
+  where: the field's label
+  why: the field
+login.sign_in:
+  text: "Sign in"
+  where: the button
+  why: the action
+login.wrong:
+  text: "That is not the password. You can try again in two seconds."
+  where: the line under the button
+  why: a wrong entry, held for two seconds
+login.wait:
+  text: "Wait two seconds between tries."
+  where: the line under the button
+  why: a try inside the hold
+login.not_set_up:
+  text: "This account is not set up."
+  where: the line under the button
+  why: no password variable for the account
+# --- the Runs screen ----------------------------------------------------------------------------------------------------------
+runs.kicker:
+  text: "Signed in as {name}"
+  where: above the title
+  why: who is signed in
+runs.title:
+  text: "My Runs"
+  where: the title
+  why: the screen
+runs.nav_label:
+  text: "Your runs"
+  where: the nav's label
+  why: screen readers
+runs.theory:
+  text: "Open the theory"
+  where: the header
+  why: the theory section (scripts appendix §14)
+runs.sign_out:
+  text: "Sign out"
+  where: the header
+  why: the action
+runs.connecting:
+  text: "Connecting to your runs…"
+  where: the body
+  why: the store is asked
+runs.error:
+  text: "Your runs could not be reached just now."
+  where: the body
+  why: the store failed
+runs.retry:
+  text: "Try again"
+  where: the body
+  why: the action
+runs.slot_label:
+  text: "Slot {n}"
+  where: a slot's label
+  why: screen readers
+runs.create:
+  text: "Create new run"
+  where: an empty slot
+  why: the action
+runs.inactive_note:
+  text: "Opens once slot {n} holds a run."
+  where: an empty inactive slot
+  why: why it is grey
+runs.unreadable:
+  text: "This run could not be read. Continue starts it again from the beginning, with its name."
+  where: a slot
+  why: a run the store could not read
+runs.name_label:
+  text: "The run's name"
+  where: the create form
+  why: the field
+runs.default_name:
+  text: "Run {n}"
+  where: the create form
+  why: the default name
+runs.create_button:
+  text: "Create"
+  where: the create form
+  why: the action
+runs.cancel:
+  text: "Cancel"
+  where: the forms and confirms
+  why: the action
+runs.last_played:
+  text: "Last played {when}"
+  where: a slot
+  why: when the run was written
+runs.when_today:
+  text: "today, {time}"
+  where: a slot
+  why: a run played today
+runs.when_date:
+  text: "{day} {month}"
+  where: a slot
+  why: a run played earlier
+runs.progress:
+  text: "Topic {topic} of {topics} · {played}"
+  where: a slot
+  why: how far the run has got
+runs.played_none:
+  text: "no topic played out yet"
+  where: a slot
+  why: the count
+runs.played_one:
+  text: "one topic played out"
+  where: a slot
+  why: the count
+runs.played_many:
+  text: "{n} topics played out"
+  where: a slot
+  why: the count
+runs.chapter_e:
+  text: "Chapter E open"
+  where: a slot
+  why: every scripted topic played out
+runs.open_term:
+  text: "A term is open: {quarter} of {quarters} quarters played."
+  where: a slot
+  why: a term in play
+runs.continue:
+  text: "Continue"
+  where: a slot
+  why: the action
+runs.rename:
+  text: "Rename"
+  where: a slot
+  why: the action
+runs.rename_label:
+  text: "The run's new name"
+  where: the rename form
+  why: the field
+runs.rename_save:
+  text: "Save"
+  where: the rename form
+  why: the action
+runs.delete:
+  text: "Delete"
+  where: a slot
+  why: the action
+runs.delete_confirm:
+  text: "Delete this run? This cannot be undone."
+  where: the confirm
+  why: the question
+runs.delete_button:
+  text: "Delete the run"
+  where: the confirm
+  why: the action
+runs.setting_llm:
+  text: "AI-written paper and Chief Economist"
+  where: a slot's settings
+  why: the run's toggle
+runs.no_key:
+  text: "No API key on this server"
+  where: a slot's settings
+  why: the toggle greyed
+runs.tour_replay:
+  text: "Replay the walk-through"
+  where: a slot's settings
+  why: the walk-through again at the next desk
+runs.tour_armed:
+  text: "The walk-through plays at your next visit to the desk."
+  where: a slot's settings
+  why: the replay armed
+runs.months:
+  text: "January February March April May June July August September October November December"
+  where: a slot's date
+  why: the months' names
+# --- the theory section -------------------------------------------------------------------------------------------------------
+theory.title:
+  text: "Theory"
+  where: the rail's title
+  why: the section
+theory.economy_note:
+  text: "The example economy in these chapters comes from the textbooks and differs from the game's. In the game, the natural rate of unemployment, the unemployment rate the economy settles at once wages have adjusted, is 5 percent."
+  where: the rail, under its title, on every page of the section
+  why: the section's start, the example economy (4 percent) against the game's (the glossary's explanation, scripts appendix §8.2)
+theory.bar_label:
+  text: "The theory section"
+  where: the dark bar
+  why: screen readers
+theory.back_desk:
+  text: "Back to the desk"
+  where: the dark bar
+  why: the way back
+theory.back_runs:
+  text: "Back to my runs"
+  where: the dark bar
+  why: the way back
+theory.back_menu:
+  text: "Back to the Menu"
+  where: the dark bar
+  why: the way back
+theory.chapter_topic:
+  text: "Chapter {n} · Topic {k} of {m}"
+  where: above a topic's title
+  why: where the reader is
+theory.previous:
+  text: "Previous topic"
+  where: under a topic
+  why: the action
+theory.next:
+  text: "Next topic"
+  where: under a topic
+  why: the action
+theory.continue_chapter:
+  text: "Continue to chapter {n}"
+  where: under a chapter's last topic
+  why: the action
+theory.mark_read:
+  text: "Mark chapter as read"
+  where: under the last chapter's last topic
+  why: the action
+theory.more:
+  text: "More Detail: {title}"
+  where: a step's panel
+  why: the panel's summary
+theory.back_example:
+  text: "Back to the example economy"
+  where: a module
+  why: the sliders reset
+theory.readout_now:
+  text: "Now"
+  where: a module's readout
+  why: the column
+theory.readout_change:
+  text: "Change"
+  where: a module's readout
+  why: the column
+# --- the run's Menu -------------------------------------------------------------------------------------------------------------
+menu.kicker:
+  text: "Run: {run}"
+  where: above the title
+  why: the run's name
+menu.save_return:
+  text: "Save the Run"
+  where: the header
+  why: the run written, back to My Runs
+menu.title:
+  text: "Monetary Policy Game"
+  where: the title
+  why: the game's name
+menu.toc_label:
+  text: "Chapters and topics"
+  where: the table of contents
+  why: screen readers
+menu.chapter_kicker:
+  text: "Chapter {id} · {name}"
+  where: a card's kicker
+  why: the chapter
+menu.card_title:
+  text: "Topic {n} · {name}"
+  where: a card's title
+  why: the topic
+menu.task_head:
+  text: "Your task"
+  where: a card
+  why: the task sentence's heading
+menu.quarter_state:
+  text: "Quarter: {played}/{quarters}"
+  where: a card
+  why: the term's state
+menu.quarters:
+  text: "{quarters} quarters"
+  where: a card
+  why: the term's length
+menu.status_played_out:
+  text: "played out"
+  where: a topic row
+  why: the status
+menu.status_in_play:
+  text: "in play"
+  where: a topic row
+  why: the status
+menu.status_next:
+  text: "next"
+  where: a topic row
+  why: the status
+menu.status_locked:
+  text: "locked"
+  where: a topic row
+  why: the status
+menu.played_times:
+  text: "played out {n} times"
+  where: a card
+  why: a topic played again
+menu.played_once:
+  text: "played out once"
+  where: a card
+  why: a topic played out
+menu.begin:
+  text: "Begin"
+  where: a card
+  why: the action (4.3.1)
+menu.continue:
+  text: "Continue"
+  where: a card
+  why: the action
+menu.play_again:
+  text: "Play again"
+  where: a card
+  why: "the action: the same script, a second term"
+menu.move_on:
+  text: "Move on"
+  where: a played-out card
+  why: the next topic's card
+menu.locked_note:
+  text: "Opens once the topic before it has been played out."
+  where: a locked card
+  why: the player's order
+menu.reset_label:
+  text: "Reset this topic's progress"
+  where: a card's circular arrow
+  why: the action
+menu.reset_confirm:
+  text: "Are you sure you want to reset this topic's progress?"
+  where: the browser's dialog
+  why: the question
+menu.link_report:
+  text: "The Chief Economist's debrief"
+  where: a card
+  why: the debrief again, over the Menu
+menu.related_head:
+  text: "Related Theory:"
+  where: a card's box
+  why: the theory chapters the topic builds on
+menu.notice_unreadable:
+  text: "This run could not be read, so it has started again from the beginning."
+  where: the notice line
+  why: an unreadable run
+# --- the desk -------------------------------------------------------------------------------------------------------------------
+desk.nav_label:
+  text: "The desk"
+  where: the top bar's nav
+  why: screen readers
+desk.run_label:
+  text: "Run: {name}"
+  where: the top bar's pill
+  why: the run's name
+desk.map:
+  text: "Map"
+  where: the top bar
+  why: the map panel
+desk.theory:
+  text: "Theory"
+  where: the top bar
+  why: the theory section
+desk.menu:
+  text: "Menu"
+  where: the top bar
+  why: back to the Menu
+desk.kicker:
+  text: "Topic {topic} · {name} · Chapter {chapter}, {chapter_name}"
+  where: the top bar's kicker
+  why: where the player is
+desk.term_over:
+  text: "The term is over."
+  where: the bottom bar after the last quarter
+  why: the wait line
+desk.continue:
+  text: "Continue"
+  where: the bottom bar after the last quarter
+  why: back to the Menu
+desk.progress_close:
+  text: "The newspaper is going to press"
+  where: the progress line after Publish
+  why: the next quarter's issue written
+desk.refused:
+  text: "Refused: {reason}."
+  where: the decision bar's message line
+  why: a decision the checks stopped, its reason a clause (a reason that is a sentence, as the cap's, shows as it stands)
+# --- the panel's header ----------------------------------------------------------------------------------------------------------
+panel.label:
+  text: "The bank's dashboard"
+  where: the panel
+  why: screen readers
+panel.quarter_of:
+  text: "Quarter {quarter} of {quarters}"
+  where: the header and the title
+  why: where the term stands
+panel.all_played:
+  text: "All {quarters} quarters played"
+  where: the header and the title
+  why: the term over
+panel.closed:
+  text: "Quarter {quarter} closed · the figures are the latest completed quarter"
+  where: the header
+  why: what the figures are
+panel.begins_rest:
+  text: "The term begins · the figures are last quarter's, the economy at rest"
+  where: the header in quarter 1
+  why: what the figures are
+panel.rate_in_force:
+  text: "Policy rate in force"
+  where: the header
+  why: the rate set last quarter
+panel.target:
+  text: "target"
+  where: the header
+  why: the inflation target
+panel.at_floor:
+  text: "at the floor"
+  where: the header's chip
+  why: the rate at zero
+panel.spell:
+  text: "the public expects it there for {quarters}"
+  where: the header beside the chip
+  why: the spell (Public.spell)
+panel.election_now:
+  text: "Election this quarter"
+  where: the header's clock
+  why: the vote due
+panel.election_in:
+  text: "Next election in {quarters} quarters"
+  where: the header's clock
+  why: the clock
+panel.flag_label:
+  text: "In office: {party}"
+  where: the header's flag
+  why: screen readers
+panel.announced_due:
+  text: "Announced for this quarter: {rate}"
+  where: the header
+  why: the rate due from the standing path
+# --- the task line ----------------------------------------------------------------------------------------------------------
+task.quarter:
+  text: "Quarter {quarter} of {quarters}"
+  where: the task line
+  why: where the term stands
+task.open_label:
+  text: "Your task; open for the topic's briefing"
+  where: the task line
+  why: screen readers
+task.topic:
+  text: "Topic {topic} · {name}"
+  where: the drop-down
+  why: the topic
+task.your_task:
+  text: "Your task"
+  where: the drop-down
+  why: the heading
+task.briefing_head:
+  text: "The topic's briefing"
+  where: the drop-down
+  why: the heading
+# --- the figures panel --------------------------------------------------------------------------------------------------------
+figures.title:
+  text: "Economic Figures"
+  where: the figures block
+  why: the block
+figures.output:
+  text: "Output"
+  where: a row
+  why: the level in $ bn a year
+figures.trend:
+  text: "its trend"
+  where: a row
+  why: the trend level
+figures.growth:
+  text: "Growth"
+  where: a row
+  why: percent a year
+figures.inflation:
+  text: "Inflation"
+  where: a row
+  why: percent a year
+figures.wage:
+  text: "Wage inflation"
+  where: a row
+  why: percent a year
+figures.unemployment:
+  text: "Unemployment"
+  where: a row
+  why: percent
+figures.persons:
+  text: "Unemployed"
+  where: a row
+  why: persons
+figures.labour_force:
+  text: "Labour force"
+  where: a row
+  why: the game's round figure (scripts appendix §3)
+figures.population:
+  text: "Population"
+  where: a row
+  why: the game's round figure (scripts appendix §3)
+figures.quarters_above:
+  text: "above its natural rate for {quarters}"
+  where: under the unemployment row
+  why: the run above the natural rate
+figures.recession:
+  text: "Recession: output has fallen for two quarters in a row."
+  where: under the output rows
+  why: the recession flag
+figures.output_fell:
+  text: "Output fell last quarter."
+  where: under the output rows
+  why: the fall flag
+figures.change_label:
+  text: "change since the quarter before {change}"
+  where: a change cell
+  why: screen readers
+# --- the word panel (Topics 4, 5 and 8) ------------------------------------------------------------------------------------------
+word.chart_unit:
+  text: "percent a year · the quarters played, this quarter and the path you announce"
+  where: the rate chart's unit from Topic 4
+  why: the future region
+word.played:
+  text: "the quarters played"
+  where: the rate chart
+  why: the region's label
+word.region:
+  text: "this quarter and your path ahead"
+  where: the rate chart
+  why: the region's label
+word.room_label:
+  text: "the room a new shock gives"
+  where: the rate chart
+  why: the green bands
+word.news_note:
+  text: "A new shock this quarter gives room: moving your path toward it costs no trust, up to the room."
+  where: under the editor
+  why: a quarter with a new shock (scripts appendix §8)
+word.switch:
+  text: "Announce a path"
+  where: the editor
+  why: the switch (Topic 4)
+word.switch_every:
+  text: "From this topic on, a path is announced every quarter."
+  where: the editor
+  why: the switch locked on (Topics 5 and 8 keep the word on)
+word.add:
+  text: "+ Q{quarter}"
+  where: the editor
+  why: a quarter added
+word.add_label:
+  text: "Add quarter {quarter} to your path"
+  where: the editor
+  why: screen readers
+word.back:
+  text: "Back to the path you announced"
+  where: the editor
+  why: the draft dropped
+word.fields_label:
+  text: "The rates of your new path, one field per quarter"
+  where: the editor
+  why: screen readers
+word.field_label:
+  text: "Rate announced for quarter {quarter}, percent a year"
+  where: a field
+  why: screen readers
+word.field_band:
+  text: "± {band}"
+  where: under a field
+  why: the band
+word.field_room:
+  text: "room to {room}"
+  where: under a field
+  why: the room
+word.new:
+  text: "new"
+  where: under a field
+  why: a quarter not announced before
+word.point_label:
+  text: "Quarter {quarter}: {rate} % a year. The up and down arrows move it."
+  where: a point on the chart
+  why: screen readers
+word.note_band:
+  text: "On or outside the band you announced: {rate} against {announced}, band ± {band}"
+  where: the chart's note and the confirm step
+  why: a breach
+word.note_room:
+  text: "Beyond the room a new shock gives, to {room} %: {rate} against {announced}, band ± {band}"
+  where: the chart's note and the confirm step
+  why: a breach beyond the room
+word.field_invalid:
+  text: "Not a rate: type it in percent a year"
+  where: under a field
+  why: a field without a number
+word.error_path_every:
+  text: "This topic needs an announced plan with every decision: type the rate for at least the next quarter."
+  where: the message line
+  why: Publish without a path from Topic 5
+word.path_none:
+  text: "No path announced"
+  where: the decision bar's slot
+  why: the summary
+word.path_through:
+  text: "Path: through quarter {quarter}"
+  where: the decision bar's slot
+  why: the summary
+word.path_breaks_one:
+  text: "Path: through quarter {quarter} · one change on or outside its band"
+  where: the decision bar's slot
+  why: the summary with a breach
+word.path_breaks_many:
+  text: "Path: through quarter {quarter} · {n} changes on or outside their bands"
+  where: the decision bar's slot
+  why: the summary with breaches
+word.band:
+  text: "announced {rate} ± {band}"
+  where: the decision bar's slot
+  why: the band around the rate due
+word.band_room:
+  text: "announced {rate} · room to {room} %"
+  where: the decision bar's slot
+  why: the room around the rate due
+word.remove_one:
+  text: "Remove the rate for quarter {quarter}"
+  where: a field's x
+  why: screen readers
+word.remove_from:
+  text: "Remove the rates from quarter {quarter} on"
+  where: a field's x
+  why: screen readers
+word.floor_button:
+  text: "Set to the floor"
+  where: the decision bar
+  why: the rate field set to zero
+word.floor_expected_one:
+  text: "The public expects the floor for about one more quarter"
+  where: the decision bar
+  why: the spell
+word.floor_expected_many:
+  text: "The public expects the floor for about {n} more quarters"
+  where: the decision bar
+  why: the spell
+# --- the staff forecast (Topics 5 and 8) --------------------------------------------------------------------------------------------
+forecast.projected:
+  text: "projected"
+  where: the charts
+  why: the projected column's label
+# --- the charts -------------------------------------------------------------------------------------------------------------------
+chart.rate:
+  text: "The policy rate"
+  where: a chart's title
+  why: the series
+chart.inflation:
+  text: "Inflation"
+  where: a chart's title
+  why: the series
+chart.output:
+  text: "Output"
+  where: a chart's title
+  why: the series
+chart.wage_inflation:
+  text: "Wage inflation"
+  where: a chart's title
+  why: the series
+chart.unemployment:
+  text: "Unemployment"
+  where: a chart's title
+  why: the series
+chart.expectations:
+  text: "Expected inflation"
+  where: a chart's title
+  why: the series
+chart.unit_pct_year:
+  text: "percent a year"
+  where: a chart's unit
+  why: the unit
+chart.unit_pct:
+  text: "percent"
+  where: a chart's unit
+  why: the unit
+chart.unit_bn:
+  text: "$ bn a year, with its trend"
+  where: the output chart's unit
+  why: the unit
+chart.ref_floor:
+  text: "the floor"
+  where: the rate chart
+  why: the reference line
+chart.ref_target:
+  text: "target"
+  where: a chart
+  why: the reference line
+chart.ref_wage_normal:
+  text: "normal"
+  where: the wage chart
+  why: the reference line
+chart.ref_natural:
+  text: "natural rate"
+  where: the unemployment chart
+  why: the reference line
+chart.series_rate:
+  text: "policy rate"
+  where: the rate chart's legend
+  why: the series
+chart.series_announced:
+  text: "announced"
+  where: the rate chart's legend
+  why: the series
+chart.series_output:
+  text: "output"
+  where: the output chart's legend
+  why: the series
+chart.series_trend:
+  text: "its trend"
+  where: the output chart's legend
+  why: the series
+chart.series_expected:
+  text: "expected inflation"
+  where: the expectations chart's legend
+  why: the series
+chart.series_aim:
+  text: "the aim the public sees"
+  where: the expectations chart's legend
+  why: the series
+chart.election_mark:
+  text: "vote"
+  where: the rate and poll charts
+  why: an election quarter
+chart.q_tick:
+  text: "Q{n}"
+  where: the x axis
+  why: a quarter
+chart.q_start:
+  text: "Start"
+  where: the x axis
+  why: the quarter before the term
+chart.table_quarter:
+  text: "Quarter"
+  where: the first quarter's table
+  why: the row
+chart.empty:
+  text: "The first figures arrive when the first quarter closes."
+  where: a chart without data
+  why: the empty state
+chart.series_label:
+  text: "{title}, {unit}, from {from} to {to}; the latest, quarter {latest}, {value}{reference}{recessions}."
+  where: a chart
+  why: screen readers
+chart.series_reference:
+  text: "; the {label} at {value}"
+  where: a chart's label
+  why: screen readers
+chart.series_recession:
+  text: "; {n} recession quarters shaded"
+  where: a chart's label
+  why: screen readers
+# --- the decision bar ----------------------------------------------------------------------------------------------------------------
+decision.title:
+  text: "The decision"
+  where: the bar
+  why: the heading
+decision.rate_label:
+  text: "Policy rate for quarter {quarter}"
+  where: the bar
+  why: the field's label
+decision.rate_unit:
+  text: "% a year"
+  where: the bar
+  why: the unit
+decision.publish:
+  text: "Publish"
+  where: the bar
+  why: the action
+decision.waiting_paper:
+  text: "Waiting for the morning edition"
+  where: the bar's button, disabled, until the quarter's paper arrives
+  why: the paper brings the quarter's shocks, and the reference bank decides on them
+decision.guided:
+  text: "Select a Rate of {rate}"
+  where: the bar in a guided quarter
+  why: the rate the guided quarter asks for, typed by the player
+decision.guided_plan:
+  text: "and announce {rates}"
+  where: the bar in Topic 4's guided quarter
+  why: the plan Topic 4's guided quarter asks for
+decision.guided_plan_flat:
+  text: "and announce it for the next {n} quarters"
+  where: the bar in Topic 4's guided quarter
+  why: a plan that holds the guided rate in every quarter
+decision.error_rate:
+  text: "Type the rate in percent a year, for example {example}."
+  where: the message line
+  why: a field without a number
+# --- the chat ------------------------------------------------------------------------------------------------------------------------
+chat.name:
+  text: "Chief Economist"
+  where: the bar and the pane
+  why: the tutor's name
+chat.new:
+  text: "{n} new"
+  where: the bar's badge
+  why: unread messages
+chat.toggle_label:
+  text: "Open the conversation"
+  where: the bar's chevron
+  why: screen readers
+chat.pane_label:
+  text: "The Chief Economist"
+  where: the pane
+  why: screen readers
+chat.close:
+  text: "Close"
+  where: the pane
+  why: the action
+chat.when_you:
+  text: "You · quarter {quarter}"
+  where: a message
+  why: who and when
+chat.when_economist:
+  text: "Chief Economist · quarter {quarter}"
+  where: a message
+  why: who and when
+chat.kind_start:
+  text: "the topic's briefing"
+  where: the one message at a topic's start, the chapter's and the topic's briefing together
+  why: the kind (scripts appendix §11)
+chat.kind_guided:
+  text: "the bank's decision this quarter"
+  where: a briefing message
+  why: the kind
+chat.kind_event:
+  text: "what has happened"
+  where: a briefing message
+  why: the kind
+chat.form_label:
+  text: "Ask the Chief Economist"
+  where: the input
+  why: screen readers
+chat.placeholder:
+  text: "Ask the Chief Economist a question"
+  where: the input
+  why: the placeholder
+chat.ask:
+  text: "Ask"
+  where: the input
+  why: the action
+chat.thinking:
+  text: "The Chief Economist is thinking"
+  where: the pane
+  why: a question sent
+chat.logged:
+  text: "Questions and answers are logged."
+  where: under the input
+  why: the study's note
+chat.off:
+  text: "The Chief Economist answers questions when the app has a key and a connection"
+  where: under the input, greyed
+  why: the fallback
+# --- the newspaper -----------------------------------------------------------------------------------------------------------------
+paper.name:
+  text: "THE LEDGER"
+  where: the masthead
+  why: the paper's name
+paper.dateline:
+  text: "{dateline} · the morning edition"
+  where: the folded paper and the bar
+  why: the quarter and the year
+paper.folded_summary:
+  text: "{summary} Open the paper to read the edition."
+  where: the folded paper
+  why: the lead's standfirst and the invitation
+paper.open_label:
+  text: "Open the paper"
+  where: the folded paper
+  why: screen readers
+paper.printing:
+  text: "The morning edition is being printed"
+  where: the folded paper while the background worker writes the quarter's paper, and the bar's message if Publish is sent meanwhile
+  why: the next quarter opens at once after Publish, its paper after it
+paper.arrived:
+  text: "This quarter's Ledger has arrived"
+  where: a small notice above the folded paper, a few seconds long
+  why: the paper in, the folded paper drawn in its place
+paper.box_w_title:
+  text: "The Bank's Word"
+  where: box W at the foot of page 4, Topics 4, 5 and 8
+  why: drawn from the sheet, never by a model (scripts appendix §12.1)
+paper.box_w_path:
+  text: "Announced path: {path}"
+  where: box W at the foot of page 4, Topics 4, 5 and 8
+  why: drawn from the sheet, never by a model (scripts appendix §12.1)
+paper.box_w_no_path:
+  text: "No path announced"
+  where: box W at the foot of page 4, Topics 4, 5 and 8
+  why: drawn from the sheet, never by a model (scripts appendix §12.1)
+paper.box_w_last_kept:
+  text: "Last quarter {set} set against {announced} announced, the word kept"
+  where: box W at the foot of page 4, Topics 4, 5 and 8
+  why: drawn from the sheet, never by a model (scripts appendix §12.1)
+paper.box_w_last_broken:
+  text: "Last quarter {set} set against {announced} announced, the word broken"
+  where: box W at the foot of page 4, Topics 4, 5 and 8
+  why: drawn from the sheet, never by a model (scripts appendix §12.1)
+paper.box_w_last_none:
+  text: "No announcement judged yet"
+  where: box W at the foot of page 4, Topics 4, 5 and 8
+  why: drawn from the sheet, never by a model (scripts appendix §12.1)
+paper.box_w_record:
+  text: "Record: {kept} kept, {broken} broken"
+  where: box W at the foot of page 4, Topics 4, 5 and 8
+  why: drawn from the sheet, never by a model (scripts appendix §12.1)
+paper.box_w_trust:
+  text: "Trust: {trust}"
+  where: box W at the foot of page 4, Topics 4, 5 and 8
+  why: drawn from the sheet, never by a model (scripts appendix §12.1)
+paper.box_w_room:
+  text: "A new shock this quarter gives room of {room} points"
+  where: box W at the foot of page 4, Topics 4, 5 and 8
+  why: drawn from the sheet, never by a model (scripts appendix §12.1)
+paper.box_g_title:
+  text: "Government and Politics"
+  where: box G at the foot of page 4, Topics 6, 7 and 8
+  why: drawn from the sheet, never by a model (scripts appendix §12.1)
+paper.box_g_above:
+  text: "Government spending {level} % above normal, {change} on the quarter"
+  where: box G at the foot of page 4, Topics 6, 7 and 8
+  why: drawn from the sheet, never by a model (scripts appendix §12.1)
+paper.box_g_below:
+  text: "Government spending {level} % below normal, {change} on the quarter"
+  where: box G at the foot of page 4, Topics 6, 7 and 8
+  why: drawn from the sheet, never by a model (scripts appendix §12.1)
+paper.box_g_party:
+  text: "In office: {party}"
+  where: box G at the foot of page 4, Topics 6, 7 and 8
+  why: from Topic 7
+paper.box_g_poll:
+  text: "Poll for the party in office: {poll}"
+  where: box G at the foot of page 4, Topics 6, 7 and 8
+  why: from Topic 7
+paper.box_g_next:
+  text: "Next election in {n} quarters"
+  where: box G at the foot of page 4, Topics 6, 7 and 8
+  why: from Topic 7
+paper.box_g_vote_now:
+  text: "Election this quarter"
+  where: box G at the foot of page 4, Topics 6, 7 and 8
+  why: from Topic 7
+paper.box_g_last_vote:
+  text: "Last vote in quarter {quarter}: {winner} won with {share}"
+  where: box G at the foot of page 4, Topics 6, 7 and 8
+  why: from Topic 7
+paper.fold:
+  text: "Fold the paper"
+  where: the bar
+  why: the action
+paper.previous:
+  text: "Previous pages"
+  where: the spread's arrow
+  why: screen readers
+paper.next:
+  text: "Next pages"
+  where: the spread's arrow
+  why: screen readers
+paper.count:
+  text: "Pages {first} and {second} of {pages}"
+  where: the bar
+  why: the spread shown
+paper.selection:
+  text: "The staff's selection"
+  where: the switch
+  why: the pieces that matter for the decision (4.2.1)
+paper.hint:
+  text: "A click beside the paper folds it."
+  where: under the spread
+  why: the hint
+paper.index_title:
+  text: "In this edition"
+  where: page 1
+  why: the index
+paper.front_page:
+  text: "front page"
+  where: the index
+  why: the lead's page
+paper.index_page:
+  text: "{page}"
+  where: the index
+  why: a page number
+paper.page:
+  text: "page {page}"
+  where: a running head
+  why: the page number
+paper.running:
+  text: "{name} · {dateline}"
+  where: a running head
+  why: the paper and the quarter
+paper.mark_signal:
+  text: "Marked by the staff: this matters for your decision."
+  where: the margin's mark
+  why: screen readers
+paper.none_note:
+  text: "No pressing news here."
+  where: a section without a marked piece
+  why: the staff's note
+paper.continued_from:
+  text: "continued from page {page}"
+  where: a continuation's head
+  why: the turn
+paper.continued_on:
+  text: "continued on page {page}"
+  where: a cut's foot
+  why: the turn
+paper.figures_head:
+  text: "The key figures"
+  where: the lead's strip
+  why: the three figures (F-LEAD)
+paper.qa_q:
+  text: "Q"
+  where: an interview
+  why: the question's mark
+paper.author:
+  text: "by {author}"
+  where: a comment
+  why: the author line (F-COMMENT)
+paper.table_label:
+  text: "Figure"
+  where: a markets piece's table
+  why: the column
+paper.table_value:
+  text: "Value"
+  where: a markets piece's table
+  why: the column
+paper.table_change:
+  text: "Compared with"
+  where: a markets piece's table
+  why: the column, what each figure is set against
+paper.template_note:
+  text: "written without the model"
+  where: a piece from a template
+  why: the fallback marked for the author
+# --- the map --------------------------------------------------------------------------------------------------------------------
+map.title:
+  text: "The Economy's Map (as of Topic {topic}: {name})"
+  where: the panel's and the Menu's title
+  why: which model the map draws
+map.hide:
+  text: "Hide the map"
+  where: the panel
+  why: the action
+map.hide_label:
+  text: "Hide the economy's map"
+  where: the panel
+  why: screen readers
+map.box_parts_one:
+  text: "{n} node · click to unfold"
+  where: a folded box
+  why: the count
+map.box_parts_many:
+  text: "{n} nodes · click to unfold"
+  where: a folded box
+  why: the count
+map.box_new:
+  text: "New: {parts}"
+  where: a folded box
+  why: the chapter's new parts
+map.box_label:
+  text: "{box}, {parts} nodes"
+  where: a box
+  why: screen readers
+map.box_role:
+  text: "movable box"
+  where: a box
+  why: screen readers
+map.keys:
+  text: "A focused box moves with the arrow keys, further with Shift."
+  where: the canvas
+  why: the keyboard
+map.reset:
+  text: "Reset the map"
+  where: the canvas
+  why: the action
+map.reset_label:
+  text: "Reset the map: every box back in its place and folded"
+  where: the canvas
+  why: screen readers
+map.badge_new:
+  text: "new"
+  where: a part
+  why: the badge
+map.part_label_lever:
+  text: "{name}, your lever"
+  where: a lever's node, for screen readers
+  why: the two levers keep their outline (scripts appendix §4)
+map.value:
+  text: "Last quarter {value}."
+  where: a part's tip
+  why: the figure the dashboard shows
+map.close:
+  text: "Close"
+  where: a pinned tip
+  why: the action
+map.close_label:
+  text: "Close this box"
+  where: a pinned tip
+  why: screen readers
+map.arrow_title:
+  text: "{from} → {to}"
+  where: an arrow's tip
+  why: an arrow named by its two ends (scripts appendix §4)
+map.equation:
+  text: "Equation {number} of the model appendix."
+  where: an arrow's tip and the last step of its walk
+  why: the equation's number in the model appendix (scripts appendix §4)
+map.equations:
+  text: "Equations {list} and {last} of the model appendix."
+  where: an arrow's tip and the last step of its walk
+  why: two equations' numbers in the model appendix (scripts appendix §4)
+map.equation_named:
+  text: "{entry} of the model appendix."
+  where: an arrow's tip and the last step of its walk
+  why: an entry that names a part of the model appendix, not a number ("The Full System")
+map.group_title:
+  text: "{from} → {to}"
+  where: a grouped line's tip
+  why: the arrows between two folded boxes, merged into one (scripts appendix §4)
+map.graph_pinned:
+  text: "The relation of the model at the game's settings, never a hidden value. The graph works only in a pinned box."
+  where: an arrow's tip
+  why: the note
+map.graph_distance:
+  text: "points a year"
+  where: the small graph
+  why: the unit
+map.graph_percent:
+  text: "%"
+  where: the small graph
+  why: the unit
+map.graph_spending:
+  text: "Spending: {value}"
+  where: the small graph
+  why: the reading
+map.graph_inflation:
+  text: "Inflation above the target: {value}"
+  where: the small graph
+  why: the reading
+map.graph_output:
+  text: "Output: {value}"
+  where: the small graph
+  why: the reading
+map.legend_new:
+  text: "New in Topic {topic}"
+  where: the legend
+  why: the marks
+map.legend_lever:
+  text: "Your lever"
+  where: the map's legend
+  why: the outline of the two levers (scripts appendix §4)
+map.legend_label:
+  text: "The map's legend"
+  where: the legend
+  why: screen readers
+map.svg_label:
+  text: "The economy's map, {parts} nodes and {links} arrows"
+  where: the canvas
+  why: screen readers
+map.walk_start:
+  text: "Walk through the quarter"
+  where: the walk box
+  why: the action
+map.walk_next:
+  text: "Next"
+  where: the walk box
+  why: the action
+map.walk_previous:
+  text: "Previous"
+  where: the walk box
+  why: the action
+map.walk_end:
+  text: "End the walk"
+  where: the walk box
+  why: the action
+map.walk_again:
+  text: "Start again"
+  where: the walk box
+  why: the action
+map.walk_follow:
+  text: "Follow the arrow to {part}"
+  where: the walk box
+  why: one button per arrow leaving
+map.walk_label:
+  text: "The walk through the quarter"
+  where: the walk box
+  why: screen readers
+# --- the walk-through -------------------------------------------------------------------------------------------------------------
+tour.kicker:
+  text: "The walk-through"
+  where: a step's kicker
+  why: the window (scripts appendix §9)
+tour.previous:
+  text: "Previous"
+  where: a step
+  why: the action
+tour.next:
+  text: "Next"
+  where: a step
+  why: the action
+tour.end:
+  text: "Begin the quarter"
+  where: the last step
+  why: the action
+tour.count:
+  text: "{step} of {steps}"
+  where: a step
+  why: the count
+tour.label:
+  text: "The walk-through"
+  where: the window
+  why: screen readers
+tour.target_figures:
+  text: "The figures"
+  where: a step's title
+  why: the panel pointed at
+tour.target_expectations:
+  text: "What the public expects"
+  where: a step's title
+  why: the panel pointed at
+tour.target_rate:
+  text: "The policy rate"
+  where: a step's title
+  why: the panel pointed at
+tour.target_newspaper:
+  text: "The newspaper"
+  where: a step's title
+  why: the panel pointed at
+tour.target_chat:
+  text: "The Chief Economist"
+  where: a step's title
+  why: the panel pointed at
+tour.target_forecast:
+  text: "The staff forecast"
+  where: a step's title
+  why: the panel pointed at
+# --- the debrief -------------------------------------------------------------------------------------------------------------------
+debrief.kicker:
+  text: "The Chief Economist's debrief"
+  where: the window
+  why: the kicker
+debrief.title:
+  text: "Topic {topic} · {name}"
+  where: the window
+  why: the title
+debrief.continue:
+  text: "Continue"
+  where: the window on the desk
+  why: back to the Menu
+debrief.chart_title:
+  text: "The policy rate, yours and the reference bank's"
+  where: the chart
+  why: the one chart (4.2.2)
+debrief.loss_chart_title:
+  text: "The loss each quarter, yours and the reference bank's"
+  where: the debrief's second chart, under the rates' one
+  why: the two losses quarter by quarter (scripts appendix §5.4)
+debrief.unit_loss:
+  text: "both on one scale"
+  where: the debrief's second chart
+  why: the losses compared, never named in squared points (scripts appendix §5.4)
+debrief.unit_rate:
+  text: "percent a year"
+  where: the chart
+  why: the unit
+debrief.legend_player:
+  text: "You"
+  where: the legend
+  why: the line
+debrief.legend_bank:
+  text: "The reference bank, on your information"
+  where: the legend
+  why: the line
+debrief.legend_guided:
+  text: "the guided start, the bank's own decisions"
+  where: the legend
+  why: the shading
+debrief.legend_mark:
+  text: "a decision that cost the most, numbered"
+  where: the legend
+  why: the marks
+debrief.legend_shaded:
+  text: "the later quarters in which a deferred decision's loss arrived, in its colour"
+  where: the legend
+  why: the shading
+debrief.loss_head:
+  text: "The term's loss"
+  where: the text
+  why: the heading
+debrief.loss_line:
+  text: "Over the term's {quarters} quarters your policy cost as much as missing inflation by {player} points in every quarter, the reference bank's {bank} points."
+  where: the text
+  why: each term loss as its equivalent miss, never in squared points (scripts appendix §5.4)
+debrief.marks_head:
+  text: "The decisions that cost the most"
+  where: the text
+  why: the heading
+debrief.marks_none:
+  text: "No single decision cost enough against the reference bank to be marked."
+  where: the text
+  why: no mark
+debrief.mark_kicker:
+  text: "Quarter {quarter} · {kind} · as costly as missing inflation by {miss} points in that quarter"
+  where: a mark
+  why: the kicker
+debrief.kind_immediate:
+  text: "an immediate loss"
+  where: a mark
+  why: the kind
+debrief.kind_deferred:
+  text: "a deferred loss"
+  where: a mark
+  why: the kind
+debrief.source_fallback:
+  text: "Written from the term's record without the model."
+  where: the text
+  why: the fallback marked
+debrief.waiting:
+  text: "The reference bank is still computing. Continue to the Menu, and the debrief appears on the topic's card."
+  where: the window
+  why: the waiting state
+# --- formats and windows ------------------------------------------------------------------------------------------------------------
+format.bn:
+  text: "{sign}${amount} bn"
+  where: figures
+  why: the unit
+format.million:
+  text: "{value} million"
+  where: figures
+  why: persons
+format.quarters_one:
+  text: "{n} quarter"
+  where: figures
+  why: a count
+format.quarters_many:
+  text: "{n} quarters"
+  where: figures
+  why: a count
+window.close:
+  text: "Close"
+  where: a window
+  why: the action
+window.close_label:
+  text: "Close the window"
+  where: a window
+  why: screen readers
+# --- the app's server -----------------------------------------------------------------------
+desk.progress_start:
+  text: "The first quarter's newspaper is going to press"
+  where: the progress line while a term starts
+  why: topic_start writes the first issue
+desk.progress_end:
+  text: "The Chief Economist is writing your debrief"
+  where: the progress line after the last quarter
+  why: topic_end
+desk.error:
+  text: "That did not work just now. Try again in a moment."
+  where: the desk's message line, the Menu's notice
+  why: a call failed (the backend busy or the model out of reach)
+chat.over:
+  text: "The term is over. The Chief Economist takes questions during a term."
+  where: the chat's input after the last quarter
+  why: no chat call after the last quarter
+chart.slump:
+  text: "A slump reported for quarters {from} to {to}"
+  where: the rate chart
+  why: a foreseen slump's span
+runs.slot_name:
+  text: "The run in slot {slot}"
+  where: an unreadable slot without its name
+  why: the store could not read the run
+# --- the first steps on the Menu (scripts appendix §4), when a player enters a new run for the first time ---------------------------------------------
+first_steps.kicker:
+  text: "First steps"
+  where: the first steps' box
+  why: the walk's name
+first_steps.end:
+  text: "Done"
+  where: the first steps' last button
+  why: the walk ends on the Menu
+first_steps.skip:
+  text: "Skip"
+  where: the first steps' box
+  why: the walk can be left at any step
+first_steps.chapters_title:
+  text: "The Chapters"
+  where: the first steps, on the table of contents
+  why: the author's text (scripts appendix §4)
+first_steps.chapters_text:
+  text: "The game has five chapters, each with one or more topics. Topics open one after another as you finish them, and the dots show how far you have come."
+  where: the first steps, on the table of contents
+  why: the author's text (scripts appendix §4)
+first_steps.preview_title:
+  text: "The Topic Preview"
+  where: the first steps, on the topic's card
+  why: the author's text (scripts appendix §4)
+first_steps.preview_text:
+  text: "This is the topic you are about to play. It names what the topic is about and the task you face, and it shows how far into the term you are."
+  where: the first steps, on the topic's card
+  why: the author's text (scripts appendix §4)
+first_steps.theory_title:
+  text: "Related Theory"
+  where: the first steps, on the box Related Theory
+  why: the author's text (scripts appendix §4)
+first_steps.theory_text:
+  text: "These links open the chapters of the theory section that explain the ideas behind this topic. You can read them before you start or come back to them at any time."
+  where: the first steps, on the box Related Theory
+  why: the author's text (scripts appendix §4)
+first_steps.start_title:
+  text: "Start and Reset"
+  where: the first steps, on the card's buttons
+  why: the author's text (scripts appendix §4)
+first_steps.start_text:
+  text: "Begin starts the topic, Continue takes you back to where you left it, and Play again starts a finished topic once more. The circular arrow starts the topic again from its first quarter."
+  where: the first steps, on the card's buttons
+  why: the author's text (scripts appendix §4)
+first_steps.map_title:
+  text: "The Economy's Map"
+  where: the first steps, on the map
+  why: the author's text (scripts appendix §4)
+first_steps.map_text:
+  text: "The map shows how the economy works. Each box is a group of actors, each node a figure of the economy and each arrow how one figure moves another, and what is new in a topic is marked in green."
+  where: the first steps, on the map
+  why: the author's text (scripts appendix §4)
+first_steps.unfold_title:
+  text: "Unfold a Node"
+  where: the first steps, on a box of the map
+  why: the author's text (scripts appendix §4)
+first_steps.unfold_text:
+  text: "Click a box to unfold it and see the figures it holds, and click a figure to read what it means."
+  where: the first steps, on a box of the map
+  why: the author's text (scripts appendix §4)
+first_steps.relations_title:
+  text: "Investigate Relations"
+  where: the first steps, on an arrow of the map
+  why: the author's text (scripts appendix §4)
+first_steps.relations_text:
+  text: "Click an arrow to read how one figure moves another, with an example of the kind you will meet in the game."
+  where: the first steps, on an arrow of the map
+  why: the author's text (scripts appendix §4)
+first_steps.personalise_title:
+  text: "Personalise the Map"
+  where: the first steps, on the map's canvas
+  why: the author's text (scripts appendix §4)
+first_steps.personalise_text:
+  text: "Drag any box to a new place, or move a selected box with the arrow keys, and arrange the map the way you think about the economy."
+  where: the first steps, on the map's canvas
+  why: the author's text (scripts appendix §4)
+first_steps.reset_title:
+  text: "Reset the Map"
+  where: the first steps, on the map's reset button
+  why: the author's text (scripts appendix §4)
+first_steps.reset_text:
+  text: "This button puts every box back where it started and folds them again."
+  where: the first steps, on the map's reset button
+  why: the author's text (scripts appendix §4)

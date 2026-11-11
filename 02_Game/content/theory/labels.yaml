@@ -1,0 +1,24 @@
+# 02_Game/content/theory/labels.yaml — the theory section's own interface words beside 02_Game/ui/strings.yaml's theory.* keys,
+# in strings.yaml's format (text, where, why); read by 02_Game/ui/theory.R (ui_theory_label). The modules'
+# words are modules.yaml's.
+
+term.introduced_here:
+  text: "Introduced in this chapter: {topic}"
+  where: a term box
+  why: the link to the step that defines the term
+term.introduced_in:
+  text: "Introduced in chapter {n}: {topic}"
+  where: a term box
+  why: the link to the step that defines the term
+term.defined_in:
+  text: "Defined in detail in chapter {n}: {topic}"
+  where: a preview card's term box
+  why: the link to the full card
+term.example:
+  text: "Example: {text}"
+  where: a term box
+  why: the card's example
+flow.title:
+  text: "The economy as a cycle"
+  where: the circular flow's panel
+  why: its title

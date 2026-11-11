@@ -1,0 +1,157 @@
+# 02_Game/content/theory/modules.yaml — the ten modules of the theory section:
+# per kind its sliders (label, range, step and the default, `from` a path into economy.yaml or a `value`), its data (`data`, the block
+# of economy.yaml it computes from), its fixed scales (`window`), its readout's rows (Now and Change against the example economy) and
+# its words. 02_Game/ui/theory.R puts a step's module on the page with these as one data attribute; 02_Game/web/theory.js draws it and computes
+# it in the browser with the module's own textbook formulas:
+#   keynesian_cross  Y = (c0 + I + G - c1 T) / (1 - c1); C = c0 + c1 (Y - T); S = Y - T - C; multiplier 1 / (1 - c1)
+#   money_market     money demand = $Y (a - i / b); the rate for a money stock i = b (a - M / $Y); central bank money M (cr + rr) / (1 + cr)
+#   project_pool     cost of finance = i - pi_e + premium; a project is carried out if its expected return exceeds the cost
+#   labour_flows     U(t+1) = U(t) + s (L - U(t)) - f U(t); steady state u* = s / (s + f); average spell 1 / f
+#   ws_ps            WS: w = w0 + z - b u; PS: w = productivity / (1 + markup); natural rate u_n = (w0 + z - PS) / b
+#   phillips         inflation = expected inflation - a (u - u_n); anchored or adaptive expectations over the years
+#   solow            Y = K^alpha (A N)^(1 - alpha); K(t+1) = K(t) + s Y(t) - delta K(t); k* = (s / (delta + n + g_A))^(1 / (1 - alpha))
+#   price_toggle     output of each year at its own prices or at year-1 prices
+#   circular_flow    the cards placed on the arrows of P1.yaml's circular flow; timeline: P1.yaml's stations one at a time
+
+keynesian_cross:
+  data: P3.params
+  sliders:
+    G: {label: "Government spending G ($ million)", min: 150, max: 210, step: 10, from: P3.params.G}
+    c1: {label: "Marginal propensity to consume c₁", min: 0.5, max: 0.7, step: 0.05, from: P3.params.c1}
+    "T": {label: "Taxes T ($ million)", min: 150, max: 210, step: 10, from: P3.params.T}
+    c0: {label: "Autonomous consumption c₀ ($ million)", min: 48, max: 88, step: 2, from: P3.params.c0}
+    I: {label: "Investment I ($ million)", min: 190, max: 250, step: 10, from: P3.params.I}
+  window: {full: [0, 1200], zoom: [550, 1450]}
+  rows:
+    - {id: "Y", label: "Output Y", digits: 2}
+    - {id: C, label: "Consumption C", digits: 2}
+    - {id: S, label: "Private saving S", digits: 2, shown_with: S}
+    - {id: A, label: "Autonomous spending", digits: 2}
+    - {id: m, label: "Multiplier", digits: 2}
+  text: {x: "Output Y ($ million a year)", "y": "Demand Z", zz: "ZZ: demand", zz_before: "ZZ in the example economy", line45: "45° line: Z = Y", eq: "Y = {value}", dY: "ΔY = {value}"}
+  caption: "Amounts in $ million a year. The dashed line and the open circle show the example economy; the arrow below the axis shows the change in output."
+  caption_zoom: "The axes run from 550 to 1,450 and stay fixed, so every change is shown to scale."
+
+money_market:
+  data: P4
+  sliders:
+    M: {label: "Money stock M ($ million)", min: 225, max: 375, step: 25, from: P4.money.money_stock}
+    i: {label: "Policy rate i (%)", min: 1.5, max: 4.5, step: 0.25, from: P4.rates.i}
+  window: {money: [0, 450], rate: [0, 9]}
+  rows:
+    - {id: i, label: "Interest rate (%)", digits: 2}
+    - {id: M, label: "Money stock ($ million)", digits: 1}
+    - {id: B, label: "Central bank money ($ million)", digits: 2}
+  text: {x: "Money ($ million)", "y": "Interest rate (%)", demand: "Money demand", supply: "Money supply", rate: "Policy rate"}
+  caption: "The example economy: money demand and supply meet at {rate}%. The axes stay fixed."
+  caption_buy: "Open-market operation: the central bank buys bonds for ${amount} million. The axes stay fixed; the dashed line and the open circle show the example economy."
+  caption_sell: "Open-market operation: the central bank sells bonds for ${amount} million. The axes stay fixed; the dashed line and the open circle show the example economy."
+
+project_pool:
+  data: P4
+  sliders:
+    i: {label: "Policy rate i (%)", min: 1, max: 6, step: 0.5, from: P4.rates.i}
+    pi_e: {label: "Expected inflation πᵉ (%)", min: 1, max: 3, step: 0.5, from: P4.rates.pi_e}
+    premium: {label: "Risk premium (%)", min: 1, max: 3, step: 0.5, from: P4.rates.premium}
+  window: {invest: [0, 360], rate: [-1, 8]}
+  rows:
+    - {id: r, label: "Real policy rate i − πᵉ (%)", digits: 2}
+    - {id: cost, label: "Real cost of finance (%)", digits: 2}
+    - {id: machines, label: "Machines and buildings ($ million)", digits: 0}
+    - {id: I, label: "Investment I, with inventories of 20 ($ million)", digits: 0}
+  text: {x: "The twelve projects, ranked by expected return ($ million)", "y": "Expected real return (%)", cost: "Real cost of finance {value}%", cost_before: "the example economy's {value}%", project: "{name} ({firm}): ${size} million, expected return {ret}%"}
+  caption: "A project is carried out (dark) if its expected real return exceeds the real cost of finance, the real policy rate plus the risk premium. The axes stay fixed; the dashed line shows the example economy's cost of finance."
+
+labour_flows:
+  data: P5
+  sliders:
+    s: {label: "Job-separation rate s (% per month)", min: 0.5, max: 1.5, step: 0.25, from: P5.flows.separation_rate}
+    f: {label: "Job-finding rate f (% per month)", min: 14, max: 36, step: 2, from: P5.flows.finding_rate}
+  window: {rate: [0, 10], months: 24}
+  month_ms: 900
+  rows:
+    - {id: ss, label: "Steady state s / (s + f) (%)", digits: 1}
+    - {id: u6, label: "Unemployment after 6 months (%)", digits: 1}
+    - {id: u24, label: "Unemployment after 24 months (%)", digits: 1}
+    - {id: spell, label: "Average spell 1 / f (months)", digits: 1}
+  text: {employed: "Employed", unemployed: "Unemployed", out: "lose a job: {rate}% of {from} = {n} a month", "in": "find a job: {rate}% of {from} = {n} a month", month: "Month {m}", x: "Months", "y": "Unemployment rate (%)", steady: "steady state {value}%", play: "Play the months", stop: "Stop", again: "Play again", slump: "Slump: job finding falls to {f}%", reduced: "Your device asks for reduced motion, so all 24 months are shown at once."}
+  caption: "Each dot stands for 16 people (rounded); the numbers are exact. The dashed line shows the steady state. The scales stay fixed; the path starts from the example economy's 4%."
+  caption_static: "Each month as many people find a job as lose one, so unemployment stays at 4%. The dashed line shows the steady state."
+
+ws_ps:
+  data: P5
+  sliders:
+    z: {label: "Wage-setting factors z (extra claim, $ a year)", min: -625, max: 1250, step: 125, value: 0}
+    markup: {label: "Markup (%)", min: 49, max: 51, step: 0.5, from: P5.markup}
+  window: {u: [0, 10], wage: [59000, 66000]}
+  rows:
+    - {id: un, label: "Natural rate (%)", digits: 1}
+    - {id: Nn, label: "Natural employment", digits: 0}
+    - {id: w, label: "Real wage ($ a year)", digits: 0}
+  text: {x: "Unemployment rate u (%)", "y": "Real wage ($ a year)", ws: "WS: wage setting", ps: "PS: price setting", un: "uₙ = {value}%"}
+  caption: "Wage setting and price setting agree at the natural rate. The axes stay fixed; dashed lines and the open circle show the example economy."
+
+phillips:
+  data: P5
+  sliders:
+    pi_e: {label: "Expected inflation πᵉ (%)", min: 1, max: 4, step: 0.5, from: P5.phillips.expected_inflation}
+  window: {u: [0, 10], inflation: [-2, 7]}
+  rows_curve:
+    - {id: pe, label: "Expected inflation (%)", digits: 2}
+    - {id: p3, label: "Inflation at 3% unemployment (%)", digits: 2}
+    - {id: un, label: "Natural rate (%)", digits: 1}
+  rows_years:
+    - {id: pe, label: "Expected inflation at the start (%)", digits: 2}
+    - {id: an, label: "Inflation in year 4, expectations anchored (%)", digits: 2}
+    - {id: ad, label: "Inflation in year 4, expectations follow last year (%)", digits: 2}
+  text: {x: "Unemployment rate u (%)", "y": "Inflation (% a year)", curve: "Phillips relation", natural: "natural rate {value}%", held: "u = {value}%", years_x: "Year", years_y: "Inflation (% a year)", anchored: "expectations anchored", adaptive: "expectations follow last year", start: "start"}
+  caption: "At the natural rate, inflation equals expected inflation. The axes stay fixed; the dashed line shows the example economy."
+  caption_years: "Unemployment is held at {u}%, one point below the natural rate, for {n} years. Expected inflation starts at {pe}%. The axes stay fixed."
+
+solow:
+  data: P6
+  sliders:
+    s: {label: "Saving rate s (%)", min: 20, max: 32, step: 0.4, value: 24.4}   # 220 / 900 = 24.44%, the grid's 24.4 stands for it
+    delta: {label: "Depreciation δ (% a year)", min: 7, max: 10, step: 0.5, from: P6.depreciation_rate}
+    "n": {label: "Labour-force growth n (% a year)", min: 0, max: 1.5, step: 0.5, from: P6.labour_force_growth}
+    g_A: {label: "Technological progress g_A (% a year)", min: 0, max: 1.5, step: 0.5, from: P6.technology_growth}
+  window: {k: [0, 700], inv: [0, 50], years: 100, index_stage_a: [85, 140], index_growth: [80, 130], half_years: 400}
+  rows_stage_a:
+    - {id: Ks, label: "Steady-state capital ($ million)", digits: 0}
+    - {id: Ys, label: "Steady-state output ($ million)", digits: 0}
+    - {id: g1, label: "Growth in the first year (%)", digits: 1}
+    - {id: half, label: "Years to half of the rise", digits: 0}
+  rows_growth:
+    - {id: gY, label: "Long-run growth of output (%)", digits: 1}
+    - {id: gy, label: "Long-run growth per worker (%)", digits: 1}
+    - {id: lev, label: "Output after 100 years vs old path (%)", digits: 1}
+    - {id: g1, label: "Growth in the first year (%)", digits: 1}
+  text: {x_stage_a: "Capital per worker k ($ thousand)", x_growth: "Capital per effective worker k ($ thousand)", "y": "Per worker ($ thousand a year)", invest: "investment s × f(k)", depreciation: "depreciation δ × k", break_even: "break-even (δ + n + g_A) × k", kstar: "k* = {value}", today: "today", path_x: "Years", path_stage_a: "Output (today = 100)", path_growth: "Output (old path = 100)"}
+  caption_stage_a: "Labour force and technology held fixed. Capital grows while investment exceeds depreciation and settles where they are equal (k*). The lower chart shows output over 100 years; dashed: the example economy. The axes stay fixed."
+  caption_growth: "Investment must cover depreciation, new workers and technological progress (break-even investment). The lower chart compares output with the path it would follow if capital per effective worker stayed at today's level (100); dashed: the example economy. The axes stay fixed."
+
+price_toggle:
+  data: P2
+  options: {current: "Each year's own prices (nominal)", base: "Year-1 prices (real)"}
+  legend: "Value both years at:"
+  window: {value: [0, 900]}
+  rows:
+    - {id: y1, label: "Output in year 1 ($ million)", digits: 0}
+    - {id: y2, label: "Output in year 2 ($ million)", digits: 0}
+    - {id: g, label: "Growth from year 1 to year 2 (%)", digits: 1}
+  text: {year: "Year {n}"}
+  caption: "Amounts in $ million. The change column compares with each year's own prices."
+
+circular_flow:
+  text: {legend_real: "Real flow (labour, goods)", legend_money: "Money flow", legend_policy: "Monetary policy", continue: "Continue: complete the cycle", arrow: "Arrow {id}: ", slot: "place a card here",
+         correct: "Correct. {from} → {to}: {card}.", wrong: "Not this one. Arrow {id} carries {noun} from {from} to {to}. Which activity fits that direction?",
+         noun_real: "real things (labour, goods)", noun_money: "money", noun_policy: "a policy decision",
+         done: "The cycle is complete. Every payment is matched by something real flowing the other way, and the central bank acts only through the banks.",
+         placed: "{n} of {m} arrows placed.", challenge: "Optional challenge: draw the cycle yourself", locked: "The drawing challenge unlocks after a completion without mistakes.", restart: "Start the exercise again",
+         from: "From", to: "To", activity: "Activity", choose: "Choose", draw: "Draw this arrow", drawn: "{n} of {m} flows drawn.", draw_missing: "Choose a start, an end and an activity first.",
+         draw_correct: "Correct. {from} → {to}: {card}.", draw_all: "You have drawn the whole cycle from memory.", draw_already: "You have already drawn this flow.",
+         draw_reverse: "Right activity, but the arrow points the wrong way. Who pays or provides, and who receives?", draw_unconnected: "This activity does not connect {from} and {to}.",
+         draw_unknown: "This activity is not part of the cycle.", aria: "The circular flow between the five actors"}
+
+timeline:
+  text: {next: "Next station ({n} of {m})", shown: "Station {n} of {m}"}

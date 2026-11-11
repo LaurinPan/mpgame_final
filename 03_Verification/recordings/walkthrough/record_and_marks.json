@@ -1,0 +1,187 @@
+{
+  "loss": [
+    {
+      "q": 1,
+      "player": 0.927678,
+      "bank": 0.927841,
+      "weight": 1
+    },
+    {
+      "q": 2,
+      "player": 0.584081,
+      "bank": 0.582611,
+      "weight": 0.997503
+    },
+    {
+      "q": 3,
+      "player": 0.226125,
+      "bank": 0.224957,
+      "weight": 0.995012
+    },
+    {
+      "q": 4,
+      "player": 0.056089,
+      "bank": 0.055778,
+      "weight": 0.992528
+    },
+    {
+      "q": 5,
+      "player": 0.009715,
+      "bank": 0.009518,
+      "weight": 0.99005
+    },
+    {
+      "q": 6,
+      "player": 0.084734,
+      "bank": 0.083713,
+      "weight": 0.987578
+    },
+    {
+      "q": 7,
+      "player": 0.069157,
+      "bank": 0.067668,
+      "weight": 0.985112
+    },
+    {
+      "q": 8,
+      "player": 0.027594,
+      "bank": 0.026716,
+      "weight": 0.982652
+    },
+    {
+      "q": 9,
+      "player": 0.006043,
+      "bank": 0.005851,
+      "weight": 0.980199
+    },
+    {
+      "q": 10,
+      "player": 0.000515,
+      "bank": 0.000525,
+      "weight": 0.977751
+    },
+    {
+      "q": 11,
+      "player": 0.000693,
+      "bank": 0.000606,
+      "weight": 0.97531
+    },
+    {
+      "q": 12,
+      "player": 0.002794,
+      "bank": 0.00253,
+      "weight": 0.972875
+    }
+  ],
+  "term": {
+    "player": 1.98933,
+    "bank": 1.982502,
+    "equivalent": {
+      "player": 0.409959,
+      "bank": 0.409255
+    }
+  },
+  "player_rates": [6.61, 6.74, 6.29, 5.76, 6.28, 6.37, 6.09, 5.72, 5.4, 5.18, 5.06, 5.04],
+  "bank_rates": [6.613921, 6.740468, 6.287356, 5.759763, 6.282314, 6.372507, 6.08694, 5.71167, 5.391347, 5.174083, 5.065533, 5.043516],
+  "costs": [
+    {
+      "q": 1,
+      "cost": 0.006742,
+      "kind": "immediate",
+      "bank_rate": 6.613921,
+      "player_rate": 6.61,
+      "weight": 1
+    },
+    {
+      "q": 2,
+      "cost": -0.009509,
+      "kind": "deferred",
+      "bank_rate": 6.73542,
+      "player_rate": 6.74,
+      "weight": 0.997503
+    },
+    {
+      "q": 3,
+      "cost": -0.006833,
+      "kind": "deferred",
+      "bank_rate": 6.283993,
+      "player_rate": 6.29,
+      "weight": 0.995012
+    },
+    {
+      "q": 4,
+      "cost": 0.000385,
+      "kind": "immediate",
+      "bank_rate": 5.76054,
+      "player_rate": 5.76,
+      "weight": 0.992528
+    },
+    {
+      "q": 5,
+      "cost": -0.197638,
+      "kind": "deferred",
+      "bank_rate": 6.191613,
+      "player_rate": 6.28,
+      "weight": 0.99005
+    },
+    {
+      "q": 6,
+      "cost": 0.000652,
+      "kind": "immediate",
+      "bank_rate": 6.377534,
+      "player_rate": 6.37,
+      "weight": 0.987578
+    },
+    {
+      "q": 7,
+      "cost": -0.000056,
+      "kind": "immediate",
+      "bank_rate": 6.093325,
+      "player_rate": 6.09,
+      "weight": 0.985112
+    },
+    {
+      "q": 8,
+      "cost": 0.000295,
+      "kind": "deferred",
+      "bank_rate": 5.716335,
+      "player_rate": 5.72,
+      "weight": 0.982652
+    },
+    {
+      "q": 9,
+      "cost": 0.000281,
+      "kind": "deferred",
+      "bank_rate": 5.395771,
+      "player_rate": 5.4,
+      "weight": 0.980199
+    },
+    {
+      "q": 10,
+      "cost": -0.00029,
+      "kind": "deferred",
+      "bank_rate": 5.185805,
+      "player_rate": 5.18,
+      "weight": 0.977751
+    },
+    {
+      "q": 11,
+      "cost": -0.00036,
+      "kind": "deferred",
+      "bank_rate": 5.092079,
+      "player_rate": 5.06,
+      "weight": 0.97531
+    },
+    {
+      "q": 12,
+      "cost": 0.001877,
+      "kind": "immediate",
+      "bank_rate": 5.05421,
+      "player_rate": 5.04,
+      "weight": 0.972875
+    }
+  ],
+  "marks": [],
+  "guided": null,
+  "covers": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+}

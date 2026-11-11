@@ -1,0 +1,25 @@
+{
+  "pieces": "claude-sonnet-5-5",
+  "chat": "claude-sonnet-5-5",
+  "debrief": "claude-sonnet-5-5",
+  "comparison": "claude-haiku-5-5",
+  "thinking_off": "claude-haiku-5-5",
+  "effort": {
+    "pieces": "low",
+    "chat": "low",
+    "debrief": "high"
+  },
+  "max_tokens": {
+    "pieces": 4000,
+    "chat": 3000,
+    "debrief": 16000
+  },
+  "endpoint": "https://api.anthropic.com/v1/messages",
+  "api_version": "2026-10-21",
+  "retries": 1,
+  "timeout_seconds": {
+    "pieces": 60,
+    "chat": 60,
+    "debrief": 120
+  }
+}

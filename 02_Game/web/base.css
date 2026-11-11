@@ -1,0 +1,16 @@
+/* the shell's tokens and shared rules: read by game.css, game-phase3.css and theory.css. */
+:root{--ink:#1B2433;--muted:#5A6475;--paper:#F4F6F9;--surface:#FFFFFF;--rule:#D6DBE3;
+--action:#1F4E8C;--ok:#13866F;--no:#B3261E;--real:#C4522A;--money:#13866F;--policy:#5B4FC4}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.6 'Public Sans',system-ui,sans-serif}
+.btn-main{background:var(--action);color:#fff;border:0;border-radius:6px;padding:9px 18px;font:500 15px 'Public Sans',sans-serif;cursor:pointer}
+.btn-main:hover{filter:brightness(1.1)}
+.btn-main:focus,.btn-main:active,.btn-main:active:focus{background:var(--action);color:#fff;outline:none}
+.btn-quiet{background:none;border:1px solid var(--rule);border-radius:6px;padding:8px 16px;font:15px 'Public Sans',sans-serif;cursor:pointer;color:var(--ink)}
+button:focus-visible{outline:3px solid #7FA7E0;outline-offset:2px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+/* the preview's line above a page (docs/preview only) */
+.preview-note{background:#1B2433;color:#F4F6F9;font:13px/1.4 'Public Sans',sans-serif;padding:6px 16px;position:sticky;top:0;z-index:200}
+.preview-note .preview-index{color:#C9D0DB;text-decoration:none;margin-right:12px}
+body.is-game #game{display:block}
+.preview-note ~ #game .paper-overlay{top:30px}

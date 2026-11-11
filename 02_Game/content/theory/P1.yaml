@@ -1,0 +1,683 @@
+# 02_Game/content/theory/P1.yaml — chapter 1 of the theory section, "Macroeconomics, actors and models" (scripts appendix §14),
+# its texts written as the scripts appendix §8 asks (the glossary's terms and explanations, "government spending", "the rate
+# the economy needs", no mention of a game). Read by 02_Game/ui/theory.R.
+#   chapter  id, title, the learning objectives
+#   cards    the term cards: term, core (the explanation; the glossary's own, lower case, where `glossary: true`), example,
+#            aliases, see_also (a preview card's full card), box (false: never shown as a box), step (where the text defines it)
+#   topics   id, title, objectives, steps: id, sources ({key, loc} into references.yaml), text (Markdown: [label](term:P4:id)
+#            marks a term, [label](theory:P2-s1d) links a chapter, topic or step), details (a More Detail panel), module (one of
+#            the ten modules of modules.yaml with this step's controls and view), figure (a static figure drawn from economy.yaml)
+
+chapter:
+  id: P1
+  title: "Macroeconomics, actors and models"
+  objectives:
+    LO1: "Explain what an economic model is, including exogenous and endogenous variables, ceteris paribus and the distinction between positive and normative statements."
+    LO2: "Distinguish macroeconomics from microeconomics and name the central variables of macroeconomics."
+    LO3: "Describe the five actors of the economy and how they are connected in the circular flow."
+    LO4: "Outline how macroeconomic thought developed from Adam Smith to micro-founded macroeconomics, against the background of economic history."
+    LO5: "Describe the assumptions, policy views and values of the main schools of macroeconomic thought and the lens of these chapters."
+
+cards:
+  model: {term: "Economic model", core: "A simplified representation of the economy, built from assumptions, that isolates the relationships relevant to a question.", aliases: [models], box: false, step: s1a}
+  exogenous: {term: "Exogenous variable", core: "A quantity that a model takes as given instead of explaining it; the model then shows what follows from it.", example: "In the model of the goods market, government spending is exogenous: parliament decides it, not the model.", aliases: [exogenous], step: s1b}
+  endogenous: {term: "Endogenous variable", core: "A quantity that a model explains: its value results from how the parts of the model work together.", example: "In the model of the goods market, output is endogenous: it follows from what households, firms and the government spend.", aliases: [endogenous], step: s1b}
+  ceteris_paribus: {term: "Ceteris paribus", core: "Latin for 'other things being equal'. A model changes one thing at a time and keeps everything else fixed, so that the effect of that one change can be seen.", example: "If the price of bread rises, people buy less bread, ceteris paribus: incomes and other prices are held fixed.", step: s1c}
+  positive_normative: {term: "Positive vs normative", core: "Positive statements say how the economy works and can be checked against facts; normative statements say what should be done and rest on values.", example: "'Lower interest rates raise investment' is positive; 'the central bank should lower rates' is normative.", aliases: ["positive statements", "normative statements"], step: s1c}
+  microeconomics: {term: "Microeconomics", core: "The part of economics that studies single households, firms and markets: how they decide, and how prices form.", example: "Why the bakery charges $1.10 for a loaf is a question of microeconomics.", step: s2a}
+  macroeconomics: {term: "Macroeconomics", core: "The part of economics that studies the economy as a whole: total output, the price level, unemployment and interest rates.", example: "Why the whole economy produces $900 million a year, and why that changes, is a question of macroeconomics.", step: s2a}
+  aggregate: {term: "Aggregate", core: "A total for the whole economy, obtained by adding up the figures of all households, firms or markets.", example: "Consumption of $500 million is an aggregate: the spending of all households together.", step: s2a}
+  output_GDP: {term: "Output", core: "everything the economy produces in a quarter or a year", see_also: "P2:GDP_definition", glossary: true, step: s2b}
+  inflation: {term: "Inflation", core: "how fast prices rise, in percent a year", see_also: "P4:inflation_rate", glossary: true, step: s2b}
+  unemployment: {term: "Unemployment rate", core: "the share of people who want to work but have no job", example: "If 100 people work or look for work, and 5 of them look in vain, the rate is 5%.", see_also: "P5:unemployment_rate", glossary: true, step: s2b}
+  policy_rate: {term: "Policy rate", core: "the short-term interest rate the central bank sets each quarter", example: "When the central bank raises it, loans for houses and machines become dearer.", see_also: "P4:policy_rate", glossary: true, step: s2b}
+  households: {term: "Households", core: "Supply labour and capital, consume and save.", box: false, step: s3a}
+  firms: {term: "Firms", core: "Combine labour and capital to produce goods and services, invest and set prices.", box: false, step: s3a}
+  banks: {term: "Commercial banks", core: "Take deposits and grant loans, channelling savings to borrowers.", aliases: [banks], box: false, step: s3a}
+  government: {term: "Government", core: "Buys goods and services, pays transfers, levies taxes and can borrow.", box: false, step: s3a}
+  central_bank: {term: "Central bank", core: "the institution that sets the policy rate to keep prices stable", glossary: true, step: s3a}
+  closed_economy: {term: "Closed economy", core: "An economy that does not trade with other countries: everything produced at home is bought at home, and nothing is imported. These chapters assume a closed economy throughout.", example: "All the bread and machines of the example economy are made and bought within the country.", step: s3a}
+  circular_flow: {term: "Circular flow", core: "The picture of the economy as a cycle: households earn their incomes from firms, spend them on firms' products, and the money returns to households as income again.", example: "A household's wage pays for bread; the bakery's sales pay the baker's wage.", step: s3b}
+  industrial_revolution: {term: "Industrial Revolution", core: "The transition to mechanised, factory-based production that began in Britain around 1760 and started persistent growth of output per person.", box: false, step: s4a}
+  classical_economics: {term: "Classical economics", core: "The economics of Adam Smith, David Ricardo and their successors, from about 1776 to 1870: markets coordinate the economy, and prices and wages adjust so that resources are used.", example: "In the classical view, a lasting lack of demand for all goods cannot occur.", step: s5c}
+  lucas_critique: {term: "Lucas critique", core: "Robert Lucas's argument of 1976: relations estimated from past data change when policy changes, because people adjust their expectations and behaviour to the new policy.", example: "If the central bank starts to fight inflation harder, people expect less inflation, and old forecasting equations stop working.", step: s4b}
+  new_synthesis: {term: "New synthesis", core: "The common framework of most macroeconomists today: in the short run demand drives output because prices adjust slowly, over longer periods supply decides, and expectations matter throughout.", example: "Most central banks set interest rates with models built on this framework.", step: s5c}
+  school_of_thought: {term: "School of thought", core: "A tradition of economists sharing answers to the basic questions of adjustment, stability, expectations, policy and values.", box: false, step: s5a}
+  classical_school: {term: "Classical and neoclassical school", core: "The school that trusts flexible prices and wages to keep markets in balance, so that the economy returns to full use of its resources on its own and needs little stabilisation.", example: "In its view, a fall in demand mainly lowers prices, not output.", aliases: ["classical and neoclassical"], step: s5b}
+  keynesian_school: {term: "Keynesian school", core: "The school founded on Keynes: total demand can stay too low for a long time, leaving people unemployed, and government and central bank should then support demand.", example: "In a recession, it argues for more government spending and lower interest rates.", step: s5b}
+  monetarism: {term: "Monetarism", core: "The school around Milton Friedman: the private economy is stable on its own, inflation comes from too much money, and policy should follow steady rules rather than react to every change.", example: "Its best-known rule: let the money stock grow by the same few percent every year.", aliases: [monetarist], step: s5b}
+  new_classical: {term: "New classical school", core: "The school that combines rational expectations with markets that clear quickly; it explains fluctuations as reactions to shocks and doubts that systematic policy can raise output.", example: "In its real-business-cycle models, a recession is a response to a fall in productivity, not a lack of demand.", aliases: ["new classical and real business cycle", "new classical"], step: s5b}
+  new_keynesian: {term: "New Keynesian school", core: "The school that combines forward-looking behaviour with prices and wages that adjust slowly, so that monetary policy affects output in the short run. Most central bank models follow it.", example: "A firm keeps its price for months; when demand falls, it sells less instead of cutting the price at once.", aliases: ["new Keynesian"], step: s5b}
+  post_keynesian: {term: "Post-Keynesian school", core: "The school that stresses deep uncertainty about the future, unstable finance and inequality, and argues for active and lasting policy intervention.", example: "It sees financial crises as built into the system, not as rare accidents.", aliases: ["post-Keynesian"], step: s5b}
+  austrian_school: {term: "Austrian school", core: "The school that sees markets as processes of discovery and argues that cheap credit leads to bad investments, booms and busts; it is sceptical of active policy.", example: "In its view, interest rates kept too low make firms start projects that later fail.", aliases: [Austrian], step: s5b}
+  textbook_lens: {term: "The lens of these chapters", core: "The new synthesis: short run demand, medium run natural level, long run growth, expectations matter.", box: false, step: s5c}
+  comparative_statics: {term: "Comparative statics", core: "Comparing a model's outcome before and after one given quantity changes, without tracing the path in between.", example: "Government spending rises by $10 million: output was $900 million before and is $925 million after.", step: s1c}
+  real_flow: {term: "Real flow", core: "A flow of goods, services or work between the actors of the economy, as opposed to the money paid for them.", example: "The bread delivered to households is a real flow; the $500 million they pay for it is a money flow.", aliases: ["real flows"], step: s3b}
+  money_flow: {term: "Money flow", core: "A flow of money in the circular flow, paid for goods, services, labour or as taxes.", aliases: ["money flows"], box: false, step: s3b}
+  productivity_shock: {term: "Productivity shock", core: "a change in how much firms can produce with the same work", aliases: ["productivity shocks"], glossary: true, step: s4b}
+
+topics:
+
+  - id: s1
+    title: "Economic models"
+    objectives: [LO1]
+    steps:
+      - id: s1a
+        sources:
+          - {key: legge_2023, loc: "1.3"}
+          - {key: mankiw_2025, loc: "ch. 1"}
+          - {key: blanchard_illing_2021, loc: "ch. 1"}
+        text: |
+          ### Why economists use models
+
+          Economists face a difficulty that natural scientists rarely face in the same form: they cannot run controlled
+          experiments with a whole economy. They cannot raise interest rates in one half of a country and leave the
+          other half unchanged to see what happens. Instead, they reason with **[models](term:P1:model)**. An economic
+          model is a simplified representation of the economy, built from explicit **assumptions**, that isolates the
+          relationships relevant to a particular question. Models are usually written as equations or drawn as diagrams,
+          and their conclusions follow logically from their assumptions.
+
+          The best analogy is a map. A road map leaves out almost everything, trees, houses and people, and that is
+          exactly what makes it useful for finding a route. A map that showed everything would be as large and as
+          confusing as the landscape itself. In the same way, a model of the interest rate leaves out most of what
+          happens in an economy in order to show clearly how the interest rate affects spending. Different questions
+          need different maps: a model of the next few quarters and a model of the next fifty years rest on different
+          simplifications.
+
+          A model is therefore judged not by whether it is "true" in every detail, which no model is, but by whether it
+          is **useful** for its question: whether its assumptions capture what matters for that question and whether its
+          predictions hold up against the data.
+        details:
+          title: "Must the assumptions of a model be realistic?"
+          sources:
+            - {key: friedman_1953}
+            - {key: lucas_1976}
+            - {key: blanchard_2018}
+          text: |
+            How realistic assumptions must be is one of the oldest debates in economic methodology. Milton Friedman (1953)
+            argued in an influential essay that a theory should be judged by the accuracy of its predictions, not by the
+            realism of its assumptions: an expert billiard player shoots as if he solved the equations of mechanics,
+            although he has never learned them, and a theory that assumes he does may predict his shots very well. Critics
+            answered that assumptions matter when we want to understand causes rather than only to forecast, and when a
+            model is used for policy under conditions different from those in which it was tested.
+
+            Robert Lucas (1976) sharpened the second point. If a model describes how people behaved under an old policy,
+            and people change their behaviour when the policy changes, the model's predictions for a new policy can be
+            wrong, however well it fitted past data. This is one reason why modern macroeconomic models derive behaviour
+            from explicit assumptions about how households and firms make decisions. Today many economists take a
+            pragmatic position: different models serve different purposes, from small "toy" models that make one mechanism
+            transparent to large models used for forecasting (Blanchard, 2018). These chapters follow that view: each
+            topic uses a small model that makes one mechanism transparent.
+      - id: s1b
+        sources:
+          - {key: legge_2023, loc: "1.3"}
+          - {key: mankiw_2025, loc: "ch. 1"}
+        text: |
+          ### Exogenous and endogenous variables
+
+          Every model divides its variables into two groups. **[Exogenous variables](term:P1:exogenous)** are taken as
+          given: the model does not explain them, but they are its input. **[Endogenous variables](term:P1:endogenous)**
+          are the variables the model explains: they are its output, determined by the exogenous variables and the
+          relationships the model assumes.
+
+          Consider a small model of household spending. It might assume that households spend a fixed share of their
+          income after taxes. In this model, the tax rate set by parliament and the households' income are exogenous,
+          while spending is endogenous. Whether a variable is exogenous is a decision of the model builder, not a fact
+          about the world. In a larger model of the whole economy, income is no longer given: it depends on how much
+          everybody spends, and it becomes endogenous. [Chapter 3](theory:P3-s3) builds exactly such a model.
+      - id: s1c
+        sources:
+          - {key: legge_2023, loc: "1.3–1.4"}
+          - {key: mankiw_2025, loc: "ch. 1"}
+        text: |
+          ### Ceteris paribus, and positive versus normative statements
+
+          To study how an endogenous variable depends on an exogenous one, economists change one exogenous variable and
+          hold all others fixed. This is the **[ceteris paribus](term:P1:ceteris_paribus)** assumption, Latin for "all
+          else being equal". In the real economy many things change at once, so data rarely show such a clean effect
+          directly; the model makes the thought experiment possible, and comparing its predictions with the data shows
+          how far it can be trusted. Comparing the outcome of a model before and after such a change is called
+          **[comparative statics](term:P1:comparative_statics)**.
+
+          Finally, economists distinguish two kinds of statements. **[Positive statements](term:P1:positive_normative)**
+          describe how the economy works and can in principle be checked against evidence: "a higher interest rate
+          reduces [investment](term:P2:investment)". **Normative statements** say how things ought to be and rest on
+          value judgements: "the [central bank](term:P1:central_bank) should give more weight to unemployment than to
+          [inflation](term:P1:inflation)". Models answer positive questions. They can inform normative debates by
+          showing the consequences of each choice, but they cannot settle them. Many disagreements between schools of
+          thought, which [the last topic of this chapter](theory:P1-s5) describes, combine both kinds of difference.
+
+  - id: s2
+    title: "Microeconomics and macroeconomics"
+    objectives: [LO2]
+    steps:
+      - id: s2a
+        sources:
+          - {key: legge_2023, loc: "1.1"}
+          - {key: blanchard_illing_2021, loc: "ch. 1"}
+          - {key: mankiw_2025, loc: "ch. 1"}
+        text: |
+          ### Two levels of analysis
+
+          Economics studies how societies use scarce resources. It is traditionally divided into two fields.
+          **[Microeconomics](term:P1:microeconomics)** studies how individual households and firms make decisions and
+          how they interact in particular markets: how a household divides its income between goods, how a firm sets its
+          price, how the market for apartments determines rents. **[Macroeconomics](term:P1:macroeconomics)** studies
+          the economy as a whole. It asks why total production grows faster in some decades than in others, why it
+          sometimes falls in [recessions](term:P2:recession), why the general level of prices rises, and why many people
+          are unemployed in some years and few in others.
+
+          Macroeconomics works with **[aggregates](term:P1:aggregate)**: totals and averages over the whole economy,
+          such as total production, the average level of prices or the number of unemployed. An aggregate is the result
+          of millions of individual decisions, which is why the two fields are closely connected. Modern macroeconomic
+          models are built on assumptions about how households and firms decide; this "microfoundation" is itself a
+          result of the history of the field.
+        details:
+          title: "When the whole behaves differently from its parts: the paradox of thrift"
+          sources:
+            - {key: keynes_1936}
+            - {key: blanchard_illing_2021, loc: "3.4"}
+          text: |
+            [Macroeconomics](term:P1:macroeconomics) is not simply [microeconomics](term:P1:microeconomics) added up,
+            because what is true for one decision-maker need not be true for all of them together. Logicians call the
+            mistake of assuming otherwise the fallacy of composition. The best-known example in macroeconomics is the
+            paradox of thrift, popularised by Keynes (1936). If one household decides to save more, it spends less, and
+            its wealth rises. If all households decide to save more at the same time, total spending falls. Firms sell
+            less and produce less, and income falls. Because saving depends on income, households may end up saving no
+            more than before, while the economy is poorer. Whether the paradox arises depends on whether the extra saving
+            is turned into extra [investment](term:P2:investment), which in turn depends on interest rates and on firms'
+            expectations. The example shows why macroeconomics needs models of the whole economy in which the interactions
+            between actors are explicit; [chapter 3](theory:P3-s4c) derives the paradox formally (Blanchard & Illing,
+            2021, ch. 3).
+      - id: s2b
+        sources:
+          - {key: blanchard_illing_2021, loc: "ch. 2"}
+          - {key: legge_2023, loc: "1.1"}
+          - {key: mankiw_2025, loc: "ch. 1–2"}
+          - {key: snb_nd, loc: "monetary policy strategy"}
+        text: |
+          ### The central variables of macroeconomics
+
+          Macroeconomics is organised around three central variables, each the subject of a later chapter.
+
+          **[Output](term:P1:output_GDP)**, measured by [gross domestic product](term:P2:GDP_definition) (GDP), is the
+          total value of the goods and services an economy produces in a period. Its growth over decades determines
+          living standards; its fluctuations from year to year are the [business cycle](term:P2:business_cycle)
+          ([chapter 2](theory:P2)).
+
+          **[Inflation](term:P1:inflation)**, how fast prices rise, in percent a year, is usually measured as the
+          percentage change of a [consumer price index](term:P4:consumer_price_index) over a year. The Swiss National
+          Bank, for example, defines price stability as consumer-price inflation of less than 2% per year ([chapter
+          4](theory:P4-s5c)).
+
+          The **[unemployment rate](term:P1:unemployment)** is the share of the [labour force](term:P5:labour_force),
+          the people who work or are looking for work, who are without a job and looking for one ([chapter
+          5](theory:P5-s1b)).
+
+          A fourth number is central to monetary policy: the **[policy rate](term:P1:policy_rate)**, the short-term
+          interest rate the [central bank](term:P1:central_bank) sets each quarter. Unlike the other three, it is not an
+          outcome but a decision, and it is the instrument through which monetary policy influences the other variables.
+          Most reports on the economy concern one of these four numbers.
+
+  - id: s3
+    title: "The circular flow of the economy"
+    objectives: [LO3]
+    steps:
+      - id: s3a
+        sources:
+          - {key: legge_2023, loc: "1.2"}
+          - {key: mankiw_2025, loc: "ch. 2"}
+          - {key: blanchard_illing_2021, loc: "ch. 3 and App. A"}
+          - {key: mankiw_2025, loc: "ch. 20"}
+          - {key: swiss_constitution_1999, loc: "art. 99"}
+          - {key: snb_nd}
+        text: |
+          ### The actors
+
+          An economy consists of millions of decision-makers. To keep the picture manageable,
+          [macroeconomics](term:P1:macroeconomics) groups them into a few types of **actors** that play similar roles.
+          These chapters use five.
+
+          **[Households](term:P1:households)** own the economy's factors of production: they supply their labour to
+          firms and, directly or through banks and pension funds, their savings as capital. With the income they earn
+          they buy goods and services, which economists call [consumption](term:P2:consumption), and the part of income
+          they do not consume is saving.
+
+          **[Firms](term:P1:firms)** combine labour and capital to produce goods and services. They decide how much to
+          produce, how many workers to hire, at what price to sell and whether to buy new machines and buildings, which
+          economists call [investment](term:P2:investment).
+
+          **[Commercial banks](term:P1:banks)** are financial intermediaries. They accept deposits from savers and grant
+          loans to households and firms, thereby channelling savings to those who want to borrow. In doing so they
+          transform short-term deposits into longer-term loans, and when they grant a loan they create new deposits, a
+          point [chapter 4](theory:P4-s3b) returns to.
+
+          The **[government](term:P1:government)** buys goods and services, such as roads, schools and the work of its
+          employees, pays transfers such as pensions, and finances this through taxes and, if it spends more than it
+          collects, through borrowing. Its decisions on spending and taxes are called fiscal policy.
+
+          The **[central bank](term:P1:central_bank)** has the monopoly on issuing the economy's base
+          [money](term:P4:money). It sets the [policy rate](term:P1:policy_rate) at which banks can obtain [central bank
+          money](term:P4:central_bank_money) and is responsible for price stability. In Switzerland this is the Swiss
+          National Bank (SNB), which conducts monetary policy independently of the government.
+
+          Real economies contain further actors, most importantly the rest of the world. These chapters study a
+          **[closed economy](term:P1:closed_economy)**, without trade with other countries, so that the interactions at
+          home remain visible. The price of this choice is that exchange rates, which matter greatly for a small open
+          economy such as Switzerland, are left out.
+      - id: s3b
+        sources:
+          - {key: legge_2023, loc: "1.5.1"}
+          - {key: mankiw_2025, loc: "ch. 2"}
+          - {key: blanchard_illing_2021, loc: "App. A"}
+        text: |
+          ### The circular flow
+
+          The actors are connected through their transactions: what one actor pays, another receives. Economists
+          represent this as the **[circular flow](term:P1:circular_flow)** of the economy. It contains two kinds of
+          flows running in opposite directions. **[Real flows](term:P1:real_flow)** are flows of labour, goods and
+          services; **[money flows](term:P1:money_flow)** are the payments made for them. Households provide labour to
+          firms and receive wages; firms supply goods and services to households and receive their spending. Savings
+          flow through the banks to firms that invest; taxes flow to the government, which buys goods and pays
+          transfers; and the central bank acts on the whole system through the banks.
+
+          The circular flow makes one fundamental fact visible: every payment in the economy is at the same time
+          someone's income. Total spending on the goods and services produced therefore equals the total income earned
+          in producing them. [Chapter 2](theory:P2-s1) turns this fact into the measurement of
+          [GDP](term:P2:GDP_definition). Build the cycle yourself below.
+        details:
+          title: "From Quesnay's Tableau to Phillips's water machine"
+          sources:
+            - {key: quesnay_1758}
+            - {key: screpanti_zamagni_2005, loc: "the Physiocrats"}
+            - {key: mankiw_2025, loc: "ch. 2"}
+            - {key: legge_2023, loc: "1.5.1"}
+            - {key: phillips_1950}
+            - {key: bollard_2016}
+            - {key: cambridge_econ_nd}
+          text: |
+            The idea of the economy as a circulation is older than [macroeconomics](term:P1:macroeconomics). In 1758
+            François Quesnay, physician at the French court, published the *Tableau économique*, a zigzag diagram showing
+            how the product of agriculture circulates between farmers, landowners and artisans and returns to agriculture
+            as spending. Historians of economic thought read the Tableau as a physician's analogy: [money](term:P4:money)
+            circulates through the economy as blood circulates through the body. The modern textbook version, with
+            households and firms exchanging factor services for income and goods for spending, was popularised in the
+            twentieth century and is the starting point of national accounting (Mankiw, 2025, ch. 2; Legge, 2023, ch.
+            1.5.1).
+
+            In 1949 the engineer-turned-economist Bill Phillips, later known for the [Phillips
+            curve](term:P5:phillips_curve) that [chapter 5](theory:P5-s7a) discusses, built the [circular
+            flow](term:P1:circular_flow) as a machine: the MONIAC, a system of tanks, pipes and valves in which coloured
+            water represented money flowing through the British economy. Opening a valve for taxes or saving drained water
+            from the flow of spending; the machine computed the new equilibrium hydraulically. Several copies were built
+            for universities and [central banks](term:P1:central_bank), and one is still exhibited at the Science Museum
+            in London.
+
+            The diagram below follows the textbook version and adds banks and the central bank as separate actors, because
+            they are central to monetary policy. It leaves out trade, government borrowing, purchases between firms and
+            the central bank's profits.
+        module: {kind: circular_flow}
+    circular_flow:   # the module of step s3b: the actors, the flows with their arrows' geometry, the stages
+      intro: |
+        The five actors are connected. What one actor pays, another receives. Economists draw this as a cycle, the
+        "circular flow" of the economy. Solid arrows show money. Dashed arrows show real things: working hours, goods
+        and services. One arrow stands for monetary policy.
+      actors: {firms: "Firms", households: "Households", central_bank: "Central bank", banks: "Commercial banks", government: "Government"}
+      flow_types: {real: "Real flow (labour, goods)", money: "Money flow", policy: "Monetary policy"}
+      nodes:       # x, y, width, height on a canvas of 680 x 500
+        firms: [40, 40, 120, 340]
+        households: [520, 40, 120, 340]
+        central_bank: [270, 100, 140, 44]
+        banks: [270, 220, 140, 44]
+        government: [270, 435, 140, 44]
+      flows:
+        - {id: 1, from: households, to: firms, type: real, card: "Provide working hours (labour)", path: "M518 60 L164 60", badge: [230, 60]}
+        - {id: 2, from: firms, to: households, type: money, card: "Pay wages", path: "M162 80 L516 80", badge: [450, 80]}
+        - {id: 3, from: firms, to: households, type: real, card: "Supply goods and services", path: "M162 310 L516 310", badge: [230, 310]}
+        - {id: 4, from: households, to: firms, type: money, card: "Pay for goods and services (consumption)", path: "M518 334 L164 334", badge: [450, 334]}
+        - {id: 5, from: households, to: banks, type: money, card: "Deposit savings", path: "M518 232 L414 232", badge: [466, 232]}
+        - {id: 6, from: banks, to: households, type: money, card: "Pay interest on deposits", path: "M412 254 L516 254", badge: [466, 254]}
+        - {id: 7, from: banks, to: firms, type: money, card: "Grant loans for investment", path: "M268 254 L164 254", badge: [214, 254]}
+        - {id: 8, from: firms, to: banks, type: money, card: "Repay loans with interest", path: "M162 232 L266 232", badge: [214, 232]}
+        - {id: 9, from: households, to: government, type: money, card: "Pay taxes", path: "M610 382 L610 470 L414 470", badge: [610, 420]}
+        - {id: 10, from: government, to: households, type: money, card: "Pay pensions and other transfers", path: "M412 446 L570 446 L570 384", badge: [500, 446]}
+        - {id: 11, from: firms, to: government, type: money, card: "Pay taxes", path: "M70 382 L70 470 L266 470", badge: [70, 420]}
+        - {id: 12, from: government, to: firms, type: money, card: "Buy goods and services (for example roads, schools)", path: "M268 446 L110 446 L110 384", badge: [190, 446]}
+        - {id: 13, from: central_bank, to: banks, type: policy, card: "Set the policy rate and supply central bank money", path: "M340 146 L340 216", badge: [340, 180]}
+      stages:
+        worked_example: {show: [1, 2, 3, 4], text: "Households provide labour and receive wages; firms supply goods and receive spending. Money flows one way, real things the other."}
+        completion: {show: [5, 6, 7, 8, 9, 10, 11, 12, 13], task: "Drag each card onto the arrow it belongs to, or click a card and then an arrow."}
+        draw_challenge: {task: "Arrows are hidden. Draw each flow between two actors, then attach its card."}
+      simplifications:
+        - "Closed economy: no trade with other countries."
+        - "Government borrowing, mortgages and firms' purchases of machines from other firms are left out."
+        - "Central bank profits paid to the government are left out."
+      sources:
+        - {key: legge_2023, loc: "1.5.1"}
+        - {key: mankiw_2025, loc: "ch. 2"}
+        - {key: blanchard_illing_2021, loc: "App. A"}
+
+  - id: s4
+    title: "History of macroeconomics"
+    objectives: [LO4]
+    steps:
+      - id: s4a
+        sources:
+          - {key: neal_cameron_2016}
+          - {key: screpanti_zamagni_2005}
+          - {key: devroey_2016}
+          - {key: blanchard_illing_2021, loc: "ch. 24"}
+          - {key: blanchard_2000, loc: "n. 3 (the word appears in the 1940s)"}
+        text: |
+          ### A young field with old questions
+
+          The questions of [macroeconomics](term:P1:macroeconomics) are old: why some nations are rich and others poor,
+          why prices rise, why there are years of plenty and years of want. Macroeconomics as a separate field is young.
+          For most of human history, [output](term:P1:output_GDP) per person hardly grew: whenever harvests and
+          techniques improved, population rose and living standards returned to roughly their earlier level. Only with
+          the **[Industrial Revolution](term:P1:industrial_revolution)**, which began in Britain in the second half of
+          the eighteenth century, did output per person start to grow persistently, and economies began to experience
+          the regular booms and slumps that we now call the [business cycle](term:P2:business_cycle).
+
+          Economic thought followed these changes. The classical economists of the late eighteenth and early nineteenth
+          centuries, beginning with Adam Smith, asked what makes a nation's wealth grow. The Great Depression of the
+          1930s forced economists to explain mass unemployment, and the word "macroeconomics" came into use in the
+          following decade. The [inflation](term:P1:inflation) of the 1970s, the financial crisis of 2008 and the recent
+          surge in inflation each changed the field again. At each station below, a puzzle challenged the existing ideas
+          and a new answer shaped the tools that the later chapters use.
+        details:
+          title: "From the heavy plough to the assembly line: the economic background"
+          sources:
+            - {key: neal_cameron_2016}
+            - {key: gordon_2016}
+            - {key: henry_ford_nd, loc: "Ford methods and the Ford shops; Assembly line"}
+            - {key: henry_ford_nd, loc: "Henry Ford: $5 Day (collection set)"}
+          text: |
+            Economic historians describe the [long run](term:P3:long_run) before 1800 as an age of slow, reversible
+            progress. In medieval Europe, the heavy wheeled plough, which could turn the dense, wet soils of the north,
+            and the three-field rotation, which left only a third instead of half of the land fallow, raised agricultural
+            output considerably between roughly the tenth and the thirteenth centuries. Population grew with it, towns and
+            long-distance trade revived, and a commercial economy of merchants, fairs and credit instruments developed in
+            Italy and the Low Countries. Yet these gains were absorbed by a growing population; plague, famine and war
+            repeatedly set [output](term:P1:output_GDP) back (Neal & Cameron, 2016).
+
+            The Industrial Revolution broke this pattern. In Britain from about 1760, mechanised spinning and weaving
+            moved textile production into factories, and James Watt's improvements to the steam engine, patented in 1769,
+            made power available wherever coal could be brought. The railways carried this change across the economy.
+            After the Stockton and Darlington Railway of 1825 and the Liverpool and Manchester Railway of 1830, rail
+            networks spread across Britain, continental Europe and North America within a few decades. They cut transport
+            costs dramatically, joined regional markets into national ones and created an enormous demand for iron, coal
+            and capital, which in turn drove the development of banks and stock markets.
+
+            A second wave of inventions followed from the 1870s: electricity, the internal combustion engine, chemicals,
+            the telephone and running water. Gordon (2016) argues that these "great inventions" transformed daily life
+            more deeply between 1870 and 1970 than any later innovation. Henry Ford's moving assembly line, introduced at
+            his Highland Park plant in 1913, is the emblem of this era. It cut the time needed to assemble a Model T from
+            more than twelve hours to about an hour and a half, and the car's price fell so far that the workers who built
+            it could buy it. In 1914 Ford doubled pay to five dollars a day to reduce staff turnover. Mass production
+            required mass [consumption](term:P2:consumption), and the economy's total spending began to matter as never
+            before. When that spending collapsed after 1929, the question of what determines total demand became the
+            founding question of [macroeconomics](term:P1:macroeconomics).
+      - id: s4b
+        sources:
+          - {key: devroey_2016}
+          - {key: snowdon_vane_2005}
+        text: |
+          ### Stations of macroeconomic thought
+
+          The stations below follow the development of macroeconomic thought from Adam Smith to the micro-founded models
+          used by [central banks](term:P1:central_bank) today. Reveal them one at a time. The sequence is a
+          simplification: many new ideas grew out of debates among economists, not only out of crises.
+        module: {kind: timeline}
+      - id: s4c
+        sources:
+          - {key: woodford_2009}
+          - {key: goodfriend_king_1997}
+          - {key: blanchard_2000}
+          - {key: blanchard_illing_2021, loc: "ch. 24"}
+        text: |
+          ### Where macroeconomics stands today
+
+          The history leaves a clear legacy. Today's mainstream models are **micro-founded**: they derive the behaviour
+          of the economy from the decisions of households and firms, who form expectations about the future. They
+          combine the classical view that the economy tends towards a natural level in the [long run](term:P3:long_run)
+          with the Keynesian view that demand drives output in the [short run](term:P3:short_run) because prices and
+          wages adjust slowly, the core of [new Keynesian](term:P1:new_keynesian) economics. The debates that produced
+          this synthesis are not over, and economists still disagree on important questions. The next topic describes
+          the main schools of thought and what divides them.
+    stations:        # the timeline of step s4b
+      - id: t1
+        sources:
+          - {key: smith_1776, loc: "Book IV, ch. 2"}
+          - {key: keynes_1936, loc: "ch. 2, p. 18"}
+          - {key: screpanti_zamagni_2005}
+        period: "1776 to the 1860s"
+        title: "Classical political economy"
+        puzzle: "What makes the wealth of a nation grow?"
+        idea: |
+          In *The Wealth of Nations* (1776), Adam Smith argued that wealth grows through the division of labour, which
+          is limited by the extent of the market, and through the accumulation of capital. Self-interested individuals,
+          coordinated by competitive markets, are "led by an invisible hand" to promote the common good. David Ricardo
+          and Thomas Malthus studied how income is distributed between wages, profits and rents. Jean-Baptiste Say held
+          that production creates the income needed to buy what is produced, so that a general lack of demand is
+          impossible; Keynes later summarised this view as "supply creates its own demand". Money, in the tradition of
+          David Hume, mattered for prices but not, in the long run, for production.
+        figures: ["Adam Smith", "David Ricardo", "Thomas Malthus", "Jean-Baptiste Say", "David Hume"]
+        lesson: "The long-run questions of growth and of money and prices return in [chapter 4](theory:P4-s5) and [chapter 6](theory:P6-s3)."
+      - id: t2
+        sources:
+          - {key: screpanti_zamagni_2005}
+        period: "1870s to 1920s"
+        title: "The marginal revolution and neoclassical economics"
+        puzzle: "How do prices coordinate millions of decisions?"
+        idea: |
+          William Stanley Jevons, Carl Menger and Léon Walras independently explained value by marginal utility: the
+          benefit of one more unit of a good. Walras showed how prices in all markets could be determined simultaneously
+          in a general equilibrium, and Alfred Marshall's supply and demand became the core of economics teaching.
+          Irving Fisher formalised the quantity theory of money. In this view, flexible prices and wages clear all
+          markets, including the labour market, so persistent involuntary unemployment cannot arise.
+        figures: ["Léon Walras", "Alfred Marshall", "Irving Fisher"]
+        lesson: "The idea that prices clear markets in the long run returns in [chapter 4](theory:P4-s5) and [chapter 5](theory:P5-s4)."
+      - id: t3
+        sources:
+          - {key: keynes_1936}
+          - {key: hicks_1937}
+          - {key: mankiw_2025, loc: "ch. 14 (unemployment in the Great Depression)"}
+          - {key: devroey_2016}
+        period: "1930s"
+        title: "The Great Depression and Keynes"
+        puzzle: "Why does mass unemployment last for years?"
+        idea: |
+          In the early 1930s about a quarter of American workers were unemployed. In *The General Theory of Employment,
+          Interest and Money* (1936), John Maynard Keynes argued that in the short run total demand determines
+          production and employment. If households and firms spend too little, output and jobs fall, and falling wages
+          need not restore full employment, because they also reduce incomes and spending. Governments and central banks
+          can therefore stabilise the economy. John Hicks (1937) condensed the argument into the IS-LM model.
+        figures: ["John Maynard Keynes", "John Hicks"]
+        lesson: "[Chapter 3](theory:P3-s3) shows how demand determines output in the short run."
+      - id: t4
+        sources:
+          - {key: solow_1956}
+          - {key: phillips_1958}
+          - {key: snowdon_vane_2005}
+          - {key: devroey_2016}
+        period: "1940s to 1960s"
+        title: "The neoclassical synthesis"
+        puzzle: "Can the short run and the long run be reconciled?"
+        idea: |
+          Paul Samuelson and others combined Keynes's short-run analysis with neoclassical long-run theory: demand
+          matters when prices are slow to adjust, but in the long run the economy returns to full employment. Robert
+          Solow (1956) showed how saving, capital accumulation and technological progress determine long-run growth. A.
+          W. Phillips (1958) found that, historically, low unemployment went together with fast wage growth, and many
+          economists read this as a stable trade-off that policy could exploit.
+        figures: ["Robert Solow", "Paul Samuelson", "A. W. Phillips"]
+        lesson: "[Chapter 6](theory:P6-s3) shows what drives production in the long run."
+      - id: t5
+        sources:
+          - {key: friedman_1968}
+          - {key: phelps_1967}
+          - {key: snowdon_vane_2005}
+          - {key: blanchard_illing_2021, loc: "ch. 24"}
+        period: "late 1960s to 1970s"
+        title: "Monetarism and stagflation"
+        puzzle: "Why did inflation and unemployment rise together?"
+        idea: |
+          Milton Friedman (1968) and Edmund Phelps argued that the Phillips trade-off holds only as long as inflation is
+          unexpected. Once people expect inflation, wages and prices adjust, and unemployment returns to its "natural"
+          rate. The stagflation of the 1970s, when oil price shocks brought high inflation and high unemployment
+          together, seemed to confirm them. Monetarists also held that the private economy is fundamentally stable and
+          that inflation is caused by excessive money growth, so that monetary policy should follow a steady rule.
+        figures: ["Milton Friedman", "Edmund Phelps"]
+        lesson: "[Chapter 5](theory:P5-s7) shows why expectations and the natural rate of unemployment matter."
+      - id: t6
+        sources:
+          - {key: lucas_1976}
+          - {key: kydland_prescott_1982}
+          - {key: snowdon_vane_2005}
+          - {key: devroey_2016}
+        period: "1970s to 1980s"
+        title: "Rational expectations and new classical economics"
+        puzzle: "Can policy systematically fool people?"
+        idea: |
+          Robert Lucas argued that people form expectations rationally, using all available information, and that they
+          change their behaviour when policy changes. A model estimated under an old policy can therefore give wrong
+          answers about a new one ([the Lucas critique](term:P1:lucas_critique), 1976). Macroeconomic models should be
+          built from the decisions of households and firms. Finn Kydland and Edward Prescott (1982) went further and
+          explained business cycles as efficient responses of such decision-makers to [productivity
+          shocks](term:P1:productivity_shock), changes in how much firms can produce with the same work, leaving little
+          role for stabilisation policy.
+        figures: ["Robert Lucas", "Thomas Sargent", "Finn Kydland", "Edward Prescott"]
+        lesson: "[Chapter 5](theory:P5-s7) shows how what people expect about inflation shapes inflation today."
+      - id: t7
+        sources:
+          - {key: taylor_1993}
+          - {key: woodford_2003}
+          - {key: goodfriend_king_1997}
+          - {key: woodford_2009}
+          - {key: snb_nd, loc: "monetary policy strategy"}
+        period: "1980s to 2000s"
+        title: "New Keynesian economics and the new synthesis"
+        puzzle: "How should a central bank set interest rates?"
+        idea: |
+          New Keynesian economists accepted rational expectations and micro-founded models but showed why prices and
+          wages adjust only slowly, for example because firms set prices for several periods. Monetary policy therefore
+          affects output in the short run but not in the long run. John Taylor (1993) described how central banks set
+          interest rates in response to inflation and output, and Michael Woodford (2003) built the theory of
+          interest-rate policy on these micro-founded models. This "new synthesis" became the framework of central
+          banks. The Swiss National Bank's strategy of 2000 belongs to this tradition.
+        figures: ["John Taylor", "Michael Woodford"]
+        lesson: "[Chapter 4](theory:P4-s4) shows how a central bank steers its policy rate within this framework."
+      - id: t8
+        sources:
+          - {key: iconomix_nd}
+          - {key: blanchard_illing_2021, loc: "ch. 6 and 24"}
+          - {key: mankiw_2025, loc: "ch. 6 (inflation since 2021)"}
+        period: "2008 until today"
+        title: "Financial crisis, low interest rates and the return of inflation"
+        puzzle: "Why did the models miss the crisis?"
+        idea: |
+          The financial crisis of 2008 showed that banks, credit and debt can cause deep recessions, something most
+          models of the new synthesis had left out. Interest rates fell to zero and below: the SNB's policy rate was
+          negative from 2015 to 2022. Economists have since added financial frictions and differences between households
+          to their models. The surge of inflation from 2021 brought expectations and the credibility of central banks
+          back to the centre of debate.
+        figures: []
+        lesson: "The small models of these chapters leave financial crises and differences between households aside."
+
+  - id: s5
+    title: "Economic schools of thought"
+    objectives: [LO5]
+    steps:
+      - id: s5a
+        sources:
+          - {key: snowdon_vane_2005, loc: "ch. 1"}
+        text: |
+          ### What divides the schools
+
+          Economists agree on much more than public debate suggests, but they disagree on some fundamental questions. A
+          **[school of thought](term:P1:school_of_thought)** is a tradition of economists who share answers to these
+          questions. Following Snowdon and Vane (2005), the schools of [macroeconomics](term:P1:macroeconomics) can be
+          distinguished by their positions on four positive questions and one normative one:
+
+          - **Adjustment:** do prices and wages adjust quickly enough to keep markets, especially the labour market,
+            close to equilibrium, or do they adjust slowly, so that unemployment can persist?
+          - **Stability:** is the private economy inherently stable, returning to full employment by itself, or is it
+            prone to instability and crises?
+          - **Expectations:** do people form their expectations about the future rationally, using all available
+            information, or mainly by looking back at the past?
+          - **[Money](term:P4:money) and policy:** can monetary and fiscal policy improve on market outcomes, and should
+            policy follow fixed rules or be decided case by case?
+          - **Values:** how much weight should be given to efficiency, individual liberty, stable prices, full
+            employment and equality when these conflict?
+
+          The first four questions are positive and can in principle be settled by evidence, although evidence in
+          macroeconomics is rarely decisive. The fifth is normative, and it explains why economists who agree on the
+          facts can still recommend different policies.
+      - id: s5b
+        sources:
+          - {key: snowdon_vane_2005}
+          - {key: chang_2014}
+          - {key: screpanti_zamagni_2005}
+        text: |
+          ### The main schools
+
+          | School | Core assumptions | View of policy | Values emphasised |
+          |---|---|---|---|
+          | **[Classical and neoclassical](term:P1:classical_school)** (Smith, Say, Marshall) | Flexible prices clear all markets; money is neutral | Little need for stabilisation; sound money | Liberty, efficiency |
+          | **[Keynesian](term:P1:keynesian_school)** (Keynes, Hicks, Samuelson) | Demand drives [output](term:P1:output_GDP) in the [short run](term:P3:short_run); wages are sticky; the economy can stay in unemployment | Active fiscal and monetary stabilisation | Full employment, social welfare |
+          | **[Monetarist](term:P1:monetarism)** (Friedman) | The private economy is stable; [inflation](term:P1:inflation) is caused by money growth; a [natural rate of unemployment](term:P5:natural_rate) | Steady monetary rules instead of discretion | Price stability, limited government |
+          | **[New classical and real business cycle](term:P1:new_classical)** (Lucas, Sargent, Kydland, Prescott) | Rational expectations; continuous market clearing; cycles are efficient responses to shocks | Systematic policy has little real effect; credibility matters | Efficiency, rules |
+          | **[New Keynesian](term:P1:new_keynesian)** (Taylor, Woodford, Galí) | Rational expectations with slow price adjustment and imperfect competition | Monetary policy stabilises in the short run, ideally by a rule | Stable prices and output |
+          | **[Post-Keynesian](term:P1:post_keynesian)** (Kalecki, Robinson, Minsky) | Fundamental uncertainty; demand-led growth; finance is inherently unstable | Active policy, financial regulation | Full employment, equality |
+          | **[Austrian](term:P1:austrian_school)** (Menger, Mises, Hayek) | Markets as processes of discovery; cheap credit distorts [investment](term:P2:investment) and causes booms and busts | Scepticism of central planning and of discretionary monetary policy | Individual liberty |
+
+          The table simplifies: each school contains a range of views, and the boundaries between them have shifted over
+          time. Other traditions, such as Marxian, institutionalist and behavioural economics, address the economy from
+          further angles; Chang (2014) gives an accessible survey of nine schools, their strengths and their blind
+          spots.
+        details:
+          title: "Keynes against Hayek: the debate of the 1930s"
+          sources:
+            - {key: screpanti_zamagni_2005}
+            - {key: snowdon_vane_2005}
+            - {key: nobel_1974}
+          text: |
+            The deepest divide in the table, between those who see the market economy as self-correcting and those who see
+            it as prone to failures of demand, was argued out most memorably between John Maynard Keynes in Cambridge and
+            Friedrich Hayek at the London School of Economics in the early 1930s. Hayek, building on Ludwig von Mises,
+            argued that the boom of the 1920s had been caused by credit that kept interest rates below the level
+            consistent with saving. Firms had started investment projects that the economy could not complete, and the
+            slump was the painful process of correcting these errors. Stimulating demand would only prolong the
+            misallocation. Keynes argued the opposite: a slump is a failure of total demand, in which idle workers and
+            idle machines coexist because nobody spends, and waiting for prices and wages to fall can make things worse.
+            The two exchanged reviews and replies in the journals of the time.
+
+            In the [short run](term:P3:short_run), Keynes won the argument. After the Second World War, Keynesian ideas
+            shaped economic policy in most Western countries, and Hayek turned to political philosophy, where his defence
+            of markets as mechanisms that use knowledge dispersed among millions of people became highly influential; he
+            received the Nobel Prize in 1974. The debate never quite ended. Its themes, the role of credit and interest
+            rates in booms and busts and the limits of what policy makers can know, returned after the financial crisis of
+            2008 (Screpanti & Zamagni, 2005; Snowdon & Vane, 2005).
+      - id: s5c
+        sources:
+          - {key: woodford_2009}
+          - {key: mankiw_2006}
+          - {key: snowdon_vane_2005}
+          - {key: legge_2023, loc: "12.2"}
+        text: |
+          ### The lens of these chapters
+
+          The [framework of these chapters](term:P1:textbook_lens), like that of most [central
+          banks](term:P1:central_bank) and textbooks today, is the **[new synthesis](term:P1:new_synthesis)** that grew
+          out of new Keynesian and new [classical economics](term:P1:classical_economics). In the short run, total
+          demand determines output because prices and wages adjust slowly; in the [medium run](term:P3:medium_run) the
+          economy tends back towards a natural level of output and unemployment; in the [long run](term:P3:long_run),
+          growth comes from [capital accumulation](term:P6:capital_accumulation) and technology; and expectations about
+          the future matter for what happens today. Monetary policy is conducted by setting an interest rate, ideally
+          according to a systematic rule.
+
+          This is one well-tested lens, not the final truth. A post-Keynesian would object that the example economy of
+          these chapters returns too readily to its natural level; an Austrian, that it ignores how interest rates
+          distort the structure of investment; a new classical economist, that it gives monetary policy too much
+          influence. A central bank that sets its [policy rate](term:P1:policy_rate) also makes normative choices, for
+          example how much weight to give to inflation and how much to unemployment.

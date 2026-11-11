@@ -1,0 +1,374 @@
+{
+  "masthead": {
+    "name": "The Ledger",
+    "quarter": 8,
+    "year": 2,
+    "quarter_of_year": 4,
+    "dateline": "Quarter 4 of year 2"
+  },
+  "index": [
+    {
+      "slot": "L",
+      "section": "Front page",
+      "headline": "A calm quarter: prices, growth and jobs near normal",
+      "page": 1,
+      "_row": "L"
+    },
+    {
+      "slot": "S1",
+      "section": "The Economy",
+      "headline": "Economy grows slightly slower than its usual pace",
+      "page": 2,
+      "_row": "S1"
+    },
+    {
+      "slot": "S2",
+      "section": "Prices and Wages",
+      "headline": "Prices rose slightly faster than the target last quarter",
+      "page": 2,
+      "_row": "S2"
+    },
+    {
+      "slot": "S3",
+      "section": "Jobs",
+      "headline": "Unemployment Edges Above Its Natural Rate of 5 Percent",
+      "page": 3,
+      "_row": "S3"
+    },
+    {
+      "slot": "S4",
+      "section": "Markets and the Bank",
+      "headline": "\"The bank did what it said it would\"",
+      "page": 3,
+      "_row": "S4"
+    },
+    {
+      "slot": "S5",
+      "section": "Analysis",
+      "headline": "A Quiet Quarter That Leaves Many Feeling Unheard",
+      "page": 4,
+      "_row": "S5"
+    }
+  ],
+  "pages": {
+    "1": ["masthead", "index", "L"],
+    "2": ["S1", "S2"],
+    "3": ["S3", "S4"],
+    "4": "S5"
+  },
+  "pieces": {
+    "L": {
+      "slot": "L",
+      "section": "Front page",
+      "type": "L-calm",
+      "star": false,
+      "tone": "reporter",
+      "precision": "words",
+      "format": "F-LEAD",
+      "chart": null,
+      "source": "model",
+      "model": "claude-sonnet-5-5",
+      "elements": {
+        "headline": "A calm quarter: prices, growth and jobs near normal",
+        "standfirst": "Inflation, growth and unemployment all stood close to their normal levels last quarter, so the economy showed no strain in any of the three.",
+        "body": [
+          "Last quarter was a calm one for the economy. Inflation stood close to the target. The central bank's inflation target is 2 percent a year. Prices therefore rose at about the pace the bank aims for.",
+          "Growth also stood close to its trend last quarter. Along its trend, output grows by 2 percent a year. Unemployment stood close to its natural rate too. The natural rate of unemployment is 5 percent. That is the unemployment rate the economy settles at once wages have adjusted.",
+          "For households and firms, a calm quarter means few surprises. Prices are not climbing faster than planned, so budgets hold steady. Output is growing at its usual pace, so firms can plan with some confidence. Jobs are neither unusually scarce nor unusually easy to find, so workers face ordinary conditions. For the central bank, all three readings near normal levels matter as it looks toward its next decision."
+        ]
+      },
+      "retried": false,
+      "shortened": false,
+      "kept": null,
+      "kicker": "Front page"
+    },
+    "S1": {
+      "slot": "S1",
+      "section": "The Economy",
+      "type": "E-growth",
+      "star": false,
+      "tone": "reporter",
+      "precision": "exact",
+      "format": "F-CHART",
+      "chart": "CH-output",
+      "source": "model",
+      "model": "claude-sonnet-5-5",
+      "elements": {
+        "headline": "Economy grows slightly slower than its usual pace",
+        "body": [
+          "The economy grew by 1.93 percent a year last quarter. That is 0.07 points below its trend of 2 percent a year. Trend means the pace at which output grows along its usual path, which here is 2 percent a year. Output is the total amount of goods and services the economy produces. Because growth came in under the trend, the economy expanded a little more slowly than its usual path would suggest. The gap is small, so output stayed close to that path. The central bank will weigh this gap between actual growth and trend growth when it prepares its next decision."
+        ]
+      },
+      "retried": false,
+      "shortened": false,
+      "kept": null,
+      "chart_data": {
+        "id": "CH-output",
+        "series": {
+          "output_level": [
+            {
+              "t": 0,
+              "value": 4001.189245
+            },
+            {
+              "t": 1,
+              "value": 4008.826734
+            },
+            {
+              "t": 2,
+              "value": 4028.546789
+            },
+            {
+              "t": 3,
+              "value": 4052.069119
+            },
+            {
+              "t": 4,
+              "value": 4076.09688
+            },
+            {
+              "t": 5,
+              "value": 4106.03745
+            },
+            {
+              "t": 6,
+              "value": 4118.434394
+            },
+            {
+              "t": 7,
+              "value": 4138.38447
+            }
+          ],
+          "output_trend": [
+            {
+              "t": 0,
+              "value": 4000
+            },
+            {
+              "t": 1,
+              "value": 4020.050083
+            },
+            {
+              "t": 2,
+              "value": 4040.200668
+            },
+            {
+              "t": 3,
+              "value": 4060.452258
+            },
+            {
+              "t": 4,
+              "value": 4080.80536
+            },
+            {
+              "t": 5,
+              "value": 4101.260482
+            },
+            {
+              "t": 6,
+              "value": 4121.818136
+            },
+            {
+              "t": 7,
+              "value": 4142.478835
+            }
+          ]
+        },
+        "reference": null,
+        "caption": "Output and its trend over the last eight quarters."
+      },
+      "kicker": "The Economy"
+    },
+    "S2": {
+      "slot": "S2",
+      "section": "Prices and Wages",
+      "type": "P-steady",
+      "star": false,
+      "tone": "reporter",
+      "precision": "exact",
+      "format": "F-CHART",
+      "chart": "CH-inflation",
+      "source": "model",
+      "model": "claude-sonnet-5-5",
+      "elements": {
+        "headline": "Prices rose slightly faster than the target last quarter",
+        "body": [
+          "Inflation was 2.26 percent a year last quarter. Inflation is the rate at which prices rise over time. That is 0.26 points above the target of 2 percent. The central bank's inflation target is 2 percent a year. Wages also rose faster than usual. Wage inflation was 4.26 percent a year, which is 0.26 points above its normal pace of 4 percent. Wage inflation is the rate at which pay rises. Both figures matter for the central bank's next decision because they show how far prices and pay are moving from their usual paths."
+        ]
+      },
+      "retried": false,
+      "shortened": false,
+      "kept": null,
+      "chart_data": {
+        "id": "CH-inflation",
+        "series": {
+          "inflation": [
+            {
+              "t": 0,
+              "value": 2.966805
+            },
+            {
+              "t": 1,
+              "value": 2.950971
+            },
+            {
+              "t": 2,
+              "value": 2.747778
+            },
+            {
+              "t": 3,
+              "value": 2.461924
+            },
+            {
+              "t": 4,
+              "value": 2.228277
+            },
+            {
+              "t": 5,
+              "value": 2.075298
+            },
+            {
+              "t": 6,
+              "value": 2.287612
+            },
+            {
+              "t": 7,
+              "value": 2.257368
+            }
+          ]
+        },
+        "reference": 2,
+        "caption": "Inflation in percent a year over the last eight quarters; dashed line: the 2 percent target."
+      },
+      "kicker": "Prices and Wages"
+    },
+    "S3": {
+      "slot": "S3",
+      "section": "Jobs",
+      "type": "J-count",
+      "star": false,
+      "tone": "reporter",
+      "precision": "exact",
+      "format": "F-CHART",
+      "chart": "CH-unemployment",
+      "source": "model",
+      "model": "claude-sonnet-5-5",
+      "elements": {
+        "headline": "Unemployment Edges Above Its Natural Rate of 5 Percent",
+        "body": [
+          "Unemployment stood at 5.18 percent, which is 0.18 points above its natural rate of 5 percent. The natural rate of unemployment is the unemployment rate the economy settles at once wages have adjusted. So the jobless rate now sits slightly above that level. About 2,100,000 people were out of work. The gap between the two rates is small, but it shows that the job market has a little more slack than the natural rate would imply. Reporters will watch whether the rate moves closer to 5 percent as wages adjust."
+        ]
+      },
+      "retried": false,
+      "shortened": false,
+      "kept": null,
+      "chart_data": {
+        "id": "CH-unemployment",
+        "series": {
+          "unemployment": [
+            {
+              "t": 0,
+              "value": 4.981387
+            },
+            {
+              "t": 1,
+              "value": 5.454188
+            },
+            {
+              "t": 2,
+              "value": 5.467944
+            },
+            {
+              "t": 3,
+              "value": 5.341783
+            },
+            {
+              "t": 4,
+              "value": 5.202013
+            },
+            {
+              "t": 5,
+              "value": 4.846691
+            },
+            {
+              "t": 6,
+              "value": 5.150953
+            },
+            {
+              "t": 7,
+              "value": 5.176679
+            }
+          ]
+        },
+        "reference": 5.026289,
+        "caption": "Unemployment in percent over the last eight quarters; dashed line: its natural rate."
+      },
+      "kicker": "Jobs"
+    },
+    "S4": {
+      "slot": "S4",
+      "section": "Markets and the Bank",
+      "type": "M-word",
+      "star": true,
+      "tone": "economist",
+      "precision": "words",
+      "format": "F-INTERVIEW",
+      "chart": null,
+      "source": "model",
+      "model": "claude-sonnet-5-5",
+      "elements": {
+        "headline": "\"The bank did what it said it would\"",
+        "intro": "The Ledger spoke with an economist at the Institute for Economic Research about whether the central bank kept its word this quarter.",
+        "qa": [
+          {
+            "question": "Did the central bank keep its word this quarter?",
+            "answer": "Yes. The central bank set the policy rate where it had announced it would, so the announcement counts as kept. The announcement is the policy rates the bank says it will set in the coming quarters."
+          },
+          {
+            "question": "Why did the bank stay on its announced path?",
+            "answer": "No new shock arrived this quarter, so nothing gave the bank room to change its plan. A new shock is a sudden change in spending, firms' costs, productivity or government spending that arrives this quarter."
+          },
+          {
+            "question": "What does keeping its word mean for trust?",
+            "answer": "Trust is high and rising. Trust is how far the public believes the central bank's announcements. Each kept announcement gives people more reason to believe the next one, so it matters for the bank."
+          },
+          {
+            "question": "What should we watch for the bank's next decision?",
+            "answer": "Watch whether a new shock arrives, because without one the bank has no room to change its announced plan. Also watch trust, because it is high and rising and that shapes how people read the bank."
+          }
+        ]
+      },
+      "retried": false,
+      "shortened": false,
+      "kept": null,
+      "kicker": "Markets and the Bank"
+    },
+    "S5": {
+      "slot": "S5",
+      "section": "Analysis",
+      "type": "A-analysis",
+      "star": false,
+      "tone": "critic",
+      "precision": "words",
+      "format": "F-COMMENT",
+      "chart": null,
+      "source": "model",
+      "model": "claude-sonnet-5-5",
+      "elements": {
+        "headline": "A Quiet Quarter That Leaves Many Feeling Unheard",
+        "body": [
+          "Last quarter, the economy did almost nothing unusual. Inflation, growth, wage inflation and unemployment all stand close to their normal levels. Inflation stood close to the target, and the central bank's inflation target is 2 percent a year. Growth stood close to its trend, and along its trend, output grows by 2 percent a year. Officials may call this a success. Many households do not feel it as one, because a calm table of statistics says little about how a month at the shop or the rent office feels.",
+          "Unemployment tells the same story. It stood close to its natural rate last quarter. The natural rate of unemployment is the unemployment rate the economy settles at once wages have adjusted. That rate is 5 percent. So the job market is neither tight nor slack by the usual measure. Yet people who are out of work, or who fear for their jobs, do not take comfort from an average. The public has every right to ask why a normal quarter still feels hard, and the headline numbers offer no answer to that.",
+          "Nor does the quarter explain itself. No single cause stands out behind last quarter's change in output. No single cause stands out behind last quarter's change in inflation. That matters because a calm result with no clear cause is hard to trust, so readers are right to stay wary. The public also expects inflation close to the target for the coming quarter. The central bank will weigh that expectation, and it is a fair question whether expected inflation, the inflation the public expects for the coming quarter, will hold steady. For now the economy looks quiet, but quiet is not the same as good, and many people feel the difference."
+        ],
+        "author": "a commentator for The Ledger"
+      },
+      "retried": true,
+      "shortened": false,
+      "kept": null,
+      "kicker": "Analysis"
+    }
+  },
+  "selection": ["L", "S4"],
+  "reported": []
+}

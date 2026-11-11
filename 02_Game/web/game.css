@@ -1,0 +1,969 @@
+/* The game full screen, the menu and the desk. Tokens as the shell defines them in :root (paper, surface, rule, ink,
+   muted, action, the error red --no); Public Sans for the text, Source Serif 4 for the title and the card's heading; no other colours.
+   The game pane and the Theory shell are siblings: the body class is-game (set by game.js from the server's
+   game_tab message) shows one and hides the other. */
+#game{display:none;background:var(--paper);min-height:100vh}
+body.is-game #game{display:block}
+body.is-game .shell{display:none}
+.game{font:16px/1.6 'Public Sans',system-ui,sans-serif;color:var(--ink)}
+.game h1,.game h2,.game h3{margin:0;font-weight:600}
+.game-kicker{font-size:13px;color:var(--muted);margin:0 0 2px;letter-spacing:.02em}
+/* the menu on paper ground */
+.game-menu{max-width:1600px;margin:0 auto;padding:36px 48px 64px}
+.game-menu-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 32px;align-items:start;margin-bottom:28px}
+.game-title{font-family:'Source Serif 4',Georgia,serif;font-size:34px;line-height:1.15;grid-column:1}
+.game-title:focus{outline:none}.game-title:focus-visible{outline:3px solid #7FA7E0;outline-offset:4px}
+.game-lede{grid-column:1;max-width:62ch;margin:6px 0 0;color:var(--muted)}
+.game-menu-actions{grid-column:2;grid-row:1/4;align-self:start;padding-top:22px}
+.game-menu-body{display:grid;grid-template-columns:minmax(300px,2fr) minmax(0,3fr);gap:28px 40px;align-items:start}
+/* the table of contents */
+.game-chapters,.game-topics{list-style:none;margin:0;padding:0}
+.game-chapter{margin:0 0 18px}
+.game-chapter-title{font-size:15px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);padding:0 10px 6px;border-bottom:1px solid var(--rule);margin-bottom:4px}
+.game-chapter-id{display:inline-block;min-width:1.4em;color:var(--ink)}
+.game-topic{margin:0}
+.game-row{display:grid;grid-template-columns:1.6em minmax(0,1fr);gap:0 8px;width:100%;text-align:left;padding:8px 10px;border:0;border-radius:6px;background:none;color:var(--ink);font:15px/1.4 'Public Sans',system-ui,sans-serif;cursor:pointer}
+.game-row-num{color:var(--muted)}
+.game-row-title{font-weight:600}
+.game-row-status{grid-column:2;font-size:13px;color:var(--muted)}
+button.game-row:hover{background:var(--surface)}
+button.game-row:focus-visible{outline:3px solid #7FA7E0;outline-offset:2px}
+.game-row.is-current{background:var(--surface);box-shadow:inset 3px 0 0 var(--action)}
+.game-row.is-locked{cursor:default;color:var(--muted)}
+button.game-row.is-dev-open{cursor:pointer;outline:1px dashed var(--rule);outline-offset:-1px}   /* the developer's locked row, enterable */
+.game-row.is-locked .game-row-title{font-weight:500}
+.st-played_out .game-row-status{color:var(--ok)}
+.st-broke_down .game-row-status{color:var(--no)}
+.st-next .game-row-status{color:var(--action)}
+/* the card on surface with a rule border; the breakdown card with a left rule in error red */
+.game-card{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:24px 28px 22px}
+.game-card.is-breakdown{border-left:4px solid var(--no)}
+.game-card-title{font-family:'Source Serif 4',Georgia,serif;font-size:26px;line-height:1.2;margin:2px 0 14px}
+.game-breakdown-line{color:var(--no);text-transform:uppercase;font-weight:600;letter-spacing:.06em;font-size:14px;margin:0 0 6px}
+.game-outcome{font-size:17px;margin:0 0 10px}
+.game-briefing{color:var(--muted);font-style:italic;margin:0 0 14px}
+.game-card-actions{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 6px}
+.game .btn-main{background:var(--action);color:#fff;border:0;border-radius:6px;padding:9px 18px;font:500 15px 'Public Sans',sans-serif;cursor:pointer}
+.game .btn-quiet{background:none;border:1px solid var(--rule);border-radius:6px;padding:8px 16px;font:15px 'Public Sans',sans-serif;cursor:pointer;color:var(--ink)}
+.game .btn-main:hover{filter:brightness(1.1)}.game .btn-quiet:hover{background:var(--paper)}
+.game button:focus-visible{outline:3px solid #7FA7E0;outline-offset:2px}
+.game-card-links{list-style:none;margin:10px 0 0;padding:12px 0 0;border-top:1px solid var(--rule);display:flex;flex-wrap:wrap;gap:4px 22px}
+.game-link{background:none;border:0;padding:2px 0;font:15px 'Public Sans',system-ui,sans-serif;color:var(--action);text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.game-builds-on{font-size:14px;color:var(--muted);margin:14px 0 0}
+/* chapter D's cards */
+.game-scenarios{display:grid;gap:14px}
+.game-scenarios>.game-card-kicker,.game-scenarios>.game-card-title,.game-scenarios>.game-outcome{grid-column:1/-1}
+.game-scenario{padding:18px 22px}
+.game-scenario-title{font-size:19px;margin:0 0 4px}
+.game-scenario-facts{margin:0 0 6px;color:var(--muted);font-size:15px}
+.game-scenario.is-unavailable{color:var(--muted)}
+/* below 820 px the map, the card and the table of contents stack; the Menu link remains */
+@media (max-width:820px){
+  .game-menu{padding:24px 18px 48px}
+  .game-menu-head{grid-template-columns:1fr}
+  .game-menu-actions{grid-column:1;grid-row:auto;padding-top:8px}
+  .game-menu-body{grid-template-columns:1fr}
+  .game-card{padding:20px 18px}
+  .desk-bar{padding:14px 18px 12px;flex-wrap:wrap;align-items:flex-start}
+}
+@media (prefers-reduced-motion:reduce){.game *{transition:none!important}}
+
+/* The desk. Tokens: desk #6F665E, bezel #2A3140, panel paper with blocks on surface, briefing tint #E6ECF5, newsprint #FBFAF6,
+   editorial red #CC2229 on the paper only, series action blue, reference lines ink dashed, the recession band error red at 12 %, windows
+   on surface with a 24 px shadow. */
+.game-desk{min-height:calc(100vh - 48px);display:flex;flex-direction:column;background:#6F665E}
+.desk-bar{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;padding:12px 40px 10px;background:var(--surface);border-bottom:1px solid var(--rule)}
+.desk-title{font-family:'Source Serif 4',Georgia,serif;font-size:22px;line-height:1.2}
+.desk-title:focus{outline:none}.desk-title:focus-visible{outline:3px solid #7FA7E0;outline-offset:4px}
+.desk-nav{display:flex;align-items:center;gap:10px;padding-bottom:2px}
+.game .desk-nav .desk-btn{padding:6px 16px;font-size:14px;background:var(--surface)}   /* Map, Theory and Menu: real buttons */
+.game .desk-nav .desk-btn[aria-expanded="true"]{background:#E6ECF5;border-color:var(--action)}
+.game .desk-nav .desk-dev{border-style:dashed;color:var(--muted)}                         /* the developer's shortcut */
+.desk-room{flex:1;display:flex;flex-direction:column;align-items:center;padding:18px 40px 0}
+.pc{width:100%;max-width:1280px;background:#2A3140;border-radius:14px 14px 6px 6px;padding:10px 10px 14px;box-shadow:0 18px 40px rgba(0,0,0,.28)}
+.pc-screen{position:relative;background:var(--paper);border-radius:6px;height:min(680px,calc(100vh - 220px));min-height:520px;display:flex;flex-direction:column;overflow:hidden}
+.pc-screen.is-briefing{background:#E6ECF5}
+.brief-head{display:flex;align-items:baseline;gap:14px;background:var(--action);color:#fff;padding:10px 18px}
+.brief-kicker{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.brief-title{font-family:'Source Serif 4',Georgia,serif;font-size:19px;font-weight:600}
+.brief-note{margin-left:auto;font-size:12px;opacity:.9}
+.panel{flex:1 1 auto;overflow-y:auto;padding:12px 18px 12px;display:flex;flex-direction:column;gap:12px}
+.panel:focus-visible{outline:3px solid #7FA7E0;outline-offset:-3px}
+.panel-head{flex:0 0 auto;position:relative;display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px;margin:12px 18px 0;padding-bottom:9px;border-bottom:1px solid var(--rule);font-size:13px;color:var(--muted)}
+.panel-quarter{font-size:18px;font-weight:700;color:var(--ink)}
+.panel-rate{margin-left:auto}.panel-rate strong{color:var(--ink)}
+.panel-floor{font-weight:600;color:var(--ink);border:1px solid var(--rule);border-radius:4px;padding:0 6px}
+.panel-calendar,.panel-promise{color:var(--ink)}.panel-promise.is-locked{font-weight:600}
+/* the task board: one line in the header row, between the quarter and the rate in force, in
+   every topic always in the same place. Its drop-down is the line's own box: .task-box holds the line as its top row and the list below
+   it inside one border and one shadow; closed, the box is the line's size; open, it unrolls downward from the line's bottom edge, at least
+   the line's width and aligned with its left edge, over the desk below it (the panel, the charts). The layers, as one stack from the top:
+   (1) the tour's grey layer and its box, while the tour runs (.tour, 100); (2) a card (the brief, a scene's
+   intro or explanation; .interim-slot, 40) and the windows (the report window, an exhibit, the map, the Compare window; .game-window-slot,
+   45, above a card that opens one), which cover everything below them, the task line folded or open and the chat included (the opened
+   paper lies over them, 50); (3) the open chat (30) and the task line's open drop-down (32, or 28 behind the chat), as equals:
+   the one clicked last lies on top: the chat clicked or opened puts an open drop-down behind it (is-behind, 02_Game/web/game.js), a click on
+   the line or in the drop-down brings it back to the front; folded, the line always lies under the open chat (20); (4) the desk: the
+   panel, the charts, the decision bar (its record list 5). The roll is a clip from the top (02_Game/web/game.js sets data-state: opening, open,
+   closing); with reduced motion it appears and disappears at once. */
+.task-board{position:relative;flex:1 1 380px;min-width:220px;max-width:640px;height:32px;z-index:20}  /* folded: over the desk, under the open chat (30), a card (40) and a window (45) */
+.task-board.is-open{z-index:32}                                                                         /* open, clicked last: over the open chat (30), under a card and a window */
+.task-board.is-open.is-behind{z-index:28}                                                               /* the chat clicked last: the drop-down under it */
+.task-box{position:absolute;top:0;left:0;width:100%;min-width:100%;box-sizing:border-box;background:var(--surface);border:1px solid var(--action);border-radius:6px;overflow:hidden}
+.task-board.is-open .task-box{width:max(100%,560px);max-width:calc(100vw - 48px);box-shadow:0 14px 32px rgba(27,36,51,.24)}
+.task-line{display:flex;align-items:center;gap:8px;width:100%;height:30px;box-sizing:border-box;margin:0;padding:0 30px 0 10px;background:none;border:0;border-left:3px solid var(--action);font:13px 'Public Sans',system-ui,sans-serif;color:var(--ink);text-align:left;cursor:pointer;position:relative;white-space:nowrap;overflow:hidden}
+.task-line:focus-visible{outline:3px solid #7FA7E0;outline-offset:-3px}
+.task-step{font-weight:700;flex:0 0 auto;max-width:60%;overflow:hidden;text-overflow:ellipsis}   /* a long phase title cut short, never under the chevron */
+.task-quarter{color:var(--muted);flex:0 0 auto}
+.task-sep{color:var(--muted);flex:0 0 auto}
+.task-text{flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.task-line .chev{position:absolute;right:12px;top:10px;width:7px;height:7px;border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);transform:rotate(45deg)}
+.task-line[aria-expanded="true"] .chev{transform:rotate(225deg);top:13px}
+.task-marker{flex:0 0 auto;display:inline-block;width:12px;height:12px;border:2px solid var(--action);border-radius:50%;box-sizing:border-box;position:relative}
+.task-marker::after{content:"";position:absolute;inset:2px;border-radius:50%;background:var(--action)}
+.task-marker.is-done{background:#2E7D4F;border-color:#2E7D4F}
+.task-marker.is-done::after{inset:auto;left:3px;top:0;width:3px;height:6px;border-radius:0;background:none;border-right:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(45deg)}
+.task-up-item .task-marker{border-color:#A9B1BD}.task-up-item .task-marker::after{display:none}
+.task-drop{border-top:1px solid var(--rule);padding:10px 14px 12px;max-height:min(460px,60vh);overflow-y:auto;font-size:13px;color:var(--ink);clip-path:inset(0 0 0 0);transition:clip-path .22s ease-out}
+.task-board[data-state="opening"] .task-drop,.task-board[data-state="closing"] .task-drop{clip-path:inset(0 0 100% 0)}
+.task-topic{margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--action)}
+.task-done{margin:0 0 8px}
+.task-done-line{display:flex;align-items:center;gap:8px;width:100%;background:#EAF4EE;border:0;border-radius:4px;padding:5px 8px;font:13px 'Public Sans',sans-serif;color:#2E7D4F;cursor:pointer;text-align:left;position:relative}
+.task-done-last{font-weight:600}.task-done-line .chev{width:6px;height:6px;border-right:2px solid #2E7D4F;border-bottom:2px solid #2E7D4F;transform:rotate(-45deg);margin-left:4px}
+.task-done-line[aria-expanded="true"] .chev{transform:rotate(45deg)}
+.task-done-list{list-style:none;margin:6px 0 0;padding:0 0 0 8px}
+.task-done-item{display:flex;align-items:center;gap:8px;padding:3px 0;flex-wrap:wrap}
+.task-current{border:1px solid var(--rule);border-radius:6px;padding:10px 12px;background:var(--paper);margin:0 0 8px}
+.task-current-head{display:flex;align-items:center;gap:8px}
+.task-current-title{font-weight:700;font-size:14px}
+.task-current-when{margin-left:auto;color:var(--muted);font-size:12px}
+.task-field{margin-top:8px}
+.task-field-head{margin:0 0 2px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.task-field-text{margin:0;font-size:14px;line-height:1.4}
+.task-upcoming{list-style:none;margin:0;padding:0}
+.task-up-item{display:flex;align-items:center;gap:8px;padding:3px 0;color:#8A93A1}
+.task-auto-note{margin:8px 0 0;padding-top:8px;border-top:1px solid var(--rule);color:var(--muted);font-size:12px}
+@media (prefers-reduced-motion:reduce){.task-drop{transition:none!important}}
+.fig-blocks{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.fig-block{background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:10px 14px}
+.fig-title{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin:0 0 6px}
+.fig-rows{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:4px 12px;align-items:baseline;margin:0;font-size:14px}
+.fig-rows dt{margin:0}.fig-rows dd{margin:0;text-align:right}
+.fig-value{font-weight:700;font-size:16px}
+.fig-est{color:var(--muted);font-size:12px}
+.fig-change{color:var(--muted);font-size:13px;min-width:44px}.fig-change.is-down{color:var(--no)}
+/* the budget's block from topic 6: four blocks across the panel; a figure's words against its usual level on
+   the line under it, the debt's "taxes follow it" */
+.fig-blocks[data-blocks="4"]{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:1100px){.fig-blocks[data-blocks="4"]{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.fig-rows dd.fig-note{grid-column:1/-1;text-align:left;margin:-2px 0 2px;color:var(--muted);font-size:12px;line-height:1.3}
+/* in a quarter of the panel the budget's figures with their units do not fit beside their labels: each label on its own line, the figure and its
+   change under it */
+.fig-blocks[data-blocks="4"]>.fig-budget .fig-rows{grid-template-columns:minmax(0,1fr) auto}
+.fig-blocks[data-blocks="4"]>.fig-budget .fig-rows dt{grid-column:1/-1;margin-top:4px}
+.fig-blocks[data-blocks="4"]>.fig-budget .fig-rows dt:first-of-type{margin-top:0}
+.fig-blocks[data-blocks="4"]>.fig-budget .fig-rows dd.fig-value{text-align:left}
+/* five blocks from topic 7: the budget and politics blocks take a second row, the first three
+   above them, in compact type */
+.fig-blocks[data-blocks="5"]{grid-template-columns:repeat(6,minmax(0,1fr))}
+.fig-blocks[data-blocks="5"]>.fig-block{grid-column:span 2}
+.fig-blocks[data-blocks="5"]>.fig-budget,.fig-blocks[data-blocks="5"]>.fig-politics{grid-column:span 3}
+.fig-blocks[data-blocks="5"] .fig-rows{font-size:13px}.fig-blocks[data-blocks="5"] .fig-value{font-size:15px}
+@media (max-width:1100px){.fig-blocks[data-blocks="5"]{grid-template-columns:repeat(2,minmax(0,1fr))}.fig-blocks[data-blocks="5"]>.fig-block{grid-column:auto}}
+.fig-result{margin:6px 0 0;padding-top:6px;border-top:1px solid var(--rule);font-size:13px;line-height:1.35}
+.panel-calendar{font-size:13px;font-weight:600}
+.charts-main{display:grid;grid-template-columns:minmax(0,1fr);gap:12px}   /* the policy rate's chart, wide and first */
+.charts-three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}   /* inflation, output, unemployment */
+.charts-small{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.charts-small>.chart-small:only-child{max-width:640px}   /* topics 3 to 5: the beliefs chart alone stays a small chart */
+/* the picture of beliefs: the sentence on top, the aim's scale and the gauge side by side */
+.chart-beliefs-card{max-width:900px}
+.beliefs-sentence{margin:4px 0 8px;font-size:15px;line-height:1.45}
+.beliefs-pictures{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:18px;align-items:end}
+.beliefs-pic-title{margin:0 0 2px;font-size:12px;color:var(--muted);font-weight:600}
+.beliefs-room{margin:2px 0 0;font-size:13px}
+.beliefs-room.is-edge{color:var(--no);font-weight:600}
+.paper-beliefs .beliefs-pictures{grid-template-columns:minmax(0,58fr) minmax(0,40fr);gap:6px}
+.paper-beliefs .beliefs-room{font:11px 'Public Sans',sans-serif;margin:0}
+.chart-box{margin:0;background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:10px 12px 6px}
+.chart-title{font-size:13px;font-weight:600;margin-bottom:4px}.chart-unit{font-weight:400;color:var(--muted)}
+.game-chart{display:block;max-width:100%;height:auto}
+.chart-table{border-collapse:collapse;font-size:14px;margin:6px 0}.chart-table caption{text-align:left;color:var(--muted);font-size:12px;padding-bottom:4px}
+.chart-table th,.chart-table td{border-bottom:1px solid var(--rule);padding:4px 10px;text-align:right}.chart-table th[scope=row]{text-align:left;font-weight:500}
+.chart-empty{color:var(--muted);font-size:14px;margin:12px 0}
+.chart-legend{list-style:none;display:flex;flex-wrap:wrap;gap:4px 18px;margin:2px 0 4px;padding:0;font-size:12px;color:var(--muted)}   /* the beliefs chart's */
+.chart-legend li{display:inline-flex;align-items:center;gap:6px}.legend-marker{display:block;flex:0 0 auto}
+/* the decision block, fixed at the bottom, with the chat bar beside it */
+.desk-bottom{flex:0 0 auto;border-top:1px solid var(--rule);background:var(--paper);padding:10px 18px 12px;display:flex;align-items:stretch;gap:14px}
+.pc-screen.is-briefing .desk-bottom{background:#E6ECF5}
+.dec-block{flex:1 1 auto;background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:8px 14px;display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px}
+.dec-title{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.dec-rate{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.dec-rate label{font-size:14px}
+#desk-rate{font:inherit;font-size:18px;font-weight:700;width:92px;padding:7px 10px;border:1px solid var(--ink);border-radius:4px;text-align:right}
+.dec-help{font-size:13px;color:var(--muted)}
+.dec-slot:empty{display:none}
+.dec-chip{display:inline-block;padding:2px 10px;border:1px solid var(--action);border-radius:999px;color:var(--action);font-size:13px;font-weight:600;background:var(--surface)}   /* the guided start's asked rate */
+.dec-chip-figure{display:none}
+.dec-chip-figure::before{content:"";display:inline-block;width:7px;height:7px;margin-right:6px;border-radius:50%;background:currentColor;vertical-align:1px}   /* the step's mark */
+@media (max-width:1359px){                                            /* below 1360 px the chip shows the figure alone, so the bar never wraps */
+  .dec-chip-full{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .dec-chip-figure{display:inline}
+}
+/* the guided start's arrows on the panel's charts, one after another with a short pause (each group's
+   animation-delay), all at once under reduced motion; kept until the next Publish (the desk redrawn without them) */
+.game-chart .p3-arrowlab{font-weight:600;font-size:13px;fill:var(--ink)}.game-chart .p3-arrowlab-y{font-weight:600;font-size:13px;fill:var(--ok)}
+.guided-arrow{opacity:0;animation:guided-arrow-in .35s ease-out forwards}
+@keyframes guided-arrow-in{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion: reduce){.guided-arrow{animation:none;opacity:1}}
+.guided-note{margin:0;padding:8px 12px;border-left:3px solid var(--action);background:var(--surface);font-size:14px}
+.report-paths{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:10px}   /* the band, the path's summary, the record line: their places in the bar's order */
+.dec-guide{border:1px solid var(--rule);border-radius:4px;padding:4px 10px;margin:0;display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;font-size:14px}
+.dec-guide legend{font-size:12px;color:var(--muted);padding:0 4px}
+.dec-guide.is-locked{opacity:.6}
+#desk-grate{font:inherit;width:70px;padding:4px 8px;border:1px solid var(--rule);border-radius:4px;text-align:right}
+.dec-lock{flex-basis:100%;font-size:13px;color:var(--ink)}
+.dec-due{margin:0;font-size:14px;font-weight:600}
+/* from topic 4 two rows, at most one line taller than topic 1's one row: the title, the rate, the guidance and
+   Publish on the first; on the second one line of small text, never wrapped: the rate's help, the record line, the promise due, Set to the
+   floor with the floor's expected length, the guidance's closed reason; where room runs out a text is cut with an ellipsis (its words in its
+   title and for screen readers), the help first; the record's list opens above the bar, over the panel, the bar's height kept */
+.dec-block.has-guide{position:relative;display:grid;grid-template-columns:auto auto minmax(0,1fr) auto;grid-template-areas:"title rate guide publish" "sub sub sub sub";align-items:center;gap:6px 14px}
+.dec-block.has-guide>.dec-title{grid-area:title}.dec-block.has-guide>.dec-rate{grid-area:rate}.dec-block.has-guide>.dec-publish{grid-area:publish}
+.dec-block.has-guide>.dec-guide{grid-area:guide;justify-self:start;max-width:100%}
+.dec-block.has-guide>.dec-message,.dec-block.has-guide>.dec-confirm{grid-column:1/-1}
+.dec-block.has-guide .dec-guide{border:0;padding:0;margin:0;flex-wrap:nowrap;white-space:nowrap;gap:8px}
+.dec-block.has-guide .dec-guide legend{float:left;padding:0 2px 0 0;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.dec-block.has-guide .dec-guide select{font:inherit;font-size:14px;padding:4px 6px;border:1px solid var(--rule);border-radius:4px;background:var(--surface);color:var(--ink)}
+.dec-sub{grid-area:sub;display:flex;align-items:center;gap:0 16px;min-width:0;height:26px;font-size:13px;line-height:24px;white-space:nowrap;border-top:1px solid var(--rule);padding-top:4px}
+.dec-sub>*{flex:0 0 auto;min-width:0}
+.dec-sub .dec-help,.dec-sub .dec-due,.dec-sub .dec-floor-expected,.dec-sub .dec-lock{overflow:hidden;text-overflow:ellipsis}
+.dec-sub .dec-help{flex:0 10000 auto}.dec-sub .dec-due{flex:0 1 auto;font-size:13px}.dec-sub .dec-floor-expected{flex:0 1 auto}   /* cut first: the help */
+.dec-block.has-guide .dec-guide.is-locked{opacity:1;min-width:0}.dec-block.has-guide .dec-guide .dec-lock{flex:0 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;font-size:13px;color:var(--ink)}
+.dec-sub .dec-record{flex-basis:auto;font-size:13px;position:static}   /* its list opens above the whole bar (the block's), the bar's height kept */
+.dec-sub .dec-record-list{position:absolute;bottom:calc(100% + 6px);left:0;z-index:5;background:var(--surface);border:1px solid var(--rule);border-radius:6px;box-shadow:0 10px 24px rgba(27,36,51,.18);padding:8px 12px;max-height:50vh;overflow:auto}
+.dec-sub .dec-floor{padding:0 10px;font-size:13px;line-height:22px}
+.dec-sub .dec-floor-expected{font-size:13px}
+/* the record line: one line under the guidance, a button that opens the term's promises */
+.dec-record{flex-basis:100%;font-size:14px}
+.dec-record-line{background:none;border:0;padding:2px 0;font:inherit;font-weight:600;color:var(--ink);cursor:pointer;display:inline-flex;align-items:center;gap:6px;text-decoration:underline dotted;text-underline-offset:3px}
+.dec-record-line:focus-visible{outline:2px solid var(--action);outline-offset:2px}
+.dec-record-line .chev{display:inline-block;width:8px;height:8px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);margin-top:-4px}
+.dec-record-line[aria-expanded="true"] .chev{transform:rotate(-135deg);margin-top:4px}
+.dec-record-list{margin-top:4px}.dec-record-list[hidden]{display:none}
+.dec-record-table{border-collapse:collapse;font-size:13px}
+.dec-record-table th,.dec-record-table td{padding:2px 12px 2px 0;text-align:left;font-weight:400}
+.dec-record-table thead th{color:var(--muted);font-size:12px}
+.dec-record-table tbody th{font-weight:600}
+.dec-record-table .rec-broken td:last-child{color:var(--no);font-weight:600}
+.dec-record-table .rec-voided td{color:var(--muted)}
+.dec-record-none{margin:0;color:var(--muted)}
+/* the floor's expected length beside Set to the floor */
+.dec-floor-expected{font-size:14px;color:var(--ink);align-self:center}
+.dec-message{margin:0;font-size:14px;color:var(--no);flex-basis:100%}.dec-message:empty{display:none}
+.dec-confirm{flex-basis:100%;display:flex;align-items:center;gap:10px;padding:8px 10px;border:1px solid var(--no);border-radius:4px}
+.dec-confirm[hidden]{display:none}
+.dec-publish{margin-left:auto;min-height:44px}
+.desk-bottom.has-guide .chat-bar{flex-basis:240px}                                          /* from topic 4 the decision's two rows take the room */
+.dec-wait{justify-content:space-between;font-size:15px}
+/* the bank's word from topic 4 (02_Game/web/game.js): the path on the
+   rate chart (the future region, the bands of the cone, the room in green beside them, the standing path hollow, the new path solid and dragged),
+   the row of typed fields under it, the switch, Back and "+"; in the bar Set to the floor with the floor's expected length, the announced band,
+   the path's summary and the record line. A breach is red and marked "!" with its note (nothing by colour alone). */
+.word-editor{margin:4px 0 2px;padding-left:56px;font-size:13px}
+.path-controls{display:flex;align-items:center;gap:14px;min-height:28px}
+.path-switch{display:inline-flex;align-items:center;gap:8px;background:none;border:0;padding:2px 0;font:inherit;font-size:14px;font-weight:600;color:var(--ink);cursor:pointer}
+.path-switch:disabled{cursor:default}
+.path-switch-every{font-size:13px;color:var(--muted)}                   /* from topic 5: the switch locked on, its line beside it */
+.path-switch-track{position:relative;width:34px;height:18px;border-radius:9px;background:var(--rule);transition:background .15s}
+.path-switch-track::after{content:"";position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;background:#FFFFFF;transition:left .15s}
+.path-switch[aria-checked="true"] .path-switch-track{background:var(--ok,#13866F)}
+.path-switch[aria-checked="true"] .path-switch-track::after{left:18px}
+.path-switch:focus-visible,.path-add:focus-visible,.path-back:focus-visible{outline:2px solid var(--action);outline-offset:2px}
+.path-back{background:none;border:0;padding:0;font:inherit;font-weight:600;color:var(--action);text-decoration:underline;cursor:pointer}
+.path-back[hidden]{display:none}
+.path-fields{display:flex;flex-wrap:wrap;align-items:flex-start;gap:6px 4px;margin-top:4px}
+.path-field{display:flex;flex-direction:column;align-items:center;width:82px}
+.path-input{width:72px;font:inherit;font-size:14px;text-align:right;padding:3px 6px;border:1px solid var(--rule);border-radius:3px;background:var(--surface);color:var(--ink)}
+.path-input:focus-visible{outline:2px solid var(--action);outline-offset:1px}
+.path-field-note{font-size:11px;line-height:1.3;color:var(--muted);text-align:center;margin-top:2px}
+.path-field.is-breach .path-input,.path-field.is-invalid .path-input{border:2px solid var(--no);padding:2px 5px}
+.path-field.is-breach .path-field-note,.path-field.is-invalid .path-field-note{color:var(--no);font-weight:600}
+.path-field.is-breach .path-field-note::before,.path-field.is-invalid .path-field-note::before{content:"! "}
+.path-add{align-self:flex-start;background:none;border:1px dashed var(--action);border-radius:3px;padding:3px 8px;font:inherit;font-size:13px;font-weight:600;color:var(--action);cursor:pointer}
+.path-news{margin:6px 0 0;padding:4px 10px;border-left:3px solid var(--ok,#13866F);background:#E8F4F1;font-size:13px;color:var(--ink)}
+.path-line{stroke:var(--action)}
+.path-point{fill:var(--action);stroke:#FFFFFF;stroke-width:2;cursor:ns-resize}
+.path-point:focus{outline:none}.path-point:focus-visible{stroke:#7FA7E0;stroke-width:4}
+.path-point.is-breach{fill:#FFFFFF;stroke:var(--no);stroke-width:3.5}
+.path-rate-point{fill:var(--action)}
+.path-note rect{fill:#FFFFFF;stroke:var(--no);stroke-width:1}
+.path-note text{fill:var(--no);font-weight:600;font-family:'Public Sans',system-ui,sans-serif}
+.dec-floor-box{display:inline-flex;align-items:center;gap:8px}
+.dec-floor{padding:4px 10px;font-size:13px}
+.dec-slot{font-size:13px;color:var(--ink);white-space:nowrap}
+.dec-slot.is-breach{color:var(--no);font-weight:600}
+.dec-slot.is-breach::before{content:"! "}
+.dec-slot[data-slot="record"]{position:relative}
+.dec-slot[data-slot="record"] .dec-record-list{position:absolute;bottom:calc(100% + 8px);right:0;z-index:5;background:var(--surface);border:1px solid var(--rule);border-radius:6px;box-shadow:0 10px 24px rgba(27,36,51,.18);padding:8px 12px;max-height:50vh;overflow:auto;white-space:nowrap}
+.dec-confirm-list{margin:0;padding-left:18px;font-size:13px;color:var(--no)}
+.dec-confirm-list:empty{display:none}
+/* the staff's forecast from topic 5: "Quarter N, if you publish this"
+   under the staff's estimates, each figure with its likely range; the projected point and its band in a light column on the charts; the line of
+   a slump reported part-way */
+.fig-forecast{margin-top:8px;padding-top:6px;border-top:1px solid var(--rule)}
+.fc-title{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin:0 0 4px}
+.fc-range{font-size:13px;color:var(--muted);text-align:right;white-space:nowrap}
+.fc-note,.fc-none{font-size:12px;line-height:1.35;color:var(--muted);margin:4px 0 0}
+.fc-reveal{font-size:12px;line-height:1.35;color:var(--ink);font-weight:600;margin:4px 0 0;padding-left:8px;border-left:3px solid var(--muted)}
+.proj-band{stroke:var(--action)}.proj-mean{stroke:var(--action)}
+/* the bar from topic 4, one row: with Set to the floor (is-compact) and the word (has-word) each item a
+   compact block whose words may take two short lines, the heading and the help kept for screen readers, the message and the confirm step
+   opening above the bar */
+.dec-block.is-compact{position:relative;flex-wrap:nowrap;min-width:0;gap:8px 9px;padding:8px 12px}
+.dec-block.is-compact>.dec-title{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.dec-block.is-compact .dec-rate{flex:0 0 auto;flex-wrap:nowrap;gap:8px}
+.dec-block.is-compact .dec-rate label{max-width:84px;line-height:1.25}
+.dec-block.is-compact .dec-help{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}   /* the unit kept for screen readers; the chart says it */
+.dec-block.is-compact .dec-floor-box{flex:0 0 auto;gap:8px}
+.dec-block.is-compact .dec-floor{flex:0 0 auto;white-space:nowrap;padding:4px 8px}
+.dec-block.is-compact .dec-floor-expected{flex:0 0 118px;font-size:12px;line-height:1.25}
+.dec-block.is-compact .dec-slot{flex:0 1 auto;min-width:64px;max-width:104px;white-space:normal;line-height:1.25;font-size:12px}
+.dec-block.is-compact .dec-slot[data-slot="path"]{max-width:132px}
+.desk-bottom:has(.dec-block.is-compact) .chat-bar{flex-basis:220px}
+.dec-block.is-compact .dec-message,.dec-block.is-compact .dec-confirm{position:absolute;bottom:calc(100% + 6px);left:0;right:0;background:var(--surface);z-index:4}
+.dec-block.is-compact .dec-message{padding:6px 10px;border:1px solid var(--no);border-radius:4px}
+.dec-block.is-compact .dec-confirm{flex-wrap:wrap}
+.dec-block.is-compact .dec-publish{flex:0 0 auto}
+
+/* the chat: the bar (it keeps its place) and the pane over the panel's right third */
+.chat-bar{flex:0 0 300px;background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:8px 10px;display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-rows:auto auto;column-gap:8px;align-items:center}
+.chat-name{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px}
+.chat-badge{background:var(--no);color:#fff;font-size:11px;font-weight:700;border-radius:10px;padding:0 6px}
+.chat-preview{grid-column:1;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.chat-toggle{grid-column:2;grid-row:1/3;width:36px;height:36px;border:1px solid var(--rule);background:var(--paper);border-radius:4px;cursor:pointer;position:relative}
+.chat-toggle .chev{position:absolute;left:12px;top:15px;width:9px;height:9px;border-left:2px solid var(--ink);border-top:2px solid var(--ink);transform:rotate(45deg)}
+.chat-toggle[aria-expanded="true"] .chev{transform:rotate(225deg);top:10px}
+.chat-pane{position:absolute;right:0;top:0;bottom:86px;width:34%;min-width:320px;background:var(--surface);border-left:1px solid var(--rule);box-shadow:-8px 0 24px rgba(0,0,0,.12);display:flex;flex-direction:column;z-index:30;transition:transform .2s ease}   /* the open chat: over the folded task line (20), under a card (40) and a window (45); the drop-down its equal */
+.chat-pane[hidden]{display:none}
+.chat-head{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;border-bottom:1px solid var(--rule)}
+.chat-title{font-size:15px;margin:0}.chat-title:focus{outline:none}
+.chat-close{background:none;border:1px solid var(--rule);border-radius:4px;padding:4px 10px;cursor:pointer;font:13px 'Public Sans',sans-serif}
+.chat-list{list-style:none;margin:0;padding:10px 14px;overflow-y:auto;flex:1;display:flex;flex-direction:column;gap:10px}
+.chat-msg{background:var(--paper);border:1px solid var(--rule);border-radius:6px;padding:8px 10px;font-size:14px;line-height:1.5}
+.chat-msg.is-new{border-color:var(--action)}
+.chat-msg.kind-paper{background:none;border-style:dashed;color:var(--muted)}
+.chat-when{font-size:11px;color:var(--muted);margin-bottom:2px}
+.chat-card{margin-top:6px}
+.chat-input-place{height:0}
+/* the chat's input: below the history; greyed with its one line when the LLM layer is off */
+.chat-input{border-top:1px solid var(--rule);padding:10px 14px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 8px;align-items:end}
+.chat-input textarea{font:14px 'Public Sans',sans-serif;border:1px solid var(--rule);border-radius:4px;padding:6px 8px;resize:vertical;min-height:40px;background:var(--surface);color:var(--ink)}
+.chat-input textarea:disabled,.chat-input button:disabled{opacity:.55;cursor:not-allowed;background:var(--paper)}
+.chat-note{grid-column:1/3;margin:0;font-size:11px;color:var(--muted)}
+.chat-msg.kind-question{background:#E6ECF5;border-color:#C9D0DB;margin-left:24px}
+.chat-msg.kind-answer_failed{background:none;border-style:dashed;color:var(--muted)}
+.chat-msg.kind-thinking{background:none;border-style:dashed;color:var(--muted)}
+.chat-msg.kind-thinking::after{content:"";display:inline-block;width:10px;height:10px;margin-left:8px;border:2px solid var(--muted);border-top-color:transparent;border-radius:50%;animation:chat-spin 1s linear infinite;vertical-align:-1px}
+@keyframes chat-spin{to{transform:rotate(360deg)}}
+/* the desk strip: the folded paper and the switch "The staff's selection" */
+.desk-strip{width:100%;max-width:1280px;display:flex;justify-content:center;padding:22px 0 18px}
+.paper-folded-wrap{display:flex;align-items:center;gap:18px;max-width:100%}
+.paper-folded{all:unset;box-sizing:border-box;cursor:pointer;background:#FBFAF6;border:1px solid var(--rule);border-radius:3px;padding:12px 18px;width:560px;max-width:100%;box-shadow:0 8px 18px rgba(0,0,0,.25);display:flex;flex-direction:column;gap:4px;transform:rotate(-1.2deg);color:var(--ink)}
+.paper-folded:focus-visible{outline:3px solid #7FA7E0;outline-offset:3px}
+.paper-folded-mast{display:flex;align-items:baseline;justify-content:space-between;border-bottom:1px solid #CC2229;padding-bottom:4px}
+.paper-name{font-family:'Source Serif 4',Georgia,serif;font-weight:700;font-size:18px;letter-spacing:.06em;background:#CC2229;color:#fff;padding:5px 10px 4px;line-height:1}
+.paper-dateline{font-size:12px;color:var(--muted)}
+.paper-folded-headline{font-family:'Source Serif 4',Georgia,serif;font-weight:600;font-size:19px;line-height:1.25;margin-top:4px}
+.paper-folded-summary{font-size:12px;color:var(--muted)}
+.paper-switch{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;gap:8px;font:600 13px 'Public Sans',sans-serif;color:var(--ink);background:var(--surface);border:1px solid var(--rule);border-radius:16px;padding:5px 12px 5px 6px;white-space:nowrap}
+.paper-switch-knob{flex:0 0 auto;width:28px;height:16px;border-radius:8px;background:#C9D0DB;position:relative}
+.paper-switch-knob::after{content:"";position:absolute;left:2px;top:2px;width:12px;height:12px;border-radius:50%;background:#fff;transition:left .15s}
+.paper-switch[aria-pressed="true"] .paper-switch-knob{background:#1F4E8C}
+.paper-switch[aria-pressed="true"] .paper-switch-knob::after{left:14px}
+.paper-switch:focus-visible{outline:3px solid #7FA7E0;outline-offset:2px}
+/* the open paper: spreads of two pages of a fixed height (ui_params$paper$grid: 660 x 760 pixels, 20-pixel rows),
+   the whole spread scaled down by 02_Game/web/game.js on a shorter window; a click beside it folds it */
+.paper-overlay{position:fixed;inset:0;z-index:50;background:rgba(58,52,46,.78);display:flex;flex-direction:column;align-items:center;overflow:hidden}
+.paper-overlay[hidden]{display:none}
+body.paper-open{overflow:hidden}                                      /* the open paper is the screen: the desk behind it does not scroll */
+.paper-bar{align-self:stretch;display:flex;align-items:center;gap:12px;padding:8px 24px;background:#1B2433;color:#F4F6F9;font:13px 'Public Sans',sans-serif;flex:0 0 auto}
+.paper-bar .paper-name{font-size:14px;padding:4px 8px 3px}
+.paper-bar-dateline{color:#C9D0DB}
+.paper-bar-gap{flex:1 1 auto}
+.paper-bar .paper-fold{font:13px 'Public Sans',sans-serif;background:transparent;color:#fff;border:1px solid #5A6475;border-radius:4px;padding:5px 11px;cursor:pointer}
+/* the arrows that turn the pages, at the spread's outer borders */
+.paper-spread{position:relative}
+.paper-spread .paper-turn{position:absolute;top:calc(50% - 36px);z-index:3;width:28px;height:72px;padding:0;border:1px solid #5A6475;border-radius:6px;background:#1B2433;color:#F4F6F9;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.35)}
+.paper-spread .paper-prev{left:-14px}.paper-spread .paper-next{right:-14px}
+.paper-spread .paper-turn::before{content:"";position:absolute;left:10px;top:30px;width:9px;height:9px;border-left:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg)}
+.paper-spread .paper-next::before{left:7px;transform:rotate(225deg)}
+.paper-spread .paper-turn:disabled{opacity:.3;cursor:default}
+.paper-spread .paper-turn:focus-visible{outline:3px solid #7FA7E0;outline-offset:2px}
+.paper-bar .paper-switch{background:transparent;color:#fff;border-color:#5A6475}
+.paper-bar button:focus-visible{outline:3px solid #7FA7E0;outline-offset:2px}
+.paper-counts{min-width:128px;text-align:center}
+.paper-count[hidden]{display:none}
+.paper-stage{flex:0 0 auto;margin-top:16px;display:flex;justify-content:center;width:100%}
+.paper-spread{display:flex;flex:0 0 auto;width:calc(2 * var(--page-w,660px));height:var(--page-h,760px);box-shadow:0 22px 50px rgba(0,0,0,.45);transform-origin:top center}
+.paper-hint{color:#E8E2D8;font:12px 'Public Sans',sans-serif;margin:10px 0 0}
+.paper-page{flex:0 0 auto;width:var(--page-w,660px);height:var(--page-h,760px);box-sizing:border-box;padding:22px 26px 26px;overflow:hidden;position:relative;background:#FBFAF6;font-family:'Source Serif 4',Georgia,serif;color:#1B2433}
+.paper-page[hidden]{display:none}
+.paper-page.is-left{border-right:1px solid #D6D2C8;box-shadow:inset -18px 0 22px -18px rgba(0,0,0,.18)}
+.paper-page.is-right{box-shadow:inset 18px 0 22px -18px rgba(0,0,0,.18)}
+.paper-running{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid #1B2433;height:30px;margin:0 0 10px;box-sizing:border-box}
+.paper-running-name{font-variant:small-caps;letter-spacing:.05em;font-weight:700;font-size:15px}
+.paper-running-page{font:11px 'Public Sans',sans-serif;color:#5A6475}
+/* page one: the masthead, the index beside the lead */
+.paper-mast-front{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid #CC2229;padding-bottom:8px;margin-bottom:12px;height:60px;box-sizing:border-box}
+.paper-name-big{font-size:28px;padding:8px 16px 6px}
+.paper-edition{font-size:11px;letter-spacing:.02em;opacity:.85}
+.paper-front-grid{display:grid;grid-template-columns:186px minmax(0,1fr);gap:0 21px;height:638px}
+.paper-index{border-top:3px solid #CC2229;padding-top:6px;overflow:hidden}
+.paper-index-title{font-variant:small-caps;letter-spacing:.05em;font-weight:700;font-size:15px;margin:0 0 6px}
+.paper-index-col{font:700 10.5px 'Public Sans',sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#5A6475;margin:6px 0 3px}
+.paper-index-line{display:flex;align-items:baseline;gap:4px;color:#1B2433;text-decoration:none;font-size:13px;line-height:17px;margin:0 0 7px}
+.paper-index-line:focus-visible{outline:2px solid #7FA7E0;outline-offset:2px}
+.paper-index-head{flex:0 1 auto;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.paper-index-leader{flex:1 1 12px;min-width:12px;border-bottom:1.5px dotted #5A6475;transform:translateY(-4px)}
+.paper-index-page{flex:0 0 auto;font:11px 'Public Sans',sans-serif;color:#5A6475}
+.paper-lead{border-left:1px solid #D9D4C7;padding-left:20px;overflow:hidden;margin:0}
+.paper-headline{font-size:28px;line-height:32px;font-weight:700;margin:0 0 6px}
+.paper-lead .paper-standfirst{font-size:15px;line-height:21px;margin:0 0 6px}
+.paper-lead .paper-body-cols{column-gap:16px}
+/* an article: its headline, standfirst, signal sentence, chart and body in two columns, on the grid's rows */
+.paper-article{margin:14px 0 0;position:relative}
+.paper-running + .paper-article,.paper-none-note + .paper-article,.paper-article.is-continued{margin-top:0}
+.paper-article-head{font-size:20px;line-height:26px;font-weight:700;margin:0 0 4px}
+.paper-standfirst{font-style:italic;font-size:14px;line-height:20px;margin:0 0 4px;color:#3A4352}
+.paper-signal{font-weight:700;font-size:14px;line-height:20px;margin:0 0 8px;position:relative}
+.paper-marker{background:none;color:inherit}
+.paper-body-cols{font-size:13.5px;line-height:20px;text-align:justify;hyphens:auto;column-count:2;column-gap:18px;column-fill:balance}
+.paper-body-cols p{margin:0;text-indent:1em}
+.paper-body-cols p:first-child{text-indent:0}
+.paper-art-chart{margin:0 0 8px;width:295px;height:142px;overflow:hidden}
+.paper-art-chart svg{display:block;width:295px;height:118px}
+.paper-cont-head{font-size:12px;line-height:20px;font-style:italic;color:#5A6475;margin:0}
+.paper-cont-title{font-weight:700;font-style:normal}
+.paper-cont-foot{font-size:12px;line-height:20px;font-style:italic;color:#5A6475;text-align:right;margin:0}
+.paper-tab{display:block;width:34px;height:5px;background:#CC2229;margin-bottom:4px}
+.paper-chart-title{font-family:'Public Sans',sans-serif;font-size:12px;font-weight:600;line-height:16px}
+/* page two: the bank and the figures */
+.paper-bank-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:0 22px;height:168px}
+.paper-slot-title{font-variant:small-caps;letter-spacing:.05em;font-weight:700;font-size:13px;margin:0 0 4px}
+.paper-slot-unit{font:400 11px 'Public Sans',sans-serif;font-variant:normal;letter-spacing:0;color:#5A6475}
+.paper-decision-line{font-size:15px;line-height:21px;margin:0 0 8px}
+.paper-squares{list-style:none;display:flex;gap:4px;margin:4px 0;padding:0}
+.paper-square{width:22px;height:22px;background:rgba(31,78,140,var(--shade,0));border:1px solid #1F4E8C;position:relative;box-sizing:border-box;cursor:default}
+.paper-square.is-empty{background:none;border:1.5px dashed #9AA4B5}
+.paper-square:focus-visible{outline:2px solid #7FA7E0;outline-offset:2px}
+.paper-square-tip{display:none;position:absolute;left:0;bottom:calc(100% + 6px);width:250px;z-index:3;background:#1B2433;color:#F4F6F9;font:12px/1.4 'Public Sans',sans-serif;padding:6px 8px;border-radius:4px}
+.paper-square:hover .paper-square-tip,.paper-square:focus .paper-square-tip{display:block}
+.paper-slot-note{font:11px/1.4 'Public Sans',sans-serif;color:#5A6475;margin:2px 0 0}
+.paper-path svg{display:block;width:100%;height:120px}
+.paper-figures{margin-top:4px}
+.paper-table{font-family:'Public Sans',sans-serif;border-collapse:collapse;font-size:12.5px;width:100%}
+.paper-table th,.paper-table td{border-bottom:1px solid #E3E6EB;padding:3px 6px;text-align:right;line-height:17px}.paper-table th[scope=row]{text-align:left}
+.paper-table thead th{border-bottom:1px solid #CC2229}
+.paper-charts{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:6px 22px;margin-top:10px}
+.paper-chart{margin:0;position:relative;height:140px;overflow:hidden}
+.paper-chart svg{display:block;width:100%;height:118px}
+/* the staff's selection: the signals' sentences with the yellow marker and a mark in the margin, the rest greyed; the staff's note in a
+   column without a signal; nothing rests on colour alone */
+.paper-margin-mark{display:none}
+.is-selection .paper-article.is-signal .paper-marker{background:linear-gradient(transparent 8%,#FFE45C 8%,#FFE45C 92%,transparent 92%);-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.is-selection .paper-article.is-signal .paper-margin-mark{display:block;position:absolute;left:-20px;top:3px;width:13px;height:13px;border:1.5px solid #1B2433;border-radius:2px;background:#FFE45C;box-sizing:border-box}
+.is-selection .paper-article.is-signal .paper-margin-mark::after{content:"";position:absolute;left:3px;top:0;width:3px;height:7px;border-right:2px solid #1B2433;border-bottom:2px solid #1B2433;transform:rotate(45deg)}
+.is-selection .paper-article:not(.is-signal),.is-selection .paper-index-line:not(.is-signal){opacity:.42}
+.is-selection .paper-index-line.is-signal .paper-index-head{background:linear-gradient(transparent 8%,#FFE45C 8%,#FFE45C 92%,transparent 92%)}
+.paper-none-note{display:none}
+.is-selection .paper-none-note{display:block;font:italic 12px/20px 'Public Sans',sans-serif;color:#5A6475;border-left:3px solid #FFE45C;padding-left:8px;margin:0 0 6px}
+/* the windows inside the PC: an exhibit, the map, the Compare window, the report */
+.game-window-slot{position:absolute;inset:0;pointer-events:none;z-index:45}   /* a window: over a card (40), the open chat (30), the task line folded or open (20, 32) and the desk */
+/* the interim card: the window style, over the whole screen (the decision waits for Continue), below a
+   window that a page's card opens */
+.interim-slot{position:absolute;inset:0;z-index:40;background:rgba(27,36,51,.18)}   /* a card: over the open chat (30), the task line folded or open (20, 32) and the desk; under a window (45) and the tour */
+.game-window.interim-card{inset:7% 12% 7% 12%}
+.interim-card .window-head{grid-template-columns:1fr auto}
+.card-count{grid-column:2;grid-row:1/3;font-size:13px;color:var(--muted)}
+.interim-card .window-body{padding:18px 24px;font-size:17px;line-height:1.6}
+.card-text{margin:0 0 12px;max-width:68ch;white-space:pre-line}
+.card-action{margin:4px 0 12px}
+/* the task under a scene's intro ("Your task" as a small heading above the task) */
+.card-task{margin:16px 0 0;max-width:68ch}
+.card-task-head{margin:0 0 4px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.card-task-text{margin:0;font-size:16px;line-height:1.45}
+.task-links{margin:8px 0 0;display:flex;gap:14px;flex-wrap:wrap}
+.task-again{font-size:13px}
+.card-foot{display:flex;justify-content:flex-end;flex-wrap:wrap;gap:10px;padding:12px 18px;border-top:1px solid var(--rule)}
+.game-window{pointer-events:auto;position:absolute;inset:4% 6% 96px 6%;background:var(--surface);border:1px solid var(--rule);border-radius:8px;box-shadow:0 24px 24px rgba(0,0,0,.18);display:flex;flex-direction:column;overflow:hidden}
+.window-head{display:grid;grid-template-columns:1fr auto;align-items:center;padding:12px 18px;border-bottom:1px solid var(--rule)}
+.window-kicker{font-size:12px;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+.window-title{grid-column:1;font-family:'Source Serif 4',Georgia,serif;font-size:21px;margin:0}.window-title:focus{outline:none}
+.window-close{grid-column:2;grid-row:1/3;background:none;border:1px solid var(--rule);border-radius:4px;padding:5px 12px;cursor:pointer;font:13px 'Public Sans',sans-serif}
+.window-body{flex:1;overflow-y:auto;padding:14px 18px}
+/* topic 6's exhibit: the slider of the tax rule's response to debt with its positions and the
+   Ricardian edge marked, the sentence, the two charts (the debt, the price level) side by side */
+.exhibit-lede{margin:0 0 12px;font-size:15px;line-height:1.5;max-width:70ch}
+.exhibit-control{max-width:640px;margin:0 0 18px}
+.exhibit-control label{display:block;font-size:14px;font-weight:600;margin-bottom:6px}
+.exhibit-value{font-variant-numeric:tabular-nums;font-weight:700}
+.exhibit-control input[type=range]{width:100%}
+.exhibit-ticks{position:relative;height:34px;font-size:11px;color:var(--muted)}
+.exhibit-tick{position:absolute;top:0;transform:translateX(-50%);font-variant-numeric:tabular-nums}
+.exhibit-edge{position:absolute;top:15px;transform:translateX(-50%);white-space:nowrap;font-weight:600;color:var(--ink);border-left:2px solid var(--ink);padding-left:4px}
+.exhibit-sentence{margin:0 0 10px;font-size:15px;line-height:1.45;max-width:70ch}
+.exhibit-charts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+@media (max-width:900px){.exhibit-charts{grid-template-columns:minmax(0,1fr)}}
+.window-foot{display:flex;gap:10px;justify-content:flex-end;align-items:center;padding:10px 18px;border-top:1px solid var(--rule)}
+.window-sub{font-size:14px;margin:10px 0 4px}
+.ex-question{font-family:'Source Serif 4',Georgia,serif;font-size:17px;margin:0 0 10px}
+.ex-slider{display:grid;grid-template-columns:minmax(200px,2fr) 3fr 90px;align-items:center;gap:10px;margin:6px 0}
+.ex-slider input[type=range]{width:100%}
+.ex-slider-value{font-weight:700;text-align:right}
+.ex-outs{display:flex;flex-wrap:wrap;gap:12px;margin:12px 0}
+.ex-out{background:var(--paper);border:1px solid var(--rule);border-radius:6px;padding:8px 12px;min-width:160px}
+.ex-out-label{display:block;font-size:12px;color:var(--muted)}.ex-out-value{font-size:20px;font-weight:700}
+.ex-caption{font-size:15px;line-height:1.55;margin:6px 0 0}
+.compare-charts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.compare-caption{font-weight:600}
+.compare-table{border-collapse:collapse;font-size:14px;margin:10px 0}.compare-table th,.compare-table td{border-bottom:1px solid var(--rule);padding:4px 10px;text-align:right}
+.compare-table th[scope=row]{text-align:left}.compare-table caption{text-align:left;color:var(--muted);font-size:12px}
+.compare-explanation{font-size:15px;line-height:1.55}
+.game-notice{background:var(--surface);border:1px solid var(--rule);border-left:3px solid var(--action);border-radius:6px;padding:8px 12px;margin:0 0 16px}
+.game-related{margin:14px 0 0;font-size:14px;color:var(--muted);display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline}
+.game-related-list{list-style:none;display:flex;flex-wrap:wrap;gap:4px 16px;margin:0;padding:0}
+.game-tutor-line{color:var(--muted);font-style:italic;margin:0 0 8px}
+/* the Chief Economist's report: pages, plot 1 with the rule as a toggle and the lines drawn as a replay, plot 2 */
+.report-window{inset:3% 4% 96px 4%}
+.report-nav{display:flex;flex-wrap:wrap;gap:4px;padding:8px 18px;border-bottom:1px solid var(--rule)}
+.report-tab{background:none;border:1px solid transparent;border-radius:4px;padding:5px 10px;font:14px 'Public Sans',sans-serif;cursor:pointer;color:var(--action)}
+.report-tab.is-current{border-color:var(--rule);background:var(--paper);color:var(--ink);font-weight:600}
+.report-tab:disabled{color:var(--muted);cursor:default}
+.report-h{font-size:17px;margin:0 0 8px}.report-sub{font-size:14px;margin:14px 0 4px}
+.report-text{font-size:15px;line-height:1.55;margin:8px 0}.report-note{color:var(--muted);font-size:14px}
+.report-plot{max-width:760px}
+.plot1 .plot-rule{display:none}.plot1.show-rule .plot-rule{display:inline}
+.plot1 .plot-you,.plot1 .plot-best{stroke-dasharray:3000;stroke-dashoffset:0;animation:plotdraw 1.6s ease-out}
+.plot1 .plot-understood,.plot1 .plot-rule{animation:plotfade 1.6s ease-out}
+@keyframes plotdraw{from{stroke-dashoffset:3000}to{stroke-dashoffset:0}}
+@keyframes plotfade{from{opacity:0}to{opacity:1}}
+.report-legend{list-style:none;display:flex;flex-wrap:wrap;gap:4px 18px;padding:0;margin:6px 0;font-size:13px}
+.legend{display:flex;align-items:center;gap:6px}.legend-key{display:inline-block;width:26px;border-top:3px solid var(--action)}
+.legend.best .legend-key{border-top-color:var(--ink)}.legend.silent .legend-key{border-top:2px dashed var(--ink)}.legend.understood .legend-key{border-top:3px dashed #C77A1E}.legend.rule .legend-key{border-top:3px dotted var(--muted)}
+.legend-note{color:var(--muted)}
+.report-toggle{font-size:14px;display:inline-flex;align-items:center;gap:6px}
+.report-actions{display:flex;gap:10px;margin-top:10px}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media (prefers-reduced-motion:reduce){.chat-msg.kind-thinking::after{animation:none!important}.chat-pane,.paper-overlay,.paper-spread{transition:none!important;animation:none!important}.plot-line{animation:none!important}.report-tab,.chat-toggle .chev{transition:none!important}}
+/* the login: one card on paper ground, the drop-down, the password field, Sign in, the line for a refusal */
+.game-login{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:32px 16px}
+.login-card{width:100%;max-width:440px;background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:28px 30px 22px;box-shadow:0 8px 24px rgba(27,36,51,.08)}
+.login-title{font-family:'Source Serif 4',Georgia,serif;font-size:30px;line-height:1.15;margin:2px 0 8px}
+.login-title:focus{outline:none}.login-title:focus-visible{outline:3px solid #7FA7E0;outline-offset:4px}
+.login-lede{color:var(--muted);margin:0 0 18px}
+.login-form{display:grid;gap:6px}
+.login-label{font-size:14px;color:var(--muted);margin-top:6px}
+.login-input{font:16px 'Public Sans',sans-serif;border:1px solid var(--rule);border-radius:6px;padding:9px 10px;background:var(--surface);color:var(--ink);width:100%}
+.login-input:focus-visible{outline:3px solid #7FA7E0;outline-offset:1px}
+.login-input:disabled,.login-form button:disabled{opacity:.55;cursor:not-allowed}
+.login-submit{margin-top:14px;justify-self:start;min-height:44px}
+.login-message{min-height:1.5em;margin:4px 0 0;font-size:14px;color:var(--no)}
+.login-note{font-size:13px;color:var(--muted);margin:14px 0 0}
+/* the Runs screen: the header with Open the theory and Sign out; three slots in the middle. An empty
+   active slot has rounded corners, a dotted border and a large "+"; an empty inactive slot is grey and partly transparent; a slot
+   holding a run has a solid border. The confirms carry the error red's border; Delete's button is error red. */
+.game-runs{max-width:1120px;margin:0 auto;padding:36px 48px 64px}
+.runs-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 32px;align-items:start;margin-bottom:24px}
+.runs-nav{display:flex;flex-wrap:wrap;gap:10px;padding-top:22px}
+.runs-status{font-size:17px;color:var(--muted);margin:48px 0;text-align:center}
+.runs-status.is-error{color:var(--no)}.runs-status-text{margin:0 0 12px}
+.runs-slots{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;align-items:stretch}
+.run-slot{border-radius:14px;padding:22px 22px 18px;min-height:280px;display:flex;flex-direction:column;gap:8px}
+.run-slot.is-created{background:var(--surface);border:2px solid var(--rule)}
+.run-slot.is-empty{border:2px dotted var(--muted);align-items:center;justify-content:center;text-align:center}
+.run-slot.is-inactive{opacity:.45;filter:grayscale(1);border-color:var(--rule);background:#E9EDF3}
+.run-new{display:flex;flex-direction:column;align-items:center;gap:6px;background:none;border:0;padding:20px 24px;border-radius:10px;color:var(--action);font:600 17px 'Public Sans',sans-serif;cursor:pointer}
+button.run-new:hover{background:var(--surface)}
+.run-slot.is-inactive .run-new{color:var(--muted);cursor:default}
+.run-plus{font-size:60px;line-height:1;font-weight:300}
+.run-note{font-size:13px;color:var(--muted);margin:0}
+.run-name{font-family:'Source Serif 4',Georgia,serif;font-size:24px;line-height:1.2;margin:0 0 2px;overflow-wrap:anywhere}
+.run-when,.run-progress,.run-open{margin:0;font-size:15px}
+.run-when,.run-open{color:var(--muted)}
+.run-buttons{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.run-actions{margin-top:auto;padding-top:10px}
+.run-form{display:grid;gap:6px;width:100%;text-align:left}
+.run-form[hidden],.run-confirm[hidden],.run-new[hidden],.run-name[hidden]{display:none}
+.run-label{font-size:14px;color:var(--muted)}
+.run-input{font:16px 'Public Sans',sans-serif;border:1px solid var(--rule);border-radius:6px;padding:8px 10px;background:var(--surface);color:var(--ink);width:100%}
+.run-input:focus-visible{outline:3px solid #7FA7E0;outline-offset:1px}
+.run-confirm{border:1px solid var(--no);border-radius:8px;padding:10px 12px;background:var(--surface)}
+.run-confirm-text{margin:0 0 4px}
+.game .btn-danger{background:var(--no)}
+.run-settings{border-top:1px solid var(--rule);padding-top:10px;margin-top:4px;font-size:14px}
+.run-setting{display:flex;align-items:center;gap:8px;cursor:pointer}
+.run-settings.is-off .run-setting{color:var(--muted);cursor:not-allowed}
+.run-setting-note{display:block;color:var(--muted);font-size:13px;margin:2px 0 0 26px}
+.run-dev{border:1px dashed var(--rule);border-radius:8px;padding:8px 10px;font-size:14px}
+.run-dev-head{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0}
+.game a.run-log{text-decoration:none;display:inline-block;color:var(--ink)}
+/* the desk's top bar: the run's name beside The map, Theory and Menu */
+.desk-run{font-size:14px;color:var(--muted);padding:2px 10px;border:1px solid var(--rule);border-radius:999px;align-self:center}
+@media (max-width:820px){.runs-slots{grid-template-columns:1fr}.game-runs{padding:24px 16px 48px}.runs-head{grid-template-columns:1fr}.runs-nav{padding-top:0}}
+/* the economy's map: each actor's box folded by default, the outcomes in the dashed band between them; below the canvas the legend on the left and the walk's
+   box on the right; the boxes on hover and pinned; the marks in words as well as colours (the badges "new" and "changed", the folded box's lines);
+   the parts' kinds in their outlines with the legend, the kind also named in each part's box. The colour tokens only. */
+.game-map-area{min-width:0}
+.game-map-title{font-family:'Source Serif 4',Georgia,serif;font-size:22px;line-height:1.2;margin:0 0 2px}
+.game-map-lede{margin:0 0 10px;color:var(--muted);font-size:14px}
+.map{position:relative}
+.map-foot{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px 28px;margin:10px 2px 0}
+.map-legend{display:flex;flex-direction:column;align-items:flex-start;gap:4px;list-style:none;margin:0;padding:0;font-size:13px;color:var(--muted)}
+.map-key-item{display:flex;align-items:center;gap:8px}
+.map-key-kind{display:inline-block;width:16px;height:11px;border-radius:2px;border:1.5px solid var(--muted);background:var(--paper)}
+.map-key-new{display:inline-block;width:24px;height:10px;border-radius:5px;background:#13866F}
+.map-key-changed{display:inline-block;width:24px;height:10px;border-radius:5px;background:#B4651A}
+.map-key-decision{display:inline-block;width:26px;height:0;border-top:2px dashed var(--action)}
+/* the walk's box: at rest its one button at the bottom right; walking, the buttons at its top, the texts in its middle, Previous and Next
+   at its bottom */
+.map-walk{flex:0 1 480px;min-width:280px;margin:0 0 0 auto;display:flex;flex-direction:column;gap:10px;border:1px solid var(--rule);border-radius:8px;background:var(--surface);padding:10px 12px}
+.map[data-walk="rest"] .map-walk{border-color:transparent;background:none;padding:0;align-items:flex-end}
+.map-walk-buttons{display:flex;flex-wrap:wrap;gap:6px}
+.game .map-walk-btn{font:600 13px 'Public Sans',sans-serif;padding:6px 12px;border:1px solid var(--action);border-radius:4px;color:var(--action);background:var(--paper);cursor:pointer;white-space:normal;text-align:left}
+.game .map-walk-btn:disabled{opacity:.45;cursor:default}
+.map-walk-btn:focus-visible,.map-reset:focus-visible{outline:3px solid #7FA7E0;outline-offset:2px}
+.map-walk-text{margin:0;font-size:14px;line-height:1.5;color:var(--ink)}
+.map-walk-text[hidden],.map-walk-steps[hidden]{display:none}
+.map-walk-title{font-size:14px;font-weight:700;margin:0 0 4px}
+.map-walk-part{margin:0 0 6px}
+.map-walk-arrow{margin:8px 0 0;padding-left:10px;border-left:3px solid var(--action)}
+.map-walk-steps{display:flex;justify-content:space-between;gap:8px;border-top:1px solid var(--rule);padding-top:8px}
+.map-walk-prev.is-none{visibility:hidden}
+.map-walk-end{order:2}.map-walk-next{order:3}                          /* Previous, End the walk, Next */
+.map-canvas{position:relative;border:1px solid var(--rule);border-radius:8px;background:var(--paper);padding:6px;overflow:hidden}
+.game .map-reset{position:absolute;top:8px;right:8px;z-index:2;display:inline-flex;align-items:center;gap:6px;font:600 13px 'Public Sans',sans-serif;padding:5px 10px;border:1px solid var(--action);border-radius:4px;color:var(--action);background:var(--paper);cursor:pointer}
+.map-reset-icon{font-size:15px;line-height:1}
+.map-keys{position:absolute;left:10px;bottom:6px;margin:0;font-size:12px;color:var(--muted)}
+.map-svg{display:block;width:100%;height:auto;touch-action:none;user-select:none;-webkit-user-select:none}
+.game-map-area .map-svg{max-height:74vh}.map-panel .map-svg{max-height:60vh}
+/* the boxes: folded (a title, the number of parts, the marks' lines) or unfolded (the heading, the parts; a second click folds it) */
+.map-box{cursor:grab;outline:none}
+.map-box.is-lifted{cursor:grabbing}
+.map-box.is-lifted .map-fold-view .map-box-rect,.map-box.is-lifted .map-open-view>.map-box-rect{stroke:var(--action);stroke-width:3;filter:drop-shadow(0 6px 10px rgba(27,36,51,.22))}
+.map-box .map-open-view{display:none}.map-box.is-open .map-open-view{display:inline}.map-box.is-open .map-fold-view{display:none}
+.map-box-rect{fill:var(--surface);stroke:var(--ink);stroke-width:1.2}
+.map-open-view>.map-box-rect{fill:rgba(244,246,249,.72);stroke:var(--muted);stroke-width:1}
+.map-open-view>.map-box-rect.is-band,.map-box.is-outcomes .map-fold-view .map-box-rect{stroke-dasharray:6 4;fill:#FBF9F4}
+.map-box-title{font:600 14px 'Public Sans',sans-serif;fill:var(--ink)}
+.map-box-sub{font:12px 'Public Sans',sans-serif;fill:var(--muted)}
+.map-box-head{font:700 11px 'Public Sans',sans-serif;letter-spacing:.06em;fill:var(--muted)}
+.map-box-new{font:600 11.5px 'Public Sans',sans-serif;fill:#13866F}
+.map-box-changed{font:600 11.5px 'Public Sans',sans-serif;fill:#B4651A}
+.map-box:focus-visible .map-fold-view .map-box-rect,.map-box:focus-visible .map-open-view>.map-box-rect{stroke:#7FA7E0;stroke-width:3}
+.map-fold-view{cursor:pointer}
+.map-fold-view:hover .map-box-rect{fill:#E6ECF5}
+.map-box.is-springing{transition:none}
+/* the parts, their outline by kind (the legend; the kind named in the part's box) */
+.map-part{cursor:pointer;outline:none}
+.map-part rect{fill:var(--paper);stroke:var(--muted);stroke-width:1.2}
+.map-part-label{font:500 12.5px 'Public Sans',sans-serif;fill:var(--ink)}
+.map-part.kind-your-lever rect{stroke:var(--action);stroke-width:1.8}.map-key-kind.kind-your-lever{border-color:var(--action);border-width:2px}
+.map-part.kind-the-government-s-lever rect{fill:#E8F4F1;stroke:#13866F}.map-key-kind.kind-the-government-s-lever{background:#E8F4F1;border-color:#13866F}
+.map-part.kind-news rect{fill:#FDF4E3;stroke:#C98A1B}.map-key-kind.kind-news{background:#FDF4E3;border-color:#C98A1B}
+.map-part.kind-a-belief rect{fill:#F1ECF8;stroke:#7E63B5}.map-key-kind.kind-a-belief{background:#F1ECF8;border-color:#7E63B5}
+.map-part.kind-politics rect{fill:#EEF1F5;stroke:#4A5568}.map-key-kind.kind-politics{background:#EEF1F5;border-color:#4A5568}
+.map-part:hover rect,.map-part.is-pinned rect{stroke:var(--ink);stroke-width:2}
+.map-part:focus-visible rect{stroke:#7FA7E0;stroke-width:3}
+.map-part.is-new rect{stroke:#13866F;stroke-width:2.2}
+.map-part.is-changed rect{stroke:#B4651A;stroke-width:2.2}
+.map-badge rect{stroke:none}.map-badge text{font:700 10px 'Public Sans',sans-serif;fill:#fff}
+.map-badge.is-new rect{fill:#13866F}.map-badge.is-changed rect{fill:#B4651A}
+.map-floor-mark line{stroke:var(--muted);stroke-width:1.2;stroke-dasharray:3 2}.map-floor-mark text{font:600 9.5px 'Public Sans',sans-serif;fill:var(--muted)}
+/* the arrows: drawn by the browser between their ends; the new in green; the player's next decision dashed, drawn while the walk lights it */
+.map-line{cursor:pointer;outline:none}
+.map-stroke{fill:none;stroke:#9AA4B5;stroke-width:1.4}
+.map-head{fill:#9AA4B5}.map-head.is-new{fill:#13866F}.map-head.is-lit{fill:var(--action)}
+.map-line.is-new .map-stroke{stroke:#13866F;stroke-width:2}
+.map-hit{fill:none;stroke:transparent;stroke-width:14;pointer-events:stroke}
+.map-line:hover .map-stroke,.map-line.is-pinned .map-stroke{stroke:var(--ink);stroke-width:2.4}
+.map-line:focus-visible .map-stroke{stroke:#7FA7E0;stroke-width:3}
+.map-line.is-decision{display:none}
+.map-line.is-decision .map-stroke{stroke-dasharray:6 4;stroke:var(--action)}
+.map-decision-label{font:600 11px 'Public Sans',sans-serif;fill:var(--action)}
+.map.is-walking .map-line.is-decision.is-lit{display:inline}
+/* the walk: the part it stands on, the arrows that leave it and their ends lit, the rest dimmed; a folded box lit as a whole; a Follow button
+   pointed at or focused lights its arrow and its end more */
+.map.is-walking .map-line{opacity:.16}.map.is-walking .map-line.is-lit{opacity:1}
+.map.is-walking .map-line.is-lit .map-stroke{stroke:var(--action);stroke-width:3;stroke-dasharray:none}
+.map.is-walking .map-line.is-lit.is-decision .map-stroke{stroke-dasharray:6 4}
+.map.is-walking .map-part{opacity:.32}.map.is-walking .map-part.is-lit{opacity:1}
+.map.is-walking .map-part.is-lit rect{stroke:var(--action);stroke-width:3}
+.map.is-walking .map-part.is-here rect{fill:#E6ECF5}
+.map.is-walking .map-line.is-hot .map-stroke{stroke-width:5}
+.map.is-walking .map-part.is-hot rect{fill:#E6ECF5;stroke-width:4.5}
+.map.is-walking .map-box.is-hot .map-fold-view .map-box-rect{stroke-width:5}
+.map.is-walking .map-box .map-fold-view{opacity:.38}.map.is-walking .map-box.is-lit .map-fold-view{opacity:1}
+.map.is-walking .map-box.is-lit .map-fold-view .map-box-rect{stroke:var(--action);stroke-width:3;fill:#E6ECF5}
+.map-pin{fill:var(--action);stroke:#fff;stroke-width:1.5}.map-pin-dot{fill:#fff}
+/* the boxes on hover and pinned */
+.map-tip{position:absolute;z-index:6;width:380px;max-width:calc(100% - 8px);max-height:64vh;overflow:auto;background:var(--paper);border:1px solid var(--rule);border-radius:8px;box-shadow:0 12px 24px rgba(0,0,0,.14);padding:12px 14px;font-size:14px;line-height:1.5}
+.map-tip.is-pinned{border-color:var(--ink)}
+.map-tip-head{display:grid;grid-template-columns:1fr auto;gap:2px 10px;align-items:baseline;margin-bottom:6px}
+.map-tip-kicker{grid-column:1/3;margin:0;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--action)}
+.map-tip-title{font-size:15.5px;margin:0}.map-tip-title:focus{outline:none}.map-tip-title:focus-visible{outline:3px solid #7FA7E0;outline-offset:2px}
+.map-tip-close{display:none;background:none;border:1px solid var(--rule);border-radius:6px;padding:2px 10px;font:13px 'Public Sans',sans-serif;cursor:pointer;color:var(--ink)}
+.map-tip.is-pinned .map-tip-close{display:inline-block}
+.map-lead,.map-matters{margin:0 0 8px}
+.map-changed-note{margin:6px 0 8px;padding:8px 10px;border-left:3px solid #B4651A;background:#FBF3E8}
+.map-floor-note,.map-decision-note{margin:0 0 8px;color:var(--muted)}
+.map-value{margin:6px 0}.map-value-head{margin:0;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}.map-value-line{margin:0}
+.map-more{margin-top:6px;border-top:1px solid var(--rule);padding-top:6px}.map-more summary{cursor:pointer;color:var(--action);font-weight:600}
+.map-concept{margin:6px 0 2px}.map-source,.map-inside{margin:0 0 6px;font-size:13px;color:var(--muted)}
+.map-later{color:var(--muted);font-style:italic}
+.map-box-parts{margin:0 0 6px}.map-box-hint,.map-group-note{margin:0;font-size:13px;color:var(--muted)}
+.map-group-item{margin:0 0 8px}.map-group-title{margin:0 0 2px;font-size:14px}
+.map-graph-area{display:none;border:1px solid var(--rule);border-radius:6px;background:var(--surface);margin-top:8px;padding:8px 10px}
+.map-tip.is-pinned .map-graph-area{display:block}
+.map-tip:has(.map-graph-area){width:440px}
+.map-graph-kicker{margin:0;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.map-graph-title{margin:2px 0 4px;font-size:14px}.map-graph-question{margin:0 0 6px;font-size:13px}
+.map-graph-svg{display:block;width:100%;height:auto}
+.map-graph-axis,.map-graph-zero{stroke:var(--muted);stroke-width:1}.map-graph-zero{stroke-dasharray:3 3}
+.map-graph-needed{stroke:var(--rule);stroke-width:1;stroke-dasharray:2 3}
+.map-graph-line{stroke:var(--action);stroke-width:2.2}
+.map-graph-point{fill:var(--paper);stroke:var(--ink);stroke-width:2}
+.map-graph-bar{fill:var(--action)}.map-graph-bar.is-down{fill:#B4651A}
+.map-graph-tick{font:10.5px 'Public Sans',sans-serif;fill:var(--muted)}.map-graph-axis-label{font:11px 'Public Sans',sans-serif;fill:var(--ink)}
+.map-graph-sliders{display:grid;gap:6px;margin:6px 0}
+.map-graph-slider{display:grid;grid-template-columns:minmax(0,1fr) 120px auto;gap:8px;align-items:center;font-size:13px}
+.map-graph-out{font-weight:600;min-width:84px;text-align:right}
+.map-graph-caption,.map-graph-note{margin:6px 0 0;font-size:13px}.map-graph-note{color:var(--muted)}
+.map-exhibit{margin-top:8px}
+@media (prefers-reduced-motion:reduce){.map-box.is-springing{transition:none}}
+/* the Desk's drop-down panel: from the top of the PC screen, over the desk, hidden with its button, the bar's "The map" or Escape */
+.game-window.map-panel{inset:0 0 auto 0;max-height:calc(100% - 8px);border-top:0;border-radius:0 0 8px 8px;animation:map-drop .18s ease-out}
+.map-panel .window-body{overflow:auto}
+@keyframes map-drop{from{transform:translateY(-14px);opacity:0}to{transform:none;opacity:1}}
+@media (prefers-reduced-motion:reduce){.game-window.map-panel{animation:none}}
+/* the Menu: the table of contents, the map in the middle, the topic's card; below 1360 px the map with the contents under it beside the
+   card, below 820 px one column */
+/* the run's Menu: the table of contents on the left; the selected topic's card above the map
+   in the middle, the card never over the map */
+.game-menu-body{grid-template-columns:290px minmax(0,1fr);grid-template-areas:"toc main";gap:28px 32px}
+.game-menu-body>.game-toc{grid-area:toc}.game-menu-body>.game-menu-main{grid-area:main;min-width:0;display:flex;flex-direction:column;gap:16px}
+/* the card's side column a track of its own width: never sized by its content, so that the related-theory list,
+   a wrapping row whose one-line width once took the whole card, cannot squeeze the text column at any width from 1280 to 1920 px */
+.game-card-area>.game-card{display:grid;grid-template-columns:minmax(0,1fr) 240px;gap:6px 28px;align-items:start;border-left:4px solid var(--action)}
+.game-card-main{min-width:0}.game-card-side{display:flex;flex-direction:column;align-items:stretch;gap:8px;min-width:0}
+.game-card-side .game-card-actions{flex-direction:column;margin:0}.game-card-side .game-related{flex-direction:column;align-items:center;gap:2px;margin:0;text-align:center}
+.game-card-side .game-related-list{justify-content:center}
+.game-card-about{margin:6px 0 0;font-size:16px;line-height:1.45;max-width:70ch}
+.game-card-map-new{margin:6px 0 0;font-size:14px;color:var(--muted)}
+.game-map-area{background:var(--surface);border:1px solid var(--rule);border-radius:10px;padding:16px 18px 12px}
+.game-map-head{display:flex;align-items:baseline;gap:12px;margin-bottom:6px}.game-map-head .game-map-title{font-family:'Public Sans',sans-serif;font-size:16px;font-weight:700;margin:0}
+.game-map-area .map-canvas{border:0;padding:0}
+@media (max-width:1100px){.game-card-area>.game-card{grid-template-columns:1fr}}
+/* chapter D's card: the shared part across the card, the four scenarios two by two, each with its
+   level in words, free play below them */
+.game-card-area>.game-card-D{display:block}
+.game-D-shared{margin:0 0 16px;max-width:75ch}
+.game-D-shared p{margin:0 0 8px;font-size:15px;line-height:1.45}
+.game-D-scenarios{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.game-D-free{margin-top:12px}
+.game-D-item{border:1px solid var(--rule);border-radius:8px;padding:12px 16px;background:var(--paper)}
+.game-D-title{font-size:17px;line-height:1.25;margin:0 0 4px}
+.game-D-level{margin:0 0 6px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.game-D-line,.game-D-resembles{margin:0 0 6px;font-size:14px;line-height:1.4}
+.game-D-item .game-outcome{margin:6px 0 0;font-size:13px;color:var(--muted)}
+.game-D-item .game-card-actions{margin:8px 0 0}
+@media (max-width:760px){.game-D-scenarios{grid-template-columns:1fr}}
+@media (max-width:820px){.game-menu-body{grid-template-columns:1fr;grid-template-areas:"main" "toc"}.map-tip,.map-tip.has-graph{width:auto;left:4px!important;right:4px}}
+
+/* the guided tour: the screen greyed by the frame's wide shadow, the element seen through the
+   frame with a white outline, the box beside it with its arrow on the side facing the element, Previous, the count and Next or End tutorial;
+   above every other element (a window's 45, a card's 40, the paper's 50: the stack's first layer); reduced motion: nothing moves */
+.tour{position:fixed;inset:0;z-index:100}
+.tour-frame{position:fixed;border:3px solid #fff;border-radius:8px;box-shadow:0 0 0 200vmax rgba(27,36,51,.58);pointer-events:none;transition:left .25s,top .25s,width .25s,height .25s}
+.tour-box{position:fixed;z-index:1;width:min(440px,calc(100vw - 32px));box-sizing:border-box;background:var(--surface);border-radius:10px;box-shadow:0 18px 40px rgba(0,0,0,.3);padding:18px 20px 14px;transition:left .25s,top .25s}
+.tour-arrow{position:absolute;width:16px;height:16px;background:var(--surface);transform:rotate(45deg);margin:-8px}
+.tour-box[data-arrow="top"] .tour-arrow{top:0}.tour-box[data-arrow="bottom"] .tour-arrow{top:100%}
+.tour-box[data-arrow="left"] .tour-arrow{left:0}.tour-box[data-arrow="right"] .tour-arrow{left:100%}
+.tour-kicker{margin:0 0 4px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--action)}
+.tour-title{margin:0 0 8px;font-size:17px;font-weight:700}.tour-title:focus,.tour-title:focus-visible{outline:none}   /* the dialog holds the focus; its heading is no control */
+.tour-text{margin:0;font-size:15px;line-height:1.5}
+.tour-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:14px;padding-top:12px;border-top:1px solid var(--rule)}
+.tour-count{color:var(--muted);font-size:14px}
+.tour-prev:disabled{opacity:.5;cursor:default}
+.tour-graph{position:relative;margin:12px 0 0;padding:8px 10px;background:var(--paper);border:1px solid var(--rule);border-radius:6px}
+.tour-graph-head{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted)}
+.tour-grip{background:none;border:0;padding:2px 4px;cursor:grab;color:var(--muted);font-size:14px;line-height:1}
+.tour-grip:focus-visible{outline:3px solid #7FA7E0}
+.tour-graph-svg{display:block;width:100%;height:auto}
+.tour-graph-line{fill:none;stroke:var(--action);stroke-width:2}
+.tour-graph-target{stroke:var(--ink);stroke-dasharray:5 4}
+.tour-graph-label{font:10px 'Public Sans',sans-serif;fill:var(--action)}.tour-graph-label.is-target{fill:var(--ink)}
+.tour-graph-axis{font:10px 'Public Sans',sans-serif;fill:var(--muted)}
+.run-tour{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:8px}.run-tour-note{font-size:13px;color:var(--muted)}
+@media (prefers-reduced-motion:reduce){.tour-frame,.tour-box{transition:none!important}}
+/* the debrief: the report's window over the desk at the
+   term's end and over the Menu from its Report link; the text on the left, the paths on the right, the chat box at the foot */
+.debrief-slot{background:rgba(27,36,51,.28)}
+.game-window.debrief-window{inset:2.5% 3%;bottom:2.5%}
+.menu-window-slot{position:fixed;inset:0;z-index:60;background:rgba(27,36,51,.28);pointer-events:auto}
+.debrief-head-bar{grid-template-columns:auto 1fr auto;column-gap:16px;padding:14px 20px;background:#F5F7FA}
+.debrief-head-bar .window-kicker{grid-column:1;grid-row:1;font-weight:700;letter-spacing:.06em}
+.debrief-head-bar .window-title{grid-column:2;grid-row:1;font-family:'Public Sans',sans-serif;font-size:16px;font-weight:600}
+.debrief-actions{grid-column:3;grid-row:1;display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.debrief-tabs{display:flex;gap:6px}
+.debrief-tab{border:1px solid var(--rule);background:var(--surface);border-radius:4px;padding:6px 12px;font:13px 'Public Sans',sans-serif;cursor:pointer;color:var(--ink)}
+.debrief-tab.is-current{background:var(--action);border-color:var(--action);color:#fff;font-weight:600}
+.debrief-body{display:grid;grid-template-columns:minmax(300px,380px) minmax(0,1fr);gap:24px;padding:18px 20px;align-items:start}
+.debrief-waiting{padding:24px}
+.debrief-text{font-size:15px;line-height:1.55}
+.debrief-head{margin:0 0 4px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.debrief-verdict{margin:0;line-height:1.15}
+.debrief-word{font-family:'Source Serif 4',Georgia,serif;font-size:34px;font-weight:700;color:var(--ink)}
+.debrief-percent{font-size:22px;font-weight:600;color:var(--action);margin-left:8px;white-space:nowrap}
+.debrief-bank{margin:6px 0 0;font-size:14px;font-weight:600}
+.debrief-note{margin:6px 0 0;font-size:14px;color:var(--muted)}
+.debrief-runs{margin:10px 0 0;padding:0 0 0 18px;font-size:14px}
+.debrief-score{padding-bottom:14px;border-bottom:1px solid var(--rule);margin-bottom:14px}
+.debrief-made{margin:0 0 10px}
+.debrief-guided-note{font-size:13px;color:var(--muted);margin:8px 0 0}
+.debrief-paths{min-width:0}
+.debrief-legend{display:flex;flex-wrap:wrap;gap:4px 18px;list-style:none;margin:0 0 6px;padding:0;font-size:13px}
+.debrief-legend li{display:flex;align-items:center;gap:6px}
+.debrief-legend .legend-swatch{display:inline-block;width:22px;height:10px;background:#E3E6EB}
+.debrief-legend .legend-cross{color:#B3261E;font-weight:700}
+.debrief-chart{margin:0 0 6px;border:0;padding:0;box-shadow:none;background:none}
+.debrief-chart .chart-title{font-size:14px;font-weight:600}
+.debrief-chart .chart-unit{font-weight:400;color:var(--muted)}
+.debrief-chat{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 14px;padding:10px 20px;border-top:1px solid var(--rule);font-size:14px;align-items:start}
+.debrief-chat-who{font-weight:700;color:var(--action);grid-row:1/3}
+.debrief-chat-said p{margin:0 0 2px}
+.debrief-chat-asked{color:var(--muted)}
+.debrief-chat-pending{color:var(--muted);font-style:italic}
+.debrief-chat-form{grid-column:2;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.debrief-chat-form input{flex:1;min-width:200px;padding:6px 10px;border:1px solid var(--rule);border-radius:4px;font:14px 'Public Sans',sans-serif}
+.debrief-chat-form.is-off input{background:#F0F2F5}
+.debrief-chat-off{flex-basis:100%;margin:0;font-size:12px;color:var(--muted)}
+.debrief-turning-wait{border:1px dashed var(--rule);border-radius:6px;padding:14px 16px;background:#FAFBFC}
+.game-turning-pending{margin:2px 0 0;font-size:13px;color:var(--muted);font-style:italic}
+@media (max-width:1100px){.debrief-body{grid-template-columns:1fr}.debrief-head-bar{grid-template-columns:1fr}.debrief-head-bar .window-title,.debrief-actions{grid-column:1;grid-row:auto}}
+.debrief-points{list-style:none;margin:0 0 8px;padding:0}
+.debrief-point{display:grid;grid-template-columns:26px minmax(0,1fr);gap:0 10px;margin:0 0 12px}
+.debrief-point-num{width:24px;height:24px;border-radius:50%;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;margin-top:2px}
+.debrief-point-title{margin:0;font-size:15px;line-height:1.35}
+.debrief-point-text{margin:2px 0 0;font-size:14px;line-height:1.5}
+.debrief-turning-sum,.debrief-point-none{font-size:14px;color:var(--muted);margin:4px 0 14px}
+.debrief-turning{padding-bottom:12px;border-bottom:1px solid var(--rule);margin-bottom:12px}
+.debrief-lesson-text{margin:0 0 10px}
+.debrief-cmp{margin:0 0 10px}
+.debrief-cmp-caption{font-size:13px;color:var(--muted);margin:0 0 8px}
+.debrief-close-race{font-size:13px;margin:0 0 6px}
+.debrief-verdict-D{margin:0 0 10px}
+.debrief-verdict-D-word{font-weight:700;margin:0}
+.debrief-verdict-D-line{margin:2px 0 0;font-size:14px}
+.debrief-exhibit{border-top:1px solid var(--rule);margin-top:12px;padding-top:10px}
+.debrief-tradeoff svg{max-width:560px}
+.debrief-wait-progress{font-weight:600;margin:6px 0 2px}
+.debrief-wait-note{font-size:13px;color:var(--muted);margin:0}
+/* The card's Start or Resume with the reset's circular arrow beside it at the top right; the box Related Theory with
+   its chapters as buttons; chapter D's own row; the first steps' Skip */
+.game-card-side .game-card-actions{position:relative;padding-right:42px}
+.game-card-reset{position:absolute;top:0;right:0;width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--rule);border-radius:4px;background:var(--paper);color:var(--action);cursor:pointer;font:600 18px/1 'Public Sans',sans-serif}
+.game-card-reset:hover{border-color:var(--action)}
+.game-card-reset:focus-visible{outline:3px solid #7FA7E0;outline-offset:2px}
+.game-card-reset-icon{display:block;line-height:1}
+.game-card-side .game-related{display:block;margin:6px 0 0;padding:10px 12px 12px;border:1px solid var(--rule);border-radius:6px;background:var(--paper);text-align:left}
+.game-related-head{font:600 13px/1.3 'Public Sans',sans-serif;color:var(--ink);margin:0 0 8px}
+.game-card-side .game-related-list{display:flex;flex-direction:column;gap:6px;justify-content:flex-start}
+.game-related-btn{display:block;width:100%;text-align:left;font:500 13px/1.35 'Public Sans',sans-serif;color:var(--action);background:var(--panel,#F4F6F9);border:1px solid var(--rule);border-radius:4px;padding:7px 10px;cursor:pointer}
+.game-related-btn:hover{border-color:var(--action);background:#EAF0F8}
+.game-related-btn:focus-visible{outline:3px solid #7FA7E0;outline-offset:2px}
+.game-chapter-D>.game-row{margin-top:4px}
+.tour-walk .tour-foot{justify-content:flex-start}.tour-walk .tour-count{margin-left:auto}
+/* The table of contents a box of chapter rows, each unfolding its topics on a click (02_Game/web/game.js), the
+   chapter in play unfolded when the Menu is drawn; a mark per topic on the chapter's row (played out, broken down, next, locked); chapter D's
+   row the chapter's own, opening its scenarios. Three looks, ui_params$menu$toc_variant: .toc-v1 a box of rows, .toc-v2 a card per
+   chapter, .toc-v3 a book's index with dotted leaders. */
+.game-toc .game-chapter{margin:0}
+.game-toc .game-chapter-title{padding:0;margin:0;border:0;font:inherit;text-transform:none;letter-spacing:0;color:inherit}
+.game-toc .game-topics[hidden]{display:none}
+.game-chapter-row{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:0 12px;width:100%;margin:0;text-align:left;border:0;background:none;color:var(--ink);font:600 15px/1.35 'Public Sans',system-ui,sans-serif;cursor:pointer;padding:12px 14px}
+.game-chapter-row:focus-visible{outline:3px solid #7FA7E0;outline-offset:-3px}
+.game-chapter-row .game-chapter-id{min-width:0}
+.game-chapter-marks{display:inline-flex;gap:5px;align-items:center}
+.game-chapter-mark{width:8px;height:8px;border-radius:50%;border:1.5px solid var(--rule);background:var(--surface);box-sizing:border-box}
+.game-chapter-mark.st-played_out{background:var(--ok);border-color:var(--ok)}
+.game-chapter-mark.st-broke_down{background:var(--no);border-color:var(--no)}
+.game-chapter-mark.st-next{border-color:var(--action)}
+.game-toc .game-chapter-D>.game-row{margin:0;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:0 12px;padding:12px 14px;border-radius:0;font-weight:600}
+.game-toc .game-chapter-D>.game-row .game-row-num{color:var(--ink)}
+.game-toc .game-chapter-D>.game-row .game-row-status{grid-column:3;font-weight:400}
+/* 1. a box of rows: the chapters on one surface, divided by rules; the chapter's letter in a square, filled while it is unfolded */
+.toc-v1{background:var(--surface);border:1px solid var(--rule);border-radius:10px;overflow:hidden}
+.toc-v1 .game-chapter+.game-chapter{border-top:1px solid var(--rule)}
+.toc-v1 .game-chapter-row:hover,.toc-v1 .game-chapter-D>.game-row:hover{background:var(--paper)}
+.toc-v1 .game-chapter-id,.toc-v1 .game-chapter-D>.game-row .game-row-num{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:6px;background:var(--paper);border:1px solid var(--rule);font-size:13px;box-sizing:border-box}
+.toc-v1 .game-chapter.is-open .game-chapter-id{background:var(--action);border-color:var(--action);color:#fff}
+.toc-v1 .game-chapter.is-open .game-chapter-row{background:var(--paper)}
+.toc-v1 .game-topics{padding:4px 10px 10px 48px;background:var(--paper)}
+.toc-v1 .game-row:hover{background:var(--surface)}
+/* 2. a card per chapter: each chapter its own card with a band on its left, the unfolded one raised and its band in the action's blue */
+.toc-v2 .game-chapters{display:flex;flex-direction:column;gap:10px}
+.toc-v2 .game-chapter{background:var(--surface);border:1px solid var(--rule);border-left:5px solid var(--rule);border-radius:8px;overflow:hidden}
+.toc-v2 .game-chapter.is-open{border-left-color:var(--action);box-shadow:0 3px 10px rgba(27,36,51,.10)}
+.toc-v2 .game-chapter-row{padding:14px 16px}
+.toc-v2 .game-chapter-id,.toc-v2 .game-chapter-D>.game-row .game-row-num{font:600 24px/1 'Source Serif 4',Georgia,serif;color:var(--muted);min-width:1.1em}
+.toc-v2 .game-chapter.is-open .game-chapter-id{color:var(--action)}
+.toc-v2 .game-chapter-name{font-size:16px}
+.toc-v2 .game-topics{border-top:1px solid var(--rule);padding:6px 8px 8px}
+.toc-v2 .game-chapter-D>.game-row{padding:14px 16px}
+.toc-v2 .game-chapter-row:hover,.toc-v2 .game-chapter-D>.game-row:hover{background:var(--paper)}
+/* 3. a book's index: a double rule above and a rule below, the chapter's letter in the serif, its name in small capitals, each topic's state
+   at the right after a dotted leader */
+.toc-v3{border-top:3px double var(--ink);border-bottom:1px solid var(--ink);padding:2px 0 6px}
+.toc-v3 .game-chapter+.game-chapter{border-top:1px solid var(--rule)}
+.toc-v3 .game-chapter-row,.toc-v3 .game-chapter-D>.game-row{padding:12px 6px 8px;font:600 13px/1.3 'Public Sans',system-ui,sans-serif;text-transform:uppercase;letter-spacing:.08em}
+.toc-v3 .game-chapter-id,.toc-v3 .game-chapter-D>.game-row .game-row-num{font:600 26px/1 'Source Serif 4',Georgia,serif;letter-spacing:0;text-transform:none;min-width:1.1em;color:var(--ink)}
+.toc-v3 .game-chapter-row:hover .game-chapter-name,.toc-v3 .game-chapter-D>.game-row:hover .game-row-title{color:var(--action)}
+.toc-v3 .game-chapter.is-open .game-chapter-name{color:var(--action)}
+.toc-v3 .game-chapter-D>.game-row .game-row-status{text-transform:none;letter-spacing:0}
+.toc-v3 .game-topics{padding:0 6px 10px 38px}
+.toc-v3 .game-topic>.game-row{grid-template-columns:1.4em minmax(0,max-content) minmax(14px,1fr) 8px;align-items:end;gap:0 6px;padding:5px 6px;border-radius:4px}
+.toc-v3 .game-topic>.game-row .game-row-num{grid-column:1;grid-row:1;align-self:start}
+.toc-v3 .game-topic>.game-row .game-row-title{grid-column:2;grid-row:1}
+.toc-v3 .game-topic>.game-row::after{content:"";grid-column:3;grid-row:1;border-bottom:1.5px dotted var(--muted);margin-bottom:.45em}
+.toc-v3 .game-topic>.game-row::before{content:"";grid-column:4;grid-row:1;width:8px;height:8px;border-radius:50%;border:1.5px solid var(--rule);background:var(--surface);box-sizing:border-box;margin-bottom:.38em}
+.toc-v3 .game-topic.st-played_out>.game-row::before{background:var(--ok);border-color:var(--ok)}
+.toc-v3 .game-topic.st-broke_down>.game-row::before{background:var(--no);border-color:var(--no)}
+.toc-v3 .game-topic.st-next>.game-row::before{border-color:var(--action)}
+.toc-v3 .game-topic>.game-row .game-row-status{grid-column:2/5;grid-row:2}
+.toc-v3 .game-row.is-current{box-shadow:none;background:var(--surface);outline:1px solid var(--rule)}
+/* The panel's one block "Economic Figures" (its rows in two groups side by side), the budget's block below the
+   charts; the election clock with the flag of the party in office in its colour; the path switched off greyed and kept, a new quarter's x;
+   the paper's fixed politics section at the head of its political column; the parties' colours, the tokens --real and --policy */
+.fig-figures .fig-rows{grid-template-columns:repeat(2,minmax(0,1fr) auto auto);column-gap:14px}
+@media (max-width:900px){.fig-figures .fig-rows{grid-template-columns:minmax(0,1fr) auto auto}}
+.fig-blocks.is-below{margin-top:12px}
+.panel-calendar{display:inline-flex;align-items:center;gap:8px}
+.party-flag{display:inline-flex;align-items:center;font-size:12px;font-weight:700;line-height:1.4;color:#FFFFFF;padding:2px 16px 2px 8px;clip-path:polygon(0 0,100% 0,calc(100% - 8px) 50%,100% 100%,0 100%)}
+.party-flag.party-1{background:var(--real)}.party-flag.party-2{background:var(--policy)}
+.word-editor.is-off .path-fields{opacity:.5}
+.path-field.is-off .path-input{background:var(--paper);color:var(--muted)}
+.path-draft.is-off{opacity:.55}.path-draft.is-off .path-point{fill:var(--muted);cursor:default}.path-draft.is-off .path-line{stroke:var(--muted);stroke-dasharray:4 3}
+.path-field{position:relative}
+.path-remove{position:absolute;top:-7px;right:0;width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;padding:0;border:1px solid var(--rule);border-radius:50%;background:var(--surface);color:var(--muted);font:600 13px/1 'Public Sans',sans-serif;cursor:pointer}
+.path-remove:hover{color:var(--no);border-color:var(--no)}
+.path-remove:focus-visible{outline:2px solid var(--action);outline-offset:1px}
+.paper-politics-box{margin:0 0 14px;padding:6px 0 4px;border-top:2px solid var(--ink);border-bottom:1px solid var(--rule)}
+.paper-politics-box .paper-slot-title{margin:0 0 4px}
+.paper-politics-rows{display:grid;grid-template-columns:max-content minmax(0,1fr);column-gap:14px;margin:0;font:13px/20px 'Public Sans',system-ui,sans-serif;color:var(--ink)}
+.paper-politics-rows dt,.paper-politics-rows dd{margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.paper-politics-label{font-weight:600}
+.paper-politics-label.party-1::before,.paper-politics-label.party-2::before{content:"";display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.paper-politics-label.party-1::before{background:var(--real)}.paper-politics-label.party-2::before{background:var(--policy)}
+.paper-politics-note,.paper-politics-change{color:var(--muted)}
+.paper-politics-result .fig-result{margin:2px 0 0;padding:0;border:0;font:italic 13px/20px 'Public Sans',system-ui,sans-serif;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}

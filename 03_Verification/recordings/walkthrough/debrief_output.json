@@ -1,0 +1,6 @@
+{
+  "loss_text": "Inflation is how fast prices rise, in percent a year. In quarter 1 it stood at 2.95 percent, above our inflation target, the rate we aim at. The output gap is the difference between output and its potential, in percent. It was -0.28 percent in quarter 1 and -0.29 percent in quarter 2. The policy rate is the short-term rate we set each quarter. You set it at 6.61 percent in quarter 1 and 6.74 percent in quarter 2. Inflation then eased to 2.23 percent in quarter 4. In quarter 5 a demand shock hit, a change in spending that does not come from the policy rate. Households and firms spent clearly more than usual, and the output gap turned to 0.12 percent. You raised the rate to 6.28 percent. The reference bank, which decides on the same information and moves gradually, set almost the same rates. Your loss, how far the term missed the mandate, equals an inflation miss of 0.41 points in every quarter. The reference bank's equals 0.41 points too. In quarter 10 inflation was 2.02 percent. In quarters 11 and 12 it was 1.98 and 1.96 percent, with the policy rate at 5.06 and 5.04 percent.",
+  "marks": [],
+  "source": "model",
+  "model": "claude-sonnet-5-5"
+}
