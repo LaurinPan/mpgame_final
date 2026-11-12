@@ -6,8 +6,8 @@ Built from R 4.4.1.
 
 ## Links
 
-- The live app: to be added
-- The repository: to be added
+- The live app: https://laurinpan-mpgame.share.connect.posit.cloud
+- The repository: https://github.com/LaurinPan/mpgame_final
 
 ## The three folders
 
