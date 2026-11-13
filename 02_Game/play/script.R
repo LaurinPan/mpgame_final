@@ -1,6 +1,6 @@
-# 02_Game/play/script.R — v6 §2, the schema of a topic script, and the run object
+# 02_Game/play/script.R — Section 4.3.1 and Table 1, the schema of a topic script, and the run object
 
-# v6 §2.1: a topic's script, checked against the schema
+# Section 4.3.1 and Table 1: a topic's script, checked against the schema
 load_topic <- function(id) {
   e <- new.env()
   sys.source(file.path("02_Game/content/scripts", paste0(id, ".R")), envir = e)
@@ -26,10 +26,10 @@ load_topic <- function(id) {
   s
 }
 
-# v6 §3 and §12.1: whether a topic has the bank's word, the path editor and box W; a script's own `word` field, which test 04 sets, overrides the topics' list
+# Sections 4.2.1 and 4.2.2: whether a topic has the bank's word, the path editor and box W; a script's own `word` field, which test 04 sets, overrides the topics' list
 word_on <- function(script) if (is.null(script$word)) script$id %in% word_topics else isTRUE(script$word)
 
-# v6 §2.2 and Section 4.3.1: the script as play()'s inputs, Chapter E's innovations drawn from the seed
+# Section 4.3.1 and Table 1: the script as play()'s inputs, Chapter E's innovations drawn from the seed
 engine_inputs <- function(script, seed = NULL) {
   T   <- script$term
   inn <- data.frame(q = seq_len(T), a = 0, z = 0, nu = 0, g = 0)
@@ -87,7 +87,7 @@ policy_of <- function(decisions) {
   function(quarter, config) { k <<- k + 1; d <- decisions[[k]]; list(rate = d$rate, announce = d$announce) }
 }
 
-# v6 §7, step 3: the open quarter's engine object
+# Section 4.2.1: the open quarter's engine object
 run_open <- function(run) {
   q <- run$t + 1; inn <- run$innovations[q, ]
   run$quarter <- list(engine = begin_quarter(run$config, run$states[[q]],
@@ -96,7 +96,7 @@ run_open <- function(run) {
   run
 }
 
-# v6 §7, step 5: the quarter closed on a decision, the election's draw where a vote falls due
+# Section 4.2.1: the quarter closed on a decision, the election's draw where a vote falls due
 run_close <- function(run, decision) {
   q <- run$t + 1
   if (q %in% run$votes && is.na(run$draws[q]))

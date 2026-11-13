@@ -83,8 +83,8 @@ game_signed <- function(x, d = 1, big = FALSE) {
   paste0(if (r > 0) "+" else GAME_MINUS, formatC(abs(r), format = "f", digits = d, big.mark = if (big) "," else ""))
 }
 # The views' units as the screen prints them: rates and inflation-like figures in percent a year to two decimals, unemployment in
-# percent to two, persons in millions to two, $ bn to none, the loss in squared points to two, purchases in percent of normal to one,
-# the poll in percent to one.
+# percent to two, persons in millions to two, $ bn to none, government spending in percent of its usual level to one, the poll in
+# percent to one.
 fmt_pct <- function(x, d = 2) if (is.null(x) || !length(x)) "–" else vapply(x, function(z) if (is.na(z)) "–" else paste0(game_num(z, d), " %"), "", USE.NAMES = FALSE)
 # The numbers: a rate in percent, two decimals.
 fmt_rate <- function(x) fmt_pct(x, 2)
@@ -94,9 +94,5 @@ fmt_bn <- function(x) if (is.null(x) || is.na(x)) "–" else ui_s("format.bn", s
 fmt_persons <- function(x) if (is.null(x) || is.na(x)) "–" else ui_s("format.million", value = game_num(x / 1e6, 2))
 # A change with its sign, nothing when missing.
 fmt_change <- function(dx, d = 2) if (is.null(dx) || is.na(dx)) "" else game_signed(dx, d)
-# A loss in squared points a year, two decimals.
-fmt_loss <- function(x) if (is.null(x) || is.na(x)) "–" else game_num(x, 2)
 # A number of quarters in words.
 fmt_quarters <- function(n) { n <- as.integer(round(n)); if (n == 1L) ui_s("format.quarters_one", n = n) else ui_s("format.quarters_many", n = n) }
-# A share between 0 and 1 in whole percent.
-fmt_share <- function(x) if (is.null(x) || is.na(x)) "–" else paste0(round(100 * x), " %")

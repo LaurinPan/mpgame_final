@@ -3,14 +3,14 @@
 # in, the open run (one slot of the store with its terms), the screen, the theory when open, and the desk's passing state (the chat
 # open, the map panel, the walk-through, the chat read). Definitions only: app.R runs shinyApp(ui_app_ui(), ui_server).
 
-# The app's page, the head of 02_Game/ui/page.R without the static pages' shim, the game's screen and the theory's.
-# the fonts link of the page's head, from ui/page.R, the preview builder, which the submission leaves out
+# the fonts link of the page's head
 UI_FONTS <- "https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap"
 
+# The app's page: the head with the fonts, the stylesheets and the scripts of 02_Game/web/, the game's screen and the theory's.
 ui_app_ui <- function() {
   head <- paste0(game_void("meta", list(name = "viewport", content = "width=device-width, initial-scale=1")),
                  game_void("link", list(rel = "stylesheet", href = UI_FONTS)),
-                 paste(vapply(c("base.css", "game.css", "game-phase3.css", "theory.css"), function(f) game_void("link", list(rel = "stylesheet", href = paste0("web/", f))), ""), collapse = ""),
+                 paste(vapply(c("base.css", "game.css", "theory.css"), function(f) game_void("link", list(rel = "stylesheet", href = paste0("web/", f))), ""), collapse = ""),
                  paste(vapply(c("game.js", "theory.js"), function(f) game_tag("script", list(src = paste0("web/", f)), ""), ""), collapse = ""))
   htmltools::tagList(htmltools::tags$head(htmltools::tags$title(ui_s("app.title")), htmltools::HTML(head)),
                      htmltools::div(id = "game", class = "game", shiny::uiOutput("game_screen")),
@@ -62,7 +62,7 @@ ui_typed <- function(rate, path) {
 ui_bank_background <- function() isTRUE(ui_params$bank$background) && requireNamespace("mirai", quietly = TRUE) && isTRUE(mirai::daemons_set())
 
 # Whether the open quarter's paper is still to be written (its slot NULL until paper_write fills it), in a topic with the
-# newspaper (scripts appendix §3 and §12.1: from Topic 2 on).
+# newspaper (from Topic 2 on).
 ui_paper_due <- function(run) { q <- as.integer(run$t) + 1L; identical(run$status, "open") && "newspaper" %in% run$script$panels && (length(run$issues) < q || is.null(run$issues[[q]])) }
 
 # A paper paper_write wrote, `p` = list(q, issue, masks, calls), put into its quarter's slots while they are empty, the
@@ -138,12 +138,12 @@ ui_server <- function(input, output, session) {
     rv$rec <- rec; S$selection <- isTRUE(rec$ui$selection); S$map <- rec$ui$map; S$chat <- rec$ui$chat
     p <- ui_run_progress(rec); rv$selected <- ui_topic_order()[p$topic]; rv$window <- NULL; rv$menu_notice <- NULL; rv$screen <- "menu"
     S$banks <- list(); S$papers <- list(); bank_pump()
-    if (isTRUE(rec$settings$tour_menu)) { S$first_steps <- TRUE; rec$settings$tour_menu <- FALSE; rv$rec <- rec; save_run() }   # a new run's first opening (scripts appendix §4)
+    if (isTRUE(rec$settings$tour_menu)) { S$first_steps <- TRUE; rec$settings$tour_menu <- FALSE; rv$rec <- rec; save_run() }   # a new run's first opening: the first steps on the Menu
   }
   run_close <- function() { save_run(); rv$rec <- NULL; rv$topic <- NULL; rv$window <- NULL; rv$map_open <- FALSE; S$chat <- NULL; S$chat_open <- FALSE }
 
   # --- the desk's passing state ----------------------------------------------------------------------------------------------
-  # Scripts appendix §11: the chat opens by itself when the Chief Economist has written what the player has not read, except under the
+  # Section 4.3.2: the chat opens by itself when the Chief Economist has written what the player has not read, except under the
   # walk-through (it ends on the chat, which the page then opens) and after the term; S$chat holds the count read, kept with the run.
   chat_seen <- function(run) if (identical(S$chat$topic, run$topic)) as.integer(S$chat$seen %||% 0L) else 0L
   quarter_opened <- function(run, tour = FALSE) {
@@ -388,7 +388,7 @@ ui_server <- function(input, output, session) {
     dv <- desk_view(run); typed <- list(rate = rate, path = path)
     pv <- tryCatch(quarter_preview(run, rate, path), error = function(e) NULL); if (is.null(pv)) return()
     o <- list(preview = pv, typed = typed)
-    session$sendCustomMessage("game_forecast", list(quarter = as.integer(run$t) + 1L, points = ui_forecast_points(dv, o)))   # the projected points (scripts appendix §3)
+    session$sendCustomMessage("game_forecast", list(quarter = as.integer(run$t) + 1L, points = ui_forecast_points(dv, o)))   # the projected points (Section 4.2.1)
   })
   shiny::observeEvent(input$game_paper_selection, { S$selection <- isTRUE(input$game_paper_selection$on) })
   shiny::observeEvent(input$game_map_arrange, { m <- input$game_map_arrange; S$map <- list(at = lapply(m$boxes, unlist), open = unlist(m$open)) })

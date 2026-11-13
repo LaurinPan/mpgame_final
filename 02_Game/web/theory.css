@@ -1,4 +1,4 @@
-/* the theory section's shell: the rail with the table of contents, the main column, the prose, the steps, More Detail panels, term
+/* the theory section's shell: the rail with the table of contents, the main column, the prose, the steps, term
    boxes, the modules' frames and readouts, the dark bar that leads back; the figures' and modules' drawing classes (02_Game/ui/theory.R,
    02_Game/web/theory.js) in the tokens of base.css. */
 .shell{display:grid;grid-template-columns:300px minmax(0,1fr);min-height:calc(100vh - 48px)}
@@ -43,10 +43,6 @@
 .toc-topic:hover{background:var(--paper)}
 .toc-topic.is-current{background:#E3ECF8;font-weight:600}
 .toc-head:focus-visible,.toc-topic:focus-visible,.cf-card:focus-visible,.cf-slot:focus-visible{outline:3px solid #7FA7E0;outline-offset:2px}
-details.more{border:1px solid var(--rule);border-radius:8px;background:var(--surface);padding:10px 16px;margin:10px 0 0;max-width:68ch}
-details.more summary{cursor:pointer;font-weight:600;color:var(--action);font-size:15px}
-details .prose{font-size:16px;margin-top:8px}
-.btnrow{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
 @media (max-width:820px){.shell{grid-template-columns:1fr}.rail{border-right:0;border-bottom:1px solid var(--rule)}.main{padding:24px 18px}}
 @media (prefers-reduced-motion:reduce){.shell *{transition:none!important}}
 /* links between passages and terms with definitions on hover, focus or a tap (WCAG 2.1 SC 1.4.13) */

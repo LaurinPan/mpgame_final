@@ -1,8 +1,8 @@
-# ui/tour.R — the walk-through window at a topic's start (scripts appendix §9)
+# ui/tour.R — the walk-through window at a topic's start (Section 4.3.2)
 # drawn from run$tour (the steps and their texts are the content's,
 # content/tours; each step points at a panel; the walk-through shows only what is
 # new in the topic and ends on the chat, which the page then opens), and the same
-# window for the first steps on the Menu (scripts appendix §4), whose steps are
+# window for the first steps on the Menu, whose steps are
 # the UI's; 02_Game/web/game.js greys the screen, frames the element and runs Previous,
 # Next, Skip and the count; the steps whose element is absent are left out by
 # the script.
@@ -10,7 +10,7 @@
 UI_TOUR_TARGETS <- c(figures = ".fig-figures", expectations = "figure[data-chart=\"expectations\"]", rate = "#desk-decision",
                      newspaper = ".paper-folded-wrap", chat = ".chat-bar", forecast = ".charts-four")
 UI_TOUR_PLACES <- c(rate = "above", chat = "above", newspaper = "above", forecast = "above")
-# Scripts appendix §4: the first steps on the Menu, each step's element and the side its box takes; Unfold a Node frames one box (the Central Bank,
+# The first steps on the Menu: each step's element and the side its box takes; Unfold a Node frames one box (the Central Bank,
 # in every topic) and Investigate Relations one line (the first the script draws), so that neither frames the whole map again.
 UI_FIRST_STEPS <- data.frame(id = c("chapters", "preview", "theory", "start", "map", "unfold", "relations", "personalise", "reset"),
                              selector = c(".game-toc", ".game-card-main", ".game-related", ".game-card-actions", ".game-map-area", ".map-box[data-box=\"central_bank\"]",
@@ -41,7 +41,7 @@ ui_tour_html <- function(steps, at = 1L, kicker = ui_s("tour.kicker"), end = ui_
                game_tag("span", list(class = "tour-count", `data-template` = ui_s("tour.count", step = "%1", steps = "%2")), ""),
                game_tag("button", list(type = "button", class = "btn-main tour-next", `data-tour` = "next", `data-next` = ui_s("tour.next"), `data-end` = end), game_esc(ui_s("tour.next"))))))
 }
-# Scripts appendix §4: the first steps on the Menu, when a player enters a new run for the first time.
+# The first steps on the Menu, when a player enters a new run for the first time.
 ui_first_steps_html <- function() {
   steps <- lapply(seq_len(nrow(UI_FIRST_STEPS)), function(i) { s <- UI_FIRST_STEPS[i, ]
     list(selector = s$selector, place = s$place, title = ui_s(paste0("first_steps.", s$id, "_title")), text = ui_s(paste0("first_steps.", s$id, "_text"))) })

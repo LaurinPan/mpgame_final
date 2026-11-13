@@ -1,6 +1,6 @@
 # 05 Faithfulness
 
-Recordings: `03_Verification/recordings`, T1, T2, T3, T4, T5, T6, T7, T8, each topic's final attempt; 811 calls, 0 of them died on the connection, and 0 were answered without an answer that could be read.
+Recordings: `03_Verification/recordings`, Topics 1 to 8, each topic's final attempt; 811 calls, 0 of them died on the connection, and 0 were answered without an answer that could be read.
 
 Every number in an answer is set against the request of its own call. TP: it stands in the call's material, equal to a number there at two decimals, the decimals the desk shows. FP: it does not; it then stands in the instruction or the fixed part, or nowhere in the request. FN: a figure under `<use>` that an exact-figures piece or lead does not write. TN and leaks: the hidden values of the quarter that the request does not hold, not written and written. A number the text calls quarters is counted apart. Each rate has its 95 percent Wilson interval in brackets.
 
@@ -44,11 +44,11 @@ The last answer of every piece and lead, and every chat answer and debrief.
 
 ## The figures found nowhere in the request
 
-- final | T5 q6 | piece S4, exact figures | claude-sonnet-5-5 | found nowhere: neither | 100 | ...nt Trust in the central bank's announcements 80 percent full trust of 100 percent The central bank had announced a policy r...
+- Topic 5, quarter 6, Markets and the Bank, exact figures | claude-sonnet-5-5 | found nowhere: neither | 100 | ...nt Trust in the central bank's announcements 80 percent full trust of 100 percent The central bank had announced a policy r...
 
 ## Figures under `<use>` that an answer did not write
 
-- final | T2 q7 | piece S2, exact figures | claude-sonnet-5-5 | not written: 0.7 | Lower firm costs hold prices down this quarter Four people tell us how prices, wages and jobs feel at home, now that lower costs for firms a
+- Topic 2, quarter 7, Prices and Wages, exact figures | claude-sonnet-5-5 | not written: 0.7 | Lower firm costs hold prices down this quarter Four people tell us how prices, wages and jobs feel at home, now that lower costs for firms a
 
 ## Residual wording
 
@@ -60,14 +60,14 @@ The texts the player reads in which a sentence names what its call received as i
 | Chat | 112 | 4 | 4 | 4 |
 | Debrief | 8 | 0 | 0 | 0 |
 
-- chat | T5 q2 | names its input, says that something is not given | Our material does not give the lags in the economy, so we cannot say how many quarters it takes.
-- chat | T5 q5 | names its input, says that something is not given | Our material gives no lags, so we cannot say how many quarters it takes.
-- chat | T5 q8 | names its input, says that something is not given | Our material gives no lags, so we cannot say how many quarters.
-- chat | T5 q11 | names its input, says that something is not given | Our material gives no lags, so we cannot say how many quarters.
-- piece S5, F-CHART | T8 q3 | says that something is not given | The poll does not say whether spending has changed how people vote.
-- piece S5, F-CHART | T8 q4 | names its input, says that something is not given | The poll does not say whether this spending is linked to voter views, so the two facts are reported side by side.
-- piece S5, F-INTERVIEW | T8 q6 | names its input | Not yet, according to the latest facts.
-- piece S5, F-CHART | T8 q13 | says that something is not given | It does not say how those voters expect the party to act in the months ahead, so it should be read as a snapshot of support today.
+- Topic 5, quarter 2, chat | names its input, says that something is not given | Our material does not give the lags in the economy, so we cannot say how many quarters it takes.
+- Topic 5, quarter 5, chat | names its input, says that something is not given | Our material gives no lags, so we cannot say how many quarters it takes.
+- Topic 5, quarter 8, chat | names its input, says that something is not given | Our material gives no lags, so we cannot say how many quarters.
+- Topic 5, quarter 11, chat | names its input, says that something is not given | Our material gives no lags, so we cannot say how many quarters.
+- Topic 8, quarter 3, Politics or Analysis, chart | says that something is not given | The poll does not say whether spending has changed how people vote.
+- Topic 8, quarter 4, Politics or Analysis, chart | names its input, says that something is not given | The poll does not say whether this spending is linked to voter views, so the two facts are reported side by side.
+- Topic 8, quarter 6, Politics or Analysis, interview | names its input | Not yet, according to the latest facts.
+- Topic 8, quarter 13, Politics or Analysis, chart | says that something is not given | It does not say how those voters expect the party to act in the months ahead, so it should be read as a snapshot of support today.
 
 ## Speed and retries
 
@@ -85,11 +85,11 @@ Retries per piece: 0.152: 91 further calls for 600 pieces, the leads included, 9
 
 | Format | Pieces | Asked again for the number of paragraphs | for the headline's length | for the body's length | for the structure | Asked again, share of pieces |
 |--------------|--------|------------------|----------------|----------------|-------------|---------------|
-| F-BRIEF | 128 | 0 | 0 | 0 | 0 | 0.00 |
-| F-CHART | 208 | 0 | 5 | 6 | 0 | 0.05 |
-| F-COMMENT | 51 | 0 | 12 | 5 | 0 | 0.33 |
-| F-INTERVIEW | 47 | 0 | 0 | 0 | 0 | 0.00 |
-| F-LEAD | 100 | 0 | 1 | 59 | 0 | 0.60 |
-| F-MARKETS | 3 | 0 | 0 | 0 | 0 | 0.00 |
-| F-REPORT | 18 | 0 | 0 | 3 | 0 | 0.17 |
-| F-VOICES | 45 | 0 | 0 | 0 | 0 | 0.00 |
+| Brief | 128 | 0 | 0 | 0 | 0 | 0.00 |
+| Chart | 208 | 0 | 5 | 6 | 0 | 0.05 |
+| Comment | 51 | 0 | 12 | 5 | 0 | 0.33 |
+| Interview | 47 | 0 | 0 | 0 | 0 | 0.00 |
+| Lead | 100 | 0 | 1 | 59 | 0 | 0.60 |
+| Markets table | 3 | 0 | 0 | 0 | 0 | 0.00 |
+| Report | 18 | 0 | 0 | 3 | 0 | 0.17 |
+| Voices | 45 | 0 | 0 | 0 | 0 | 0.00 |

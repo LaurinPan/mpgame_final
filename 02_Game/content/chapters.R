@@ -1,6 +1,6 @@
-# 02_Game/content/chapters.R — v6 §3 and Section 4.3, Table 1: the five chapters
+# 02_Game/content/chapters.R — Section 4.3, Table 1: the five chapters
 
-# v6 §3: each chapter with its name, stages, topics and briefing
+# Table 1: each chapter with its name, stages, topics and briefing
 chapters <- list(
   A = list(id = "A", name = "Taking Office",  stages = c(1, 3, 4),    topics = "T1",                briefing = "B-A"),
   B = list(id = "B", name = "The Trade-Off",  stages = c(1, 2, 3, 4), topics = "T2",                briefing = "B-B"),

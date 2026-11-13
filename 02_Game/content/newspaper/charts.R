@@ -1,6 +1,6 @@
-# 02_Game/content/newspaper/charts.R — v6 §12.3: the charts the game draws
+# 02_Game/content/newspaper/charts.R — Section 4.2.2: the charts the game draws
 
-# v6 §12.3: each chart's series, reference line and caption
+# Section 4.2.2: each chart's series, reference line and caption
 charts <- data.frame(
   id        = c("CH-output", "CH-inflation", "CH-wages", "CH-unemployment", "CH-rate",
                 "CH-expectations", "CH-poll", "CH-purchases"),

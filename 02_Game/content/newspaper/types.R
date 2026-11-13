@@ -1,6 +1,6 @@
-# 02_Game/content/newspaper/types.R — v6 §12.5: the article types
+# 02_Game/content/newspaper/types.R — Section 4.2.2: the article types
 
-# v6 §12.5: each type's section, requirement, condition, must and may fields (v6 §2.4), chart, tones, star, brief, exact_only, whether it draws exact figures only, and its assignment
+# Section 4.2.2: each type's section, requirement, condition, must and may fields, chart, tones, star, brief, exact_only, whether it draws exact figures only, and its assignment
 types <- read.table(header = TRUE, sep = "|", strip.white = TRUE, quote = "", comment.char = "",
                     stringsAsFactors = FALSE, text = "
 id | section | requires | condition | must | may | chart | tones | star | brief | exact_only | assignment
@@ -32,8 +32,8 @@ G-budget | Politics | purchases | TRUE | government.purchases | | CH-purchases |
 A-analysis | Analysis | no politics | TRUE | pressing.variable;drivers.output;drivers.inflation | public.expected_inflation | | economist;critic | FALSE | FALSE | FALSE | Write an analysis of {figure}: where it stands against its normal, and what moved it most last quarter.
 ")
 
-# v6 §12.5: the analysis's assignment in a quarter where no figure stands far from its normal
+# Section 4.2.2: the analysis's assignment in a quarter where no figure stands far from its normal
 analysis_quiet <- "Write an analysis of a quiet quarter: why inflation, growth and unemployment all stand close to their normal levels."
 
-# v6 §12.5: the fields a piece carries only where the topic has the bank's word
+# Section 4.2.2: the fields a piece carries only where the topic has the bank's word
 word_fields <- c("public.trust_percent", "word.path", "word.room")

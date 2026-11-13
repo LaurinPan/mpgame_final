@@ -1,6 +1,6 @@
 # 02_Game/bank/guided.R — Section 4.3.2, the guided start: the game's rates and plans computed once into content/guided/
 
-# Section 4.3.2: the reference bank's decisions for a topic's guided quarters
+# Section 4.3.2: the reference bank's decisions for a topic's guided quarters. The game itself never calls this function: it wrote the files of content/guided/, one for each topic with guided quarters, and the game reads those files
 guided_rates <- function(id) {
   s <- load_topic(id)
   if (is.null(s$guided)) return(NULL)

@@ -9,4 +9,4 @@
 | Electoral pressure (Topic 7): the boosting party's chance at its first re-election under a bank that holds the rate in the window, less the chance under the believed rule, from the poll at the vote | 0.494 | 0.017 (0.497) | yes |
 
 Bound: the effect above the spread (Section 3.2). Every term loss is discounted as in (A36), each quarter's loss weighted by beta^(t-1) from the term's first quarter. Not visible: Forward guidance at the floor.
-Noise: 20 seeded runs of each scene over its term with a small innovation in every quarter, its standard deviation the small class's value (v6 §5.1): demand 0.20 percent in every chapter, costs 0.25 points a year in Chapter B, government spending 2 percent of government spending in Chapter D.
+Noise: 20 seeded runs of each scene over its term with a small innovation in every quarter, its standard deviation the small class's value (Section 4.2.2): demand 0.20 percent in every chapter, costs 0.25 points a year in Chapter B, government spending 2 percent of government spending in Chapter D.

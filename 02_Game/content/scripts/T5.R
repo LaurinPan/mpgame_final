@@ -1,6 +1,6 @@
-# 02_Game/content/scripts/T5.R — v6 §6, Topic 5 (Chapter C; Section 4.3, Table 1)
+# 02_Game/content/scripts/T5.R — Section 4.3.1 and Table 1: Topic 5 (Chapter C)
 
-# v6 §6: the script of Topic 5
+# Section 4.3.1 and Table 1: the script of Topic 5
 T5 <- list(
   id = "T5", name = "Flexibility of Announcements", chapter = "C",
   objective = "Gains from commitment",

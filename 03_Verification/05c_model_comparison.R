@@ -35,7 +35,7 @@ counted <- count_recordings(folders, common)
 side <- function(label) { d <- counted$calls[counted$calls$label == label & counted$calls$kind %in% c("piece", "lead"), ]
   i <- counted$issues[counted$issues$label == label, ]; r <- d[d$reached, ]; written <- nrow(unique(r[, c("topic", "q", "slot")]))
   list(model = paste(sort(unique(d$model)), collapse = ", "), calls = d, issues = i[i$calls > 0, ], pieces = counted$pieces[counted$pieces$label == label, ], sums = sums(d[d$ok, ]),
-       written = written, further = nrow(r) - written, lines = grep(" (piece|lead) ", counted$lines[startsWith(counted$lines, paste0(label, " |"))], value = TRUE)) }
+       written = written, further = nrow(r) - written, lines = unname(counted$lines[names(counted$lines) %in% paste(label, c("piece", "lead"))])) }
 a <- side("final"); b <- side("comparison"); both <- list(a, b)
 precision <- function(s) wilson(s$sums$TP, s$sums$TP + s$sums$FP); recall <- function(s) wilson(s$sums$TP, s$sums$TP + s$sums$FN)
 templates <- function(s) sum(s$pieces$source == "template"); kept <- function(s) s$pieces$kept[!is.na(s$pieces$kept)]
@@ -61,7 +61,7 @@ counts <- c("| Model | Answers | Numbers written | Counts of quarters | TP | FP 
     sprintf("| %s | %d | %d | %d | %d | %d | %d | %d | %d | %d |", s$model, nrow(d), sum(d$written), sum(d$exempt), s$sums$TP, s$sums$FP, s$sums$nowhere, s$sums$FN, s$sums$hidden, s$sums$leak) }, ""))
 formats <- sort(unique(unlist(lapply(both, function(s) s$calls$format[s$calls$ok & s$calls$must > 0]))))
 missed <- function(s, fm) { d <- s$calls[s$calls$ok & s$calls$format == fm, ]; sprintf("%d of %d", sum(d$must - d$must_found), sum(d$must)) }
-not_written <- c(sprintf("| Format | %s | %s |", a$model, b$model), "|---|---|---|", vapply(formats, function(fm) sprintf("| %s | %s | %s |", fm, missed(a, fm), missed(b, fm)), ""))
+not_written <- c(sprintf("| Format | %s | %s |", a$model, b$model), "|---|---|---|", vapply(formats, function(fm) sprintf("| %s | %s | %s |", format_words[[fm]], missed(a, fm), missed(b, fm)), ""))
 nowhere <- unlist(lapply(both, function(s) grep("| found nowhere:", s$lines, value = TRUE, fixed = TRUE)))
 
 # ---- the retries and the failed checks, the dropped calls apart

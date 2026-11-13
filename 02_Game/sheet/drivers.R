@@ -1,6 +1,6 @@
-# 02_Game/sheet/drivers.R — v6 §5.4, the drivers of output and inflation
+# 02_Game/sheet/drivers.R — Section 4.2.2, the drivers of output and inflation
 
-# v6 §5.4: the largest driver of last quarter's output and inflation among the innovations and the rate change
+# Section 4.2.2: the largest driver of last quarter's output and inflation among the innovations and the rate change
 drivers <- function(run, q, classes) {
   none <- list(output = "none", inflation = "none", output_words = classes$driver_words[["none"]],
                inflation_words = classes$driver_words[["none"]], table = NULL)

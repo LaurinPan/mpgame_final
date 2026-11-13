@@ -1,6 +1,6 @@
-# 02_Game/play/briefings.R — v6 §11 and §9: the briefings and the walk-throughs read from content/
+# 02_Game/play/briefings.R — Section 4.3.2: the briefings and the walk-throughs read from content/
 
-# v6 §11: a briefing file, its header and its messages
+# Section 4.3.2: a briefing file, its header and its messages
 read_briefing <- function(id) {
   lines  <- readLines(file.path("02_Game/content/briefings", paste0(id, ".md")), warn = FALSE, encoding = "UTF-8")
   cuts   <- which(lines == "---")
@@ -12,7 +12,7 @@ read_briefing <- function(id) {
        kind = h[["kind"]], messages = messages)
 }
 
-# v6 §2.3: the briefings a trigger fires, filled from the sheet
+# Section 4.3.1 and Table 1: the briefings a trigger fires, filled from the sheet
 briefings_due <- function(script, trigger, q, sheet, guided = NULL) {
   ids <- switch(trigger,
                 chapter_open  = script$briefings$chapter_open,
@@ -28,14 +28,14 @@ briefings_due <- function(script, trigger, q, sheet, guided = NULL) {
   out
 }
 
-# v6 §11: the chapter's and the topic's briefing as one message at a topic's start, ending with the topic briefing's invitation to ask
+# Section 4.3.2: the chapter's and the topic's briefing as one message at a topic's start, ending with the topic briefing's invitation to ask
 briefing_start <- function(script, sheet) {
   parts <- c(briefings_due(script, "chapter_open", 1, sheet), briefings_due(script, "topic_open", 1, sheet))
   list(q = 1, kind = "briefing", id = paste(unique(vapply(parts, `[[`, "", "id")), collapse = "+"), step = 1L, of = 1L, briefing_kind = "start",
        text = paste(vapply(parts, `[[`, "", "text"), collapse = " "))
 }
 
-# v6 §9: a walk-through as its steps
+# Section 4.3.2: a walk-through as its steps
 read_tour <- function(id) {
   lines <- readLines(file.path("02_Game/content/tours", paste0(id, ".md")), warn = FALSE, encoding = "UTF-8")
   heads <- grep("^## ", lines)

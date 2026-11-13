@@ -269,9 +269,9 @@ ui_word_layer <- function(w, q, H) {
   }
 }
 
-# --- the newspaper's charts (scripts appendix §12.3) ---------------------------------------------------------------------------------------------
+# --- the newspaper's charts (Section 4.2.2) ------------------------------------------------------------------------------------------------------
 # A piece's chart from issue_view's chart_data: the series over the last eight quarters, the reference line, the caption; at the panel's
-# fixed scales (content/panels.R's `scales`), the paper's size. The poll and government spending, no longer on the desk, have no
+# fixed scales (content/panels.R's `scales`), the paper's size. The poll and government spending, which the desk does not show, have no
 # fixed scale there: their charts take the series and the reference line rounded out to a round step.
 ui_paper_chart_svg <- function(cd) {
   if (is.null(cd) || !length(cd$series)) return("")
@@ -324,7 +324,7 @@ ui_debrief_chart_svg <- function(d) {
                    ui_s("debrief.legend_bank"), game_num(ch$bank[1], 2), game_num(ch$bank[T], 2))
   ui_chart_box("debrief_rate", ui_s("debrief.chart_title"), ui_s("debrief.unit_rate"), paste0(gsvg_open(W, H, label, "game-chart chart-debrief"), paste(parts, collapse = ""), "</svg>"), "chart-box debrief-chart")
 }
-# Scripts appendix §5.4: the two losses quarter by quarter on one scale, under the rates' chart and on its quarter axis, the marks' quarters
+# Section 4.2.2: the two losses quarter by quarter on one scale, under the rates' chart and on its quarter axis, the marks' quarters
 # shaded in their colours; no text of it names squared points.
 ui_debrief_loss_svg <- function(d) {
   lq <- d$loss_by_quarter; if (is.null(lq) || !nrow(lq)) return("")

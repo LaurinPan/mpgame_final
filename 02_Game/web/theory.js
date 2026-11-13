@@ -1,7 +1,7 @@
 // The theory section's modules in the browser: each module's sliders
 // recompute its picture and readout with the module's own textbook formulas. Written with 02_Game/content/theory/.
-//  - every element with data-theory-go="P5:7" opens chapter P5's topic 7: in the Shiny app as the input theory_nav {chapter, k, nonce},
-//    on a static preview page (the shim's Shiny.isShim) as the page theory_P5_7.html; data-theory-step names the step to scroll to;
+//  - every element with data-theory-go="P5:7" opens chapter P5's topic 7: it is sent to the server as the input theory_nav
+//    {chapter, k, nonce}; data-theory-step names the step to scroll to on the page the server then draws;
 //  - the reading statuses of the rail (not seen, in progress, finished) are kept for the browser's session (sessionStorage): a topic
 //    opened is in progress, a topic left with Next topic or Continue to chapter n is finished, Mark chapter as read finishes the chapter;
 //  - term boxes open on hover, on focus and on a click (a tap), stay while hovered and close with Escape (WCAG 2.1 SC 1.4.13);
@@ -76,12 +76,8 @@
   // --- navigation and the reading statuses ------------------------------------------------------------------------------------------
   function go(spec, step) {
     var p = String(spec).split(':'), ch = p[0], k = parseInt(p[1], 10);
-    if (window.Shiny && !window.Shiny.isShim && window.Shiny.setInputValue) {
-      pending = step || 'top';
-      window.Shiny.setInputValue('theory_nav', {chapter: ch, k: k, nonce: Date.now()}, {priority: 'event'});
-    } else {
-      window.location.href = 'theory_' + ch + '_' + k + '.html' + (step ? '#' + step : '');
-    }
+    pending = step || 'top';
+    window.Shiny.setInputValue('theory_nav', {chapter: ch, k: k, nonce: Date.now()}, {priority: 'event'});
   }
   function readState() { try { return JSON.parse(window.sessionStorage.getItem(STORE) || '{}') || {}; } catch (e) { return {}; } }
   function writeState(s) { try { window.sessionStorage.setItem(STORE, JSON.stringify(s)); } catch (e) { /* no storage: statuses for this page only */ } }

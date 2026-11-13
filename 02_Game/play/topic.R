@@ -1,6 +1,6 @@
-# 02_Game/play/topic.R — the interface, the five calls the UI makes on a run (v6 §7)
+# 02_Game/play/topic.R — the interface, the five calls the UI makes on a run (Section 4.2.1)
 
-# v6 §7 and the interface: the run at a topic's start, its first quarter opened
+# Section 4.2.1 and the interface: the run at a topic's start, its first quarter opened
 topic_start <- function(id, llm = TRUE, seed = NULL, draw_seed = NULL, paper = TRUE) {
   s   <- if (is.character(id)) load_topic(id) else id; id <- s$id
   run <- run_start(s, seed)
@@ -20,10 +20,10 @@ guided_row <- function(run, q) {
        plan = unname(unlist(row[paste0("plan_", 2:run$config$par$H)])), action = if (row$action == "announce" && !word_on(run$script)) "rate" else row$action, locked = TRUE)
 }
 
-# v6 §12.1: in a topic without a newspaper the briefings carry the quarter's news, exact in the guided quarters and in words otherwise, and the fair quarter follows
+# Section 4.2.2: in a topic without a newspaper the briefings carry the quarter's news, exact in the guided quarters and in words otherwise, and the fair quarter follows
 reported_by_briefings <- function(script, q, sheet) setNames(rep(if (q %in% script$guided$quarters) "exact" else "words", length(sheet$shocks$shocks)), names(sheet$shocks$shocks))
 
-# v6 §7, steps 1 to 4: the quarter opened, with the staff forecast at the decision the desk starts from, the paper written where the topic has one unless the UI writes it with paper_write
+# Section 4.2.1: the quarter opened, with the staff forecast at the decision the desk starts from, the paper written where the topic has one unless the UI writes it with paper_write
 quarter_open <- function(run, paper = TRUE) {
   q <- run$t + 1; s <- run$script
   run <- run_open(run)
@@ -53,7 +53,7 @@ quarter_open <- function(run, paper = TRUE) {
   run
 }
 
-# v6 §2.1, §3 and (A11): the checks a decision must pass, the floor and the cap included, or the reason it is refused
+# Section 4.3.1 with Table 1, Section 4.2.1 and (A11): the checks a decision must pass, the floor and the cap included, or the reason it is refused
 decision_check <- function(run, rate, path) {
   par <- run$config$par; g <- run$quarter$guided
   if (!identical(rate, "rule")) {
@@ -82,7 +82,7 @@ quarter_preview <- function(run, rate, path = NULL) {
   list(refused = NULL, forecast = if ("forecast" %in% run$script$panels) staff_forecast(run, run$t + 1, rate, path) else NULL)
 }
 
-# v6 §7, step 5: the quarter closed on the decision, the bank advanced unless the UI does it with bank_run, the next paper written unless it does it with paper_write
+# Section 4.2.1: the quarter closed on the decision, the bank advanced unless the UI does it with bank_run, the next paper written unless it does it with paper_write
 quarter_close <- function(run, rate, path = NULL, bank = TRUE, paper = TRUE) {
   q <- run$t + 1; g <- run$quarter$guided
   if (!is.null(g)) { rate <- g$rate; path <- if (g$action == "announce") g$plan else NULL }
@@ -93,7 +93,7 @@ quarter_close <- function(run, rate, path = NULL, bank = TRUE, paper = TRUE) {
   if (run$t < run$T) quarter_open(run, paper) else if (bank) topic_end(run) else { run$status <- "closed"; run$message <- NULL; run }
 }
 
-# v6 §7, step 6, and Section 4.2.2: the term's end, the record, the marks and the debrief
+# Sections 4.2.1 and 4.2.2: the term's end, the record, the marks and the debrief
 topic_end <- function(run) {
   if (is.null(run$bank) || length(run$bank$decisions) < run$T) stop("the reference bank's run must be advanced through every quarter (bank_run) before the term ends")
   record <- term_record(run)

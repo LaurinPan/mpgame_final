@@ -1,6 +1,6 @@
-# 02_Game/content/map.R — v6 §4: the map's boxes, nodes and arrows with their first topics, states and infoboxes, the walk's starts and the three graphs
+# 02_Game/content/map.R — Section 4.2.1: the map's boxes, nodes and arrows with their first topics, states and infoboxes, the walk's starts and the three graphs
 
-# v6 §4: the boxes, the nodes with the sheet field and the panel whose figure a node's tip may show, and the arrows with their equations of the model appendix
+# Section 4.2.1: the boxes, the nodes with the sheet field and the panel whose figure a node's tip may show, and the arrows with their equations of the model appendix
 map <- list(
 
   boxes = data.frame(

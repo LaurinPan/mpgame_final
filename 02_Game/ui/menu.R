@@ -2,8 +2,8 @@
 # card per chapter (variant 2), a mark per topic, the rows' statuses from the view
 # (played out, in play, next, locked; no scores), the selected topic's card with
 # its task and summary and the Related Theory box, the topic's map under it
-# (scripts appendix §4), the debrief over the Menu from the card's link, and a new
-# run's first steps (scripts appendix §4)).
+# (Section 4.2.1), the debrief over the Menu from the card's link, and a new
+# run's first steps).
 #
 # `opts`: run_name; role; runs (the runs the UI holds, by topic: list(id, status, q, T, played)); window (a debrief view over the
 # Menu); llm; map (ui_map_html's options).
@@ -34,7 +34,7 @@ ui_menu_toc_html <- function(mv, role) {
   }, "")
   game_tag("nav", list(class = paste0("game-toc toc-v", ui_params$menu$toc_variant), `aria-label` = ui_s("menu.toc_label")), game_tag("ol", list(class = "game-chapters"), paste(chs, collapse = "")))
 }
-# The box "Related Theory:" (scripts appendix §14; builds_on per topic).
+# The box "Related Theory:" (Section 4.3.2; builds_on per topic).
 ui_menu_related_html <- function(builds_on) {
   ids <- if (identical(builds_on, "all")) names(ui_params$theory_titles) else intersect(unlist(builds_on), names(ui_params$theory_titles))
   if (!length(ids)) return(NULL)

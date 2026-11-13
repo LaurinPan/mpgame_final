@@ -6,7 +6,7 @@
 # deviation, of the same measure across 20 runs of the same topic over the
 # same term, each run the scene with a small innovation added in every
 # quarter, drawn from the run's seed with a standard deviation equal to the
-# small class's value of v6 §5.1 (content/classes.R), for each type the
+# small class's value of Section 4.2.2 (content/classes.R), for each type the
 # topic's chapter knows: demand in every chapter, costs in Chapter B,
 # government spending in Chapter D. The bound is "effect above the spread", and an
 # objective that fails is listed under the table. A vote's chance is read
@@ -22,7 +22,7 @@ rule_rate   <- function(quarter, config) steady_rate(config$par) + to_year(solve
 needed_rate <- function(quarter, config) steady_rate(config$par) + to_year(solve_quarter(config, quarter, list(rate = "rule"))$r_e)
 by_quarter  <- function(f) { k <- 0; function(quarter, config) { k <<- k + 1; f(k, quarter, config) } }
 
-# the topic's scene (v6 §6) and, with a seed, the scene with the small noise:
+# the topic's scene (Section 4.3.1 and Table 1) and, with a seed, the scene with the small noise:
 # the small class's value of each type the chapter knows as the standard
 # deviation of an innovation in every quarter, drawn from the seed as
 # Chapter E's innovations are (engine_inputs)
@@ -130,7 +130,7 @@ lines <- c("| Objective and measure | Effect in its scene | Spread across the no
            sprintf("| %s | %.3f | %.3f (%.3f) | %s |", rows, effect, spread, mean_noisy, ifelse(visible, "yes", "no")),
            "",
            sprintf("Bound: the effect above the spread (Section 3.2). Every term loss is discounted as in (A36), each quarter's loss weighted by beta^(t-1) from the term's first quarter. %s", if (all(visible)) "Every objective is visible." else paste0("Not visible: ", paste(sub(" [(].*$", "", rows[!visible]), collapse = "; "), ".")),
-           sprintf("Noise: %d seeded runs of each scene over its term with a small innovation in every quarter, its standard deviation the small class's value (v6 §5.1): demand %.2f percent in every chapter, costs %.2f points a year in Chapter B, government spending %.0f percent of government spending in Chapter D.",
+           sprintf("Noise: %d seeded runs of each scene over its term with a small innovation in every quarter, its standard deviation the small class's value (Section 4.2.2): demand %.2f percent in every chapter, costs %.2f points a year in Chapter B, government spending %.0f percent of government spending in Chapter D.",
                    length(seeds), classes$values$demand[1], classes$values$costs[1], classes$values$purchases[1]))
 writeLines(lines, "03_Verification/results/04_visibility.md")
 cat(lines, sep = "\n")

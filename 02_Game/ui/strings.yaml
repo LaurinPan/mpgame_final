@@ -1,6 +1,6 @@
 # 02_Game/ui/strings.yaml: every visible text of the game's own interface (each key with text, where and why; {name} placeholders the
 # code fills). The texts of the content (briefings, walk-throughs, the newspaper, the chat, the debrief) come from 02_Game/content/ and
-# the views, never from here. The words follow the scripts appendix §8.
+# the views, never from here.
 app.title:
   text: "Monetary policy game"
   where: the browser's title
@@ -54,7 +54,7 @@ runs.nav_label:
 runs.theory:
   text: "Open the theory"
   where: the header
-  why: the theory section (scripts appendix §14)
+  why: the theory section (Section 4.3.2)
 runs.sign_out:
   text: "Sign out"
   where: the header
@@ -195,7 +195,7 @@ theory.title:
 theory.economy_note:
   text: "The example economy in these chapters comes from the textbooks and differs from the game's. In the game, the natural rate of unemployment, the unemployment rate the economy settles at once wages have adjusted, is 5 percent."
   where: the rail, under its title, on every page of the section
-  why: the section's start, the example economy (4 percent) against the game's (the glossary's explanation, scripts appendix §8.2)
+  why: the section's start, the example economy (4 percent) against the game's (the glossary's explanation)
 theory.bar_label:
   text: "The theory section"
   where: the dark bar
@@ -232,10 +232,6 @@ theory.mark_read:
   text: "Mark chapter as read"
   where: under the last chapter's last topic
   why: the action
-theory.more:
-  text: "More Detail: {title}"
-  where: a step's panel
-  why: the panel's summary
 theory.back_example:
   text: "Back to the example economy"
   where: a module
@@ -500,11 +496,11 @@ figures.persons:
 figures.labour_force:
   text: "Labour force"
   where: a row
-  why: the game's round figure (scripts appendix §3)
+  why: the game's round figure
 figures.population:
   text: "Population"
   where: a row
-  why: the game's round figure (scripts appendix §3)
+  why: the game's round figure
 figures.quarters_above:
   text: "above its natural rate for {quarters}"
   where: under the unemployment row
@@ -541,7 +537,7 @@ word.room_label:
 word.news_note:
   text: "A new shock this quarter gives room: moving your path toward it costs no trust, up to the room."
   where: under the editor
-  why: a quarter with a new shock (scripts appendix §8)
+  why: a quarter with a new shock
 word.switch:
   text: "Announce a path"
   where: the editor
@@ -829,7 +825,7 @@ chat.when_economist:
 chat.kind_start:
   text: "the topic's briefing"
   where: the one message at a topic's start, the chapter's and the topic's briefing together
-  why: the kind (scripts appendix §11)
+  why: the kind (Section 4.3.2)
 chat.kind_guided:
   text: "the bank's decision this quarter"
   where: a briefing message
@@ -890,51 +886,51 @@ paper.arrived:
 paper.box_w_title:
   text: "The Bank's Word"
   where: box W at the foot of page 4, Topics 4, 5 and 8
-  why: drawn from the sheet, never by a model (scripts appendix §12.1)
+  why: drawn from the sheet, never by a model (Section 4.2.2)
 paper.box_w_path:
   text: "Announced path: {path}"
   where: box W at the foot of page 4, Topics 4, 5 and 8
-  why: drawn from the sheet, never by a model (scripts appendix §12.1)
+  why: drawn from the sheet, never by a model (Section 4.2.2)
 paper.box_w_no_path:
   text: "No path announced"
   where: box W at the foot of page 4, Topics 4, 5 and 8
-  why: drawn from the sheet, never by a model (scripts appendix §12.1)
+  why: drawn from the sheet, never by a model (Section 4.2.2)
 paper.box_w_last_kept:
   text: "Last quarter {set} set against {announced} announced, the word kept"
   where: box W at the foot of page 4, Topics 4, 5 and 8
-  why: drawn from the sheet, never by a model (scripts appendix §12.1)
+  why: drawn from the sheet, never by a model (Section 4.2.2)
 paper.box_w_last_broken:
   text: "Last quarter {set} set against {announced} announced, the word broken"
   where: box W at the foot of page 4, Topics 4, 5 and 8
-  why: drawn from the sheet, never by a model (scripts appendix §12.1)
+  why: drawn from the sheet, never by a model (Section 4.2.2)
 paper.box_w_last_none:
   text: "No announcement judged yet"
   where: box W at the foot of page 4, Topics 4, 5 and 8
-  why: drawn from the sheet, never by a model (scripts appendix §12.1)
+  why: drawn from the sheet, never by a model (Section 4.2.2)
 paper.box_w_record:
   text: "Record: {kept} kept, {broken} broken"
   where: box W at the foot of page 4, Topics 4, 5 and 8
-  why: drawn from the sheet, never by a model (scripts appendix §12.1)
+  why: drawn from the sheet, never by a model (Section 4.2.2)
 paper.box_w_trust:
   text: "Trust: {trust}"
   where: box W at the foot of page 4, Topics 4, 5 and 8
-  why: drawn from the sheet, never by a model (scripts appendix §12.1)
+  why: drawn from the sheet, never by a model (Section 4.2.2)
 paper.box_w_room:
   text: "A new shock this quarter gives room of {room} points"
   where: box W at the foot of page 4, Topics 4, 5 and 8
-  why: drawn from the sheet, never by a model (scripts appendix §12.1)
+  why: drawn from the sheet, never by a model (Section 4.2.2)
 paper.box_g_title:
   text: "Government and Politics"
   where: box G at the foot of page 4, Topics 6, 7 and 8
-  why: drawn from the sheet, never by a model (scripts appendix §12.1)
+  why: drawn from the sheet, never by a model (Section 4.2.2)
 paper.box_g_above:
   text: "Government spending {level} % above normal, {change} on the quarter"
   where: box G at the foot of page 4, Topics 6, 7 and 8
-  why: drawn from the sheet, never by a model (scripts appendix §12.1)
+  why: drawn from the sheet, never by a model (Section 4.2.2)
 paper.box_g_below:
   text: "Government spending {level} % below normal, {change} on the quarter"
   where: box G at the foot of page 4, Topics 6, 7 and 8
-  why: drawn from the sheet, never by a model (scripts appendix §12.1)
+  why: drawn from the sheet, never by a model (Section 4.2.2)
 paper.box_g_party:
   text: "In office: {party}"
   where: box G at the foot of page 4, Topics 6, 7 and 8
@@ -1095,7 +1091,7 @@ map.badge_new:
 map.part_label_lever:
   text: "{name}, your lever"
   where: a lever's node, for screen readers
-  why: the two levers keep their outline (scripts appendix §4)
+  why: the two levers keep their outline
 map.value:
   text: "Last quarter {value}."
   where: a part's tip
@@ -1111,15 +1107,15 @@ map.close_label:
 map.arrow_title:
   text: "{from} → {to}"
   where: an arrow's tip
-  why: an arrow named by its two ends (scripts appendix §4)
+  why: an arrow named by its two ends
 map.equation:
   text: "Equation {number} of the model appendix."
   where: an arrow's tip and the last step of its walk
-  why: the equation's number in the model appendix (scripts appendix §4)
+  why: the equation's number in the model appendix
 map.equations:
   text: "Equations {list} and {last} of the model appendix."
   where: an arrow's tip and the last step of its walk
-  why: two equations' numbers in the model appendix (scripts appendix §4)
+  why: two equations' numbers in the model appendix
 map.equation_named:
   text: "{entry} of the model appendix."
   where: an arrow's tip and the last step of its walk
@@ -1127,7 +1123,7 @@ map.equation_named:
 map.group_title:
   text: "{from} → {to}"
   where: a grouped line's tip
-  why: the arrows between two folded boxes, merged into one (scripts appendix §4)
+  why: the arrows between two folded boxes, merged into one
 map.graph_pinned:
   text: "The relation of the model at the game's settings, never a hidden value. The graph works only in a pinned box."
   where: an arrow's tip
@@ -1159,7 +1155,7 @@ map.legend_new:
 map.legend_lever:
   text: "Your lever"
   where: the map's legend
-  why: the outline of the two levers (scripts appendix §4)
+  why: the outline of the two levers
 map.legend_label:
   text: "The map's legend"
   where: the legend
@@ -1200,7 +1196,7 @@ map.walk_label:
 tour.kicker:
   text: "The walk-through"
   where: a step's kicker
-  why: the window (scripts appendix §9)
+  why: the window (Section 4.3.2)
 tour.previous:
   text: "Previous"
   where: a step
@@ -1265,11 +1261,11 @@ debrief.chart_title:
 debrief.loss_chart_title:
   text: "The loss each quarter, yours and the reference bank's"
   where: the debrief's second chart, under the rates' one
-  why: the two losses quarter by quarter (scripts appendix §5.4)
+  why: the two losses quarter by quarter (Section 4.2.2)
 debrief.unit_loss:
   text: "both on one scale"
   where: the debrief's second chart
-  why: the losses compared, never named in squared points (scripts appendix §5.4)
+  why: the losses compared, never named in squared points (Section 4.2.2)
 debrief.unit_rate:
   text: "percent a year"
   where: the chart
@@ -1301,7 +1297,7 @@ debrief.loss_head:
 debrief.loss_line:
   text: "Over the term's {quarters} quarters your policy cost as much as missing inflation by {player} points in every quarter, the reference bank's {bank} points."
   where: the text
-  why: each term loss as its equivalent miss, never in squared points (scripts appendix §5.4)
+  why: each term loss as its equivalent miss, never in squared points (Section 4.2.2)
 debrief.marks_head:
   text: "The decisions that cost the most"
   where: the text
@@ -1380,7 +1376,7 @@ runs.slot_name:
   text: "The run in slot {slot}"
   where: an unreadable slot without its name
   why: the store could not read the run
-# --- the first steps on the Menu (scripts appendix §4), when a player enters a new run for the first time ---------------------------------------------
+# --- the first steps on the Menu, when a player enters a new run for the first time -------------------------------------------------------------------
 first_steps.kicker:
   text: "First steps"
   where: the first steps' box
@@ -1396,72 +1392,72 @@ first_steps.skip:
 first_steps.chapters_title:
   text: "The Chapters"
   where: the first steps, on the table of contents
-  why: the author's text (scripts appendix §4)
+  why: the author's text
 first_steps.chapters_text:
   text: "The game has five chapters, each with one or more topics. Topics open one after another as you finish them, and the dots show how far you have come."
   where: the first steps, on the table of contents
-  why: the author's text (scripts appendix §4)
+  why: the author's text
 first_steps.preview_title:
   text: "The Topic Preview"
   where: the first steps, on the topic's card
-  why: the author's text (scripts appendix §4)
+  why: the author's text
 first_steps.preview_text:
   text: "This is the topic you are about to play. It names what the topic is about and the task you face, and it shows how far into the term you are."
   where: the first steps, on the topic's card
-  why: the author's text (scripts appendix §4)
+  why: the author's text
 first_steps.theory_title:
   text: "Related Theory"
   where: the first steps, on the box Related Theory
-  why: the author's text (scripts appendix §4)
+  why: the author's text
 first_steps.theory_text:
   text: "These links open the chapters of the theory section that explain the ideas behind this topic. You can read them before you start or come back to them at any time."
   where: the first steps, on the box Related Theory
-  why: the author's text (scripts appendix §4)
+  why: the author's text
 first_steps.start_title:
   text: "Start and Reset"
   where: the first steps, on the card's buttons
-  why: the author's text (scripts appendix §4)
+  why: the author's text
 first_steps.start_text:
   text: "Begin starts the topic, Continue takes you back to where you left it, and Play again starts a finished topic once more. The circular arrow starts the topic again from its first quarter."
   where: the first steps, on the card's buttons
-  why: the author's text (scripts appendix §4)
+  why: the author's text
 first_steps.map_title:
   text: "The Economy's Map"
   where: the first steps, on the map
-  why: the author's text (scripts appendix §4)
+  why: the author's text
 first_steps.map_text:
   text: "The map shows how the economy works. Each box is a group of actors, each node a figure of the economy and each arrow how one figure moves another, and what is new in a topic is marked in green."
   where: the first steps, on the map
-  why: the author's text (scripts appendix §4)
+  why: the author's text
 first_steps.unfold_title:
   text: "Unfold a Node"
   where: the first steps, on a box of the map
-  why: the author's text (scripts appendix §4)
+  why: the author's text
 first_steps.unfold_text:
   text: "Click a box to unfold it and see the figures it holds, and click a figure to read what it means."
   where: the first steps, on a box of the map
-  why: the author's text (scripts appendix §4)
+  why: the author's text
 first_steps.relations_title:
   text: "Investigate Relations"
   where: the first steps, on an arrow of the map
-  why: the author's text (scripts appendix §4)
+  why: the author's text
 first_steps.relations_text:
   text: "Click an arrow to read how one figure moves another, with an example of the kind you will meet in the game."
   where: the first steps, on an arrow of the map
-  why: the author's text (scripts appendix §4)
+  why: the author's text
 first_steps.personalise_title:
   text: "Personalise the Map"
   where: the first steps, on the map's canvas
-  why: the author's text (scripts appendix §4)
+  why: the author's text
 first_steps.personalise_text:
   text: "Drag any box to a new place, or move a selected box with the arrow keys, and arrange the map the way you think about the economy."
   where: the first steps, on the map's canvas
-  why: the author's text (scripts appendix §4)
+  why: the author's text
 first_steps.reset_title:
   text: "Reset the Map"
   where: the first steps, on the map's reset button
-  why: the author's text (scripts appendix §4)
+  why: the author's text
 first_steps.reset_text:
   text: "This button puts every box back where it started and folds them again."
   where: the first steps, on the map's reset button
-  why: the author's text (scripts appendix §4)
+  why: the author's text

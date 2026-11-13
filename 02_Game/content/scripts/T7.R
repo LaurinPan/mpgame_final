@@ -1,6 +1,6 @@
-# 02_Game/content/scripts/T7.R — v6 §6, Topic 7 (Chapter D; Section 4.3, Table 1)
+# 02_Game/content/scripts/T7.R — Section 4.3.1 and Table 1: Topic 7 (Chapter D)
 
-# v6 §6: the script of Topic 7
+# Section 4.3.1 and Table 1: the script of Topic 7
 T7 <- list(
   id = "T7", name = "Elections", chapter = "D",
   objective = "Electoral pressure",

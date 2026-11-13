@@ -1,6 +1,6 @@
-# 02_Game/bank/staff_forecast.R — Section 4.2.1, the staff forecast on the fair quarter, with the band the reports leave open (v6 §5.3)
+# 02_Game/bank/staff_forecast.R — Section 4.2.1, the staff forecast on the fair quarter, with the band the reports leave open (Section 4.2.2)
 
-# Section 4.2.1 and v6 §5.3: the forecast at a decision, with its band from the class edges of every shock reported in words
+# Sections 4.2.1 and 4.2.2: the forecast at a decision, with its band from the class edges of every shock reported in words
 staff_forecast <- function(run, q, rate, path = NULL) {
   config <- run$config; par <- config$par
   if (rate < 0 || rate > consts$cap) stop("the rate lies outside the floor and the cap")

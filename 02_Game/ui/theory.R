@@ -1,12 +1,12 @@
-# ui/theory.R — the theory section (scripts appendix §14): its reading shell (the rail with the chapters and their topics, the main
-# column with a topic's steps, More Detail panels, term boxes, the modules' frames, the static figures, the navigation). Its content
+# ui/theory.R — the theory section (Section 4.3.2): its reading shell (the rail with the chapters and their topics, the main
+# column with a topic's steps, term boxes, the modules' frames, the static figures, the navigation). Its content
 # is 02_Game/content/theory/:
-# the six chapter files P1.yaml to P6.yaml (texts revised as scripts appendix §8 asks, term cards, the places of modules and figures),
+# the six chapter files P1.yaml to P6.yaml (the texts, the term cards, the places of modules and figures),
 # economy.yaml (the example economy's data), modules.yaml (the ten modules' sliders, scales, readouts and words), labels.yaml (the
 # section's own interface words) and references.yaml (the sources, not displayed), read once at the first page drawn. The static
 # figures are SVG drawn here from economy.yaml; the modules are drawn and computed in the browser by 02_Game/web/theory.js from one data
 # attribute each. Every element that opens another topic carries data-theory-go="P5:7" (chapter:topic): theory.js sends it to the
-# server as theory_nav, or on a static page opens theory_P5_7.html, the page's href.
+# server as theory_nav.
 
 ui_theory_outline <- list(
   list(id = "P1", title = "Macroeconomics, actors and models", topics = c("Economic models", "Microeconomics and macroeconomics", "The circular flow of the economy", "History of macroeconomics", "Economic schools of thought")),
@@ -54,7 +54,8 @@ ui_theory_anchor <- function(ref) {
   }
   stop("theory: no topic or step for the link ", ref)
 }
-# An element that opens a topic: data-theory-go (chapter:topic), the step to scroll to, for a link the static page's file.
+# An element that opens a topic: data-theory-go (chapter:topic), the step to scroll to, and for a link an href that names the topic and the
+# step, in whose place the script's click handler acts.
 ui_theory_go <- function(chapter, k, step = NULL, href = FALSE) {
   frag <- if (!is.null(step)) sprintf("step-%s-%s", chapter, step)
   c(if (href) list(href = sprintf("theory_%s_%d.html%s", chapter, as.integer(k), if (is.null(frag)) "" else paste0("#", frag))),
@@ -78,7 +79,7 @@ ui_theory_links <- function(html) {
   }, "", USE.NAMES = FALSE))
   html
 }
-# Term boxes: a card's explanation as shown, the glossary's (scripts appendix §8.2) with its first letter raised and a full stop.
+# Term boxes: a card's explanation as shown, the glossary's with its first letter raised and a full stop.
 ui_theory_core <- function(card) {
   x <- card$core %||% ""
   if (isTRUE(card$glossary)) x <- paste0(game_upper_first(x), if (grepl("[.!?]$", x)) "" else ".")
@@ -122,13 +123,11 @@ ui_theory_rail_html <- function(chapter, k) {
   paste0(game_tag("h1", list(), game_esc(ui_s("theory.title"))), game_p("theory-note", game_esc(ui_s("theory.economy_note"))),
          game_tag("ol", list(class = "toc"), paste(items, collapse = "")))
 }
-# A step: its prose, its More Detail panel, its module, its figure.
+# A step: its prose, its module, its figure.
 ui_theory_step_html <- function(chapter, tp, st) {
-  more <- if (!is.null(st$details)) game_tag("details", list(class = "more"), game_tag("summary", list(), game_esc(ui_s("theory.more", title = st$details$title))),
-                                              game_tag("div", list(class = "prose"), ui_theory_md(st$details$text, chapter, st$id, main = FALSE)))
   module <- if (!is.null(st$module)) ui_theory_module_html(chapter, tp, st)
   figure <- if (!is.null(st$figure)) ui_theory_figure_html(st$figure$kind, st$figure$description)
-  game_tag("div", list(class = "step", id = sprintf("step-%s-%s", chapter, st$id)), game_tag("div", list(class = "prose"), ui_theory_md(st$text, chapter, st$id)), more, module, figure)
+  game_tag("div", list(class = "step", id = sprintf("step-%s-%s", chapter, st$id)), game_tag("div", list(class = "prose"), ui_theory_md(st$text, chapter, st$id)), module, figure)
 }
 # A topic's page: the bar that leads back, the rail, the steps, Previous topic, Next topic, Continue to chapter n or Mark chapter as read.
 ui_theory_html <- function(chapter = "P1", k = 1L, back = c("desk", "runs", "menu")) {

@@ -1,7 +1,7 @@
-# ui/params.R — the UI's own geometry and constants (scripts appendix §13.9). No
+# ui/params.R — the UI's own geometry and constants. No
 # figure of the economy is here: every such figure comes from the views.
 ui_params <- list(
-  # the economy's map (scripts appendix §4): the canvas in the map's units, the boxes' designed places (their centres, by the box
+  # the economy's map: the canvas in the map's units, the boxes' designed places (their centres, by the box
   # id of content/map.R), the boxes' and nodes' sizes, the arrow keys' steps, a node's label's characters a line
   map = list(canvas = c(w = 1240, h = 660),
              places = list(central_bank = c(210, 100), households = c(620, 92), firms = c(1030, 120), general_public = c(210, 390),
@@ -32,7 +32,7 @@ ui_params <- list(
   llm = list(question_max = 600L),
   time_zone = "Europe/Zurich",
   menu = list(toc_variant = 2L),
-  # the theory section's chapters (content/curriculum.yaml's titles) and the builds_on titles the Menu's box names
+  # the theory section's chapters by their titles, which the Menu's box "Related Theory" names for a topic's builds_on
   theory_titles = c(P1 = "Macroeconomics, actors and models", P2 = "Measuring output: GDP", P3 = "The goods market in the short run",
                     P4 = "Money, prices and interest", P5 = "Labour market, unemployment and the Phillips relation", P6 = "Growth and potential output"),
   # the next quarter's paper, the reference bank's steps and the term's end: in app.R's background worker, or,

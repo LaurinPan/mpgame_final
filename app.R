@@ -10,6 +10,6 @@ if (isTRUE(ui_params$bank$background) && requireNamespace("mirai", quietly = TRU
   mirai::everywhere({ setwd(dir); tools::psnice(value = 19L); for (f in list.files(c("01_Engine", "02_Game"), pattern = "[.]R$", recursive = TRUE, full.names = TRUE)) source(f) }, dir = getwd())
   shiny::onStop(function() mirai::daemons(0))
 }, error = function(e) { message("MPGAME no background worker: ", conditionMessage(e)); try(mirai::daemons(0), silent = TRUE) })
-# the page's styles and scripts, served from 02_Game/web (in the working folder Shiny serves its www/ folder itself)
+# the page's styles and scripts, served from 02_Game/web
 shiny::addResourcePath("web", "02_Game/web")
 shiny::shinyApp(ui_app_ui(), ui_server)

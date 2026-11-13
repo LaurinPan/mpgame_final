@@ -1,12 +1,12 @@
-# 02_Game/content/theory/P6.yaml — chapter 6 of the theory section, "Growth and potential output" (scripts appendix §14),
-# its texts written as the scripts appendix §8 asks (the glossary's terms and explanations, "government spending", "the rate
-# the economy needs", no mention of a game). Read by 02_Game/ui/theory.R.
+# Chapter 6 of the theory section, "Growth and potential output". Its texts are written from three textbooks
+# (references.yaml) and name the section they rest on at the end of every paragraph. They use the glossary's terms and
+# explanations, "government spending" and "the rate the economy needs", and they do not mention a game.
 #   chapter  id, title, the learning objectives
 #   cards    the term cards: term, core (the explanation; the glossary's own, lower case, where `glossary: true`), example,
 #            aliases, see_also (a preview card's full card), box (false: never shown as a box), step (where the text defines it)
 #   topics   id, title, objectives, steps: id, sources ({key, loc} into references.yaml), text (Markdown: [label](term:P4:id)
-#            marks a term, [label](theory:P2-s1d) links a chapter, topic or step), details (a More Detail panel), module (one of
-#            the ten modules of modules.yaml with this step's controls and view), figure (a static figure drawn from economy.yaml)
+#            marks a term, [label](theory:P2-s1d) links a chapter, topic or step), module (one of the modules of modules.yaml
+#            with this step's controls and view), figure (a static figure drawn from economy.yaml)
 
 chapter:
   id: P6
@@ -19,7 +19,7 @@ chapter:
     LO5: "Explain how growth accounting splits output growth into the contributions of capital, labour and technology."
 
 cards:
-  production_function: {term: "Production function", core: "A description of how much output an economy can produce with given amounts of capital and labour and a given technology. It describes what can be produced, not what buyers want.", example: "With $2,200 million of capital and 9,600 workers, the example economy can produce $900 million a year.", step: s1a}
+  production_function: {term: "Production function", core: "A description of how much output an economy can produce from the capital and labour it has, at a given technology. It describes what can be produced, not what buyers want.", example: "With $2,200 million of capital and 9,600 workers, the example economy can produce $900 million a year.", step: s1a}
   capital_stock: {term: "Capital stock (K)", core: "All the machines, equipment and buildings that firms own and use to produce. In economics, capital means these produced means of production, not money or shares.", example: "The firms of the example economy own machines and buildings worth $2,200 million.", step: s1a}
   constant_returns: {term: "Constant returns to scale", core: "The property that doubling all inputs together, capital and workers alike, doubles output: a second factory just like the first, with the same staff, produces just as much.", example: "With $4,400 million of capital and 19,200 workers, output would be $1,800 million.", step: s1b}
   marginal_product: {term: "Marginal product", core: "The extra output that one more unit of an input adds while the other inputs stay the same: what one more worker, or one more dollar of machines, contributes.", example: "One more worker adds about $62,500 a year; a further $10 million machine about $1.4 million.", aliases: ["marginal products"], step: s1b}
@@ -43,7 +43,6 @@ cards:
   total_factor_productivity: {term: "Total factor productivity", core: "How much output an economy obtains from its capital and labour taken together. When it rises, the same machines and workers produce more.", example: "In the example economy it rises by about 0.67% a year.", aliases: [TFP], step: s5a}
   solow_residual: {term: "Solow residual", core: "Total factor productivity growth as it is measured: the part of output growth that more capital and more workers cannot explain. It therefore contains everything not measured, not only technology.", example: "Output grows by 2%; capital and labour explain 1.33 points; the residual is 0.67 points.", step: s5b}
   golden_rule: {term: "Golden rule", core: "The saving rate at which consumption in the steady state is highest. Saving more would add capital that does not even pay for its own upkeep in extra consumption.", example: "In the example economy the golden-rule saving rate is one third.", aliases: ["golden-rule"], step: s3c}
-  knife_edge: {term: "Knife-edge", core: "The Harrod-Domar view that steady growth needs an exact balance between saving and the growth of the labour force, which the economy cannot keep on its own.", box: false, step: s4c}
 
 topics:
 
@@ -53,129 +52,71 @@ topics:
     steps:
       - id: s1a
         sources:
-          - {key: mankiw_2025, loc: "ch. 3"}
-          - {key: blanchard_illing_2021, loc: "ch. 10"}
-          - {key: legge_2023, loc: "10"}
+          - {key: blanchard_illing_2017, loc: "2.5"}
+          - {key: mankiw_2019, loc: "3-1"}
         text: |
           ### What an economy can produce
 
-          Suppose the finance ministry of the example economy proposes measures to encourage saving. If households saved
-          30% of the economy's income instead of about 24%, it argues, more of it would flow into machines, and the
-          economy would grow faster for good. Is that right? The answer needs the theory of this chapter: what
-          determines how much an economy can produce, how its capacity grows, and how far actual
-          [output](term:P1:output_GDP) can stray from it. Each topic can be read on its own; [the topic on technological
-          progress](theory:P6-s4c) returns to the ministry's claim.
+          Suppose the finance ministry of the example economy wants households to save 30% of the economy's
+          income instead of about 24%, and argues that the economy would then grow faster for good. This chapter
+          gives the theory needed to judge the claim, and [the topic on technological progress](theory:P6-s4c)
+          returns to it.
 
-          The chapter is about the **[long run](term:P3:long_run)**, a period of several decades. In the [short
-          run](term:P3:short_run), output follows demand, and in the [medium run](term:P3:medium_run) it returns to a
-          normal level set by the labour market ([the time horizons in chapter 3](theory:P3-s1a)). Over decades, the
-          question is no longer whether output is above or below its normal level, but why that level rises. The answer
-          starts with what the economy is able to produce.
+          The chapter belongs to the [long run](term:P3:long_run), in which growth depends on how fast capital
+          and technical knowledge grow (Blanchard & Illing, 2017, 2.5).
 
-          Firms produce with workers and with machines, equipment and buildings. The relation between these inputs and
-          the output they can produce is the **[production function](term:P6:production_function)** (Mankiw, 2025, ch.
-          3). It says how much can be produced, given the inputs and the technology in use; it says nothing about
-          whether anyone wants to buy it. Economists write it as
+          The **[production function](term:P6:production_function)** says how much output an economy can produce
+          from its capital and labour with the technology it has. A better way of producing means more output
+          from the same inputs (Mankiw, 2019, 3-1).
 
           > Y = F(K, N)
 
-          where Y is output, N the number of workers and K the **[capital stock](term:P6:capital_stock)**: all the
-          machines, equipment and buildings that firms own. In economics, "capital" means these produced means of
-          production, not [money](term:P4:money) or shares. The capital stock is a stock, measured at a point in time,
-          whereas output is a flow, measured per year (the [flow vs stock](term:P2:flow_vs_stock) distinction). The
-          firms of the example economy own capital worth $2,200 million and employ 9,600 workers; with these they
-          produce output of $900 million a year, the [GDP](term:P2:GDP_definition) of the example economy. The function
-          F also contains the technology: the knowledge and methods that decide how much a given number of machines and
-          workers can make (Blanchard & Illing, 2021, ch. 10). [Technological progress](theory:P6-s4b) is the subject of
-          a later topic.
+          K is the **[capital stock](term:P6:capital_stock)**, the equipment that people work with, from cranes
+          to computers, and N the number of workers (Mankiw, 2019, 3-1).
+
+          The firms of the example economy own capital worth $2,200 million and employ 9,600 workers. With these
+          they produce [output](term:P1:output_GDP) of $900 million a year.
       - id: s1b
         sources:
-          - {key: mankiw_2025, loc: "ch. 3"}
-          - {key: blanchard_illing_2021, loc: "ch. 10"}
+          - {key: mankiw_2019, loc: "3-1, 3-2, 8-1"}
         text: |
           ### Returns to scale and diminishing returns
 
-          Two properties of the production function matter for everything that follows (Mankiw, 2025, ch. 3; Blanchard &
-          Illing, 2021, ch. 10).
+          **[Constant returns to scale](term:P6:constant_returns)** mean that raising all inputs by the same
+          percentage raises output by that percentage too (Mankiw, 2019, 3-1).
 
-          The first concerns all inputs together. If the economy had twice as much capital and twice as many workers, it
-          could simply build a second set of factories just like the first, with the same staff, and produce twice as
-          much. This property is called **[constant returns to scale](term:P6:constant_returns)**. With $4,400 million
-          of capital and 19,200 workers, the example economy would produce $1,800 million.
+          The **[marginal product](term:P6:marginal_product)** of an input is the extra output from one more
+          unit of it, while the other inputs stay the same. Most production functions show **[diminishing
+          marginal product](term:P6:diminishing_marginal_product)**: with capital held fixed, each further
+          worker adds less than the one before (Mankiw, 2019, 3-2). The same holds for capital when the number
+          of workers is fixed (Mankiw, 2019, 8-1).
 
-          The second concerns one input at a time. The **[marginal product](term:P6:marginal_product)** of an input is
-          the extra output that one more unit of it adds while the other inputs stay the same. In the example economy,
-          one more worker adds about $62,500 of output a year, and one more dollar of machines adds about 13.6 cents a
-          year. What happens if firms keep adding machines but the number of workers stays at 9,600? The chart shows
-          three equal additions of $220 million of capital. The first raises output from $900 million to $929.1 million,
-          an extra $29.1 million; the second adds $27.3 million, the third $25.9 million. Each addition adds less than
-          the one before: this is **[diminishing marginal product](term:P6:diminishing_marginal_product)**. With more
-          and more machines for the same workers, each new machine is used a little less fully: the bakery's third
-          production line can only run while someone tends it. The same holds for workers when capital is fixed.
+          In the example economy, twice the capital and twice the workers, $4,400 million and 19,200, would
+          produce $1,800 million. One more worker adds about $62,500 a year, one more dollar of machines about
+          13.6 cents. Three equal additions of $220 million of capital, with 9,600 workers, add $29.1, $27.3 and
+          $25.9 million of output: each adds less than the one before.
 
-          Diminishing marginal product of capital is the key to the theory of growth in the topics that follow: it
-          explains why adding capital cannot make an economy grow faster for ever.
+          Diminishing marginal product of capital is why adding capital cannot keep an economy growing for ever,
+          as the following topics show (Mankiw, 2019, 8-1).
         figure: {kind: production_function, description: "Output of the example economy against its capital stock, with 9,600 workers; three equal additions of capital of $220 million each add less and less output."}
       - id: s1c
         sources:
-          - {key: mankiw_2025, loc: "ch. 3"}
-          - {key: legge_2023, loc: "10"}
-          - {key: blanchard_illing_2021, loc: "7.4"}
+          - {key: mankiw_2019, loc: "3-2"}
         text: |
           ### The Cobb-Douglas function and the shares of income
 
-          Textbooks often use one particular form of the production function, the **[Cobb-Douglas production
-          function](term:P6:cobb_douglas)** (Mankiw, 2025, ch. 3; Legge, 2023, 10). The example economy uses it in the
-          form
+          A much-used form is the **[Cobb-Douglas production function](term:P6:cobb_douglas)**. Its mark is that
+          the shares of income going to capital and to labour stay constant, whatever the amounts of the two
+          inputs. If firms pay each input its marginal product, the exponent on capital is capital's share of
+          income, the **[capital share](term:P6:capital_share)** (Mankiw, 2019, 3-2).
 
           > Y = K^1/3 × (A × N)^2/3
 
-          where A is the [efficiency of labour](term:P6:efficiency_of_labour), which grows with technology. The
-          exponents say what a percentage change in an input does: 1% more capital raises output by a third of 1%, and
-          1% more workers by two thirds of 1%. Each input shows diminishing marginal product, while both together show
-          constant returns, because the exponents add up to one.
-
-          The exponents also say how income is shared. Suppose firms pay each input what its last unit adds to output,
-          its marginal product, as they do when markets for labour and capital are competitive (Mankiw, 2025, ch. 3).
-          Then workers receive two thirds of output and the owners of capital one third, whatever the amounts of capital
-          and labour. The part going to capital is the **[capital share](term:P6:capital_share)**. In the example
-          economy it matches the national accounts exactly: of income of $900 million, wages are $600 million and
-          profits $300 million ([the income approach in chapter 2](theory:P2-s1d)).
-
-          Each of the 9,600 workers therefore earns the marginal product of labour, two thirds of the output per worker
-          of $93,750, or $62,500 a year. This is the same [real wage](term:P5:real_wage) that firms' price setting
-          leaves for workers in [chapter 5](theory:P5-s4a), where firms add a [markup](term:P5:markup) of 50% to their
-          labour costs. That model treats labour as the only input and says that the markup also covers what firms pay
-          for their machines. The production function makes this precise: the $300 million that the markup leaves above
-          wages is, in this view, the payment for the capital stock, about 13.6% of its value a year. Whether some of it
-          is profit from market power rather than a payment for capital is a question this simple model does not ask
-          (Blanchard & Illing, 2021, 7.4).
-        details:
-          title: "Why is labour's share about two thirds?"
-          sources:
-            - {key: cobb_douglas_1928}
-            - {key: mankiw_2025, loc: "ch. 3"}
-            - {key: karabarbounis_neiman_2014}
-          text: |
-            The function used in this topic is named after the mathematician Charles Cobb and the economist Paul Douglas.
-            Douglas studied American manufacturing from 1899 to 1922: how output, the number of workers and the [capital
-            stock](term:P6:capital_stock) had grown, and how output was shared between workers and the owners of capital.
-            With Cobb he fitted a [production function](term:P6:production_function) of this form to the data: labour's
-            exponent came out at about three quarters, capital's at about one quarter (Cobb & Douglas, 1928). A production
-            function in which the shares of income stay constant whatever the amounts of the inputs has carried their
-            names ever since.
-
-            For decades the stability of the shares seemed one of the most reliable facts of
-            [macroeconomics](term:P1:macroeconomics). In many advanced economies labour received roughly two thirds to
-            three quarters of national income, and textbooks used a [capital share](term:P6:capital_share) of about 0.3
-            (Mankiw, 2025, ch. 3). The example economy's one third lies in this range.
-
-            The fact has become less secure. Loukas Karabarbounis and Brent Neiman (2014) document that labour's share of
-            income in the corporate sector has fallen in most countries and industries since the early 1980s, by about
-            five percentage points worldwide. They attribute about half of the decline to machines and computers becoming
-            cheaper relative to other goods, which made firms substitute capital for labour more than a [Cobb-Douglas
-            function](term:P6:cobb_douglas) allows. The causes are still debated. For the theory of growth the constant
-            share remains a good approximation over decades; the debate shows that it is an assumption, not a law.
+          This is the function of the example economy, where A is the [efficiency of
+          labour](term:P6:efficiency_of_labour). Of income of $900 million, wages are $600 million and profits
+          $300 million: a capital share of one third. Each of the 9,600 workers earns two thirds of the output
+          per worker of $93,750, that is $62,500, the [real wage](term:P5:real_wage) of [chapter
+          5](theory:P5-s4a).
 
   - id: s2
     title: "Potential Output and the Output Gap"
@@ -183,104 +124,47 @@ topics:
     steps:
       - id: s2a
         sources:
-          - {key: blanchard_illing_2021, loc: "ch. 9"}
-          - {key: mankiw_2025, loc: "ch. 3"}
-          - {key: okun_1962}
+          - {key: blanchard_illing_2017, loc: "9.1"}
+          - {key: legge_2023, loc: "7.2"}
         text: |
           ### Potential output
 
-          The [production function](term:P6:production_function) says how much the economy can produce with the capital,
-          workers and technology it has. Which number of workers should be put into it? Not every person who could work
-          is employed even in normal times. In the labour market, wage setting and price setting settle at a [natural
-          rate of unemployment](term:P5:natural_rate), 4% in the example economy, and [natural
-          employment](term:P5:natural_employment) of 9,600 of a labour force of 10,000 ([the natural rate in chapter
-          5](theory:P5-s4b)).
+          **[Potential output](term:P6:potential_output)**, written Yₙ, is what the economy produces at [natural
+          employment](term:P5:natural_employment), the number of people in work once unemployment has settled at
+          its [natural rate](term:P5:natural_rate) (Blanchard & Illing, 2017, 9.1).
 
-          **[Potential output](term:P6:potential_output)**, written Yₙ, is the [output](term:P1:output_GDP) the
-          production function gives at natural employment, with the [capital stock](term:P6:capital_stock) and
-          technology of the time (Blanchard & Illing, 2021, ch. 9; Mankiw, 2025, ch. 3). In the example economy, $2,200
-          million of capital and 9,600 workers produce $900 million: potential output is $900 million. This is the
-          "normal level" of output around which output fluctuates in the [short run](term:P3:short_run) ([the time
-          horizons in chapter 3](theory:P3-s1a)). The concept goes back to Arthur Okun (1962), who called it potential
-          GNP and used it to measure the output an economy loses through unemployment.
+          In the example economy, $2,200 million of capital and 9,600 workers, the number employed at the
+          natural rate of 4%, produce $900 million: potential output is $900 million.
 
-          The word "potential" can mislead. Potential output is not the most the economy could ever produce. For a
-          while, firms can produce more by working overtime, running machines in extra shifts and hiring people who
-          would normally take longer to find a job. But they cannot keep this up: when unemployment stays below its
-          natural rate, wage claims exceed what prices allow, and wages and prices start rising faster than expected
-          ([the Phillips relation in chapter 5](theory:P5-s7b)).
+          Potential output grows over time, because the number of workers and their productivity grow. Its
+          growth rate is the one at which unemployment neither rises nor falls: the [normal growth
+          rate](term:P5:normal_growth_rate) of [Okun's law](theory:P5-s5a) (Blanchard & Illing, 2017, 9.1).
 
-          Potential output also changes over time. Each year the capital stock grows, the [labour
-          force](term:P5:labour_force) grows and technology improves, so potential output rises, by 2% a year in the
-          example economy. This is the [normal growth rate](term:P5:normal_growth_rate) at which output must grow to
-          keep unemployment constant ([Okun's law in chapter 5](theory:P5-s5a)). Why it is 2%, and why capital alone
-          could not sustain it, is explained in [the topics on growth](theory:P6-s4c).
+          For a time, the economy can produce more than its potential. Unemployment is then below its natural
+          rate, and prices rise faster than people had expected (Legge, 2023, 7.2).
       - id: s2b
         sources:
-          - {key: blanchard_illing_2021, loc: "ch. 9"}
-          - {key: mankiw_2025, loc: "ch. 12"}
-          - {key: okun_1962}
+          - {key: blanchard_illing_2017, loc: "9.1"}
+          - {key: legge_2023, loc: "7.2"}
+          - {key: mankiw_2019, loc: "15-1"}
         text: |
           ### The output gap
 
-          Actual output need not equal potential output. In the short run it is set by demand: in the goods-market model
-          of [chapter 3](theory:P3-s3a), output settles where production equals the [demand for
-          goods](term:P3:demand_for_goods). The difference between actual and potential output is the **[output
-          gap](term:P6:output_gap)**, usually stated as a percentage of potential output (Blanchard & Illing, 2021, ch.
-          9):
+          The **[output gap](term:P6:output_gap)** sets actual output against potential output. It mirrors the
+          labour market: a gap of zero goes with unemployment at its natural rate, a negative gap with higher
+          unemployment and a positive gap with lower (Blanchard & Illing, 2017, 9.1).
 
           > output gap = actual output − potential output
 
           In the example economy, demand and potential output are both $900 million, so the gap is zero. If the
-          government spends $10 million more, demand raises output to $925 million ([the multiplier in chapter
-          3](theory:P3-s4a)): a positive gap of $25 million, or 2.8%. If households instead decide to consume $10
-          million less at every level of income, a [demand shock](term:P3:demand_shock), output falls to $875 million: a
-          negative gap of 2.8%. Potential output has not changed in either case; only demand has.
+          government spends $10 million more, [the multiplier of chapter 3](theory:P3-s4a) raises output to $925
+          million: a gap of +$25 million, or +2.8%. If households consume $10 million less at every level of
+          income, a [demand shock](term:P3:demand_shock), output falls to $875 million, a gap of −2.8%.
+          Potential output is the same in both cases.
 
-          A positive gap means that firms produce more than they can sustain: they hire beyond natural employment, so
-          unemployment falls below its natural rate and wages and prices rise faster than expected. A negative gap means
-          idle machines and workers who would normally have a job. The gap is linked to unemployment by [Okun's
-          law](term:P5:okuns_law): unemployment falls when output grows faster than potential output (Mankiw, 2025, ch.
-          12). If output grows by 4% in a year while potential output grows by 2%, output ends the year about 2% above
-          potential, and with the coefficient of 0.5 of the example economy unemployment falls by about one point, from
-          4% to 3%.
-
-          One caution about the numbers. With capital fixed, the production function would need about 10,003 workers to
-          produce $925 million, more than the whole labour force. Firms do not raise output only by hiring: they ask for
-          more hours, let machines run longer and use staff they had kept through slack times, so employment moves much
-          less than the production function alone suggests ([why the Okun coefficient is below one](theory:P5-s5b)). The
-          output gap is therefore measured from output, not by converting jobs into output with the production function.
-
-          The gap is the number a [central bank](term:P1:central_bank) watches when it asks whether the economy is
-          overheating or has room to grow. A higher [policy rate](term:P4:policy_rate) lowers investment ([chapter
-          4](theory:P4-s7b)), and through the multiplier it lowers demand and output ([chapter 3](theory:P3-s4a)), which
-          narrows a positive gap.
-        details:
-          title: "How large is the output gap? Measuring potential output"
-          sources:
-            - {key: okun_1962}
-            - {key: orphanides_vannorden_2002}
-          text: |
-            Actual [output](term:P1:output_GDP) is measured every quarter by the statistics office. [Potential
-            output](term:P6:potential_output) is not measured at all: it is estimated, and so is the gap. Arthur Okun
-            (1962) introduced the idea of potential GNP to show how much output the American economy was losing through
-            unemployment. He started from unemployment rather than from a [production
-            function](term:P6:production_function): if unemployment was above what he took as its normal level, output had
-            to be below its potential, by a multiple of the difference that he estimated from the data.
-
-            Today statistical offices, [central banks](term:P1:central_bank) and international organisations use two broad
-            approaches. Some smooth the history of actual output and read the trend as potential output; others, like this
-            topic, apply a production function to estimates of the [capital stock](term:P6:capital_stock), [natural
-            employment](term:P5:natural_employment) and technology. Both need assumptions about things no one observes
-            directly, above all the [natural rate of unemployment](term:P5:natural_rate) and the trend of productivity.
-
-            How reliable are such estimates when policy needs them? Athanasios Orphanides and Simon van Norden (2002)
-            compared the estimates of the American [output gap](term:P6:output_gap) available at the time with later
-            estimates of the same quarters. The revisions were as large as the gaps themselves and lasted for years.
-            Revised data were not the main problem: the trend of output is hardest to estimate at the end of a series,
-            which is exactly where a central bank stands when it decides. In some periods the first estimate did not even
-            get the sign of the gap right. The lesson is not that the gap is useless, but that a central bank sees an
-            estimate of it, which can change as the years go by.
+          Inflation feels the gap. With output beyond its potential, prices rise faster than people had expected
+          (Legge, 2023, 7.2). This is why the gap serves as the gauge of the business cycle (Mankiw, 2019,
+          15-1).
         figure: {kind: output_gap, description: "Actual and potential output of the example economy in the worked cases of the text: potential output of $900 million, actual output of $925 million and $875 million."}
 
   - id: s3
@@ -289,131 +173,68 @@ topics:
     steps:
       - id: s3a
         sources:
-          - {key: blanchard_illing_2021, loc: "ch. 11"}
-          - {key: mankiw_2025, loc: "ch. 9"}
-          - {key: legge_2023, loc: "10"}
+          - {key: mankiw_2019, loc: "8-1"}
         text: |
           ### Saving, investment and depreciation
 
-          Why does an economy's capacity to produce grow? The simplest answer is that it adds machines. This topic
-          follows that answer to its end. To isolate it, it assumes for the moment that the number of workers and the
-          technology stay the same; [the next topic](theory:P6-s4a) drops both assumptions (Blanchard & Illing, 2021,
-          ch. 11; Mankiw, 2025, ch. 9).
+          The simplest account of growth is that an economy adds capital. To isolate it, this topic holds the
+          number of workers and the technology fixed, so that what matters is **[capital per
+          worker](term:P6:capital_per_worker)** (Mankiw, 2019, 8-1).
 
-          Since the number of workers is fixed, what matters is **[capital per worker](term:P6:capital_per_worker)**:
-          the [capital stock](term:P6:capital_stock) of $2,200 million spread over 9,600 workers, about $229,000 each.
-          It rises when the capital stock grows.
+          Two forces move the [capital stock](term:P6:capital_stock). [Investment](term:P2:investment) adds to
+          it, and investment equals saving: the **[saving rate](term:P6:saving_rate)** s is the part of its
+          income that the economy saves and so invests. **[Depreciation](term:P6:depreciation)** works the other
+          way: each year a fixed share of the existing capital wears out (Mankiw, 2019, 8-1).
 
-          New capital comes from [investment](term:P2:investment), firms' purchases of new machines and buildings. In a
-          [closed economy](term:P1:closed_economy), investment equals saving: what households and the government do not
-          consume is lent, directly or through banks, to the firms that invest ([saving and investment in chapter
-          3](theory:P3-s3d)). In the example economy, households save $220 million, the government's budget is balanced,
-          and firms invest $220 million. The share of income that is saved is the **[saving
-          rate](term:P6:saving_rate)**, written s: here $220 million of $900 million, about 24.4%. (In this topic the
-          letter s means the saving rate; in [the flow model of chapter 5](theory:P5-s2a) it stood for the rate at which
-          people lose their jobs.)
-
-          Capital also wears out. Machines break, buildings age and equipment becomes obsolete. The part of the capital
-          stock lost in a year is **[depreciation](term:P6:depreciation)**. In the example economy, capital wears out at
-          8% a year, so $176 million of the $2,200 million is lost each year. Of the investment of $220 million, $176
-          million only replaces worn-out capital; the remaining $44 million adds to it. The national accounts of
-          [chapter 2](theory:P2-s1d) count investment and profits before this deduction: [GDP](term:P2:GDP_definition)
-          is "gross" because it includes the machines that merely replace worn-out ones, and profits of $300 million
-          include the funds for that replacement.
-
-          After depreciation, the capital stock earns its owners about 13.6% − 8% = 5.6% a year. This is more than the
-          3% at which firms can finance a project in [chapter 4](theory:P4-s6b). The two models are kept apart in these
-          chapters: the average return on all the capital in the economy is not the [cost of
-          finance](term:P4:cost_of_finance) of the next machine, and real economies also show such a gap.
+          In the example economy, $220 million of income of $900 million is saved and invested, a saving rate of
+          about 24.4%. Capital of $2,200 million, about $229,000 per worker, wears out at 8% a year. So $176
+          million of the investment only replaces worn-out capital, and $44 million adds to the stock.
       - id: s3b
         sources:
-          - {key: blanchard_illing_2021, loc: "ch. 11"}
-          - {key: mankiw_2025, loc: "ch. 9"}
-          - {key: solow_1956}
+          - {key: mankiw_2019, loc: "8-1"}
         text: |
           ### Capital accumulation and the steady state
 
-          Each year the capital stock grows by investment and shrinks by depreciation. This is **[capital
-          accumulation](term:P6:capital_accumulation)** (Blanchard & Illing, 2021, ch. 11):
+          Each year the capital stock changes by investment minus depreciation. This is **[capital
+          accumulation](term:P6:capital_accumulation)** (Mankiw, 2019, 8-1).
 
-          > change in capital = investment − depreciation = s × Y − δ × K
+          > change in capital = s × Y − δ × K
 
-          where δ is the rate of depreciation. In the example economy, 220 − 176 = $44 million is added in the first
-          year. With more capital, the same workers produce more: [output](term:P1:output_GDP) rises to about $906
-          million. More output means more saving and more investment; but more capital also means more depreciation.
+          With more capital, output and investment are higher, but so is depreciation. Because of [diminishing
+          marginal product](term:P6:diminishing_marginal_product), output and investment rise more and more
+          slowly, while depreciation rises in step with capital. At one level of capital, investment equals
+          depreciation and capital stops changing: the **[steady state](term:P6:steady_state)**. An economy
+          below it accumulates capital, an economy above it runs capital down, so the steady state is where the
+          economy ends up (Mankiw, 2019, 8-1).
 
-          The two do not rise equally. Investment is a fixed share of output, and output rises with capital only at a
-          diminishing rate ([diminishing marginal product](term:P6:diminishing_marginal_product)). Depreciation, by
-          contrast, is a fixed share of capital and rises in step with it. So each year the gap between investment and
-          depreciation shrinks, and capital grows by less. After ten years output is about $946 million, after twenty
-          about $972 million. Eventually investment only replaces what wears out: capital stops growing, and so does
-          output. This end point is the **[steady state](term:P6:steady_state)**: the capital stock at which
+          In the example economy without more workers or better technology, the steady state lies at capital of
+          about $3,075 million and [output](term:P1:output_GDP) of about $1,006 million, 12% above today's. The
+          diagram below shows investment, depreciation and where they cross.
 
-          > s × Y = δ × K
-
-          In the example economy without more workers or better technology, the steady state lies at a capital stock of
-          about $3,075 million and output of about $1,006 million, 12% above today's. Half of the rise is reached after
-          about 13 years, the rest takes decades. The steady state is stable: an economy with less capital accumulates
-          towards it, and one with more capital, whose depreciation exceeds its investment, runs its capital down
-          towards it. Robert Solow (1956) showed that with a [production function](term:P6:production_function) like
-          this one, in which capital and labour can be substituted for each other, the economy converges to such a state
-          (Mankiw, 2025, ch. 9). The module shows the investment curve, the depreciation line and where they cross; the
-          sliders change the saving rate and the rate of depreciation.
+          Change the saving rate and the rate of depreciation.
         module: {kind: solow, controls: [s, delta], view: stage_a}
       - id: s3c
         sources:
-          - {key: blanchard_illing_2021, loc: "ch. 11"}
-          - {key: mankiw_2025, loc: "ch. 9, ch. 4"}
+          - {key: mankiw_2019, loc: "8-1, 8-2"}
+          - {key: blanchard_illing_2017, loc: "3.4"}
         text: |
           ### The saving rate: a higher level, not faster growth for ever
 
-          What does a higher saving rate do? In the example economy without more workers or better technology, suppose
-          the saving rate rises from 24.4% to 30%. Investment now exceeds depreciation by more, capital accumulates
-          faster, and output grows by about 1.4% in the first year instead of 0.7%. But the same force as before slows
-          it down: each further machine adds less output. The economy moves to a new steady state with output of about
-          $1,115 million instead of $1,006 million, and then stops growing again (Blanchard & Illing, 2021, ch. 11;
-          Mankiw, 2025, ch. 9).
+          A higher saving rate means more investment at every level of capital, and the economy moves to a
+          steady state with more capital and more output. But it grows faster only until the new steady state is
+          reached: a higher saving rate raises the level of output, not its growth rate in the [long
+          run](term:P3:long_run). The extra growth on the way, **[transitional
+          growth](term:P6:transitional_growth)**, fades as the economy gets there (Mankiw, 2019, 8-1).
 
-          A higher saving rate therefore raises the level of output, not its growth rate in the [long
-          run](term:P3:long_run). Growth is higher only on the way to the new steady state. This temporary extra growth
-          is **[transitional growth](term:P6:transitional_growth)**: it comes from adding capital, and it fades because
-          each addition adds less. The same holds for an economy that starts with little capital, for example after a
-          war has destroyed much of it: it grows fast while it rebuilds, and more slowly as it approaches its steady
-          state.
+          In the example economy without more workers or better technology, a saving rate of 30% instead of
+          24.4% lifts growth to about 1.4% in the first year instead of 0.7%, and the steady state to output of
+          about $1,115 million instead of $1,006 million.
 
-          This long-run result seems to contradict [the paradox of thrift in chapter 3](theory:P3-s4c), where a decision
-          to save more lowers output. Both are right, at different horizons. In the [short run](term:P3:short_run), with
-          prices slow to adjust, more saving means less demand, and output falls below [potential
-          output](term:P6:potential_output). Over decades, output is set by what the economy can produce, the saving
-          finances investment, and the larger capital stock raises potential output (Mankiw, 2025, ch. 4).
-        details:
-          title: "Can a country save too much? The golden rule"
-          sources:
-            - {key: phelps_1961}
-            - {key: mankiw_2025, loc: "ch. 9"}
-            - {key: blanchard_illing_2021, loc: "ch. 11"}
-          text: |
-            A higher [saving rate](term:P6:saving_rate) raises [output](term:P1:output_GDP) in the [steady
-            state](term:P6:steady_state). Does it also make people better off? Not necessarily: people live on what they
-            consume, not on what they produce, and saving more means consuming a smaller share of output. In a fable
-            published in 1961, Edmund Phelps told of the kingdom of "Solovia", whose rulers looked for the saving rate
-            that would give every generation the highest possible [consumption](term:P2:consumption) on a path of steady
-            growth. The answer became known as the **[golden rule](term:P6:golden_rule)** of accumulation (Phelps, 1961):
-            consumption in the steady state is highest when each generation saves, and invests, a share of output equal to
-            the share that capital earns.
+          More saving is not always better. Among all steady states, the one in which people consume most is
+          called the **[golden rule](term:P6:golden_rule)** (Mankiw, 2019, 8-2).
 
-            The reasoning follows from [diminishing marginal product](term:P6:diminishing_marginal_product). Up to a
-            point, more capital adds enough output to pay for its own upkeep and leave more to consume. Beyond that point,
-            the extra output of a further machine no longer covers the [investment](term:P2:investment) needed to maintain
-            it, and consumption falls. In the example economy, with a [capital share](term:P6:capital_share) of one third,
-            the golden-rule saving rate is one third. At today's scale, consumption in the steady state would rise from
-            $680 million at the current saving rate to about $701 million at one third, and fall to about $644 million at
-            a saving rate of one half (Mankiw, 2025, ch. 9).
-
-            Two cautions follow from the same model. Moving to a higher saving rate means consuming less now in exchange
-            for more later; whether that is worth it depends on how the present generation is weighed against future ones,
-            which the golden rule leaves aside. And an economy that saves more than the golden rule wastes resources on
-            capital it cannot use well, whichever generation one looks at (Blanchard & Illing, 2021, ch. 11).
+          In the [short run](term:P3:short_run) the effect differs: when households try to save more, demand and
+          output fall, the paradox of saving ([chapter 3](theory:P3-s4c)) (Blanchard & Illing, 2017, 3.4).
         module: {kind: solow, controls: [s, delta], view: stage_a}
 
   - id: s4
@@ -422,119 +243,64 @@ topics:
     steps:
       - id: s4a
         sources:
-          - {key: mankiw_2025, loc: "ch. 10"}
-          - {key: blanchard_illing_2021, loc: "ch. 12"}
+          - {key: mankiw_2019, loc: "8-3"}
         text: |
           ### More workers
 
-          Without more workers or better technology, [capital accumulation](term:P6:capital_accumulation) alone would
-          bring growth to a halt in a [steady state](term:P6:steady_state), where [investment](term:P2:investment) just
-          replaces worn-out capital ([the steady state](theory:P6-s3b)). Real economies keep growing. Two forces explain
-          why: the number of workers grows, and each worker becomes more productive.
+          Real economies keep growing. One reason is that the number of workers grows, at the **[labour-force
+          growth rate](term:P6:labour_force_growth)** n. New workers need capital too:
+          [investment](term:P2:investment) must now also equip them, if [capital per
+          worker](term:P6:capital_per_worker) is to stay the same (Mankiw, 2019, 8-3).
 
-          The first is the **[labour-force growth rate](term:P6:labour_force_growth)**, written n. In the example
-          economy the [labour force](term:P5:labour_force) of 10,000 grows by 1% a year: 100 more people in the first
-          year, of whom 96 find work at the [natural rate of unemployment](term:P5:natural_rate) of 4%. More workers can
-          produce more, but only if they have machines to work with. To keep [capital per
-          worker](term:P6:capital_per_worker) where it is, the [capital stock](term:P6:capital_stock) of $2,200 million
-          must also grow by 1%: $22 million of the year's investment goes to equipping the new workers (Mankiw, 2025,
-          ch. 10).
+          In the [steady state](term:P6:steady_state) with a growing labour force, capital and
+          [output](term:P1:output_GDP) grow at the rate n, while output per worker stays constant. Population
+          growth explains why total output keeps growing, but not why living standards rise (Mankiw, 2019, 8-3).
 
-          Labour-force growth raises [output](term:P1:output_GDP), but not output per worker. If capital and workers
-          both grow by 1%, then by [constant returns to scale](term:P6:constant_returns) output grows by 1% as well, and
-          each worker produces as much as before. A larger population makes an economy larger, not its people richer.
+          In the example economy, the [labour force](term:P5:labour_force) of 10,000 grows by 1% a year. To keep
+          capital per worker where it is, the [capital stock](term:P6:capital_stock) of $2,200 million must also
+          grow by 1%: $22 million of the year's investment goes to equipping new workers.
       - id: s4b
         sources:
-          - {key: mankiw_2025, loc: "ch. 10"}
-          - {key: blanchard_illing_2021, loc: "ch. 12"}
-          - {key: legge_2023, loc: "10"}
+          - {key: mankiw_2019, loc: "9-1"}
         text: |
           ### Better technology
 
-          The second force is **[technological progress](term:P6:technological_progress)**: anything that lets the same
-          machines and workers produce more. It includes new inventions, but also better designs, methods and
-          organisation, and the knowledge that workers bring to their jobs (Blanchard & Illing, 2021, ch. 12). Where it
-          comes from, for example from research or from institutions, is a question beyond the model of this chapter,
-          which takes it as given.
+          The second reason is **[technological progress](term:P6:technological_progress)**: better knowledge
+          about how to produce. The model captures it with the **[efficiency of
+          labour](term:P6:efficiency_of_labour)** A. As technology improves, each hour of work contributes more,
+          as if there were more workers. N × A is the number of effective workers (Mankiw, 2019, 9-1).
 
-          The model treats technology as if it added workers. The **[efficiency of
-          labour](term:P6:efficiency_of_labour)**, written A, measures how much a worker can do with the knowledge and
-          methods in use. In the example economy it rises by 1% a year, so after one year the 9,600 workers do the work
-          of 9,696 workers of the year before. Economists call N × A the number of effective workers (Mankiw, 2025, ch.
-          10). Just as with more workers, more effective workers need more machines: to keep capital in step with them,
-          another 1% of the capital stock, $22 million, is needed.
+          In the example economy, efficiency rises by 1% a year: after a year, the 9,600 workers do the work of
+          9,696 workers of the year before. Keeping capital in step with them takes another $22 million.
 
-          The difference from labour-force growth is decisive. When technology improves, output per worker rises: the
-          same 9,600 workers, with 1% more efficiency and 1% more capital, produce 1% more. Of the forces considered so
-          far, capital accumulation runs into [diminishing marginal product](term:P6:diminishing_marginal_product), and
-          a growing labour force raises output but not output per worker. Only technological progress raises output per
-          worker year after year (Legge, 2023, 10).
+          The difference from a growing labour force is decisive. Technological progress raises output per
+          worker year after year, and in this model it alone accounts for living standards that keep rising
+          (Mankiw, 2019, 9-1).
       - id: s4c
         sources:
-          - {key: mankiw_2025, loc: "ch. 10"}
-          - {key: blanchard_illing_2021, loc: "ch. 12"}
-          - {key: solow_1956}
+          - {key: mankiw_2019, loc: "9-1, 9-2"}
         text: |
           ### Balanced growth
 
-          Put the three forces together. Investment now has three tasks: to replace worn-out capital, to equip new
-          workers and to keep up with the efficiency of labour. The investment that just fulfils all three is
-          **[break-even investment](term:P6:break_even_investment)** (Mankiw, 2025, ch. 10):
+          Investment now has three tasks: to replace worn-out capital, to equip new workers and to keep up with
+          the efficiency of labour. The amount that does all three is **[break-even
+          investment](term:P6:break_even_investment)** (Mankiw, 2019, 9-1).
 
           > break-even investment = (δ + n + g_A) × K
 
-          where g_A is the growth rate of the efficiency of labour. In the example economy this is (8% + 1% + 1%) ×
-          $2,200 million = $176 million + $22 million + $22 million = $220 million, exactly the economy's investment. So
-          capital grows by 2% a year, at the same rate as the number of effective workers, and by constant returns
-          output grows by 2% as well.
+          When investment equals it, capital per effective worker stays constant. Capital and output then grow
+          at the rate n + g_A, and output per worker at the rate g_A. This is **[balanced
+          growth](term:P6:balanced_growth)** (Mankiw, 2019, 9-1, 9-2).
 
-          This state is called **[balanced growth](term:P6:balanced_growth)**: capital, output and the number of
-          effective workers grow at the same rate, here n + g_A = 2%, and their ratios stay constant. It is the steady
-          state of the full model: it is not output that stops growing, but capital per effective worker that stops
-          changing (Solow, 1956). On this path, output per worker grows at the rate of technological progress, 1%: from
-          $93,750 to $94,687.50 in a year, and the [real wage](term:P5:real_wage) with it, from $62,500 to $63,125.
-          Growth compounds over time: at 2% a year output doubles in about 35 years, and at 1% output per worker doubles
-          in about 70. The economy's [potential output](term:P6:potential_output) grows along this path, by 2% a year,
-          the [normal growth rate](term:P5:normal_growth_rate) at which unemployment stays constant ([Okun's law in
-          chapter 5](theory:P5-s5a)).
+          In the example economy, break-even investment is (8% + 1% + 1%) × $2,200 million = $220 million,
+          exactly the economy's investment. Capital and output grow by 2% a year, output per worker and the
+          [real wage](term:P5:real_wage) by 1%.
 
-          Now the finance ministry's claim from the start of the chapter can be checked. If the [saving
-          rate](term:P6:saving_rate) rose from about 24.4% to 30%, investment would exceed break-even investment,
-          capital per effective worker would rise, and growth would increase: to about 2.8% in the first year, 2.4%
-          after ten years and 2.1% after thirty. It would then return to 2%, the rate set by labour-force growth and
-          technology. What remains is a higher level: in the [long run](term:P3:long_run) output would be about 11%
-          higher than on the old path, half of the rise reached within about ten years. The ministry is right that
-          saving more raises output, and wrong that it raises growth for good. In the [short run](term:P3:short_run),
-          moreover, the same decision would first lower demand and open a negative [output gap](term:P6:output_gap)
-          ([the paradox of thrift in chapter 3](theory:P3-s4c)). The module shows break-even investment and the path of
-          output; the sliders change the saving rate, labour-force growth and technological progress.
-        details:
-          title: "From Harrod and Domar's knife-edge to Solow and Swan"
-          sources:
-            - {key: solow_1956}
-            - {key: swan_1956}
-          text: |
-            Before 1956 the leading theory of growth was the model of Roy Harrod and Evsey Domar. It assumed that capital
-            and labour are used in fixed proportions: a machine needs a set number of workers, no more and no fewer. The
-            result was a **[knife-edge](term:P6:knife_edge)**. Growth was steady only if saving happened to match the
-            growth of the [labour force](term:P5:labour_force) exactly; any slight difference would produce either growing
-            unemployment or prolonged [inflation](term:P4:inflation_rate), in Solow's summary of the model.
+          Now the ministry's claim: in the example economy, a [saving rate](term:P6:saving_rate) of 30% would
+          lift growth to about 2.8% in the first year and 2.1% after thirty, then back to 2%. Output would end
+          up about 11% higher. Saving more raises output, but not growth for good.
 
-            Robert Solow (1956) argued that this conclusion came from the assumption of fixed proportions, not from the
-            nature of growth. In his model, firms can use more or less capital per worker, and the [production
-            function](term:P6:production_function) shows [constant returns to scale](term:P6:constant_returns) and
-            [diminishing marginal products](term:P6:diminishing_marginal_product). Then the capital-labour ratio moves
-            towards a stable value, whatever it starts from, and the economy approaches [balanced
-            growth](term:P6:balanced_growth) at the rate of growth of the labour force. With [technological
-            progress](term:P6:technological_progress), which Solow allowed for as a factor that raises the whole
-            production function, [output](term:P1:output_GDP) per worker rises as well. In the same year Trevor Swan
-            (1956), in Australia, independently set out the essentials of the same model.
-
-            Two features of the original are worth knowing. Solow described his model as full-employment economics: it
-            assumes that wages adjust so that all workers are employed, and sets aside the problems of demand that
-            Keynesian analysis studies. That is why it describes [potential output](term:P6:potential_output), not the
-            [short run](term:P3:short_run). And Solow measured output after [depreciation](term:P6:depreciation); the rate
-            of depreciation that appears in today's textbook version was added later.
+          Change the three rates in the diagram below.
         module: {kind: solow, controls: [s, "n", g_A], view: growth}
 
   - id: s5
@@ -543,75 +309,44 @@ topics:
     steps:
       - id: s5a
         sources:
-          - {key: mankiw_2025, loc: "ch. 11"}
-          - {key: blanchard_illing_2021, loc: "ch. 12"}
+          - {key: mankiw_2019, loc: "Appendix to Chapter 9"}
         text: |
           ### Where growth comes from
 
-          [Output](term:P1:output_GDP) can grow because there is more capital, because there are more workers, or
-          because the same inputs produce more. **[Growth accounting](term:P6:growth_accounting)** measures how much of
-          growth comes from each source (Mankiw, 2025, ch. 11). It weights the growth of each input by its share of
-          income: an input that earns a third of income contributes a third of its own growth.
+          **[Growth accounting](term:P6:growth_accounting)** splits the growth of [output](term:P1:output_GDP)
+          into the parts that come from more capital, from more labour and from better technology. The growth of
+          each input is weighted by its share of income (Mankiw, 2019, Appendix to Chapter 9).
 
-          In the example economy, output grows by 2% a year, capital by 2% and the number of workers by 1%. With the
-          [capital share](term:P6:capital_share) of one third and labour's share of two thirds, the accounts read:
+          > output growth = capital share × capital growth + labour share × labour growth + growth of total factor productivity
 
-          > 2% = 1/3 × 2% (capital) + 2/3 × 1% (labour) + 0.67% (the rest)
+          **[Total factor productivity](term:P6:total_factor_productivity)** measures the level of technology: a
+          rise of 1% lifts output by 1% even if capital and labour stay as they are (Mankiw, 2019, Appendix to
+          Chapter 9).
 
-          Capital contributes 0.67 points and labour 0.67 points. The remaining 0.67 points come from neither: they
-          measure how much more output the economy obtains from the same inputs. This is the growth of **[total factor
-          productivity](term:P6:total_factor_productivity)**: the output obtained from capital and labour taken together
-          (Blanchard & Illing, 2021, ch. 12).
-
-          Total factor productivity grows by 0.67% here, not by the 1% at which the [efficiency of
-          labour](term:P6:efficiency_of_labour) rises. The two describe the same progress. In the [production
-          function](term:P6:production_function) of the example economy, technology works through labour, which earns
-          two thirds of income, so 1% more efficiency of labour raises output from given inputs by two thirds of 1%. The
-          chart shows the three contributions.
+          In the example economy, output and capital grow by 2% a year and the number of workers by 1%. With a
+          [capital share](term:P6:capital_share) of one third, capital contributes 1/3 × 2% = 0.67 points and
+          labour 2/3 × 1% = 0.67 points. The remaining 0.67 points are the growth of total factor productivity.
+          It is less than the 1% by which the [efficiency of labour](term:P6:efficiency_of_labour) rises,
+          because that progress works through labour, which earns two thirds of income.
         figure: {kind: growth_accounting, description: "Output growth of 2% a year in the example economy split into the contributions of capital, labour and total factor productivity."}
       - id: s5b
         sources:
-          - {key: mankiw_2025, loc: "ch. 11"}
-          - {key: blanchard_illing_2021, loc: "ch. 12"}
+          - {key: mankiw_2019, loc: "Appendix to Chapter 9"}
+          - {key: blanchard_illing_2017, loc: "9.1"}
         text: |
           ### The Solow residual
 
-          Capital and labour can be counted, at least roughly. Technology cannot. Growth accounting therefore measures
-          total factor productivity indirectly: as what remains of output growth once the contributions of capital and
-          labour have been subtracted. Measured this way, it is called the **[Solow residual](term:P6:solow_residual)**
-          (Mankiw, 2025, ch. 11). In the example economy: 2% − 0.67 − 0.67 = 0.67 points.
+          Technology cannot be observed directly. The growth of total factor productivity is therefore computed
+          as what remains of output growth once the measured contributions of capital and labour have been taken
+          away. It is called the **[Solow residual](term:P6:solow_residual)**, in honour of Robert Solow, who
+          devised the calculation (as cited in Mankiw, 2019, Appendix to Chapter 9).
 
-          The name is a reminder of what the number is. A residual contains everything that the measured inputs leave
-          unexplained: [technological progress](term:P6:technological_progress), but also better organisation, workers
-          who are better trained than the count of heads shows, and errors in measuring capital and output. A fall in
-          the residual during a [recession](term:P2:recession), for example, often reflects machines and workers being
-          used less intensively, not technology being forgotten (Blanchard & Illing, 2021, ch. 12).
+          Many take the residual as a gauge of [technological progress](term:P6:technological_progress). But
+          anything else that alters how much output the measured inputs yield ends up in it as well, education
+          and regulation for instance (Mankiw, 2019, Appendix to Chapter 9).
 
-          Growth accounting also explains why [potential output](term:P6:potential_output) grows at the economy's
-          [normal growth rate](term:P5:normal_growth_rate) of 2% ([Okun's law in chapter 5](theory:P5-s5a)): the [labour
-          force](term:P5:labour_force), capital and productivity grow at the rates that add up to it. If the labour
-          force stopped growing, or productivity grew more slowly, potential output would grow more slowly too, and
-          output would have to grow more slowly to keep unemployment constant.
-        details:
-          title: "Seven eighths unexplained: Solow's residual"
-          sources:
-            - {key: solow_1957}
-            - {key: mankiw_2025, loc: "ch. 11"}
-          text: |
-            The method of this topic goes back to a second paper by Robert Solow (1957). He wanted to separate two things
-            that the data mix together: movements along the [production function](term:P6:production_function), when more
-            capital per worker raises [output](term:P1:output_GDP), and shifts of the production function itself, when the
-            same inputs produce more. He used the shares of income to weight the inputs, exactly as this topic does, and
-            treated whatever remained as the shift.
+          In the example economy, the residual is 2% − 0.67 − 0.67 = 0.67 points.
 
-            His result surprised the profession. For the United States in the first half of the twentieth century, he
-            found that more capital per hour of work accounted for only about one eighth of the growth of output per hour;
-            the remaining seven eighths he attributed to "technical change", the residual (Solow, 1957). The economy had
-            grown richer mostly not by accumulating machines but by learning to produce more with them.
-
-            The finding had two consequences. It supported the view of the growth model that technology, not saving,
-            drives the growth of output per worker in the [long run](term:P3:long_run). And it showed how little the model
-            explained: the largest source of growth was the part it did not explain. Later work narrowed the residual by
-            measuring the inputs better, for example by counting the education and experience of workers and the quality
-            of machines. Explaining [technological progress](term:P6:technological_progress) itself became the task of
-            later theories of growth, which go beyond this chapter (Mankiw, 2025, ch. 11).
+          Growth accounting also shows why [potential output](term:P6:potential_output) grows at the [normal
+          growth rate](term:P5:normal_growth_rate): the labour force and productivity grow at rates that add up
+          to it (Blanchard & Illing, 2017, 9.1).

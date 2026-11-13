@@ -1,6 +1,6 @@
 # 05 The count behind tests 05 and 05c (Section 3.3, rule 5; Section 3.2's
-# check that every figure the layer writes stands on what its call received;
-# v6 §2.4 and §12.7, rule 2). Over recordings of 03_Verification/record_topics.R,
+# check that every figure the layer writes stands on what its call received,
+# and the layer of Section 4.2.2). Over recordings of 03_Verification/record_topics.R,
 # every number in the layer's texts, the pieces, the leads, the chat's
 # answers and the debriefs, is set against the request of its own call as the
 # model received it, and counted as in a confusion matrix:
@@ -29,7 +29,9 @@
 # calls died, so that only a topic's final attempt is in a folder, and the
 # count keeps such calls apart, neither as retries nor as answers. This file
 # only defines the count: 05_faithfulness.R and 05c_model_comparison.R load
-# it and write their tables from it. It reads the recordings only.
+# it and write their tables from it. It reads the recordings only. The
+# recordings name a topic, a place in the newspaper and a format by the names
+# the README lists (T5, S4, F-CHART), and the tables print them in words.
 
 # ---- a recorded call: its answer's text, its material without the sentence a retry adds after it, its system blocks
 answer_of <- function(c) { p <- c$parsed
@@ -68,6 +70,12 @@ wilson <-function(x, n) { if (is.na(n) || n <= 0) return(c(NA, NA, NA)); z <- qn
 show   <- function(w) if (is.na(w[1])) "n/a" else sprintf("%.3f (%.3f to %.3f)", w[1], w[2], w[3])
 # the line under a table's header; where the table is typeset, its numbers of dashes are the columns' relative widths
 rule   <- function(widths) paste0("|", paste(strrep("-", widths), collapse = "|"), "|")
+# the words the tables print for the names of the recordings: one topic, several topics, a place in the newspaper, a format
+topic_words  <- function(id) sub("^T", "Topic ", id)
+topics_words <- function(ids) { n <- sort(as.integer(sub("^T", "", ids)))
+  if (length(n) > 2 && all(diff(n) == 1)) sprintf("Topics %d to %d", n[1], n[length(n)]) else if (length(n) > 1) paste("Topics", paste(c(paste(head(n, -1), collapse = ", "), tail(n, 1)), collapse = " and ")) else paste("Topic", n) }
+place_words  <- c(L = "the lead on the front page", S1 = "The Economy", S2 = "Prices and Wages", S3 = "Jobs", S4 = "Markets and the Bank", S5 = "Politics or Analysis")
+format_words <- c("F-BRIEF" = "Brief", "F-CHART" = "Chart", "F-COMMENT" = "Comment", "F-INTERVIEW" = "Interview", "F-LEAD" = "Lead", "F-MARKETS" = "Markets table", "F-REPORT" = "Report", "F-VOICES" = "Voices")
 
 # ---- one call: its row of counts, and the figures found nowhere and the must figures not written, each as a line
 classify <- function(c, run, label, topic, idx) {
@@ -86,7 +94,7 @@ classify <- function(c, run, label, topic, idx) {
   w <- numbers_of(answer_of(c))
   cls <- vapply(seq_len(nrow(w)), function(i) { x <- w$value[i]
     if (w$quarters[i]) "exempt" else if (near(x, G)) "TP" else if (near(x, S)) "in_system" else if (near(x, hv)) "leak" else if (rounded(x, G)) "rounded" else "neither" }, "")
-  where <- sprintf("%s | %s q%d | %s%s | %s", label, topic, q, kind, if (paper) sprintf(" %s, %s", c$about$slot, row$precision) else "", row$model)
+  where <- sprintf("%s, quarter %d, %s | %s", topic_words(topic), q, if (paper) sprintf("%s, %s", place_words[[c$about$slot]], row$precision) else kind, row$model)
   lines <- vapply(which(cls %in% c("leak", "rounded", "neither")), function(i)
     sprintf("%s | found nowhere: %s | %s | ...%s...", where, if (cls[i] == "leak") paste("equal to", hk[which.min(abs(hv - w$value[i]))]) else if (cls[i] == "rounded") "rounded from a figure of the material" else "neither", w$raw[i], w$ctx[i]), "")
   counts[["written"]] <- nrow(w); counts[["exempt"]] <- sum(cls == "exempt"); counts[["TP"]] <- sum(cls == "TP"); counts[["FP"]] <- sum(cls %in% c("in_system", "leak", "rounded", "neither"))
@@ -96,7 +104,7 @@ classify <- function(c, run, label, topic, idx) {
     for (asq in c(FALSE, TRUE)) for (fig in unique(round(use$value[use$quarters == asq], 4))) { found <- near(fig, w$value[w$quarters == asq])
       counts[["must"]] <- counts[["must"]] + 1; counts[["must_found"]] <- counts[["must_found"]] + found
       if (!found) lines <- c(lines, sprintf("%s | not written: %s%s | %s", where, format(fig, big.mark = ","), if (asq) " quarters" else "", substr(gsub("[[:space:]]+", " ", answer_of(c)), 1, 140))) } }
-  list(row = cbind(row, as.list(counts)), lines = lines)
+  list(row = cbind(row, as.list(counts)), lines = setNames(lines, rep(paste(label, kind), length(lines))))   # each line under the name of its folder and its kind of call, which no table prints
 }
 
 # ---- the folders of recordings: the eight final recordings and the comparison's, or those the arguments final=<folder> and comparison=<folder> name; a folder without recordings is left out

@@ -1,6 +1,6 @@
-# 02_Game/bank/fair_quarter.R — A.8 "What the Bank Knows" and v6 §5.3: the fair quarter, each shock at the size the issue reported
+# 02_Game/bank/fair_quarter.R — A.8 "What the Bank Knows" and Section 4.2.2: the fair quarter, each shock at the size the issue reported
 
-# A.8, "What the Bank Knows", and v6 §5.3: the quarter object with each shock at its reported size, exact or its class value, and a vote's draw at 0.5, which the bank never sees
+# A.8, "What the Bank Knows", and Section 4.2.2: the quarter object with each shock at its reported size, exact or its class value, and a vote's draw at 0.5, which the bank never sees
 fair_quarter <- function(run, q, state = run$states[[q]], shocks = run$sheets[[q]]$shocks) {
   if (is.null(shocks)) stop("quarter ", q, " has no sheet yet: the fair quarter needs the issue's Shocks block")
   cols <- c(technology = "a", demand = "z", costs = "nu", purchases = "g")

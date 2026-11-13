@@ -1,6 +1,6 @@
-# 02_Game/content/scripts/T4.R — v6 §6, Topic 4 (Chapter C; Section 4.3, Table 1)
+# 02_Game/content/scripts/T4.R — Section 4.3.1 and Table 1: Topic 4 (Chapter C)
 
-# v6 §6: the script of Topic 4
+# Section 4.3.1 and Table 1: the script of Topic 4
 T4 <- list(
   id = "T4", name = "Promise at the Floor", chapter = "C",
   objective = "Forward guidance at the floor",

@@ -27,7 +27,7 @@
 //  - the economy's map: the arrows drawn between the actors' boxes from the map's
 //    data, the boxes folded and unfolded, the walk through the quarter with its forks, a box on hover and focus pinned by a click, the small
 //    graph working in a pinned box, the boxes dragged and moved by the arrow keys, springing back to the border, Reset the map; the
-//    arrangement sent as game_map_arrange; on the Desk the map is a drop-down panel in the window slot (the panel's data-pin pins an item).
+//    arrangement sent as game_map_arrange; on the Desk the map is a drop-down panel in the window slot.
 //  - the task board: the line in the panel's header row is a button ([data-board="toggle"]) whose box unrolls
 //    downward into the drop-down and rolls back up (data-state opening, open, closing; at once under reduced motion); Enter, Space and
 //    the chevron open and close it, Escape closes it. A desk drawn with data-board-auto (a step changed) opens it by itself with its
@@ -219,12 +219,6 @@
     if (prev && prev.d.topic === d.topic && prev.walk && d.parts[prev.walk.node]) st.walk = prev.walk;   // a redrawn map keeps its walk
     maps[el.id] = st; el.setAttribute('data-map-ready', 'true');
     mapLayout(st); mapWalkShow(st);
-    if (d.walk && d.start && d.parts[d.start]) {
-      st.walk = {node: d.start, via: null, hist: []};
-      d.walk.forEach(function (aid) { var w = String(aid).split('>'); var a = d.arrows.filter(function (x) { return x.id === w[0] && x.from === st.walk.node && (!w[1] || x.to === w[1]); })[0];
-        if (a) { st.walk.hist.push({node: st.walk.node, via: st.walk.via}); st.walk = {node: a.to, via: a.id, hist: st.walk.hist}; } });
-      mapWalkShow(st);
-    }
     return st;
   }
   function mapAll() { $all('.map[data-map-topic]').forEach(function (el) { if (el.getAttribute('data-map-ready') !== 'true') mapInit(el); }); }
@@ -565,16 +559,10 @@
     }
     box.innerHTML = '<svg class="map-graph-svg" viewBox="0 0 ' + w + ' ' + h + '" role="img" aria-hidden="true">' + svg + '</svg>';
   }
-  function mapAfterRender() {                                         // returns true when it pinned the item a panel asks for
+  function mapAfterRender() {                                         // a redrawn screen's maps drawn, a pinned item pinned again
     mapAll();
     var open = !!$q('#game_window .map-panel');
     $all('[data-game="map"]').forEach(function (b) { b.setAttribute('aria-expanded', open ? 'true' : 'false'); });
-    var pp = $q('.map[data-pin]:not([data-pinned])');
-    if (pp) {                                                         // the panel opened with an item pinned: its box unfolded first
-      pp.setAttribute('data-pinned', 'true'); var pm = pp, id = pp.getAttribute('data-pin');
-      mapReveal(mapState(pm), id);
-      if (pm && mapItem(pm, id)) { mapPin = null; mapPinTo(pm, id); return true; }
-    }
     if (!mapPin) return false;
     var map = document.getElementById(mapPin.map), pid = mapPin.item;
     if (!map || !mapItem(map, pid)) { mapPin = null; return false; }
@@ -792,7 +780,7 @@
     var back = card || (t.back && document.body.contains(t.back) && t.back !== document.body ? t.back : $q('#game [data-card-focus]') || $q('#game [data-game-focus]'));
     if (back && back.focus) back.focus({preventScroll: true});
     boardAfterRender();                                                // a step change's auto-open waited for the tour
-    if ($q('#chat-pane') && !chatOpen()) chat(true);                  // the walk-through ends on the chat, which opens (scripts appendix §9)
+    if ($q('#chat-pane') && !chatOpen()) chat(true);                  // the walk-through ends on the chat, which opens (Section 4.3.2)
   }
   function tourKey(e) {                                               // inside the box: Escape ends, Tab stays in the box
     if (e.key === 'Escape') { e.preventDefault(); tourEnd(); return true; }
@@ -1318,11 +1306,5 @@
     if (el.dataset.runs === 'setting') { runsSend('setting', el.dataset.slot, {key: el.dataset.key, value: !!el.checked}); return; }   // the run's setting
     if (el.dataset.report === 'rule') { var p1 = el.closest('.report-body') && el.closest('.report-body').querySelector('.plot1'); if (p1) p1.classList.toggle('show-rule', el.checked); }   // the rule as a toggle
   });
-  window.gameStaticInit = function () {
-    wordInit(); tocAfterRender(); mapAfterRender(); if (!tourStart()) boardAfterRender();
-    var p = $q('#chat-pane'); if (p && !p.hidden) chatBottom();
-    var o = overlay(); if (o && !o.hidden) { var sp = Number(o.getAttribute('data-open-spread') || 1) - 1; document.body.classList.add('paper-open'); showSpread(sp); paperFit(); }
-  };
-  if (window.Shiny && window.Shiny.isShim) document.addEventListener('DOMContentLoaded', function () { setTimeout(window.gameStaticInit, 0); });
 
 })();

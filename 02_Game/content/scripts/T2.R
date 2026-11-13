@@ -1,6 +1,6 @@
-# 02_Game/content/scripts/T2.R — v6 §6, Topic 2 (Chapter B; Section 4.3, Table 1)
+# 02_Game/content/scripts/T2.R — Section 4.3.1 and Table 1: Topic 2 (Chapter B)
 
-# v6 §6: the script of Topic 2
+# Section 4.3.1 and Table 1: the script of Topic 2
 T2 <- list(
   id = "T2", name = "Cost-Push Shocks", chapter = "B",
   objective = "Trade-off after supply shocks",

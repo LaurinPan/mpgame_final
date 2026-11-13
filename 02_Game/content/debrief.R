@@ -1,6 +1,6 @@
-# 02_Game/content/debrief.R — v6 §5.4: the sentences of the debrief's instruction and of the term's record in words
+# 02_Game/content/debrief.R — Section 4.2.2: the sentences of the debrief's instruction and of the term's record in words
 
-# v6 §5.4: the sentences the debrief's instruction is composed from
+# Section 4.2.2: the sentences the debrief's instruction is composed from
 debrief_sentences <- list(
   guided     = "In quarters {list} the bank set the policy rate itself, to show you how it works, so those quarters carry no mark, and you do not judge them.",
   guided_one = "In quarter {list} the bank set the policy rate itself, to show you how it works, so that quarter carries no mark, and you do not judge it.",
@@ -10,10 +10,10 @@ debrief_sentences <- list(
   later      = "Where a decision's cost came later, say how the next quarters gained and why the later quarters lost, because the public's expectations or its trust moved.",
   no_marks   = "leave the list of decisions empty, since this term marks none.")
 
-# v6 §5.4: the fewest words the instruction asks for, of the text on the term and of a mark's text
+# Section 4.2.2: the fewest words the instruction asks for, of the text on the term and of a mark's text
 debrief_words <- c(term = 120, mark = 60)
 
-# v6 §5.4: the term's record in words, every figure with its unit
+# Section 4.2.2: the term's record in words, every figure with its unit
 record_sentences <- list(
   term           = "The term ran for {T} quarters. Your loss over the term equals an inflation miss of {player} points in every quarter, and the reference bank's an inflation miss of {bank} points.",
   rates          = "In quarter {q} you set the policy rate at {rate} percent, and the reference bank on its own path at {bank_rate} percent.",
@@ -34,15 +34,15 @@ record_sentences <- list(
   mark           = "In quarter {q} you set {rate} percent, where the reference bank would have set {bank_rate} percent in your place. Its cost came at once and equals an inflation miss of {miss} points in that quarter.",
   mark_later     = "In quarter {q} you set {rate} percent, where the reference bank would have set {bank_rate} percent in your place. Its cost came later: the quarters after it gained, and {quarters} lost. The cost equals an inflation miss of {miss} points in that quarter.")
 
-# v6 §5.4: how the public read a rate, by its distance from the rate it expected
+# Section 4.2.2: how the public read a rate, by its distance from the rate it expected
 record_readings <- c(as = "about what it expected", higher = "higher than it expected", lower = "lower than it expected",
                      clearly_higher = "clearly higher than it expected", clearly_lower = "clearly lower than it expected")
 
-# v6 §5.4: a distance from a normal level in the record
+# Section 4.2.2: a distance from a normal level in the record
 record_levels <- list(aim = c(off = "{points} points {side} the target", on = "at the target"),
                       spending = c(off = "{percent} percent {side} its normal level", on = "at its normal level"))
 
-# v6 §5.1 and §5.4: a new shock in the record, its words in the past and its kind
+# Section 4.2.2: a new shock in the record, its words in the past and its kind
 record_shocks <- list(
   words = list(
     demand     = c(positive = "households and firms spent {size} more than usual", negative = "households and firms spent {size} less than usual"),
@@ -57,7 +57,7 @@ record_shocks <- list(
   sources = c(newspaper = "the newspaper", briefing = "your briefing"),
   how = c(exact = "exactly", words = "in words"))
 
-# Section 4.2.2 and v6 §5.4: the debrief without a model, the losses as equivalent misses
+# Section 4.2.2: the debrief without a model, the losses as equivalent misses
 debrief_fallback_texts <- list(
   term_at_most = "Over the term your decisions cost as much as an inflation miss of {equivalent} points held in every quarter would have, against {bank_equivalent} points for a reference bank that had the same information and the same mandate, so your term loss is at most the bank's. The reference bank moves its policy rate gradually, since it counts a change of the rate as a cost, and a governor who moves faster can end a term with a lower loss.",
   term         = "Over the term your decisions cost as much as an inflation miss of {equivalent} points held in every quarter would have, against {bank_equivalent} points for a reference bank that had the same information and the same mandate.",

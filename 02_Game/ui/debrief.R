@@ -1,6 +1,6 @@
 # ui/debrief.R — the debrief as a document on the desk (Section 4.2.2) drawn
 # from debrief_view (one chart of the player's rates beside the reference bank's
-# with the marks and under it both losses quarter by quarter (scripts appendix §5.4), the text on the term's loss, each mark's text, the
+# with the marks and under it both losses quarter by quarter, the text on the term's loss, each mark's text, the
 # chat box; every loss as its equivalent miss, no closing lesson, no colon or semicolon in the UI's own words; no score, no tabs, no turning
 # points). On the desk it stands in the card's place with Continue; over the Menu
 # with Close.

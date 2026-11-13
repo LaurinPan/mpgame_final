@@ -1,4 +1,4 @@
-# 02_Game/sheet/fact_sheet.R — Section 4.2.2 and v6 §2.4: the fact sheet
+# 02_Game/sheet/fact_sheet.R — Section 4.2.2: the fact sheet
 
 # Section 4.2.1: the figures before the term's first quarter
 quarter_zero <- function(run) {
@@ -8,7 +8,7 @@ quarter_zero <- function(run) {
   row
 }
 
-# v6 §2.4: the Law block
+# Section 4.2.2: the Law block
 law_block <- function(config) {
   par <- config$par
   list(target = to_year(par$pi_bar), trend_growth = to_year(par$g), natural_unemployment = to_percent(par$u_n),
@@ -16,7 +16,7 @@ law_block <- function(config) {
        wage_normal = to_year(par$pi_bar + par$g), weight_on_output = 16 * par$vartheta)
 }
 
-# v6 §2.4: the Government block
+# Section 4.2.2: the Government block
 government_block <- function(run, q, rows) {
   config <- run$config; par <- config$par
   if (!(6 %in% config$on)) return(NULL)
@@ -39,7 +39,7 @@ government_block <- function(run, q, rows) {
        vote_poll = if (held) 100 * (if (row$election == row$party) row$vote_poll else 1 - row$vote_poll) else NA)
 }
 
-# Section 4.2.2 and v6 §2.4: the sheet's blocks
+# Section 4.2.2: the sheet's blocks
 fact_sheet <- function(run, q, step = 1, reported = NULL) {
   config <- run$config; par <- config$par; t <- q - 1
   rows <- rbind(run$row0, if (t >= 1) run$quarters[seq_len(t), ])

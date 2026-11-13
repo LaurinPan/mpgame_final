@@ -1,4 +1,4 @@
-# ui/map.R — the economy's map drawn from map_view (scripts appendix §4: six
+# ui/map.R — the economy's map drawn from map_view (Section 4.2.1: six
 # boxes in the UI's places, folded
 # by default, their nodes, the arrows from node to node that the browser draws
 # from the map's data (02_Game/web/game.js), merged into one line between two folded boxes
@@ -9,12 +9,11 @@
 # foot) and of boxes, with no header; the levers' outline, the topic's new nodes
 # and arrows in green, the Outcomes box semi-transparent; the three small graphs
 # on a3, a12 and g1 from the game set). Pure functions on the view; the texts
-# are the content's (content/map.R, scripts appendix §4 word for word).
+# are the content's (content/map.R).
 #
-# `opts`: open (the box ids drawn unfolded), pin (a node or arrow id pinned when the map is drawn), walk (the arrow ids the walk follows
-# from its start when the map is drawn), lit (nodes and arrows lit, for a walk-through step), at (box id -> c(x, y), a moved box).
+# `opts`: open (the box ids drawn unfolded), at (box id -> c(x, y), a moved box).
 
-# A node's class, the levers keeping their outline (scripts appendix §4).
+# A node's class, the levers keeping their outline.
 ui_map_node_class <- function(lever) if (isTRUE(lever)) "kind-your-lever" else "kind-node"
 # A box's text wrapped at n characters.
 ui_map_wrap <- function(x, n = 27L) {
@@ -30,9 +29,9 @@ ui_map_box_size <- function(n, open, marks = 0L, g = ui_params$map$box) {
 }
 # A box's centre kept inside the canvas.
 ui_map_clamp <- function(cx, cy, size, W, H) c(min(max(cx, size[["w"]] / 2), W - size[["w"]] / 2), min(max(cy, size[["h"]] / 2), H - size[["h"]] / 2))
-# Scripts appendix §4: an arrow's name, its two ends ("Policy Rate → Real Interest Rate").
+# An arrow's name, its two ends ("Policy Rate → Real Interest Rate").
 ui_map_arrow_name <- function(mv, from, to) ui_s("map.arrow_title", from = mv$nodes$name[match(from, mv$nodes$id)], to = mv$nodes$name[match(to, mv$nodes$id)])
-# Scripts appendix §4: an arrow's equation line in topic `topic` from the numbers of the model appendix its entry holds ("(A34)",
+# An arrow's equation line in topic `topic` from the numbers of the model appendix its entry holds ("(A34)",
 # "(A22), (A34)", or "(A32); (A6) from Topic 2", the second number only from that topic on): "Equation (A34) of the model appendix.",
 # for two "Equations (A32) and (A6) of the model appendix."; an entry that names no number, as it stands ("The Full System of the
 # model appendix."); an empty entry, no line.
@@ -44,7 +43,7 @@ ui_map_equation <- function(eq, topic) {
   if (!length(n)) ui_s("map.equation_named", entry = trimws(eq))
   else if (length(n) == 1L) ui_s("map.equation", number = n) else ui_s("map.equations", list = paste(n[-length(n)], collapse = ", "), last = n[length(n)])
 }
-# A node's last-quarter figure in its infobox, only where the desk shows it (scripts appendix §4; never a hidden value).
+# A node's last-quarter figure in its infobox, only where the desk shows it (never a hidden value).
 ui_map_value <- function(field, value) {
   if (is.na(field) || !isTRUE(is.finite(value))) return(NULL)
   switch(field,
@@ -73,7 +72,7 @@ ui_map_graph_html <- function(mv, id) {
            game_p("map-graph-caption", game_esc(gr$caption)),
            game_p("map-graph-note", game_esc(ui_s("map.graph_pinned"))))
 }
-# Scripts appendix §4: an infobox, its name, its text and what follows, the foot last (an arrow's equation); no header.
+# An infobox: its name, its text and what follows, the foot last (an arrow's equation); no header.
 ui_map_tip <- function(prefix, id, kind, title, body, extra = "", foot = "") {
   tid <- sprintf("%s-tip-%s", prefix, id)
   game_tag("div", list(class = paste("map-tip", paste0("kind-", kind)), id = tid, `data-tip-for` = id, role = "dialog", `aria-modal` = "false", `aria-labelledby` = paste0(tid, "-title"), hidden = TRUE),
@@ -108,9 +107,8 @@ ui_map_html <- function(mv, prefix = "map", opts = list()) {
       lines <- ui_map_wrap(p$name, P$wrap); ty <- cy + g$part_h / 2 - (length(lines) - 1) * 7 + 4.5
       tx <- paste(vapply(seq_along(lines), function(i) sprintf('<tspan x="%s" y="%s">%s</tspan>', f(cx + g$part_w / 2), f(ty + (i - 1) * 14), game_esc(lines[i])), ""), collapse = "")
       badge <- if (isTRUE(p$new)) sprintf('<g class="map-badge is-new"><rect x="%s" y="%s" width="40" height="16" rx="8"/><text x="%s" y="%s" text-anchor="middle">%s</text></g>', f(cx + g$part_w - 44), f(cy - 8), f(cx + g$part_w - 24), f(cy + 4), game_esc(ui_s("map.badge_new"))) else ""
-      lit <- id %in% (opts$lit %||% character(0))
-      sprintf('<g class="map-part %s%s%s" data-map-item="%s" data-part="%s" tabindex="0" role="button" aria-expanded="false" aria-controls="%s-tip-%s" aria-label="%s" data-x="%s" data-y="%s" data-w="%s" data-h="%s"><rect x="%s" y="%s" width="%s" height="%s" rx="5"/><text class="map-part-label" text-anchor="middle">%s</text>%s</g>',
-              ui_map_node_class(p$lever), if (isTRUE(p$new)) " is-new" else "", if (lit) " is-tour-lit" else "", id, id, prefix, id,
+      sprintf('<g class="map-part %s%s" data-map-item="%s" data-part="%s" tabindex="0" role="button" aria-expanded="false" aria-controls="%s-tip-%s" aria-label="%s" data-x="%s" data-y="%s" data-w="%s" data-h="%s"><rect x="%s" y="%s" width="%s" height="%s" rx="5"/><text class="map-part-label" text-anchor="middle">%s</text>%s</g>',
+              ui_map_node_class(p$lever), if (isTRUE(p$new)) " is-new" else "", id, id, prefix, id,
               game_esc(if (isTRUE(p$lever)) ui_s("map.part_label_lever", name = p$name) else p$name),
               f(cx), f(cy), f(g$part_w), f(g$part_h), f(cx), f(cy), f(g$part_w), f(g$part_h), tx, badge) }, "")
     opened <- sprintf('<g class="map-open-view"><rect class="map-box-rect%s" x="%s" y="%s" width="%s" height="%s" rx="10"/><text class="map-box-head" x="%s" y="%s">%s</text>%s</g>',
@@ -134,7 +132,7 @@ ui_map_html <- function(mv, prefix = "map", opts = list()) {
   box_tips <- vapply(boxes, function(b) ui_map_tip(prefix, paste0("box-", b$id), "box", b$label, game_p("map-lead", game_esc(b$infobox))), "")
   group_tip <- ui_map_tip(prefix, "group", "group", "", "")
   # the data for the script: the boxes, the nodes with the walk's text, the arrows with theirs (the text and the
-  # equation), the walk's start, the words; and the preview's presets (pin, walk, lit)
+  # equation), the walk's start and the words
   bx <- lapply(boxes, function(b) list(id = b$id, label = b$label, parts = as.list(b$parts), home = b$home, at = b$at, open = b$open, folded = unname(b$folded), opened = unname(b$opened)))
   pd <- setNames(lapply(seq_len(nrow(nodes)), function(i) list(name = nodes$name[i], box = nodes$box[i], kind = if (isTRUE(nodes$lever[i])) "lever" else "node", walk = list(nodes$infobox[i]))), nodes$id)
   ad <- lapply(seq_len(nrow(arw)), function(i) { a <- arw[i, ]
@@ -145,8 +143,8 @@ ui_map_html <- function(mv, prefix = "map", opts = list()) {
                 group_title = tpl(ui_s("map.group_title", from = hole("from"), to = hole("to"))),
                 graph = list(distance = ui_s("map.graph_distance"), percent = ui_s("map.graph_percent"), spending = tpl(ui_s("map.graph_spending", value = hole("value"))),
                              inflation = tpl(ui_s("map.graph_inflation", value = hole("value"))), output = tpl(ui_s("map.graph_output", value = hole("value")))))
-  data <- as.character(jsonlite::toJSON(list(topic = mv$topic, canvas = unname(P$canvas), boxes = bx, parts = pd, arrows = ad, start = mv$walk_start, words = words, step = unname(P$step),
-                                             pin = opts$pin, walk = if (!is.null(opts$walk)) I(as.character(opts$walk)) else NULL), auto_unbox = TRUE, digits = NA, null = "null"))
+  data <- as.character(jsonlite::toJSON(list(topic = mv$topic, canvas = unname(P$canvas), boxes = bx, parts = pd, arrows = ad, start = mv$walk_start, words = words, step = unname(P$step)),
+                                        auto_unbox = TRUE, digits = NA, null = "null"))
   legend <- game_tag("ul", list(class = "map-legend", `aria-label` = ui_s("map.legend_label")),
                      game_tag("li", list(class = "map-key-item"), game_tag("span", list(class = "map-key-kind kind-your-lever", `aria-hidden` = "true"), ""), " ", game_esc(ui_s("map.legend_lever"))),
                      if (any(nodes$new) || any(arw$new)) game_tag("li", list(class = "map-key-item"), game_tag("span", list(class = "map-key-new", `aria-hidden` = "true"), ""), " ", game_esc(ui_s("map.legend_new", topic = sub("^T", "", mv$topic)))))
@@ -157,7 +155,7 @@ ui_map_html <- function(mv, prefix = "map", opts = list()) {
                             game_tag("button", list(type = "button", class = "btn-quiet map-walk-btn map-walk-prev", `data-map` = "walk_previous"), game_esc(ui_s("map.walk_previous"))),
                             game_tag("button", list(type = "button", class = "btn-quiet map-walk-btn map-walk-next", `data-map` = "walk_next"), game_esc(ui_s("map.walk_next"))),
                             game_tag("button", list(type = "button", class = "btn-quiet map-walk-btn map-walk-end", `data-map` = "walk_end"), game_esc(ui_s("map.walk_end")))))
-  game_tag("div", list(class = "map", id = prefix, `data-map-topic` = mv$topic, `data-pin` = opts$pin),
+  game_tag("div", list(class = "map", id = prefix, `data-map-topic` = mv$topic),
            game_tag("div", list(class = "map-canvas"),
                     game_tag("button", list(type = "button", class = "btn-quiet map-reset", `data-map` = "reset", `aria-label` = ui_s("map.reset_label")), game_tag("span", list(class = "map-reset-icon", `aria-hidden` = "true"), "↻"), " ", game_esc(ui_s("map.reset"))),
                     svg, game_p("map-keys", game_esc(ui_s("map.keys")))),

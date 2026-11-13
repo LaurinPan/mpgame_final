@@ -1,4 +1,4 @@
-# 02_Game/sheet/record.R — v6 §2.4, the Word block, and A.5 "Credibility and the Record"
+# 02_Game/sheet/record.R — Section 4.2.2, the Word block, and A.5 "Credibility and the Record"
 
 # A.1, "Steady State, Trend, and Parameters": the steady-state nominal rate in percent a year
 steady_rate <- function(par) to_year(steady_state(par)$i_star)
@@ -19,7 +19,7 @@ news_room <- function(config, quarter, state, in_force) {
        ahead = to_year(with$rule_rates - without$rule_rates)[seq_len(par$H)])
 }
 
-# v6 §2.4: the Word block, the standing path, the judgement, the record, the room and the band (A25)
+# Section 4.2.2: the Word block, the standing path, the judgement, the record, the room and the band (A25)
 word_block <- function(run, q) {
   config <- run$config; par <- config$par
   empty <- list(has_path = FALSE, path = NULL, due = NA, announced = NA, set = NA, judged = FALSE, kept = NA,

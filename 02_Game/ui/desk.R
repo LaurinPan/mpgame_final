@@ -1,10 +1,10 @@
 # ui/desk.R — the quarter screen (Section 4.2.1) drawn from desk_view(run)
-# (scripts appendix §3: the top bar, the panel's header
+# (the top bar, the panel's header
 # with the task line, the figures with the population and the labour
 # force, the charts with the staff forecast's projected points where the topic
 # shows them (Topics 5 and 8) and the expectations chart in Topics 3, 4, 5 and
 # 8, the decision bar on one line with the word's slots and the guided
-# quarter's flag, the chat with its briefings, each one message (scripts appendix §11),
+# quarter's flag, the chat with its briefings, each one message (Section 4.3.2),
 # the debrief in the card's place, the map panel, the folded paper).
 # Pure functions returning HTML strings.
 #
@@ -39,7 +39,7 @@ ui_desk_bar <- function(dv, o) {
 # the rate announced for this quarter -----------------------------------------------------------------------------------------------
 ui_task_line <- function(dv) {
   tp <- dv$topic
-  brief <- Filter(function(m) identical(m$kind, "briefing") && identical(m$briefing_kind, "start"), dv$chat$messages)   # scripts appendix §11: the topic's briefing in the start message
+  brief <- Filter(function(m) identical(m$kind, "briefing") && identical(m$briefing_kind, "start"), dv$chat$messages)   # the topic's briefing in the start message (Section 4.3.2)
   text <- if (length(brief)) paste(vapply(brief, `[[`, "", "text"), collapse = " ") else tp$task
   line <- game_tag("button", list(type = "button", class = "task-line", id = "task-line", `data-board` = "toggle", `aria-expanded` = "false", `aria-controls` = "task-drop", `aria-label` = ui_s("task.open_label")),
                    game_tag("span", list(class = "task-marker", `aria-hidden` = "true"), ""),
@@ -77,7 +77,7 @@ ui_panel_head <- function(dv) {
            if (!is.null(h$path) && isTRUE(is.finite(h$path$due))) game_tag("span", list(class = "panel-promise is-locked"), game_esc(ui_s("panel.announced_due", rate = fmt_rate(h$path$due)))))
 }
 
-# --- the figures block and the staff forecast's points on the charts (scripts appendix §3) -------------------------------------------------------
+# --- the figures block and the staff forecast's points on the charts (Section 4.2.1) -------------------------------------------------------------
 ui_row <- function(key, label, value, change = "", sign = 0, note = NULL) { if (!grepl("[1-9]", change)) sign <- 0; paste0(
   game_tag("dt", list(class = "fig-label", `data-row` = key), game_esc(label)),
   game_tag("dd", list(class = "fig-value", `data-row` = key), game_esc(value)),
@@ -97,7 +97,7 @@ ui_figures_block <- function(dv) {
                  ui_row("unemployment", ui_s("figures.unemployment"), fmt_pct(u$rate), fmt_change(u$change), sign(u$change %||% 0),
                         note = if (isTRUE(u$quarters_above > 0)) ui_s("figures.quarters_above", quarters = fmt_quarters(u$quarters_above))),
                  ui_row("unemployed", ui_s("figures.persons"), fmt_persons(u$persons)),
-                 if (!is.null(f$labour_force)) ui_row("labour_force", ui_s("figures.labour_force"), ui_s("format.million", value = game_num(f$labour_force$value / 1e6, 0))),   # scripts appendix §3
+                 if (!is.null(f$labour_force)) ui_row("labour_force", ui_s("figures.labour_force"), ui_s("format.million", value = game_num(f$labour_force$value / 1e6, 0))),   # the labour force and the population, the game's round figures
                  if (!is.null(f$population)) ui_row("population", ui_s("figures.population"), ui_s("format.million", value = game_num(f$population$value / 1e6, 0))))
   ui_block("figures", ui_s("figures.title"), rows, after = if (length(notes)) game_p("fig-result", game_esc(notes[1])))
 }
@@ -179,14 +179,14 @@ ui_guided_flag <- function(g) {
   p <- g$plan
   paste(r, if (all(abs(p - g$rate) < 0.005)) ui_s("decision.guided_plan_flat", n = length(p)) else ui_s("decision.guided_plan", rates = paste(formatC(p, format = "f", digits = 2), collapse = ", ")))
 }
-# Whether the quarter's paper is still printed, in a topic with the newspaper (scripts appendix §3, §12.1: from Topic 2 on).
+# Whether the quarter's paper is still printed, in a topic with the newspaper (from Topic 2 on).
 ui_paper_printing <- function(dv) is.null(dv$issue) && "newspaper" %in% dv$panels && !(dv$topic$status %in% c("over", "closed"))
 # The decision bar on one line (the rate with its unit, a guided quarter's flag, the floor, the word's slots, the record line,
 # the message, Publish, which waits disabled while the quarter's paper is printed, since the paper brings the quarter's shocks).
 # A guided quarter starts at the rate in force and can be typed in; its flag turns red when Publish is pressed with another rate or plan,
 # and the page then sends nothing. The fields take five characters, at most 20.00; a decision beyond the cap is refused by the backend.
 # A refused decision's line. A reason the backend writes as a sentence of its own (a capital first, a full stop last), as
-# the cap's (scripts appendix §3), shows as it stands; a reason written as a clause follows "Refused:".
+# the cap's, shows as it stands; a reason written as a clause follows "Refused:".
 ui_refused <- function(reason) if (grepl("^[[:upper:]].*[.]$", reason)) reason else ui_s("desk.refused", reason = reason)
 ui_decision_html <- function(dv, o) {
   d <- dv$decision; tp <- dv$topic; q <- tp$q; w <- dv$word; g <- d$guided; h <- dv$header
@@ -223,7 +223,7 @@ ui_decision_html <- function(dv, o) {
     game_tag("p", list(class = "dec-message", id = "desk-message", role = "status", `aria-live` = "polite"), game_esc(message)))
 }
 
-# --- the chat (scripts appendix §11) ---------------------------------------------------------------------------------------------
+# --- the chat (Section 4.3.2) ----------------------------------------------------------------------------------------------------
 # Every message shown, each briefing one message; the chat opens by itself when the Chief Economist writes (the server), and the folded
 # chat shows only its name, the count of messages not yet read and the button that unfolds it.
 # The messages in their quarters' order, each quarter's in the order they came.
@@ -270,7 +270,7 @@ ui_desk_html <- function(dv, opts = list()) {
   fc_points <- if ("forecast" %in% panels && decision_open) ui_forecast_points(dv, o)
   word_layer <- if (!is.null(dv$word) && decision_open) ui_word_layer(dv$word, q, dv$decision$H)
   word_editor <- if (!is.null(dv$word) && decision_open) ui_word_editor_html(dv, o)
-  blocks <- ui_figures_block(dv)                                                          # scripts appendix §3: the figures block alone
+  blocks <- ui_figures_block(dv)                                                          # the figures block alone (Section 4.2.1)
   charts_main <- game_tag("div", list(class = "charts-main"), ui_desk_chart("rate", dv, list(forecast = fc_points, word_layer = word_layer, word_editor = word_editor)))
   charts_four <- game_tag("div", list(class = "charts-four"), paste(vapply(c("inflation", "output", "wage_inflation", "unemployment"), function(id) ui_desk_chart(id, dv, list(forecast = fc_points)), ""), collapse = ""))
   charts_small <- if ("expectations" %in% panels) game_tag("div", list(class = "charts-small"), ui_desk_chart("expectations", dv))   # Topics 3, 4, 5 and 8

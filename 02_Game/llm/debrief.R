@@ -1,4 +1,4 @@
-# 02_Game/llm/debrief.R — Section 4.2.2 and v6 §5.4, the debrief from the term's record
+# 02_Game/llm/debrief.R — Section 4.2.2, the debrief from the term's record
 
 # Section 4.2.2: the structure of the debrief, the text on the term and one text per marked quarter, the marked quarters as the only values of a quarter; of the list's length the API takes only that it is not empty
 debrief_schema <- function(marks) {
@@ -11,7 +11,7 @@ debrief_schema <- function(marks) {
        required = I(c("text_on_the_term", "marks")), additionalProperties = FALSE)
 }
 
-# Section 4.2.2 and v6 §5.4: the debrief's instruction, composed for this term: its guided quarters, the case of a loss at most the bank's, and its marks
+# Section 4.2.2: the debrief's instruction, composed for this term: its guided quarters, the case of a loss at most the bank's, and its marks
 debrief_instruction <- function(record, marks) {
   s <- debrief_sentences; guided <- record$guided; n <- length(marks)
   later <- any(vapply(marks, function(m) m$kind == "deferred", logical(1)))
@@ -23,7 +23,7 @@ debrief_instruction <- function(record, marks) {
   gsub(" +\n", "\n", gsub(" {2,}", " ", text))
 }
 
-# v6 §5.4: a distance from a normal level in the record, the player's in full and the bank's short where both lie on the same side
+# Section 4.2.2: a distance from a normal level in the record, the player's in full and the bank's short where both lie on the same side
 record_level <- function(player, bank, kind, unit, digits) {
   num <- function(x) formatC(round(abs(x), digits) + 0, format = "f", digits = digits)
   zero <- function(x) num(x) == num(0)
@@ -31,7 +31,7 @@ record_level <- function(player, bank, kind, unit, digits) {
   list(player = phrase(player), bank = if (!zero(player) && !zero(bank) && sign(player) == sign(bank)) paste(num(bank), unit) else phrase(bank))
 }
 
-# Section 4.2.2 and v6 §5.4: the term's record in words, the material of the debrief's call in its tags: the term, each quarter with the columns the topic shows, the new shocks as the player met them, the marks and the terms
+# Section 4.2.2: the term's record in words, the material of the debrief's call in its tags: the term, each quarter with the columns the topic shows, the new shocks as the player met them, the marks and the terms
 debrief_material <- function(record, marks, instruction) {
   p <- record$player; b <- record$bank; s <- record_sentences; shows <- record$shows; th <- classes$thresholds
   rates <- function(text) paste(word_list(n2(as.numeric(strsplit(text, " ")[[1]]))), "percent")
@@ -78,7 +78,7 @@ debrief_request <- function(record, marks) {
               models$debrief, models$effort$debrief, models$max_tokens$debrief, models$timeout_seconds$debrief, about = list(topic = record$topic))
 }
 
-# Section 4.2.2 and v6 §5.4: the debrief without a model, the losses as equivalent misses
+# Section 4.2.2: the debrief without a model, the losses as equivalent misses
 debrief_fallback <- function(record, marks) {
   s <- debrief_fallback_texts; eq <- record$term$equivalent
   list(loss_text = fill(if (record$term$player <= record$term$bank) s$term_at_most else s$term, list(equivalent = n2(eq$player), bank_equivalent = n2(eq$bank))),

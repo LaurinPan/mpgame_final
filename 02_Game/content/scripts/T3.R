@@ -1,6 +1,6 @@
-# 02_Game/content/scripts/T3.R — v6 §6, Topic 3 (Chapter C; Section 4.3, Table 1)
+# 02_Game/content/scripts/T3.R — Section 4.3.1 and Table 1: Topic 3 (Chapter C)
 
-# v6 §6: the script of Topic 3
+# Section 4.3.1 and Table 1: the script of Topic 3
 T3 <- list(
   id = "T3", name = "Learning the Aim", chapter = "C",
   objective = "Expectations",

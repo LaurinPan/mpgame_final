@@ -1,6 +1,6 @@
-# 02_Game/content/newspaper/layout.R — v6 §12.1 and §12.2: pages, slots, formats and budgets
+# 02_Game/content/newspaper/layout.R — Section 4.2.2: pages, slots, formats and budgets
 
-# v6 §12.1: the pages and slots
+# Section 4.2.2: the pages and slots
 slots <- data.frame(
   page    = c(1, 1, 1, 2, 2, 3, 3, 4),
   slot    = c("masthead", "index", "L", "S1", "S2", "S3", "S4", "S5"),
@@ -9,7 +9,7 @@ slots <- data.frame(
               "The Economy", "Prices and Wages", "Jobs", "Markets and the Bank", "Politics or Analysis"),
   stringsAsFactors = FALSE)
 
-# v6 §12.2: the eight formats with their elements in order, the elements the game fills, their counts in slot S5 and in every other slot, their word budgets and their sentence
+# Section 4.2.2: the eight formats with their elements in order, the elements the game fills, their counts in slot S5 and in every other slot, their word budgets and their sentence
 formats <- list(
   "F-LEAD" = list(
     elements = c("kicker", "headline", "standfirst", "chart", "body", "figures"), game = c("kicker", "chart", "figures"),
@@ -52,10 +52,10 @@ formats <- list(
     budgets  = list(headline = 6, body = c(25, 45)),
     sentence = "Write a headline of at most 6 words and a body of one paragraph of {sentences} sentences with {lo} to {hi} words in all."))
 
-# v6 §12.2: a number of paragraphs in words
+# Section 4.2.2: a number of paragraphs in words
 paragraph_words <- c("one paragraph", "two paragraphs", "three paragraphs")
 
-# v6 §12.1: a format in its slot, slot S5 with twice the body's budget and its own counts
+# Section 4.2.2: a format in its slot, slot S5 with twice the body's budget and its own counts
 slot_format <- function(format, slot = NULL) {
   f <- formats[[format]]; s5 <- identical(slot, "S5")
   for (count in intersect(c("paragraphs", "questions", "quotations", "sentences"), names(f)))
@@ -64,7 +64,7 @@ slot_format <- function(format, slot = NULL) {
   f
 }
 
-# v6 §12.2: how the format follows from the type, the tone and the precision, first match
+# Section 4.2.2: how the format follows from the type, the tone and the precision, first match
 format_rule <- data.frame(
   role   = c("lead", "brief", "brief", "piece", "piece", "piece", "piece", "piece", "piece", "piece", "piece"),
   tone   = c(NA, NA, NA, "reporter", "reporter", "economist", "household", "business", "critic", "markets", "markets"),

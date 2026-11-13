@@ -6,7 +6,7 @@ chat_schema <- list(type = "object",
                                       step = list(type = "integer", enum = I(1:3)), answer = list(type = "string")),
                     required = I(c("kind", "step", "answer")), additionalProperties = FALSE)
 
-# Section 4.2.2 and v6 §10: the facts the chat holds in a topic, what its desk and its newspaper show and nothing else, with exact figures and each new shock as it was reported
+# Section 4.2.2: the facts the chat holds in a topic, what its desk and its newspaper show and nothing else, with exact figures and each new shock as it was reported
 chat_facts <- function(run, sheet) {
   parts <- fact_parts(sheet); word <- word_on(run$script); votes <- length(run$votes) > 0
   say <- function(names, precision = "exact") unlist(lapply(names, fact_sentence, parts = parts, precision = precision), use.names = FALSE)
@@ -21,7 +21,7 @@ chat_facts <- function(run, sheet) {
     say(c("target", "natural_unemployment", "trend_growth", "floor", "cap", if (word) "reach", if (votes) "election_interval")))
 }
 
-# Section 4.2.1 and v6 §10: the staff forecast at the typed decision as sentences, with its band where a shock was reported in words
+# Sections 4.2.1 and 4.2.2: the staff forecast at the typed decision as sentences, with its band where a shock was reported in words
 chat_forecast <- function(fc, typed, sheet) {
   if (is.null(fc)) return(NULL)
   s <- chat_sentences
@@ -33,7 +33,7 @@ chat_forecast <- function(fc, typed, sheet) {
     else if (length(sheet$shocks$shocks)) s$exact else s$quiet)
 }
 
-# Section 4.2.2 and v6 §10: the conversation as lines, this quarter's briefings, every question of the term with its number and quarter, and the last three answers
+# Section 4.2.2: the conversation as lines, this quarter's briefings, every question of the term with its number and quarter, and the last three answers
 chat_conversation <- function(chat, q) {
   recent <- tail(which(vapply(chat, function(m) m$kind == "answer", logical(1))), 3)
   n <- 0; lines <- character(0); s <- chat_sentences
@@ -46,7 +46,7 @@ chat_conversation <- function(chat, q) {
   lines
 }
 
-# Section 4.2.2 and v6 §10: the request of an answer, the chat's fixed part, the instruction with the topic's never sentence and the material in its tags; typed is the decision on the page, the desk's starting decision where none is passed, and a decision the checks refuse has no forecast
+# Section 4.2.2: the request of an answer, the chat's fixed part, the instruction with the topic's never sentence and the material in its tags; typed is the decision on the page, the desk's starting decision where none is passed, and a decision the checks refuse has no forecast
 chat_request <- function(run, question, typed = NULL) {
   q <- run$t + 1; id <- run$topic
   if (q > length(run$sheets)) stop("quarter ", q, " has no sheet yet")

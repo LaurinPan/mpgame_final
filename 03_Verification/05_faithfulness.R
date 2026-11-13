@@ -1,6 +1,6 @@
 # 05 Faithfulness (Section 3.3, rule 5; Section 3.2's check that every figure
-# the layer writes stands on what its call received; v6 §2.4 and §12.7, rule
-# 2). The confusion-matrix test of the layer's numbers, over the eight final
+# the layer writes stands on what its call received, and the layer of Section
+# 4.2.2). The confusion-matrix test of the layer's numbers, over the eight final
 # recordings of 03_Verification/record_topics.R, one run per topic with the
 # model. 05_counts.R sets every number of every answer against the request
 # of its own call: a number that stands in the call's material, equal to a
@@ -50,7 +50,7 @@ speed_table <- function(d, i, p) { out <- c("| Call type | Model | Calls | Died 
   n <- d$kind %in% c("piece", "lead"); i <- i[i$calls > 0, ]; r <- d[n & d$reached, ]; written <- nrow(unique(r[, c("topic", "q", "slot")])); further <- nrow(r) - written
   again <- c("| Format | Pieces | Asked again for the number of paragraphs | for the headline's length | for the body's length | for the structure | Asked again, share of pieces |", rule(c(14, 8, 18, 16, 16, 13, 15)))
   for (fm in sort(unique(d$format[n]))) { x <- d[n & d$format == fm, ]; k <- nrow(unique(x[, c("topic", "q", "slot")])); a <- function(what) sum(x$asked %in% what)
-    again <- c(again, sprintf("| %s | %d | %d | %d | %d | %d | %.2f |", fm, k, a("paragraphs"), a("headline"), a("body"), a("structure"), sum(!is.na(x$asked)) / k)) }
+    again <- c(again, sprintf("| %s | %d | %d | %d | %d | %d | %.2f |", format_words[[fm]], k, a("paragraphs"), a("headline"), a("body"), a("structure"), sum(!is.na(x$asked)) / k)) }
   c(out, "", sprintf("Issues: %d. Seconds per issue, the inside pieces sent at once, then those asked for again, then the lead: median %.1f, 90th percentile %.1f; calls per issue: median %g.", nrow(i), median(i$seconds), quantile(i$seconds, 0.9), median(i$calls)),
     sprintf("Retries per piece: %.3f: %d further calls for %d pieces, the leads included, %d of them asked again with the sentence of a failed check and %d after an answer that could not be read. Calls that died on the connection: %d; they count neither as retries nor as the model's failures. Pieces as the player reads them: %d by the model at the first answer, %d after a retry, %d of these with a text shortened, %d kept with a failed check (%s), %d from the template.",
             further / written, further, written, sum(!is.na(r$asked)), further - sum(!is.na(r$asked)), sum(n & !d$reached), sum(p$source == "model" & !p$retried), sum(p$source == "model" & p$retried), sum(p$shortened), sum(!is.na(p$kept)),
@@ -65,7 +65,7 @@ residual_wording <- function(folder, d) { d <- d[d$ok & d$last, , drop = FALSE];
   for (topic in sort(unique(d$topic))) { run <- readRDS(file.path(folder, paste0(topic, ".rds")))
     for (k in which(d$topic == topic)) { s <- sentences(answer_of(run$calls[[d$call[k]]])); a <- grepl(names_input, tolower(s), perl = TRUE); b <- grepl(not_given, tolower(s), perl = TRUE)
       if (any(a | b)) found[[length(found) + 1]] <- data.frame(text = if (d$kind[k] %in% c("piece", "lead")) "Newspaper" else if (d$kind[k] == "chat") "Chat" else "Debrief", names = any(a), not_given = any(b),
-        line = sprintf("%s | %s q%d | %s | %s", if (d$kind[k] %in% c("piece", "lead")) sprintf("piece %s, %s", d$slot[k], d$format[k]) else d$kind[k], topic, d$q[k],
+        line = sprintf("%s, quarter %d, %s | %s | %s", topic_words(topic), d$q[k], if (d$kind[k] == "lead") place_words[["L"]] else if (d$kind[k] == "piece") sprintf("%s, %s", place_words[[d$slot[k]]], tolower(format_words[[d$format[k]]])) else d$kind[k],
                        paste(c(if (any(a)) "names its input", if (any(b)) "says that something is not given"), collapse = ", "), paste(s[a | b], collapse = " ")), stringsAsFactors = FALSE) } }
   found <- if (length(found)) do.call(rbind, found) else data.frame(text = character(0), names = logical(0), not_given = logical(0), line = character(0))
   groups <- c(Newspaper = sum(d$kind %in% c("piece", "lead")), Chat = sum(d$kind == "chat"), Debrief = sum(d$kind == "debrief"))
@@ -76,7 +76,7 @@ residual_wording <- function(folder, d) { d <- d[d$ok & d$last, , drop = FALSE];
 # ---- the report on the final recordings
 folders <- recording_folders()["final"]; counted <- count_recordings(folders); calls <- counted$calls
 out <- c("# 05 Faithfulness", "",
-  sprintf("Recordings: `%s`, %s, each topic's final attempt; %d calls, %d of them died on the connection, and %d were answered without an answer that could be read.", folders[["final"]], paste(sort(unique(calls$topic)), collapse = ", "), nrow(calls), sum(!calls$reached), sum(calls$reached & !calls$ok)), "",
+  sprintf("Recordings: `%s`, %s, each topic's final attempt; %d calls, %d of them died on the connection, and %d were answered without an answer that could be read.", folders[["final"]], topics_words(unique(calls$topic)), nrow(calls), sum(!calls$reached), sum(calls$reached & !calls$ok)), "",
   "Every number in an answer is set against the request of its own call. TP: it stands in the call's material, equal to a number there at two decimals, the decimals the desk shows. FP: it does not; it then stands in the instruction or the fixed part, or nowhere in the request. FN: a figure under `<use>` that an exact-figures piece or lead does not write. TN and leaks: the hidden values of the quarter that the request does not hold, not written and written. A number the text calls quarters is counted apart. Each rate has its 95 percent Wilson interval in brackets.", "",
   "## The answers the player reads", "", "The last answer of every piece and lead, and every chat answer and debrief.", "", metrics_table(calls[calls$last, ]), "",
   "## Every answer, those replaced after a retry included", "", metrics_table(calls), "",

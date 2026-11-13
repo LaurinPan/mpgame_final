@@ -1,6 +1,6 @@
-# 02_Game/content/facts.R — v6 §2.4: every field of the fact sheet as one sentence, with exact figures and in plain words
+# 02_Game/content/facts.R — Section 4.2.2: every field of the fact sheet as one sentence, with exact figures and in plain words
 
-# v6 §5.4: the words of the plain-words scale, from within normal to beyond the second class
+# Section 4.2.2: the words of the plain-words scale, from within normal to beyond the second class
 scale_words <- list(
   above = c("close to", "slightly above", "clearly above", "far above"),
   below = c("close to", "slightly below", "clearly below", "far below"),
@@ -11,12 +11,12 @@ scale_words <- list(
   trust = c("low", "moderate", "high"),
   direction = c(rising = "rising", falling = "falling", steady = "steady"))
 
-# v6 §5.4: what moved a figure most, as the subject of its sentence
+# Section 4.2.2: what moved a figure most, as the subject of its sentence
 cause_words <- c(demand = "Spending by households and firms", technology = "Firms' productivity", costs = "Firms' costs",
                  purchases = "Government spending", slump = "The foreseen slump",
                  rate_up = "The rise in the policy rate", rate_down = "The cut in the policy rate")
 
-# v6 §2.4: each fact with the sheet fields it words, the law's constant it compares with, and its sentence by case;
+# Section 4.2.2: each fact with the sheet fields it words, the law's constant it compares with, and its sentence by case;
 # `exact` with figures, `words` in plain words, `both` where the sentence is the same; {braces} are filled by the game
 facts <- list(
 

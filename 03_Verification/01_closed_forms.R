@@ -28,7 +28,7 @@ F <- reference_solution(full_system(config, begin_quarter(config, start, list(a 
 value["Stage 2, (A9): the gap's response to the cost-push shock"]      <- abs(F["x", "nu"] + (par$phi_pi - par$rho_nu) * Lambda)
 value["Stage 2, (A10): inflation's response to the cost-push shock"] <- abs(F["pi_p", "nu"] - (par$sigma * (1 - par$rho_nu) + par$phi_y) * Lambda)
 
-# V3, discretion (Galí, 2015, Ch. 5, Eqs. 4 to 6, Figure 5.2's rho = 0.8): the
+# The third closed form, discretion (Galí, 2015, Ch. 5, Eqs. 4 to 6, Figure 5.2's rho = 0.8): the
 # believed rule with the test-only coefficients phi_pi = rho_nu +
 # sigma (1 - rho_nu) kappa / vartheta and phi_y = 0 implements the
 # discretionary outcome, and the rule-following player reproduces it under a

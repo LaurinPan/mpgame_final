@@ -1,6 +1,6 @@
-# 02_Game/llm/editor.R — Section 4.2.2 and v6 §12.5, the editor: the issue's plan, the number formats and the placeholders
+# 02_Game/llm/editor.R — Section 4.2.2, the editor: the issue's plan, the number formats and the placeholders
 
-# v6 §12.5: a type's condition evaluated on the sheet
+# Section 4.2.2: a type's condition evaluated on the sheet
 holds <- function(condition, sheet) {
   if (condition == "TRUE") return(TRUE)
   expr <- gsub("([a-z]+)[.]([a-z_]+)", "sheet$\\1$\\2", condition)
@@ -10,7 +10,7 @@ holds <- function(condition, sheet) {
   isTRUE(eval(parse(text = expr), envir = env, enclos = baseenv()))
 }
 
-# v6 §5.3: a draw from a seed, the global stream untouched
+# Section 4.2.2: a draw from a seed, the global stream untouched
 seeded <- function(seed, draw) {
   old <- if (exists(".Random.seed", envir = globalenv())) get(".Random.seed", envir = globalenv()) else NULL
   set.seed(seed)
@@ -18,21 +18,21 @@ seeded <- function(seed, draw) {
   draw()
 }
 
-# v6 §5.3: the seed of a topic, quarter and slot
+# Section 4.2.2: the seed of a topic, quarter and slot
 slot_seed <- function(topic, q, slot) sum(utf8ToInt(paste(topic, slot))) * 7919 + q * 131
 
-# v6 §12.5: the shocks a piece carries
+# Section 4.2.2: the shocks a piece carries
 shocks_in <- function(fields, sheet) {
   present <- names(sheet$shocks$shocks)
   if ("shocks" %in% fields) return(present)
   intersect(sub("^shocks[.]", "", grep("^shocks[.](demand|technology|costs|purchases)$", fields, value = TRUE)), present)
 }
 
-# v6 §12.5: the features a type may require, the panels shown and, by topic, the word, the public's view of the aim, government spending and the politics of a vote
+# Section 4.2.2: the features a type may require, the panels shown and, by topic, the word, the public's view of the aim, government spending and the politics of a vote
 topic_features <- function(script) c(script$panels, if (word_on(script)) "word", if (5 %in% script$stages) "aim", if (6 %in% script$stages) "purchases",
                                      if (6 %in% script$stages && any(vapply(script$timeline, function(ev) isTRUE(ev$vote), logical(1)))) "politics")
 
-# Section 4.2.2 and v6 §12.4, §12.5: the issue's plan, one type per slot with its tone, its precision, exact where the type draws exact only, and its speakers, all drawn from the slot's seed, and the shocks reported
+# Section 4.2.2: the issue's plan, one type per slot with its tone, its precision, exact where the type draws exact only, and its speakers, all drawn from the slot's seed, and the shocks reported
 edit_issue <- function(sheet, script) {
   shown  <- topic_features(script); stage6 <- 6 %in% script$stages
   sections <- c(L = "Front page", S1 = "The Economy", S2 = "Prices and Wages", S3 = "Jobs",
@@ -72,25 +72,25 @@ edit_issue <- function(sheet, script) {
   list(items = items, reported = reported, selection = selection)
 }
 
-# v6 §8.1, principle 7: a figure to two decimals, a zero without a sign
+# The number style of the game's texts: a figure to two decimals, a zero without a sign
 n2 <- function(x) if (is.null(x) || length(x) == 0 || is.na(x[1])) "n/a" else formatC(round(x, 2) + 0, format = "f", digits = 2)
 
-# v6 §8.1, principle 7: a figure to one decimal, a zero without a sign
+# The number style of the game's texts: a figure to one decimal, a zero without a sign
 n1 <- function(x) if (is.null(x) || length(x) == 0 || is.na(x[1])) "n/a" else formatC(round(x, 1) + 0, format = "f", digits = 1)
 
-# v6 §8.1, principle 7: a change with its sign
+# The number style of the game's texts: a change with its sign
 signed <- function(x) if (is.null(x) || length(x) == 0 || is.na(x[1])) "n/a" else sprintf("%+.2f", x)
 
-# v6 §8.1, principle 7: a count of persons
+# The number style of the game's texts: a count of persons
 persons <- function(x) if (is.null(x) || length(x) == 0 || is.na(x[1])) "n/a" else formatC(round(x / 1e5) * 1e5, format = "d", big.mark = ",")
 
-# v6 §8.1: a sentence's first letter capitalised
+# The style of the game's texts: a sentence's first letter capitalised
 cap1 <- function(s) paste0(toupper(substr(s, 1, 1)), substr(s, 2, nchar(s)))
 
-# v6 §5.4: the pressing variables in words
+# Section 4.2.2: the pressing variables in words
 variable_words <- c(inflation = "inflation", unemployment = "unemployment", growth = "growth", wages = "wage inflation")
 
-# v6 §0: the placeholders of a template or a briefing filled from the sheet
+# The placeholders of a template or a briefing filled from the sheet
 fill_placeholders <- function(text, sheet, guided = NULL) {
   value <- function(name) {
     p <- strsplit(name, "[.]")[[1]]; fig <- sheet$figures; law <- sheet$law; pub <- sheet$public; g <- sheet$government

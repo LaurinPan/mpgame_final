@@ -1,6 +1,6 @@
-# 02_Game/content/scripts/T8.R — v6 §6, Topic 8 (Chapter E; Section 4.3, Table 1)
+# 02_Game/content/scripts/T8.R — Section 4.3.1 and Table 1: Topic 8 (Chapter E)
 
-# v6 §6: the script of Topic 8
+# Section 4.3.1 and Table 1: the script of Topic 8
 T8 <- list(
   id = "T8", name = "Free Play", chapter = "E",
   objective = "all",

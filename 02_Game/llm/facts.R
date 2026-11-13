@@ -1,24 +1,24 @@
-# 02_Game/llm/facts.R — Section 4.2.2 and v6 §2.4: the sheet's facts as sentences, with exact figures or in plain words, and the terms a call's texts use
+# 02_Game/llm/facts.R — Section 4.2.2: the sheet's facts as sentences, with exact figures or in plain words, and the terms a call's texts use
 
-# v6 §8.1, principle 7: a figure without trailing zeros, to two decimals at most
+# The number style of the game's texts: a figure without trailing zeros, to two decimals at most
 plain_number <- function(x) format(round(x, 2) + 0, nsmall = 0, scientific = FALSE, trim = TRUE)
 
-# v6 §8.1, principle 7: one of the law's constants as the texts name it, to one decimal at most
+# The number style of the game's texts: one of the law's constants as the texts name it, to one decimal at most
 constant <- function(x) plain_number(round(x, 1))
 
-# v6 §8.1: a list in words, its last two parts joined by a word
+# The style of the game's texts: a list in words, its last two parts joined by a word
 word_list <- function(x, last = "and") if (length(x) < 2) paste(x) else paste(paste(x[-length(x)], collapse = ", "), last, x[length(x)])
 
-# v6 §5.4: a figure's bounds on the plain-words scale, its threshold once, twice and three times, and half of them for a change
+# Section 4.2.2: a figure's bounds on the plain-words scale, its threshold once, twice and three times, and half of them for a change
 scale_bounds <- function(figure, change = FALSE) {
   th <- classes$thresholds
   th$pressing[[figure]] * th$scale_steps * (if (change) th$change_share else 1)
 }
 
-# v6 §5.4: where a value stands on the plain-words scale, from 0 within normal to 3 beyond the second class
+# Section 4.2.2: where a value stands on the plain-words scale, from 0 within normal to 3 beyond the second class
 scale_class <- function(x, bounds) findInterval(abs(x), bounds)
 
-# v6 §2.4: each fact the sheet holds with the case and the values of its sentence; a distance is measured from the law's constant as the sentence names it, so that its figures agree; a fact the sheet does not hold is left out
+# Section 4.2.2: each fact the sheet holds with the case and the values of its sentence; a distance is measured from the law's constant as the sentence names it, so that its figures agree; a fact the sheet does not hold is left out
 fact_parts <- function(sheet) {
   fig <- sheet$figures; law <- sheet$law; pub <- sheet$public; w <- sheet$word; g <- sheet$government; sh <- sheet$shocks; th <- classes$thresholds
   zero   <- function(x) abs(x) < 0.005
@@ -112,7 +112,7 @@ fact_parts <- function(sheet) {
   out
 }
 
-# v6 §2.4: a fact's sentence in a precision, NULL where the sheet does not hold the fact or the fact has no sentence in that precision
+# Section 4.2.2: a fact's sentence in a precision, NULL where the sheet does not hold the fact or the fact has no sentence in that precision
 fact_sentence <- function(name, parts, precision) {
   p <- parts[[name]]; f <- facts[[name]]
   if (is.null(p)) return(NULL)
@@ -121,10 +121,10 @@ fact_sentence <- function(name, parts, precision) {
   fill(if (is.null(names(set))) set else set[[if (length(p$case) > 1) p$case[[precision]] else p$case]], p)
 }
 
-# v6 §5.4: the fact that says where each pressing figure stands
+# Section 4.2.2: the fact that says where each pressing figure stands
 pressing_facts <- c(inflation = "inflation", growth = "growth", wages = "wage_inflation", unemployment = "unemployment")
 
-# v6 §2.4 and §12.5: the facts that word a list of sheet fields, in the fields' order and each once; all of a quarter's shocks for the field shocks, and with the pressing figure the fact of where it stands
+# Section 4.2.2: the facts that word a list of sheet fields, in the fields' order and each once; all of a quarter's shocks for the field shocks, and with the pressing figure the fact of where it stands
 facts_of <- function(fields, sheet) {
   of <- function(field) {
     if (field == "shocks") return(c(if (length(sheet$shocks$shocks)) paste0("shock_", names(sheet$shocks$shocks)), "no_shock", "slump"))
@@ -135,7 +135,7 @@ facts_of <- function(fields, sheet) {
   unique(unlist(lapply(fields, of), use.names = FALSE))
 }
 
-# Section 4.2.2 and v6 §12.5: the facts of a piece as sentences in its precision, the must facts, each followed by the law's constant it compares with, and the may facts
+# Section 4.2.2: the facts of a piece as sentences in its precision, the must facts, each followed by the law's constant it compares with, and the may facts
 piece_facts <- function(item, sheet) {
   parts <- fact_parts(sheet)
   must <- character(0)
@@ -145,7 +145,7 @@ piece_facts <- function(item, sheet) {
   list(use = say(must), may_use = say(setdiff(facts_of(item$may, sheet), must)))
 }
 
-# v6 §8.2: the glossary's entries for the terms a call's texts use, as lines; a longer phrase is found before a shorter one inside it, and the newspaper's readers are given no everyday term
+# The glossary's entries for the terms a call's texts use, as lines; a longer phrase is found before a shorter one inside it, and the newspaper's readers are given no everyday term
 terms_of <- function(texts, always = character(0), reader = FALSE) {
   text <- tolower(paste(texts, collapse = "\n"))
   phrases <- lapply(strsplit(glossary$found_as, ";", fixed = TRUE), trimws)

@@ -1,12 +1,12 @@
-# 02_Game/content/theory/P3.yaml — chapter 3 of the theory section, "The goods market in the short run" (scripts appendix §14),
-# its texts written as the scripts appendix §8 asks (the glossary's terms and explanations, "government spending", "the rate
-# the economy needs", no mention of a game). Read by 02_Game/ui/theory.R.
+# Chapter 3 of the theory section, "The goods market in the short run". Its texts are written from three textbooks
+# (references.yaml) and name the section they rest on at the end of every paragraph. They use the glossary's terms and
+# explanations, "government spending" and "the rate the economy needs", and they do not mention a game.
 #   chapter  id, title, the learning objectives
 #   cards    the term cards: term, core (the explanation; the glossary's own, lower case, where `glossary: true`), example,
 #            aliases, see_also (a preview card's full card), box (false: never shown as a box), step (where the text defines it)
 #   topics   id, title, objectives, steps: id, sources ({key, loc} into references.yaml), text (Markdown: [label](term:P4:id)
-#            marks a term, [label](theory:P2-s1d) links a chapter, topic or step), details (a More Detail panel), module (one of
-#            the ten modules of modules.yaml with this step's controls and view), figure (a static figure drawn from economy.yaml)
+#            marks a term, [label](theory:P2-s1d) links a chapter, topic or step), module (one of the modules of modules.yaml
+#            with this step's controls and view), figure (a static figure drawn from economy.yaml)
 
 chapter:
   id: P3
@@ -51,89 +51,51 @@ topics:
     steps:
       - id: s1a
         sources:
-          - {key: blanchard_illing_2021, loc: "2.5"}
-          - {key: legge_2023, loc: "2.2"}
-          - {key: mankiw_2025, loc: "ch. 12"}
+          - {key: blanchard_illing_2017, loc: "2.5"}
         text: |
           ### Three time horizons
 
-          [Output](term:P1:output_GDP) is measured as [GDP](term:P2:GDP_definition), the value of the [final
-          goods](term:P2:final_good) and services an economy produces in a year ([introduced in chapter
-          2](theory:P2-s1a)). The chapters that follow ask what determines it, and the answer depends on the time
-          horizon. Macroeconomists distinguish three horizons, each with its own explanation of output (Blanchard &
-          Illing, 2021, ch. 2; Legge, 2023, 2.2).
+          What determines [output](term:P1:output_GDP)? It depends on how far ahead one looks (Blanchard &
+          Illing, 2017, 2.5).
 
-          In the **[short run](term:P3:short_run)**, a period of a few years, output moves up and down with demand. When
-          households, firms and the government spend more, firms sell more and produce more; when spending falls,
-          production falls, and the economy may slide into a [recession](term:P2:recession). This chapter is about the
-          short run.
+          The **[short run](term:P3:short_run)** covers a few years. Here demand is in charge: when it weakens,
+          as it does when households lose confidence, or strengthens, output follows into a
+          [recession](term:P2:recession) or a boom (Blanchard & Illing, 2017, 2.5).
 
-          In the **[medium run](term:P3:medium_run)**, roughly a decade, the economy tends to return to a normal level
-          of output, the level that the labour market and firms' production capacity allow. What this level is, and how
-          wages and prices respond when output is above or below it, is the subject of [chapter 5](theory:P5-s4b); how a
-          change in the [central bank](term:P1:central_bank)'s [policy rate](term:P4:policy_rate) moves demand, and with
-          it output, is the subject of [chapter 4](theory:P4-s7b).
+          Give the economy about a decade, the **[medium run](term:P3:medium_run)**, and supply takes over:
+          output settles at what its capital, its labour force and its technology can deliver ([chapter
+          5](theory:P5-s4b)) (Blanchard & Illing, 2017, 2.5).
 
-          In the **[long run](term:P3:long_run)**, several decades or more, the question is no longer whether output is
-          above or below its normal level, but why that level grows. The answer lies in the accumulation of capital, the
-          growth of the [labour force](term:P5:labour_force) and [technological
-          progress](term:P6:technological_progress), the subject of [chapter 6](theory:P6-s4c).
+          The **[long run](term:P3:long_run)** spans half a century and more. What counts over such a time is
+          how fast a country builds up capital and technical knowledge ([chapter 6](theory:P6-s4c)) (Blanchard &
+          Illing, 2017, 2.5).
 
-          The three horizons are not three different economies. They are three views of the same economy, each
-          emphasising the forces that matter most over that period. The chart below shows an output path that fluctuates
-          around a rising [trend](term:P3:trend): the fluctuations are the business of the short run, the return to the
-          trend the business of the medium run, and the slope of the trend the business of the long run.
+          The chart below shows an output path that moves up and down around a rising [trend](term:P3:trend).
+          The ups and downs belong to the short run, the return to the trend to the medium run, and the slope of
+          the trend to the long run (Blanchard & Illing, 2017, 2.5).
         figure: {kind: horizons, description: "A fictional output path fluctuating around a rising trend, with the short, medium and long run marked."}
       - id: s1b
         sources:
-          - {key: mankiw_2025, loc: "ch. 12"}
-          - {key: blanchard_illing_2021, loc: "2.5"}
+          - {key: mankiw_2019, loc: "1-2, 10-2, 11-1"}
+          - {key: blanchard_illing_2017, loc: "2.5"}
         text: |
           ### Why demand determines output in the short run
 
-          Why should demand determine output? In a market for a single good, a fall in demand lowers the price, and the
-          lower price brings demand and supply back into balance. If all prices and wages adjusted this quickly, a fall
-          in total spending would lower prices instead of output, and the economy would hardly fluctuate.
+          Prices are what separates the horizons. Given enough time they move freely, up or down as supply and
+          demand require. Over shorter spans many of them are sticky: for a while they stay at a level set
+          earlier (Mankiw, 2019, 10-2).
 
-          In practice, most prices and wages change only at intervals. Firms review their prices once or a few times a
-          year, print catalogues and menus, and fear that frequent changes will annoy their customers; wages are fixed
-          in contracts for a year or longer. This **[price stickiness](term:P3:price_stickiness)** means that, for some
-          time, prices are close to given. When demand falls, firms first sell less, not more cheaply.
+          This **[price stickiness](term:P3:price_stickiness)** is common. Asked how often they change their
+          prices, firms most often answer once or twice a year (Mankiw, 2019, 10-2). Wages can be tied down for
+          as long as three years by a labour contract (Mankiw, 2019, 1-2).
 
-          In the short run, therefore, [macroeconomics](term:P1:macroeconomics) assumes that firms produce whatever is
-          demanded at the prevailing prices, as long as they have spare capacity: output is
-          **[demand-determined](term:P3:demand_determined_output)**. This is the central assumption of this chapter, and
-          the models below hold the [price level](term:P4:price_level) fixed. It is a short-run assumption. Over the
-          medium run, prices and wages do adjust: [chapter 5](theory:P5-s7b) shows how they respond when output is away
-          from its normal level, and [chapter 4](theory:P4-s1) introduces prices and [inflation](term:P4:inflation_rate)
-          in their own right.
-        details:
-          title: "How sticky are prices? Evidence from firms and from price data"
-          sources:
-            - {key: blinder_etal_1998}
-            - {key: nakamura_steinsson_2008}
-          text: |
-            [Price stickiness](term:P3:price_stickiness) is an assumption of the short-run model, but it is also an
-            empirical claim that economists have tested in two ways.
+          When prices do not adjust, output and employment have to do some of the adjusting (Mankiw, 2019,
+          10-2). The models of this chapter therefore hold the [price level](term:P4:price_level) fixed, and
+          firms produce what is demanded: output is **[demand-determined](term:P3:demand_determined_output)**,
+          as Keynes proposed for the short run (as cited in Mankiw, 2019, 11-1).
 
-            The first is to ask the price setters. Alan Blinder and his co-authors interviewed about two hundred heads of
-            firms and price managers in the United States and asked them how often they change prices and which of twelve
-            prominent theories of price stickiness described their own behaviour (Blinder et al., 1998). The typical firm
-            reported changing the price of its main product only about once a year. The explanations that firms recognised
-            most often were not the cost of changing price tags but coordination problems: many firms said they would not
-            raise or cut a price until their competitors did, and many priced on the basis of costs, which themselves
-            change only slowly. Contracts with customers, explicit or implicit, were also important.
-
-            The second is to look at the prices themselves. Using the individual price records collected for the US
-            [consumer price index](term:P4:consumer_price_index), Emi Nakamura and Jón Steinsson (2008) showed that many
-            price changes are temporary sales, after which the price returns to its old level. Leaving sales aside, the
-            regular price of a typical consumer good changes only about once a year, with large differences between
-            sectors: the prices of goods such as fuel change very often, those of many services much more rarely. They
-            used these facts to assess "menu cost" models, in which each price change has a small fixed cost.
-
-            Both approaches lead to the same conclusion: in the [short run](term:P3:short_run), many prices do not respond
-            to changes in demand, which is why demand affects production. How long "short" lasts is one of the central
-            questions of [chapter 5](theory:P5-s7c).
+          Over the medium run prices and wages do adjust, which [chapter 5](theory:P5-s7b) takes up (Blanchard &
+          Illing, 2017, 2.5).
 
   - id: s2
     title: "The Demand Side of the Economy"
@@ -141,71 +103,54 @@ topics:
     steps:
       - id: s2a
         sources:
-          - {key: blanchard_illing_2021, loc: "3.2"}
-          - {key: legge_2023, loc: "2.3"}
-          - {key: mankiw_2025, loc: "ch. 4 and 13"}
+          - {key: blanchard_illing_2017, loc: "3.2"}
+          - {key: mankiw_2019, loc: "11-1"}
         text: |
           ### The components of demand
 
-          [GDP](term:P2:GDP_definition) can be measured by the [expenditure approach](term:P2:expenditure_approach) as
-          the sum of [consumption](term:P2:consumption), [investment](term:P2:investment) and [government
-          spending](term:P2:government_spending) ([introduced in chapter 2](theory:P2-s1d)). The same three components
-          describe who **demands** the economy's goods. Economists write the total **[demand for
-          goods](term:P3:demand_for_goods)** as Z:
+          In a [closed economy](term:P1:closed_economy), three kinds of spending make up the **[demand for
+          goods](term:P3:demand_for_goods)**, written Z: [consumption](term:P2:consumption),
+          [investment](term:P2:investment) and [government spending](term:P2:government_spending) (Blanchard &
+          Illing, 2017, 3.2).
 
           > Z = C + I + G
 
-          The equation looks like the GDP identity Y = C + I + G, but it says something different. The identity holds by
-          definition for what was actually produced and bought. The demand equation describes what households, firms and
-          the government *want* to buy, given their income and plans. Whether the economy produces exactly that amount
-          is a separate question, answered in the next topic.
+          Z is what households, firms and the government want to buy. Whether firms produce exactly that amount
+          is the question of the next topic (Mankiw, 2019, 11-1).
 
-          To explain demand, the model must say what each component depends on. A model cannot explain everything at
-          once ([economic models, chapter 1](theory:P1-s1b)), so this chapter takes two components as given, as
-          **[exogenous spending](term:P3:exogenous_spending)**. Investment I is fixed: firms' decisions to buy new
-          machines and buildings depend on interest rates and expectations, which [chapter 4](theory:P4-s7) adds.
-          Government spending G is fixed too, set by parliament in the budget. The government also collects
-          **[taxes](term:P3:taxes)** T, which in this chapter mean all taxes paid by households minus the transfers they
-          receive, such as pensions. Government spending and taxes together are fiscal policy.
+          A model has to say what each part of demand depends on. This chapter explains consumption and takes
+          the rest as **[exogenous spending](term:P3:exogenous_spending)**. Investment is taken as given, which
+          keeps the model simple; [chapter 4](theory:P4-s7) lets it depend on the interest rate. Government
+          spending and **[taxes](term:P3:taxes)** T, which stand for taxes minus transfers, are set by the
+          government and together make up fiscal policy (Blanchard & Illing, 2017, 3.2).
 
-          In the example economy ([its accounts in chapter 2](theory:P2-s1d)), firms invest $220 million a year and the
-          government buys goods and services for $180 million. The government also collects $180 million in taxes, so
-          its budget is balanced.
+          In the example economy, firms invest $220 million a year. The government buys goods and services for
+          $180 million and collects $180 million in taxes, so its budget is balanced.
       - id: s2b
         sources:
-          - {key: blanchard_illing_2021, loc: "3.2"}
-          - {key: mankiw_2025, loc: "ch. 4"}
-          - {key: keynes_1936, loc: "ch. 8"}
+          - {key: blanchard_illing_2017, loc: "3.2"}
         text: |
           ### The consumption function
 
-          Consumption is the largest component of demand, and the only one this chapter explains. What households spend
-          depends above all on the income they have available. That is not their total income Y, but their **[disposable
-          income](term:P3:disposable_income)**, income after taxes:
+          For households, the main thing that decides how much they consume is their **[disposable
+          income](term:P3:disposable_income)**: what is left of income once taxes are paid and transfers
+          received (Blanchard & Illing, 2017, 3.2).
 
           > YD = Y − T
 
-          The simplest description of how consumption depends on disposable income is a straight line, the
-          **[consumption function](term:P3:consumption_function)**:
+          The **[consumption function](term:P3:consumption_function)** describes this link, here as a straight
+          line (Blanchard & Illing, 2017, 3.2).
 
-          > C = c₀ + c₁ × YD = c₀ + c₁ × (Y − T)
+          > C = c₀ + c₁ × (Y − T)
 
-          The two parameters have an economic meaning. The **[marginal propensity to
-          consume](term:P3:marginal_propensity_to_consume)**, c₁, is the share of an additional dollar of disposable
-          income that households spend. It lies between 0 and 1: when their income rises by one dollar, households spend
-          part of it and save the rest. **[Autonomous consumption](term:P3:autonomous_consumption)**, c₀, is the part of
-          consumption that does not depend on current income. It captures everything else that affects spending, such as
-          households' wealth or their confidence about the future. When households become more pessimistic and decide to
-          spend less at any level of income, c₀ falls.
+          The line has two parameters. **[Autonomous consumption](term:P3:autonomous_consumption)**, c₀, is the
+          spending that would remain if this year's income were zero, financed from wealth or by borrowing. The
+          slope c₁, the **[marginal propensity to consume](term:P3:marginal_propensity_to_consume)**, tells how
+          many cents of each further dollar of disposable income are spent. The rest is saved, so c₁ lies
+          between 0 and 1 (Blanchard & Illing, 2017, 3.2).
 
-          In the example economy, c₁ = 0.6 and c₀ = $68 million. With an income of $900 million and taxes of $180
-          million, disposable income is $720 million, and consumption is 68 + 0.6 × 720 = $500 million, the figure the
-          national accounts of the example economy record ([chapter 2](theory:P2-s1d)).
-
-          The consumption function is a simplification. Households also look ahead: their spending depends on the income
-          they expect in the future, on their wealth and on interest rates. These influences are summarised here in c₀
-          and held fixed. The idea that consumption rises with income, but by less than income, goes back to Keynes
-          (1936), who called it a "fundamental psychological law".
+          In the example economy, c₁ = 0.6 and c₀ = $68 million. With income of $900 million and taxes of $180
+          million, disposable income is $720 million, and consumption is 68 + 0.6 × 720 = $500 million.
 
   - id: s3
     title: "Equilibrium in the Goods Market"
@@ -213,126 +158,86 @@ topics:
     steps:
       - id: s3a
         sources:
-          - {key: blanchard_illing_2021, loc: "3.3"}
-          - {key: legge_2023, loc: "2.4"}
-          - {key: mankiw_2025, loc: "ch. 13"}
+          - {key: blanchard_illing_2017, loc: "3.3"}
         text: |
           ### The equilibrium condition
 
-          Because [output](term:P1:output_GDP) is [demand-determined](term:P3:demand_determined_output) in the [short
-          run](term:P3:short_run), the goods market is in equilibrium when production equals demand. This is the
-          **[equilibrium condition](term:P3:equilibrium_condition)**:
+          The goods market is in equilibrium when production equals demand. This is the **[equilibrium
+          condition](term:P3:equilibrium_condition)** (Blanchard & Illing, 2017, 3.3).
 
           > Y = Z
 
-          Replacing Z by its components gives Y = c₀ + c₁(Y − T) + I + G. Output appears on both sides, because output
-          creates income and income drives [consumption](term:P2:consumption), which is part of demand. This circle is
-          what makes income [endogenous](term:P1:endogenous): in a model of a single household's spending ([economic
-          models, chapter 1](theory:P1-s1b)), income is given from outside; here it is determined by the model. Solving
-          the equation for Y gives equilibrium output:
+          Putting in the parts of demand gives Y = c₀ + c₁(Y − T) + I + G. [Output](term:P1:output_GDP) stands
+          on both sides, because production creates income and income drives [consumption](term:P2:consumption).
+          Solving for Y gives equilibrium output (Blanchard & Illing, 2017, 3.3).
 
           > Y = 1/(1 − c₁) × (c₀ + I + G − c₁T)
 
-          The expression in brackets is **[autonomous spending](term:P3:autonomous_spending)**: the part of demand that
-          does not depend on output. The factor in front, 1/(1 − c₁), is the [multiplier](term:P3:multiplier), the
-          subject of the last topic.
+          The term in brackets is **[autonomous spending](term:P3:autonomous_spending)**, the part of demand
+          that does not depend on output. The factor in front is the [multiplier](term:P3:multiplier). It is
+          larger than one, because c₁ lies between 0 and 1 (Blanchard & Illing, 2017, 3.3).
 
-          In the example economy, autonomous spending is 68 + 220 + 180 − 0.6 × 180 = $360 million, and the factor is
-          1/(1 − 0.6) = 2.5. Equilibrium output is 2.5 × 360 = $900 million, the [GDP](term:P2:GDP_definition) of the
-          example economy ([chapter 2](theory:P2-s1d)). The model reproduces the data it was calibrated to; its use lies
-          in showing what happens when one of the [exogenous variables](term:P1:exogenous) changes.
+          In the example economy, autonomous spending is 68 + 220 + 180 − 0.6 × 180 = $360 million, and the
+          factor is 1/(1 − 0.6) = 2.5. Equilibrium output is 2.5 × 360 = $900 million.
       - id: s3b
         sources:
-          - {key: mankiw_2025, loc: "ch. 13"}
-          - {key: blanchard_illing_2021, loc: "3.3"}
+          - {key: mankiw_2019, loc: "11-1"}
+          - {key: blanchard_illing_2017, loc: "3.2"}
         text: |
           ### The Keynesian cross
 
-          The same equilibrium can be shown in a diagram, which Mankiw (2025, ch. 13) calls the **[Keynesian
-          cross](term:P3:keynesian_cross)**. Output is on the horizontal axis and demand on the vertical axis. The
-          demand line ZZ shows how demand rises with output: it starts at autonomous spending, and its slope is c₁,
-          because each extra dollar of output raises consumption by c₁ dollars. The second line has a slope of one, the
-          45-degree line, on which output and demand are equal. Equilibrium output is where the two lines cross.
+          The same equilibrium can be drawn as the **[Keynesian cross](term:P3:keynesian_cross)**, with output
+          on the horizontal axis and demand on the vertical one. The demand line rises with output, and its
+          slope is the marginal propensity to consume: each extra dollar of income raises demand by c₁ dollars.
+          On the 45-degree line, output and demand are equal. Equilibrium is where the two lines cross (Mankiw,
+          2019, 11-1).
 
-          Because c₁ is smaller than one, the demand line is flatter than the 45-degree line, and the two lines cross
-          exactly once. To the left of the crossing, demand exceeds output; to the right, output exceeds demand. In the
-          diagram below, the crossing lies at $900 million.
+          Because c₁ is smaller than one, the demand line is flatter than the 45-degree line (Blanchard &
+          Illing, 2017, 3.2).
+
+          In the diagram below, which shows the example economy, the two lines cross at $900 million.
         module: {kind: keynesian_cross, controls: [], show: [Z, "Y"]}
       - id: s3c
         sources:
-          - {key: mankiw_2025, loc: "ch. 13"}
+          - {key: mankiw_2019, loc: "11-1"}
         text: |
           ### How output adjusts: inventories
 
-          Why should output actually end up where demand and production are equal? The answer lies in firms'
-          inventories. The national accounts count the change in inventories as part of [investment](term:P2:investment)
-          ([introduced in chapter 2](theory:P2-s1d)): in the example economy, the $20 million of bread the bakery adds
-          to its stocks is investment. That change was planned. If firms produce more than is demanded, they also
-          accumulate goods they did not plan to keep: an **[unplanned inventory
-          change](term:P3:unplanned_inventory_change)** (Mankiw, 2025, ch. 13).
+          What moves output to this point? When firms sell less than they planned, their stocks of unsold goods
+          rise; when they sell more, their stocks fall. Such an **[unplanned inventory
+          change](term:P3:unplanned_inventory_change)** counts as [investment](term:P2:investment) in the
+          accounts, and it tells firms to change production (Mankiw, 2019, 11-1).
 
           Suppose firms in the example economy produce $950 million. Income is then $950 million, [disposable
-          income](term:P3:disposable_income) $770 million and consumption 68 + 0.6 × 770 = $530 million, so demand is
-          530 + 220 + 180 = $930 million. Firms sell $20 million less than they produce, and unsold goods pile up in
-          their warehouses. Firms respond by cutting production. If instead they produce $850 million, demand is $870
-          million, inventories fall by $20 million, and firms raise production. Only at $900 million do firms sell
-          exactly what they produce and have no reason to change it.
+          income](term:P3:disposable_income) $770 million and consumption 68 + 0.6 × 770 = $530 million, so
+          demand is 530 + 220 + 180 = $930 million. Unsold goods worth $20 million pile up, and firms cut
+          production. If they produce $850 million instead, demand is $870 million, stocks fall by $20 million,
+          and firms raise production. Only at $900 million do they sell exactly what they produce.
 
-          The GDP identity ([chapter 2](theory:P2-s1d)) still holds in every case, because statistics count unplanned
-          inventory changes as investment. Equilibrium is the special case in which this unplanned part is zero, so that
-          actual investment equals planned investment.
-        details:
-          title: "Supply creates its own demand? Say's law and Keynes"
-          sources:
-            - {key: say_1803}
-            - {key: screpanti_zamagni_2005}
-            - {key: keynes_1936, loc: "ch. 2–3"}
-          text: |
-            The idea that demand can fall short of production was not obvious to the classical economists. In his Traité
-            d'économie politique (1803), the French economist Jean-Baptiste Say argued that producing a good creates the
-            income needed to buy other goods: products are ultimately paid for with products, and [money](term:P4:money)
-            is only an intermediary. A particular good can be overproduced, but a general glut of all goods at once is
-            impossible. Most classical economists, including David Ricardo, accepted this view, while Thomas Malthus
-            disputed it in a long exchange with Ricardo (Screpanti & Zamagni, 2005).
-
-            Keynes (1936, ch. 2–3) summarised the classical position in the phrase "supply creates its own demand", a
-            formulation of his, not of Say, and made its rejection the starting point of the General Theory. Income that
-            is earned in production is not necessarily spent: part of it is saved, and nothing guarantees that firms want
-            to invest exactly the amount households want to save. If they invest less, total demand falls short of
-            production, firms cut [output](term:P1:output_GDP) and employment, and the economy can remain in this state
-            for a long time. Keynes called the level of spending that actually determines output "effective demand".
-
-            Modern [macroeconomics](term:P1:macroeconomics) reconciles the two views through the time horizons of the
-            first topic. In the [short run](term:P3:short_run), with sticky prices, output is determined by demand, as in
-            this chapter. In the medium and [long run](term:P3:long_run), when prices have adjusted, output is determined
-            by what the economy can produce, which is close to the classical view and the subject of [chapter
-            5](theory:P5-s4b) and [chapter 6](theory:P6-s2a).
+          At that point everyone's plans work out, so nothing pushes production to change (Mankiw, 2019, 11-1).
       - id: s3d
         sources:
-          - {key: blanchard_illing_2021, loc: "3.4"}
+          - {key: blanchard_illing_2017, loc: "3.4"}
         text: |
           ### Saving equals investment
 
-          The equilibrium condition can be stated in a second way, which looks at what households do not spend
-          (Blanchard & Illing, 2021, 3.4). **[Private saving](term:P3:private_saving)** S is disposable income that
-          households do not consume: S = YD − C. **[Public saving](term:P3:public_saving)** is what the government
-          collects in taxes and does not spend: T − G. It is negative when the government runs a deficit.
+          Equilibrium can be stated in a second way. Households save what remains of disposable income after
+          consumption, their **[private saving](term:P3:private_saving)** S = Y − T − C. The government saves T
+          − G, its **[public saving](term:P3:public_saving)**, which turns negative when the budget is in
+          deficit (Blanchard & Illing, 2017, 3.4).
 
-          Starting from Y = C + I + G, subtract taxes and consumption on both sides: Y − T − C = I + G − T. The left
-          side is private saving, so S = I + G − T, or
+          Subtracting taxes and consumption on both sides of Y = C + I + G gives the condition in a new form
+          (Blanchard & Illing, 2017, 3.4).
 
           > I = S + (T − G)
 
-          In equilibrium, investment equals the sum of private and public saving. The two ways of describing equilibrium
-          are equivalent: production equals demand exactly when the spending that firms plan on new capital equals the
-          income that households and the government do not spend. The second view shows the [circular
-          flow](term:P1:circular_flow) of the economy ([introduced in chapter 1](theory:P1-s3b)) from another angle:
-          [money](term:P4:money) that households save leaves the flow of spending, and in equilibrium it returns as
-          investment.
+          Different people take these decisions: firms invest, households and the government save. The goods
+          market is in equilibrium exactly when the two sides match, that is when investment equals private plus
+          public saving (Blanchard & Illing, 2017, 3.4).
 
-          In the example economy, private saving is 720 − 500 = $220 million and public saving is 180 − 180 = 0, so
-          total [saving equals investment](term:P3:saving_investment_identity) of $220 million. From now on, the diagram
-          also shows private saving.
+          In the example economy, private saving is 720 − 500 = $220 million and public saving is 180 − 180 = 0,
+          so total [saving equals investment](term:P3:saving_investment_identity) of $220 million. From now on,
+          the diagram also shows private saving.
         module: {kind: keynesian_cross, controls: [], show: [Z, "Y", S]}
 
   - id: s4
@@ -341,144 +246,93 @@ topics:
     steps:
       - id: s4a
         sources:
-          - {key: blanchard_illing_2021, loc: "3.3"}
-          - {key: legge_2023, loc: "2.5"}
-          - {key: mankiw_2025, loc: "ch. 13"}
+          - {key: blanchard_illing_2017, loc: "3.3"}
         text: |
           ### The multiplier
 
-          The model's main lesson concerns changes. Suppose the government raises its spending by $10 million, for
-          example to repair roads. [Autonomous spending](term:P3:autonomous_spending) rises by $10 million, and
-          equilibrium [output](term:P1:output_GDP) rises by 2.5 times as much, by $25 million, to $925 million. The
-          factor
+          Suppose the government of the example economy raises its spending by $10 million. [Autonomous
+          spending](term:P3:autonomous_spending) rises by $10 million, and equilibrium
+          [output](term:P1:output_GDP) rises by 2.5 times as much, by $25 million, to $925 million.
+
+          The factor 1/(1 − c₁) is the **[multiplier](term:P3:multiplier)**. Any change in autonomous spending,
+          be it in [investment](term:P2:investment), in government spending or in [autonomous
+          consumption](term:P3:autonomous_consumption), changes output by more than itself (Blanchard & Illing,
+          2017, 3.3).
 
           > multiplier = 1/(1 − c₁)
 
-          is called the **[multiplier](term:P3:multiplier)**: it states by how much equilibrium output changes when
-          autonomous spending changes by one dollar. The same factor applies to a change in
-          [investment](term:P2:investment) or in [autonomous consumption](term:P3:autonomous_consumption).
+          The larger the [marginal propensity to consume](term:P3:marginal_propensity_to_consume), the larger
+          the multiplier, because each rise in income then feeds more consumption (Blanchard & Illing, 2017,
+          3.3).
 
-          The multiplier depends on the [marginal propensity to consume](term:P3:marginal_propensity_to_consume). The
-          more of each extra dollar households spend, the steeper the demand line and the larger the multiplier: with c₁
-          = 0.5 it is 2, with c₁ = 0.8 it is 5. In the diagram below, raise G and watch the demand line shift up and the
-          crossing move right by 2.5 times the shift; then change c₁ and watch the demand line turn.
+          Raise G in the diagram below and watch the demand line shift up and the crossing move right by 2.5
+          times the shift. Then change c₁ and watch the demand line turn.
         module: {kind: keynesian_cross, controls: [G, c1], show: [Z, "Y", S]}
       - id: s4b
         sources:
-          - {key: blanchard_illing_2021, loc: "3.3"}
+          - {key: blanchard_illing_2017, loc: "3.3"}
+          - {key: mankiw_2019, loc: "11-1"}
         text: |
           ### The multiplier rounds
 
-          Why is the effect larger than the initial spending? Follow the $10 million through the economy (Blanchard &
-          Illing, 2021, 3.3). The road repairs are produced by construction firms and paid out as wages and profits:
-          output and income rise by $10 million in the first round. Households spend 60 percent of the extra income, $6
-          million, which becomes extra output and income in the second round. Of this, they spend $3.6 million in the
-          third round, then $2.16 million, and so on. Each round is 0.6 times the previous one.
+          Why is the effect larger than the first push? Because the push starts a loop: the extra spending is
+          someone's income, part of that income is spent, and this spending is income once more (Blanchard &
+          Illing, 2017, 3.3).
 
-          The **[multiplier rounds](term:P3:multiplier_rounds)** become smaller and smaller, and their sum approaches
+          In the example economy, the $10 million of road repairs become income in the first round. Households
+          spend 60 percent of it, $6 million, which becomes income in the second round. Of this they spend $3.6
+          million, then $2.16 million, and so on. Each round is 0.6 times the one before.
 
-          > 10 × (1 + 0.6 + 0.6² + 0.6³ + …) = 10 × 1/(1 − 0.6) = $25 million.
+          The **[multiplier rounds](term:P3:multiplier_rounds)** grow smaller and smaller, and their sum is a
+          geometric series (Mankiw, 2019, 11-1).
 
-          The rounds also show that the adjustment takes time. Each round requires firms to notice the higher demand and
-          raise production, so the full effect builds up over quarters, not overnight. The chart below adds up the
-          rounds.
+          > 10 × (1 + 0.6 + 0.6² + 0.6³ + …) = 10 × 1/(1 − 0.6) = $25 million
+
+          None of this happens at once. Firms first meet extra demand from their stocks and raise production
+          only later, and households, too, are slow to spend a higher income (Blanchard & Illing, 2017, 3.3).
         figure: {kind: multiplier_rounds, description: "Bars for the extra output of each round (10, 6, 3.6, ...) and a line for the cumulative total approaching 25."}
       - id: s4c
         sources:
-          - {key: mankiw_2025, loc: "ch. 13"}
-          - {key: blanchard_illing_2021, loc: "3.3"}
+          - {key: mankiw_2019, loc: "11-1"}
+          - {key: blanchard_illing_2017, loc: "3.3"}
         text: |
           ### Taxes and autonomous consumption
 
-          A tax change works differently. If the government raises taxes by $10 million, [disposable
-          income](term:P3:disposable_income) falls by $10 million, but households cut [consumption](term:P2:consumption)
-          only by c₁ times as much, $6 million, because they also save less. Autonomous spending therefore falls by $6
-          million, and output by 2.5 × 6 = $15 million, to $885 million. The **[tax
-          multiplier](term:P3:tax_multiplier)**,
+          A change in taxes works through [disposable income](term:P3:disposable_income). A tax cut raises
+          disposable income by its full amount, but consumption only by c₁ times that amount, and this first
+          change in spending is then multiplied like any other. The **[tax multiplier](term:P3:tax_multiplier)**
+          is therefore smaller in size than the multiplier for [government
+          spending](term:P2:government_spending), and it is negative, since output moves against taxes (Mankiw,
+          2019, 11-1).
 
-          > tax multiplier = −c₁/(1 − c₁) = −1.5,
+          > tax multiplier = −c₁/(1 − c₁)
 
-          is smaller in size than the multiplier for [government spending](term:P2:government_spending), because part of
-          a tax change is absorbed by saving rather than by spending.
+          In the example economy, the tax multiplier is −1.5: a tax rise of $10 million cuts
+          [consumption](term:P2:consumption) by $6 million and output by $15 million, to $885 million. If
+          households become more cautious and cut autonomous consumption by $10 million, output falls by $25
+          million.
 
-          Changes in households' behaviour are multiplied in the same way as changes in fiscal policy. If households
-          become more cautious and cut autonomous consumption by $10 million, output falls by $25 million. A change of
-          this kind is a **[demand shock](term:P3:demand_shock)**, a change in how much households and firms want to
-          spend that does not come from the [policy rate](term:P4:policy_rate). The diagram now lets you change taxes
-          and autonomous consumption as well.
-        details:
-          title: "The paradox of thrift"
-          sources:
-            - {key: blanchard_illing_2021, loc: "3.4"}
-            - {key: mandeville_1714}
-            - {key: keynes_1936, loc: "ch. 23"}
-            - {key: mankiw_2025, loc: "ch. 4"}
-          text: |
-            The paradox of thrift, met as an example of why [macroeconomics](term:P1:macroeconomics) is needed ([chapter
-            1](theory:P1-s2a)), can now be derived formally. Suppose households in the example economy decide to save $10
-            million more, at every level of income: [autonomous consumption](term:P3:autonomous_consumption) falls from
-            $68 million to $58 million. [Output](term:P1:output_GDP) falls by 2.5 × 10 = $25 million to $875 million.
-            [Disposable income](term:P3:disposable_income) falls to $695 million and [consumption](term:P2:consumption) to
-            58 + 0.6 × 695 = $475 million. [Private saving](term:P3:private_saving) is 695 − 475 = $220 million, exactly
-            as much as before. Households tried to save more, but the fall in income reduced their saving by 0.4 × 25 =
-            $10 million, which cancels their intention. The reason is the [equilibrium
-            condition](term:P3:equilibrium_condition) I = S + (T − G): with [investment](term:P2:investment) and fiscal
-            policy fixed, total saving cannot change. The attempt to save more only lowers output (Blanchard & Illing,
-            2021, 3.4).
+          A change of the second kind is a **[demand shock](term:P3:demand_shock)**, a change in how much
+          households and firms want to spend that does not come from the [policy rate](term:P4:policy_rate). It
+          is multiplied in the same way as a change in fiscal policy (Blanchard & Illing, 2017, 3.3).
 
-            The idea is old. In The Fable of the Bees (1714), Bernard Mandeville described a prosperous hive that
-            collapses after its bees give up luxury and become frugal. Keynes (1936, ch. 23) cited Mandeville as a
-            forerunner of his view that thrift, a virtue for the individual, can harm the economy as a whole: a fallacy of
-            composition, in which what holds for each part does not hold for the whole.
-
-            The paradox is a short-run result. It depends on investment being fixed. If more saving lowers interest rates
-            and lower interest rates raise investment, which [chapter 4](theory:P4-s7b) shows, part of the extra saving
-            finances extra investment. In the [long run](term:P3:long_run), higher saving raises the [capital
-            stock](term:P6:capital_stock) and with it the economy's capacity to produce, the opposite conclusion, which
-            [chapter 6](theory:P6-s3c) develops (Mankiw, 2025, ch. 4).
-        module: {kind: keynesian_cross, controls: [G, c1, T, c0], show: [Z, "Y", S]}
+          Change taxes and autonomous consumption in the diagram below as well.
+        module: {kind: keynesian_cross, controls: [G, c1, "T", c0], show: [Z, "Y", S]}
       - id: s4d
         sources:
-          - {key: blanchard_illing_2021, loc: "3.5"}
+          - {key: blanchard_illing_2017, loc: "3.5"}
         text: |
           ### The limits of the model
 
-          The model suggests that the government can set output wherever it wants by choosing G and T. Blanchard and
-          Illing (2021, 3.5) ask whether the government is therefore omnipotent, and the answer is no. Changing spending
-          or taxes takes time, both to decide and to take effect; the rounds of the multiplier take time to unfold; and
-          households' and firms' reactions are harder to predict than the fixed parameters suggest. Above all, the model
-          holds fixed several things that respond in reality: prices, which [chapter 4](theory:P4-s5) and [chapter
-          5](theory:P5-s7b) add; the interest rate and with it investment, which [chapter 4](theory:P4-s7) adds; and
-          expectations, which [chapter 5](theory:P5-s7c) takes up. A government that spends more may also borrow more,
-          which raises questions this chapter leaves aside.
+          The model suggests that a government could reach any level of output by choosing its spending and
+          taxes. Blanchard and Illing warn that it cannot (Blanchard & Illing, 2017, 3.5).
 
-          The model therefore states the direction and the mechanism of demand effects precisely, but it overstates
-          their size. It is the core of the IS relation of larger models, in which investment also responds to the
-          interest rate.
-        details:
-          title: "From Kahn's multiplier to the fiscal-multiplier debate"
-          sources:
-            - {key: kahn_1931}
-            - {key: keynes_1936, loc: "ch. 10"}
-            - {key: ramey_2019}
-          text: |
-            The [multiplier](term:P3:multiplier) was first worked out by Richard Kahn, a young colleague of Keynes at
-            Cambridge, in an article of 1931. Britain had suffered high unemployment throughout the 1920s, and the
-            question was whether public works, such as road building, could reduce it. Kahn showed that the jobs created
-            directly by public works were only the first round: the newly employed workers spent their wages and created
-            further employment elsewhere. Keynes (1936, ch. 10) built the argument into the General Theory as the
-            [investment](term:P2:investment) multiplier, and it became a cornerstone of the Keynesian case for fiscal
-            policy in [recessions](term:P2:recession).
+          The obstacles are of three kinds. Budgets are slow to change, because laws have to pass first. The
+          response is hard to predict: investment moves too, and households ask whether a tax cut will last
+          before they spend it. And success has a price, since higher output may raise
+          [inflation](term:P4:inflation_rate), while deficits add to the public debt (Blanchard & Illing, 2017,
+          3.5).
 
-            How large is the multiplier in reality? With c₁ = 0.6, the model of this chapter predicts 2.5. Empirical
-            estimates are much lower. After the financial crisis of 2008, many governments used fiscal policy to support
-            demand, which revived research on its effects. Surveying this research, Valerie Ramey (2019) concludes that
-            most estimates of the multiplier for [government spending](term:P2:government_spending) lie between about 0.6
-            and 1, while identifying circumstances in which multipliers lie outside this range.
-
-            The difference has identifiable causes, all of which this chapter holds fixed. Taxes rise with income, so each
-            round leaks into tax payments as well as saving. In open economies, part of the extra spending goes to
-            imports. Prices may rise. Above all, the [central bank](term:P1:central_bank) may raise interest rates in
-            response, which lowers investment. The multiplier of this chapter is therefore best read as the effect when
-            interest rates do not respond, for example because the central bank holds its [policy
-            rate](term:P4:policy_rate) unchanged.
+          In the short run, fiscal policy does move demand and output. The following chapters add what this
+          model holds fixed: the interest rate and investment in [chapter 4](theory:P4-s7), prices and
+          expectations in [chapter 5](theory:P5-s7b) (Blanchard & Illing, 2017, 3.5).

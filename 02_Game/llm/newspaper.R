@@ -1,6 +1,6 @@
-# 02_Game/llm/newspaper.R — Section 4.2.2 and v6 §12, the newspaper's pipeline
+# 02_Game/llm/newspaper.R — Section 4.2.2, the newspaper's pipeline
 
-# v6 §12.2: the structure of a piece's answer in its slot; the API takes no exact length for a list, so the structure fixes every count itself: a body of one paragraph is one text, and each further paragraph, each question with its answer, each quotation with the role the editor drew for it and each row of the table has a key of its own
+# Section 4.2.2: the structure of a piece's answer in its slot; the API takes no exact length for a list, so the structure fixes every count itself: a body of one paragraph is one text, and each further paragraph, each question with its answer, each quotation with the role the editor drew for it and each row of the table has a key of its own
 format_schema <- function(item) {
   f <- slot_format(item$format, item$slot)
   text <- list(type = "string")
@@ -16,7 +16,7 @@ format_schema <- function(item) {
     stop("unknown format ", item$format))
 }
 
-# v6 §12.2: a parsed answer as the piece's elements, the body as its paragraphs, a line break inside a text counting as a new paragraph, and the interview, the quotations and the table as lists in their order, a row's comparison under the name the views keep, change
+# Section 4.2.2: a parsed answer as the piece's elements, the body as its paragraphs, a line break inside a text counting as a new paragraph, and the interview, the quotations and the table as lists in their order, a row's comparison under the name the views keep, change
 as_elements <- function(parsed) {
   if (is.character(parsed$body) || is.list(parsed$body)) {
     paragraphs <- trimws(unlist(strsplit(unlist(parsed$body), "\n+")))
@@ -27,10 +27,10 @@ as_elements <- function(parsed) {
   parsed
 }
 
-# v6 §12.2: the words of a text
+# Section 4.2.2: the words of a text
 words_in <- function(x) length(strsplit(trimws(paste(x, collapse = " ")), "[[:space:]]+")[[1]])
 
-# v6 §12.2 and §12.7: a parsed answer against its format in its slot, TRUE or the check it failed with the numbers of its retry sentence; a limit counts as kept within a tenth
+# Section 4.2.2: a parsed answer against its format in its slot, TRUE or the check it failed with the numbers of its retry sentence; a limit counts as kept within a tenth
 check_piece <- function(parsed, item) {
   f <- slot_format(item$format, item$slot); b <- f$budgets
   fail  <- function(kind, values = list()) structure(FALSE, kind = kind, values = values)
@@ -55,13 +55,13 @@ check_piece <- function(parsed, item) {
   TRUE
 }
 
-# v6 §12.7: the sentence a failed answer is asked for again with; an element over its limit counts as the structure
+# Section 4.2.2: the sentence a failed answer is asked for again with; an element over its limit counts as the structure
 retry_sentence <- function(check) {
   kind <- attr(check, "kind")
   fill(retry_sentences[[if (kind == "long") "structure" else kind]], attr(check, "values"))
 }
 
-# v6 §12.7: a text cut at its last complete sentence within a budget
+# Section 4.2.2: a text cut at its last complete sentence within a budget
 cut_sentences <- function(text, max_words) {
   sentences <- trimws(strsplit(text, "(?<=[.!?])[[:space:]]+", perl = TRUE)[[1]])
   sentences <- sentences[nzchar(sentences)]
@@ -71,7 +71,7 @@ cut_sentences <- function(text, max_words) {
   paste(kept, collapse = " ")
 }
 
-# v6 §12.7: a piece's texts shortened within its slot's budgets, each at its last complete sentence
+# Section 4.2.2: a piece's texts shortened within its slot's budgets, each at its last complete sentence
 shorten_piece <- function(parsed, item) {
   b <- slot_format(item$format, item$slot)$budgets
   if (!is.null(b$body) && words_in(unlist(parsed$body)) > b$body[2]) {
@@ -90,7 +90,7 @@ shorten_piece <- function(parsed, item) {
   parsed
 }
 
-# v6 §12.7: a piece without a model, its type's headline and body filled from the sheet
+# Section 4.2.2: a piece without a model, its type's headline and body filled from the sheet
 template_piece <- function(item, sheet, reason = "no key") {
   lines <- readLines(file.path("02_Game/content/newspaper/templates", paste0(item$type, ".md")), warn = FALSE, encoding = "UTF-8")
   text  <- function(label) cap1(fill_placeholders(sub(paste0("^", label, ": "), "", grep(paste0("^", label, ": "), lines, value = TRUE)[1]), sheet))
@@ -99,7 +99,7 @@ template_piece <- function(item, sheet, reason = "no key") {
        elements = list(headline = text("Headline"), body = list(text("Body"))))
 }
 
-# Section 4.2.2 and v6 §12: the instruction of a piece, composed for this call alone: its page, its assignment, its voice, its speakers, its format, its precision, its facts and, for the lead, the other pages
+# Section 4.2.2: the instruction of a piece, composed for this call alone: its page, its assignment, its voice, its speakers, its format, its precision, its facts and, for the lead, the other pages
 piece_instruction <- function(item, sheet, may) {
   f <- slot_format(item$format, item$slot); lead <- item$slot == "L"
   assignment <- types$assignment[types$id == item$type]
@@ -125,7 +125,7 @@ piece_request <- function(item, sheet, fct, other = NULL, retry = NULL) {
               about = c(list(q = sheet$q), item[c("slot", "type", "tone", "precision", "format")], list(retry = !is.null(retry))))
 }
 
-# v6 §12.2: a piece as the issue holds it, a comment with the author line the game prints
+# Section 4.2.2: a piece as the issue holds it, a comment with the author line the game prints
 model_piece <- function(item, record, elements = record$parsed, retried = FALSE, shortened = FALSE, kept = NULL) {
   if (item$format == "F-COMMENT") elements$author <- speakers$author
   list(slot = item$slot, section = item$section, type = item$type, star = item$star, tone = item$tone,
@@ -133,7 +133,7 @@ model_piece <- function(item, record, elements = record$parsed, retried = FALSE,
        model = record$model_served, elements = elements, retried = retried, shortened = shortened, kept = kept)
 }
 
-# Section 4.2.2 and v6 §12.7: the answer taken, the first that passed its check; else the last, shortened where a text ran over its budget and kept as it is otherwise, or the template where no answer was parsed
+# Section 4.2.2: the answer taken, the first that passed its check; else the last, shortened where a text ran over its budget and kept as it is otherwise, or the template where no answer was parsed
 settle_piece <- function(item, answers, sheet) {
   parsed <- Filter(function(a) a$record$ok, answers)
   if (!length(parsed)) return(template_piece(item, sheet, reason = "no answer parsed"))
@@ -164,7 +164,7 @@ write_slots <- function(items, sheet, facts_by, other = NULL, on = llm_available
   list(pieces = lapply(items, function(it) settle_piece(it, answers[[it$slot]], sheet)), records = records)
 }
 
-# v6 §12.3: a chart's data from the sheet's history
+# Section 4.2.2: a chart's data from the sheet's history
 chart_data <- function(id, sheet) {
   ch <- charts[charts$id == id, ]; h <- sheet$history; law <- sheet$law
   series <- strsplit(ch$series, ";")[[1]]
@@ -177,14 +177,14 @@ chart_data <- function(id, sheet) {
   list(id = id, series = data, reference = reference, caption = ch$caption)
 }
 
-# v6 §12.2: the lead's strip of key figures, its first three must facts with exact figures
+# Section 4.2.2: the lead's strip of key figures, its first three must facts with exact figures
 key_figures <- function(item, sheet) {
   parts <- fact_parts(sheet)
   strip <- lapply(facts_of(item$must, sheet), function(f) list(label = f, text = fact_sentence(f, parts, "exact")))
   head(Filter(function(x) !is.null(x$text), strip), 3)
 }
 
-# v6 §12.1: the issue assembled, its masthead, index, pages and pieces
+# Section 4.2.2: the issue assembled, its masthead, index, pages and pieces
 assemble_issue <- function(plan, pieces, lead, sheet) {
   q <- sheet$q
   all <- c(list(L = lead), pieces)

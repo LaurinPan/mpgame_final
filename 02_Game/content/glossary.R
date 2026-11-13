@@ -1,6 +1,6 @@
-# 02_Game/content/glossary.R — v6 §8.2: the glossary, one explanation per term
+# 02_Game/content/glossary.R — the glossary, one explanation per term
 
-# v6 §8.2: each term with its explanation, without figures, the phrases by which a call's texts are found to use it, and whether it is an everyday term, which the newspaper's readers are not given
+# The glossary: each term with its explanation, without figures, the phrases by which a call's texts are found to use it, and whether it is an everyday term, which the newspaper's readers are not given
 glossary <- read.table(header = TRUE, sep = "|", strip.white = TRUE, quote = "", comment.char = "",
                        stringsAsFactors = FALSE, text = "
 term | explanation | found_as | everyday

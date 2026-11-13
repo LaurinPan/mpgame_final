@@ -23,7 +23,7 @@ change_weights <- function(lambda_i, horizon, par) lambda_i * par$beta^(seq_len(
 # A.8, "Solving the Problem": the plan's system solved outright, since the cost on rate changes gives it full rank
 plain_solve <- function(A, b) drop(solve(A, b))
 
-# (A25), A.5 "Credibility and the Record" and v6 §3: the boxes the word allows each planned rate, between the floor and the law's cap
+# (A25), A.5 "Credibility and the Record" and Section 4.2.1: the boxes the word allows each planned rate, between the floor and the law's cap
 word_boxes <- function(config, quarter, state, in_force, word) {
   par <- config$par; H <- par$H
   lo <- rep(0, H); hi <- rep(consts$cap, H)

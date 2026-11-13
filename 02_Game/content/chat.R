@@ -1,6 +1,6 @@
-# 02_Game/content/chat.R — v6 §10: what the Chief Economist's call holds by topic beside the facts and the note
+# 02_Game/content/chat.R — Section 4.2.2: what the Chief Economist's call holds by topic beside the facts and the note
 
-# v6 §10: the topic's never sentence, where its note has a rule
+# Section 4.2.2: the topic's never sentence, where its note has a rule
 chat_never <- c(
   T2 = "In this topic, never say which weighting of inflation against output is right, since the mandate fixes it.",
   T3 = "In this topic, never say exactly how the public works out its view of our aim from the rates we set.",
@@ -8,10 +8,10 @@ chat_never <- c(
   T5 = "In this topic, never say whether to keep or to break the announced plan in a given quarter.",
   T7 = "In this topic, never take sides between the parties.")
 
-# v6 §10: what follows every never sentence
+# Section 4.2.2: what follows every never sentence
 chat_never_holds <- "This holds at every step, the third included."
 
-# v6 §10: the places a topic's desk and newspaper have, one sentence each
+# Section 4.2.2: the places a topic's desk and newspaper have, one sentence each
 chat_places <- list(
   list(topics = paste0("T", 1:8),          place = "The economic figures and their charts, on the desk."),
   list(topics = c("T1", "T2", "T3", "T6", "T7"), place = "The chart of the policy rate."),
@@ -24,7 +24,7 @@ chat_places <- list(
   list(topics = c("T6", "T7", "T8"),       place = "The newspaper's box on the government, with government spending against its normal level."),
   list(topics = c("T7", "T8"),             place = "The same box, with the party in office, the poll and the next election, and the bar at the top of the desk that counts down to the vote."))
 
-# v6 §10: the staff forecast at the typed decision as sentences, and how the conversation's lines begin
+# Section 4.2.2: the staff forecast at the typed decision as sentences, and how the conversation's lines begin
 chat_sentences <- list(
   forecast      = "At the decision you have typed, a policy rate of {rate} percent and the announced path {path}, the staff forecasts for this quarter inflation of {inflation} percent a year, an output gap of {gap} percent and unemployment of {unemployment} percent.",
   forecast_rate = "At the decision you have typed, a policy rate of {rate} percent, the staff forecasts for this quarter inflation of {inflation} percent a year, an output gap of {gap} percent and unemployment of {unemployment} percent.",

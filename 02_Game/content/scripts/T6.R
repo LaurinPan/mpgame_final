@@ -1,6 +1,6 @@
-# 02_Game/content/scripts/T6.R — v6 §6, Topic 6 (Chapter D; Section 4.3, Table 1)
+# 02_Game/content/scripts/T6.R — Section 4.3.1 and Table 1: Topic 6 (Chapter D)
 
-# v6 §6: the script of Topic 6
+# Section 4.3.1 and Table 1: the script of Topic 6
 T6 <- list(
   id = "T6", name = "Government Spending", chapter = "D",
   objective = "Fiscal policy",

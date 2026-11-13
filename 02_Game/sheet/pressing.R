@@ -1,6 +1,6 @@
-# 02_Game/sheet/pressing.R — v6 §5.4, the pressing figure
+# 02_Game/sheet/pressing.R — Section 4.2.2, the pressing figure
 
-# v6 §5.4: the figure furthest from its normal, its direction and severity
+# Section 4.2.2: the figure furthest from its normal, its direction and severity
 pressing <- function(figures, law, thresholds) {
   distance <- c(inflation    = figures$inflation - law$target,
                 unemployment = figures$unemployment - law$natural_unemployment,

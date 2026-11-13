@@ -1,6 +1,6 @@
 # 02_Game/bank/term_record.R — Section 4.2.2, the term's record for the debrief, its term losses discounted as in (A36)
 
-# Section 4.2.2 and v6 §5.4: the record of a term, the two runs, the loss by quarter with its weight, the term losses with their equivalent misses, the events, and what the topic shows of the public, the word and the government
+# Section 4.2.2: the record of a term, the two runs, the loss by quarter with its weight, the term losses with their equivalent misses, the events, and what the topic shows of the public, the word and the government
 term_record <- function(run) {
   T <- run$T; q <- run$quarters; b <- run$bank$quarters
   weight <- run$config$par$beta^(seq_len(T) - 1)
@@ -25,7 +25,7 @@ term_record <- function(run) {
 # (A36): a term loss, each quarter's loss weighted by beta^(t - 1) from the term's first quarter
 term_loss <- function(loss, par) sum(par$beta^(seq_along(loss) - 1) * loss)
 
-# v6 §5.4: the two term losses and their equivalent misses, the inflation miss in points that, held in every quarter, would give the same loss
+# Section 4.2.2: the two term losses and their equivalent misses, the inflation miss in points that, held in every quarter, would give the same loss
 term_losses <- function(loss) {
   player <- sum(loss$weight * loss$player); bank <- sum(loss$weight * loss$bank)
   list(player = player, bank = bank, equivalent = list(player = sqrt(player / sum(loss$weight)), bank = sqrt(bank / sum(loss$weight))))

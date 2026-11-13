@@ -1,4 +1,4 @@
-# 02_Game/bank/marks.R — Section 4.2.2 and v6 §5.4: the debrief's marks
+# 02_Game/bank/marks.R — Section 4.2.2: the debrief's marks
 
 # Section 4.2.2: a decision's cost, the discounted term loss (A36) of the player's path less the same path with the bank's decision in that quarter
 decision_costs <- function(run, record) {
@@ -22,7 +22,7 @@ decision_costs <- function(run, record) {
   list(table = do.call(rbind, rows), later = later)
 }
 
-# v6 §5.4: a decision is marked when its cost is at least 0.5 squared points and, where the player's term loss exceeds the bank's, above a tenth of the excess; of these, at most the three costliest, each with its equivalent miss, the inflation miss that would cost as much in its quarter
+# Section 4.2.2: a decision is marked when its cost is at least 0.5 squared points and, where the player's term loss exceeds the bank's, above a tenth of the excess; of these, at most the three costliest, each with its equivalent miss, the inflation miss that would cost as much in its quarter
 debrief_marks <- function(costs, term_loss_player, term_loss_bank) {
   tab <- costs$table
   if (is.null(tab)) return(list())

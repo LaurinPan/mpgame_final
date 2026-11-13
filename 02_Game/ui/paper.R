@@ -1,9 +1,9 @@
-# ui/paper.R — the newspaper drawn from issue_view (scripts appendix §12): the
+# ui/paper.R — the newspaper drawn from issue_view (Section 4.2.2): the
 # masthead with the quarter and the year, two spreads of two pages, the index on
 # page 1 beside the lead, the slots S1 to S5 at fixed places, each piece in its
-# format (§12.2) with its chart (§12.3), a piece that runs past its page
-# continued on the next (§12.7), the staff's selection marking whole pieces
-# (scripts appendix §4.5). The folded paper on the desk strip carries the lead's
+# format with its chart, a piece that runs past its page
+# continued on the next, the staff's selection marking whole pieces
+# (Section 4.2.1). The folded paper on the desk strip carries the lead's
 # headline and standfirst, and while the background worker prints the edition
 # the line that it is being printed. Pure functions on the issue.
 
@@ -37,7 +37,7 @@ ui_paper_printing_html <- function(q) {
     ui_paper_switch_html(FALSE))
 }
 
-# --- the pieces, by format (scripts appendix §12.2) -------------------------------------------------------------------------------------------------
+# --- the pieces, by format --------------------------------------------------------------------------------------------------------------------------
 paper_paras_html <- function(paras) paste(vapply(as.character(unlist(paras)), function(p) game_tag("p", list(), game_esc(p)), ""), collapse = "")
 # The lines a text takes in a column of `chars` characters (the layout's count).
 paper_lines <- function(text, chars) if (is.null(text) || !length(text) || all(!nzchar(text))) 0L else as.integer(sum(ceiling(nchar(text) / chars)))
@@ -81,8 +81,8 @@ ui_piece_html <- function(p, iss, lead = FALSE, cont = NULL) {
            head, ui_piece_body_html(p, lead), note, cont)
 }
 
-# --- the pages (scripts appendix §12.1) ------------------------------------------------------------------------------------------------------
-# Continuation (scripts appendix §12.7): a page holds 33 rows of 20 px under its running head (760 - 22 - 26 - 40 px); a continuation at its top takes its
+# --- the pages -------------------------------------------------------------------------------------------------------------------------------
+# Continuation: a page holds 33 rows of 20 px under its running head (760 - 22 - 26 - 40 px); a continuation at its top takes its
 # rows first, and the slots share the rest. A piece's head (the kicker, the headline at 1.3 rows a line, the standfirst, the intro, the
 # author line), its chart (7.5 rows) and its table take their rows; its text runs in two columns, counted at the layout's characters a line.
 # The text is a list of units: the body's paragraphs, or an interview's questions and answers, or the voices' quotations. What runs past the
@@ -138,7 +138,7 @@ paper_cut <- function(paras, lines, chars) {
   }
   list(first = first, rest = character(0))
 }
-# A text cut after its last complete sentence (scripts appendix §12.7, page 4): the sentences kept up to `max_chars` characters, the first always.
+# A text cut after its last complete sentence (page 4): the sentences kept up to `max_chars` characters, the first always.
 paper_last_sentences <- function(text, max_chars) {
   sentences <- trimws(strsplit(text, "(?<=[.!?])[[:space:]]+", perl = TRUE)[[1]]); sentences <- sentences[nzchar(sentences)]
   if (!length(sentences)) return(text)
@@ -175,7 +175,7 @@ ui_paper_index_html <- function(iss) {
              game_tag("span", list(class = "paper-index-page"), game_esc(if (r$page == 1) ui_s("paper.front_page") else ui_s("paper.index_page", page = r$page)))) }, "")
   game_tag("nav", list(class = "paper-index", `aria-label` = ui_s("paper.index_title")), game_tag("h3", list(class = "paper-index-title"), game_esc(ui_s("paper.index_title"))), paste(lines, collapse = ""))
 }
-# Page 1 (scripts appendix §12.1, F-LEAD): the masthead; under it the index (its lines one line each) beside the lead's head (kicker, headline,
+# Page 1 (F-LEAD): the masthead; under it the index (its lines one line each) beside the lead's head (kicker, headline,
 # standfirst); then the lead's body across the page in two columns, its chart at the top of the right column (the F-LEAD budget
 # with its chart and its strip needs the page's full width), and the strip of three figures.
 # The lead's paragraphs split over two columns, the chart's room counted in the right one.
@@ -192,7 +192,7 @@ paper_split_columns <- function(paras, chart_chars, chars = 42L) {
   }
   list(left = left, right = character(0), cut = FALSE)
 }
-# Scripts appendix §12.7: the lead within page 1. The body's rows under the masthead, the index and the lead's head, less the strip of
+# The lead within page 1. The body's rows under the masthead, the index and the lead's head, less the strip of
 # figures and the template's note; in two columns, the chart and, when the body runs past, the line "Continued on page n" counted in the
 # right one (under balanced columns without a chart, a row of their own; ui_params$paper$lead). What runs past is cut at a word and
 # continued on page 2: list(paras, rest).
@@ -236,7 +236,7 @@ ui_paper_front_html <- function(iss, paras = as.character(unlist(iss$pieces$L$el
     game_tag("div", list(class = "paper-front-top"), ui_paper_index_html(iss), head),
     game_tag("section", list(class = paper_piece_classes(L, iss, "paper-lead-body"), `data-slot` = "L"), body, strip, note)), "paper-front")
 }
-# Scripts appendix §12.1: the two fixed boxes at the foot of page 4, drawn from issue_view's boxes and never written by a model,
+# The two fixed boxes at the foot of page 4, drawn from issue_view's boxes and never written by a model,
 # box W (the bank's word) in Topics 4, 5 and 8 and box G (government and politics) in Topics 6, 7 and 8; with their height in rows
 # (side by side, or one across the page), so that S5 fits the room they leave.
 ui_paper_boxes <- function(iss) {
@@ -264,7 +264,7 @@ ui_paper_boxes <- function(iss) {
        rows = max(rows_of(lw), rows_of(lg)) + 1)
 }
 # The four pages: page 1 with the lead (its rest continued at page 2's top), then the slots in their places, every piece that runs past
-# its slot continued at the top of the next page with room for it (scripts appendix §12.7), in the slots' order; its line "Continued on page n" names
+# its slot continued at the top of the next page with room for it, in the slots' order; its line "Continued on page n" names
 # the page where it lands; page 4 ends with the fixed boxes. What page 3 continues on page 4 takes at most the room page 4 leaves after
 # its boxes, its note and S5's head with two rows; a piece page 4 has no row left for ends on page 3 at its last complete sentence.
 ui_paper_pages_html <- function(iss) {
@@ -307,7 +307,7 @@ ui_paper_pages_html <- function(iss) {
       rows <- max(paper_piece_rows(p, g) + 2, left - later)
       ft <- paper_fit_slot(p, g, rows)
       left <- left - 0.7 - (if (length(ft$rest)) rows else paper_piece_rows(p, g) + paper_units_rows(paper_units(p$elements), g))
-      if (length(ft$rest) && (n == 4L || (n == 3L && !to4(ft$rest)))) { ft$piece$units <- last_sentence(ft$piece$units); ft$rest <- list() }   # cut at its last complete sentence (scripts appendix §12.7)
+      if (length(ft$rest) && (n == 4L || (n == 3L && !to4(ft$rest)))) { ft$piece$units <- last_sentence(ft$piece$units); ft$rest <- list() }   # cut at its last complete sentence
       cont <- NULL
       if (length(ft$rest)) { cy <- carry(p, ft$rest, n); nxt[[length(nxt) + 1L]] <- cy; cont <- foot(cy$k) }
       sections <- c(sections, game_tag("div", list(class = "paper-slot-box", `data-slot` = slot), ui_piece_html(ft$piece, iss, cont = cont)))

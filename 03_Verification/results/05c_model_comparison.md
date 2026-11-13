@@ -26,16 +26,16 @@ Figures under `<use>` that an answer with exact figures did not write, of those 
 
 | Format | claude-sonnet-5-5 | claude-haiku-5-5 |
 |---|---|---|
-| F-CHART | 0 of 205 | 0 of 272 |
-| F-COMMENT | 0 of 23 | 0 of 37 |
-| F-INTERVIEW | 0 of 25 | 0 of 32 |
-| F-LEAD | 0 of 100 | 0 of 77 |
-| F-MARKETS | 0 of 1 | 0 of 1 |
-| F-VOICES | 0 of 26 | 28 of 30 |
+| Chart | 0 of 205 | 0 of 272 |
+| Comment | 0 of 23 | 0 of 37 |
+| Interview | 0 of 25 | 0 of 32 |
+| Lead | 0 of 100 | 0 of 77 |
+| Markets table | 0 of 1 | 0 of 1 |
+| Voices | 0 of 26 | 28 of 30 |
 
 The figures found nowhere in the request:
 
-- comparison | T8 q18 | piece S5, exact figures | claude-haiku-5-5 | found nowhere: neither | 9.8 | ...pposition stands at 45.1 percent, so the gap between the two sides is 9.8 points. Government spending is 1.2 percent below ...
+- Topic 8, quarter 18, Politics or Analysis, exact figures | claude-haiku-5-5 | found nowhere: neither | 9.8 | ...pposition stands at 45.1 percent, so the gap between the two sides is 9.8 points. Government spending is 1.2 percent below ...
 
 ## Retries and failed checks
 

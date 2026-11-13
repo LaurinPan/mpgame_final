@@ -1628,28 +1628,28 @@
       "checksum": "80c405941cef23d198c33ab2cfffb61c"
     },
     "01_Engine/stage6_government/parameters.R": {
-      "checksum": "beec4f57811933c9042190b9be729496"
+      "checksum": "fd80b12abbcae578a0cdefcfc47c84b7"
     },
     "01_Engine/stage6_government/stage6.R": {
       "checksum": "387eafcb75617b31e57e8c2022f1b854"
     },
     "02_Game/bank/fair_quarter.R": {
-      "checksum": "bf842af806eccddcaa055e4791465234"
+      "checksum": "c2ba2e1645b783bd0982af8289c8de95"
     },
     "02_Game/bank/guided.R": {
-      "checksum": "87a3e1f2bcb6a5666c8a2d8c7a8042c7"
+      "checksum": "1c1e40da2f51cbc5b309addae59369c4"
     },
     "02_Game/bank/marks.R": {
-      "checksum": "7c1b4e1b84d1d143d9a0f9c1c09b034a"
+      "checksum": "90b2f830c235f06127886df6c71ab776"
     },
     "02_Game/bank/reference_bank.R": {
-      "checksum": "d83b70c9ebaa33db7b978b0cef675928"
+      "checksum": "cffa7c28d5a9bf94bb454055fbc76e27"
     },
     "02_Game/bank/staff_forecast.R": {
-      "checksum": "2d13cc2c1ff351b778a2abbd76a6671f"
+      "checksum": "72ecdfa826a43348cee6da71d190575a"
     },
     "02_Game/bank/term_record.R": {
-      "checksum": "565e3dd7a5002d05850df3eecec0441f"
+      "checksum": "2a1d4d0420c43432b49e90af28a388df"
     },
     "02_Game/content/briefings/B-A.md": {
       "checksum": "b6863902b46dfeb4ea0e97587e6545d9"
@@ -1763,22 +1763,22 @@
       "checksum": "ec42d080c5bf48ecd40497519deb86b3"
     },
     "02_Game/content/chapters.R": {
-      "checksum": "60d5a9a1524acf73ba52236994bd8ab6"
+      "checksum": "87837ec143cc216f575f9317c2b839cf"
     },
     "02_Game/content/chat.R": {
-      "checksum": "51bba72de3603cd529eac5495461ba76"
+      "checksum": "c1eb523499af04ab46cb524b50b88f3a"
     },
     "02_Game/content/classes.R": {
-      "checksum": "0b28742639543da49b57805f36d71bcb"
+      "checksum": "b2cda140515375d4b517458227b43ae9"
     },
     "02_Game/content/debrief.R": {
-      "checksum": "8c49f1871fc2febc0a66fcaf5a1902a4"
+      "checksum": "3383a46d5df44d57b869cf1d0dba8c71"
     },
     "02_Game/content/facts.R": {
-      "checksum": "db770dd5d98c31a8645de8f2867463e3"
+      "checksum": "224415b97eb18870ac1d20d63ae060a1"
     },
     "02_Game/content/glossary.R": {
-      "checksum": "2d1ddc6c6419ed66d235f373629fd725"
+      "checksum": "591e0ea481ff12b58f1e8c26c7c990cf"
     },
     "02_Game/content/guided/T1.csv": {
       "checksum": "e14880fea9e169bed588f34b74230e3b"
@@ -1796,19 +1796,19 @@
       "checksum": "031eae8490c9911d41432439adfc08c5"
     },
     "02_Game/content/map.R": {
-      "checksum": "49a613cc69b078dcb68ed534fde50a9e"
+      "checksum": "0c3ea4d501369bf07bb607203342c721"
     },
     "02_Game/content/models.R": {
       "checksum": "46ba65a140963b24deddca2b133ecdbb"
     },
     "02_Game/content/newspaper/charts.R": {
-      "checksum": "f63bd8b043308f2af6d57206b31fdf47"
+      "checksum": "b32a9ea9f6e10601316b2ec9368ccb2b"
     },
     "02_Game/content/newspaper/instruction.R": {
-      "checksum": "4dfb6d38ba259bc2a88f547525da485e"
+      "checksum": "8e3fb02ed886e59574f6f22b7f99ef14"
     },
     "02_Game/content/newspaper/layout.R": {
-      "checksum": "d1e01eeb6e8c70e2da2b844c6578701c"
+      "checksum": "552fbb82a857ddf59dcaaf60c832127a"
     },
     "02_Game/content/newspaper/templates/A-analysis.md": {
       "checksum": "69506b6f43e8d22579a8e9ef406b9572"
@@ -1889,7 +1889,7 @@
       "checksum": "a43190db7742c24a769b4a7f7277227d"
     },
     "02_Game/content/newspaper/types.R": {
-      "checksum": "b42fa775426baf62031357d8af518915"
+      "checksum": "375f5b50a334056ba69e3527f2a9ae4a"
     },
     "02_Game/content/notes/T1.md": {
       "checksum": "49b6f856e344b721d40094e5b0ef853e"
@@ -1916,7 +1916,7 @@
       "checksum": "2b35bc35858e0ba4d24f4df1c79092fa"
     },
     "02_Game/content/panels.R": {
-      "checksum": "84786920de2a87604923b53c5c3e8cf1"
+      "checksum": "ed74b5e79cb4c48ec6557b89fcbbf83e"
     },
     "02_Game/content/prompts/fixed_chat.md": {
       "checksum": "aa33b257a7c6b1d53877f9117f85ba48"
@@ -1934,28 +1934,28 @@
       "checksum": "8e640e727b610c652cfcf6575f13f35b"
     },
     "02_Game/content/scripts/T1.R": {
-      "checksum": "f4f1f7d649fbb8a1bfbd559c13ab4887"
+      "checksum": "a22367403187858a2965e0f816475802"
     },
     "02_Game/content/scripts/T2.R": {
-      "checksum": "71aee472d51384a2025cc2091631697b"
+      "checksum": "2eb80207e2c6b2f1dedf596b386bfe02"
     },
     "02_Game/content/scripts/T3.R": {
-      "checksum": "17dcdbf57f012bf8961bd756074242bd"
+      "checksum": "9e9afd64fb5d294807f48f5752e7ce8b"
     },
     "02_Game/content/scripts/T4.R": {
-      "checksum": "a75ec1ebef0c9821e0235e0076805749"
+      "checksum": "8e1db5be4ce5af84394b1ff6ce12634e"
     },
     "02_Game/content/scripts/T5.R": {
-      "checksum": "5b1f277df79d3e8481f150c602119928"
+      "checksum": "c1e8ac742093688dc9d0829b0b3fd31d"
     },
     "02_Game/content/scripts/T6.R": {
-      "checksum": "e3301c4545735832a171994276054dcd"
+      "checksum": "6ea1345774caf7c820e248076a37a155"
     },
     "02_Game/content/scripts/T7.R": {
-      "checksum": "df811eeb450d1a8c9b72d785e4e8cfc0"
+      "checksum": "f52ab30ef7c217a8de102ba7d27fa167"
     },
     "02_Game/content/scripts/T8.R": {
-      "checksum": "c1d32fd042be054a21b6ba172ce99a0b"
+      "checksum": "58b589600bfd09464f176a20c065bcb7"
     },
     "02_Game/content/theory/economy.yaml": {
       "checksum": "4e01c27acaec0f477283500c81b8ebe5"
@@ -1967,166 +1967,163 @@
       "checksum": "4163a6d3d89ba1cb4ba3046b9d087374"
     },
     "02_Game/content/theory/P1.yaml": {
-      "checksum": "37dd4af6757fc164dce07e2310567809"
+      "checksum": "d393f28d36bf33a408f6833d93fd4e53"
     },
     "02_Game/content/theory/P2.yaml": {
-      "checksum": "08a6359445afe4399c6fbd5c802a934d"
+      "checksum": "39528098bbcefc91d14e3c457d7a6606"
     },
     "02_Game/content/theory/P3.yaml": {
-      "checksum": "d61800942f170e9f223d6b27be4df10f"
+      "checksum": "37541a70c8e9ca394867ea15d27ba73a"
     },
     "02_Game/content/theory/P4.yaml": {
-      "checksum": "1f9049081afb4e7e6634f665d6a75294"
+      "checksum": "624fba512ee6078e66a0dfd738722bb7"
     },
     "02_Game/content/theory/P5.yaml": {
-      "checksum": "023fff5e20c0bd8db67a96d7c5ad1634"
+      "checksum": "5c4e46427c6f349962e08c26268abcfe"
     },
     "02_Game/content/theory/P6.yaml": {
-      "checksum": "6ad40c443d98ba887b714431a4781bdb"
+      "checksum": "12f94ddf6ed46195506114a51c626362"
     },
     "02_Game/content/theory/references.yaml": {
-      "checksum": "bdacb484c5e8441b3273e26092a03818"
+      "checksum": "1bb86292b40dad9f004fb634ad5c6953"
     },
     "02_Game/content/tours/T1.md": {
-      "checksum": "c6ce3fbca23b15570e3d2a5aa8839bbd"
+      "checksum": "24baf37b95bcafddd68527d27bed7181"
     },
     "02_Game/content/tours/T2.md": {
-      "checksum": "250830c41d14655f8d539273fa65d091"
+      "checksum": "080c50334d4b515f77214b1d8d4b80f5"
     },
     "02_Game/content/tours/T3.md": {
-      "checksum": "90326d46fb50c0a9af490264de6a5b89"
+      "checksum": "a19bc3a1a30e6e4e6d4c03f09f5d74cd"
     },
     "02_Game/content/tours/T4.md": {
-      "checksum": "b0161dadf6d2450047aad4c492cfec20"
+      "checksum": "9035fb36cc61353ef2f529108526ccf9"
     },
     "02_Game/content/tours/T5.md": {
-      "checksum": "9bc96218ddcf7b677111d284f8d5932b"
+      "checksum": "dd6d1b83fb5c2c04ba0231b1f8f51fcc"
     },
     "02_Game/content/tours/T6.md": {
-      "checksum": "9e762cfbbbab8006f111990a43004d71"
+      "checksum": "0848ab6e8aeea33237ae2cb20aff7b6a"
     },
     "02_Game/content/tours/T7.md": {
-      "checksum": "364480667e3b2fc9f065356a92ae8a9c"
+      "checksum": "20695a2f74ce340cb70b2931ebcc1030"
     },
     "02_Game/content/tours/T8.md": {
-      "checksum": "1f28506ddaa195053936db0786ad25ad"
+      "checksum": "b3d8e6e4b026e429af0758f77c98eeff"
     },
     "02_Game/llm/api.R": {
       "checksum": "c9869a72e44a78ae9893faac3bb5071b"
     },
     "02_Game/llm/chat.R": {
-      "checksum": "19591ab039cb00333319bc7412fa9441"
+      "checksum": "8413360105de24558700e3747e8e0f7b"
     },
     "02_Game/llm/debrief.R": {
-      "checksum": "59f591fd0ba0cf05ecc73e636fc48288"
+      "checksum": "d7724cf588da6b29b8b832fedf8f2792"
     },
     "02_Game/llm/editor.R": {
-      "checksum": "d62dac2c4c368049b0fe5d2171a2aebd"
+      "checksum": "c92034fdef67a93639a60ab12c718bd4"
     },
     "02_Game/llm/facts.R": {
-      "checksum": "8fe9c9e34602d77df5f3a3d90ece1bef"
+      "checksum": "dc055a35e74fb3bf69ac2e54bee36350"
     },
     "02_Game/llm/newspaper.R": {
-      "checksum": "6bcfbac8c27299c7d8293124ce24a468"
+      "checksum": "faf4f0299eb3496ad0f024999f535a1f"
     },
     "02_Game/play/briefings.R": {
-      "checksum": "1367a845cf40c4779d7289e1b5cbad92"
+      "checksum": "3d17b2ff8c9e236d7b375c83830847d0"
     },
     "02_Game/play/headless.R": {
       "checksum": "3b8f97594d2d60c1a2c779810a7c269c"
     },
     "02_Game/play/script.R": {
-      "checksum": "7eb35015dd2f0081a1a6d38a60cb9af8"
+      "checksum": "2ef7817902c08979e99cfee5578ee86c"
     },
     "02_Game/play/topic.R": {
-      "checksum": "5e14209f90fa769ad04332b43f541b2a"
+      "checksum": "e55b87885c1b1716de32f77b0c778348"
     },
     "02_Game/play/views.R": {
-      "checksum": "65928fc4a80e74dd06eb366de219ce3e"
+      "checksum": "3a261683cebcfb738c3f33cb79312cbf"
     },
     "02_Game/sheet/classify.R": {
-      "checksum": "e92646ac1e27f13fa5cca8371291ef3b"
+      "checksum": "2fcf1c3693b9ad1681373edda80e478f"
     },
     "02_Game/sheet/drivers.R": {
-      "checksum": "2e1fdf3fceb61de105f49bfc3ff15a0a"
+      "checksum": "882a62c2f825eed9b70d00855a22f4d7"
     },
     "02_Game/sheet/fact_sheet.R": {
-      "checksum": "5b8ff2eeb73584fd21b83a450388fd0c"
+      "checksum": "fa3564a2f13f35cba6f06a959e66e9f0"
     },
     "02_Game/sheet/pressing.R": {
-      "checksum": "28717b551b68d5b478a2f8eca63fc97f"
+      "checksum": "cc3de8bcae2912d379110b651cb6923e"
     },
     "02_Game/sheet/readouts.R": {
-      "checksum": "af1ce1148088ad69e2aac99fada662cb"
+      "checksum": "6c367795181eb4ab1fc2e11e5bff0238"
     },
     "02_Game/sheet/record.R": {
-      "checksum": "28b86c04b747baa5eb38cdbae1225baf"
+      "checksum": "66cd9bc06d4d09f7c4200df5479c6db9"
     },
     "02_Game/ui/charts.R": {
-      "checksum": "d1535b3d80432cbfd61fcc6ac3e24f7a"
+      "checksum": "32a3f2f0443068c00aa3b67c3986e2d3"
     },
     "02_Game/ui/debrief.R": {
-      "checksum": "1f3ee786399d4d89d046d26626e675f0"
+      "checksum": "51ecde1f8ec6d6b8e9e99b20e20a75ee"
     },
     "02_Game/ui/desk.R": {
-      "checksum": "b95d111f132661120646e39a92a28ee3"
+      "checksum": "db3395b4500200eb8b597efd61ce422e"
     },
     "02_Game/ui/html.R": {
-      "checksum": "5938706eeb06d0a15f53e5fb038761a9"
+      "checksum": "4b328313f60d08ffac8f0fd31ed6fdf1"
     },
     "02_Game/ui/map.R": {
-      "checksum": "72c6ecdc396e4fd010bba0bb5ad10837"
+      "checksum": "5cb591ccaa47d643b0cd17e969d89914"
     },
     "02_Game/ui/menu.R": {
-      "checksum": "fd6f6db72eb67249d9dc5c34dafa19a3"
+      "checksum": "7580cf2bd064b6b6941ebdd333cc4949"
     },
     "02_Game/ui/paper.R": {
-      "checksum": "fb5ac04c0b41ad3be4ada02461c7ebae"
+      "checksum": "04fe79b54018ec08b30b37ee471858c0"
     },
     "02_Game/ui/params.R": {
-      "checksum": "e8d121cd0fa4907082a26832d99fb75f"
+      "checksum": "694a5a57834abb4fc7105f4586647a05"
     },
     "02_Game/ui/runs.R": {
       "checksum": "76e0785ea499f5fa72e410c9b0a6d984"
     },
     "02_Game/ui/server.R": {
-      "checksum": "5f3dec35ab6ba9510ecd3423d9a42e40"
+      "checksum": "9d8bada0d737419c0528fe1657631c14"
     },
     "02_Game/ui/store.R": {
       "checksum": "95437d4a53459a74d3f0975a44204495"
     },
     "02_Game/ui/strings.yaml": {
-      "checksum": "272a460a56310d4656be4d17abc94bb0"
+      "checksum": "8e5169fb80197fb5380dca59c43ec858"
     },
     "02_Game/ui/theory.R": {
-      "checksum": "07aa68ec316f120ed7d415b964238693"
+      "checksum": "136f344e240ad18bd73f346da70fdc76"
     },
     "02_Game/ui/tour.R": {
-      "checksum": "3abb60bfb74b6af4b2206fc55736faf1"
+      "checksum": "701c0564ad760d9333023ce7a5d7008e"
     },
     "02_Game/ui/users.yaml": {
-      "checksum": "c2273b5e95288acadf04c77f63ec83e0"
+      "checksum": "56b6b060eec4086aa4fff58b0506d498"
     },
     "02_Game/web/base.css": {
-      "checksum": "a20c2afdc7a67afa8d9fe8a1cca8091b"
-    },
-    "02_Game/web/game-phase3.css": {
-      "checksum": "38afdc901db60b389f6a5be476874804"
+      "checksum": "700ede62a31eefc5aceb9276dbf4c9ba"
     },
     "02_Game/web/game.css": {
-      "checksum": "53e857f2704eb6eda35db4bbb04e9c05"
+      "checksum": "631cbd60332411059993e69c8da9bae0"
     },
     "02_Game/web/game.js": {
-      "checksum": "93126344422a644621787bade5e20cdd"
+      "checksum": "b85a1d159b197726cafa759712eb341a"
     },
     "02_Game/web/theory.css": {
-      "checksum": "ab3b0f54800005db88780260ccaca9ce"
+      "checksum": "ace7ee15527c80e7eee4cd84c5d845a5"
     },
     "02_Game/web/theory.js": {
-      "checksum": "51a36c9a88a8687fe3e0bb3fff81af80"
+      "checksum": "6dc848cb1920c7078ace67b56f9b64ec"
     },
     "03_Verification/01_closed_forms.R": {
-      "checksum": "1c84dbf24fd328b7b499612d6df23d87"
+      "checksum": "35de0ff0e7a09e1c4d645f0023ddeaaf"
     },
     "03_Verification/02_reductions.R": {
       "checksum": "5fb6365f6a075b54ea8b522f42e06cae"
@@ -2135,19 +2132,19 @@
       "checksum": "8766b4bbda2c060e2f095af9e987c037"
     },
     "03_Verification/04_visibility.R": {
-      "checksum": "1c20eda011e0019090fc2c111db060ae"
+      "checksum": "d52b0a184ae4ad5e49351a2bdea1c7d2"
     },
     "03_Verification/05_counts.R": {
-      "checksum": "f7577ba32b86fdc191bbe25da64dbd6d"
+      "checksum": "a39987b87f2cdcf43122b40bec9feb14"
     },
     "03_Verification/05_faithfulness.R": {
-      "checksum": "361cf2afea922e516d8482de71926d25"
+      "checksum": "17f4f72907dc00d0f56a41dd887f7c7b"
     },
     "03_Verification/05b_annotation.R": {
       "checksum": "6e695a5ae152992874180f7db319bfcd"
     },
     "03_Verification/05c_model_comparison.R": {
-      "checksum": "073d7ac3e6f89aa8fc0038ba80291426"
+      "checksum": "e8f263be99a015e7c38bd731d17ca826"
     },
     "03_Verification/annotation_chat_sample.csv": {
       "checksum": "85851c8545d74539fe99c4b7b4d692cb"
@@ -2246,25 +2243,25 @@
       "checksum": "a9ded20294e4288eda06edfd3d382388"
     },
     "03_Verification/results/04_visibility.md": {
-      "checksum": "a3f1118e64bea22bce957c0690683b26"
+      "checksum": "93847b23d9d9002fe6051e08033c3c48"
     },
     "03_Verification/results/05_faithfulness.md": {
-      "checksum": "d599438a1128a67a97f9e19062c9a445"
+      "checksum": "e50e62e9983f569b77bb1b22dda3c3b1"
     },
     "03_Verification/results/05b_annotation.md": {
       "checksum": "71e34f65d0bffa66a53c88a8a78f8104"
     },
     "03_Verification/results/05c_model_comparison.md": {
-      "checksum": "17a8c8159d13288aa03b13b78662fb51"
+      "checksum": "e936ecda94c89196d9e610835a857952"
     },
     "03_Verification/run_all.R": {
       "checksum": "b282a875e363ff595807c162812b27ed"
     },
     "app.R": {
-      "checksum": "42d30df36b21c4cd599bc9d507ea1ba1"
+      "checksum": "8f7e10b6ae429a21e58167c062bb7791"
     },
     "README.md": {
-      "checksum": "74c6a09147254e264638352c6f65e445"
+      "checksum": "69de607923d769f4651790bd1849aae0"
     }
   },
   "users": null

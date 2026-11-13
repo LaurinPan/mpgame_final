@@ -42,7 +42,7 @@ readouts <- function(rows, t, par, consts) {
        loss = c(loss, list(total = loss$inflation + loss$output)))
 }
 
-# v6 §12.3: the history the charts draw
+# Section 4.2.2: the history the charts draw
 readouts_table <- function(rows, t, par, consts, quarters = t + 1) {
   ts <- seq(max(0, t - quarters + 1), t)
   do.call(rbind, lapply(ts, function(k) {

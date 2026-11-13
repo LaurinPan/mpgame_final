@@ -1,7 +1,7 @@
 # 02_Game/ui/users.yaml: the people who may sign in. Two roles with three
 # accounts each: a player's topics open in order, a developer's are all open; nothing else differs in the
 # backend. A user's password is never in this file: it is the secret environment variable the account's `secret` names,
-# set in the content's settings on Posit Connect Cloud and in ~/.Renviron on a laptop. The accounts are invented for the preview.
+# set in the content's settings on Posit Connect Cloud and in ~/.Renviron on a laptop. The accounts are invented.
 users:
   - {id: dev_author, name: Developer 1, role: developer, secret: MPGAME_PASSWORD_DEV_1_FINAL}
   - {id: dev_supervisor, name: Developer 2, role: developer, secret: MPGAME_PASSWORD_DEV_2_FINAL}

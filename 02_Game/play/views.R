@@ -18,7 +18,7 @@ reference_value <- function(name, law) {
          natural_unemployment = law$natural_unemployment, zero = 0, half = 50, normal = 0, trend = NA, NA)
 }
 
-# Section 4.2.1 and v6 §3: the desk, everything the dashboard, the rate control, the chat and the paper read
+# Section 4.2.1: the desk, everything the dashboard, the rate control, the chat and the paper read
 desk_view <- function(run) {
   q <- run$t + 1; s <- run$script; sheet <- run$sheets[[min(q, length(run$sheets))]]
   law <- sheet$law; f <- sheet$figures; p <- sheet$public; w <- sheet$word; g <- sheet$government
@@ -91,7 +91,7 @@ menu_view <- function(runs = list(), selected = "T1", role = "player") {
        map = map_view(selected))
 }
 
-# v6 §12.1: the paper's two fixed boxes, drawn by the game from the sheet, box W with the bank's word and box G with the government and the politics of a vote
+# Section 4.2.2: the paper's two fixed boxes, drawn by the game from the sheet, box W with the bank's word and box G with the government and the politics of a vote
 issue_boxes <- function(run, q) {
   sheet <- run$sheets[[q]]; w <- sheet$word; p <- sheet$public; g <- sheet$government
   list(W = if (word_on(run$script)) list(path = w$path, last = if (isTRUE(w$judged)) list(announced = w$announced, set = w$set, kept = w$kept, departure = w$departure) else NULL,
@@ -100,14 +100,14 @@ issue_boxes <- function(run, q) {
                                  politics = if (length(run$votes)) list(party = g$party, poll = g$poll, next_election = g$next_election, last_vote = g$last_vote) else NULL) else NULL)
 }
 
-# v6 §12: the issue as the paper reads it with its fixed boxes, NULL where the topic has no newspaper or while the quarter's paper is pending
+# Section 4.2.2: the issue as the paper reads it with its fixed boxes, NULL where the topic has no newspaper or while the quarter's paper is pending
 issue_view <- function(run, q) {
   iss <- run$issues[[q]]
   if (is.null(iss)) return(NULL)
   c(iss, list(budgets = lapply(formats, `[[`, "budgets"), slots = slots, boxes = issue_boxes(run, q)))
 }
 
-# Section 4.2.2 and v6 §5.4: the debrief, the two paths, the two losses quarter by quarter, the term losses with their equivalent misses and the marks
+# Section 4.2.2: the debrief, the two paths, the two losses quarter by quarter, the term losses with their equivalent misses and the marks
 debrief_view <- function(run) {
   rec <- run$record; d <- run$debrief
   if (is.null(rec)) return(NULL)
@@ -120,7 +120,7 @@ debrief_view <- function(run) {
                                                  player_rate = m$player_rate, bank_rate = m$bank_rate, text = texts[[as.character(m$q)]])))
 }
 
-# v6 §4: the map of a topic, the boxes, nodes and arrows reached with the topic's own new ones flagged, the walk's start and the three graphs
+# Section 4.2.1: the map of a topic, the boxes, nodes and arrows reached with the topic's own new ones flagged, the walk's start and the three graphs
 map_view <- function(topic, run = NULL) {
   s <- if (!is.null(run)) run$script else load_topic(topic); n <- as.integer(sub("^T", "", s$id))
   reached <- function(df) { out <- df[df$first_topic <= n, , drop = FALSE]; out$new <- out$first_topic == n; rownames(out) <- NULL; out }

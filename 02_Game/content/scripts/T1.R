@@ -1,6 +1,6 @@
-# 02_Game/content/scripts/T1.R — v6 §6, Topic 1 (Chapter A; Section 4.3, Table 1)
+# 02_Game/content/scripts/T1.R — Section 4.3.1 and Table 1: Topic 1 (Chapter A)
 
-# v6 §6: the script of Topic 1
+# Section 4.3.1 and Table 1: the script of Topic 1
 T1 <- list(
   id = "T1", name = "Demand Shocks", chapter = "A",
   objective = "Monetary policy with lags",

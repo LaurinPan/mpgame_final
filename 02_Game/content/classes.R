@@ -1,6 +1,6 @@
-# 02_Game/content/classes.R — v6 §5: size classes, class words, precision and thresholds
+# 02_Game/content/classes.R — Section 4.2.2: size classes, class words, precision and thresholds
 
-# v6 §5.1 to §5.4: the classes with their bounds and values, their words, the probability of exact figures and the thresholds
+# Section 4.2.2: the classes with their bounds and values, their words, the probability of exact figures and the thresholds
 classes <- list(
 
   bounds = list(demand     = c(0.4, 1.2, 2.0),

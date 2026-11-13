@@ -7,10 +7,10 @@ stage6_parameters <- function(par1, share, rho_g, stances, T_e, q_b, xi, eta_e, 
        T_e = T_e, q_b = q_b, rho_m = rho_m, eta_f = eta_f, eta = eta, eta_e = eta_e)
 }
 
-# A.6, "Neutral Value and Parameters": the boost before a vote, V7's calibration
+# A.6, "Neutral Value and Parameters": xi_V7 and eta_e_V7 hold the game's calibration. xi_V7 is the boost before a vote, set so that the boost's effect on unemployment clearly exceeds that of ordinary shocks while the rule stays clear of the floor
 xi_V7    <- 3.75
 
-# A.6, "Neutral Value and Parameters": the voters' weight before a vote, V7's calibration
+# A.6, "Neutral Value and Parameters": eta_e_V7 holds the game's calibration of the voters' weight before a vote, set so that a bank that sets the rate it would set without the boost gives the boosting party three chances in four at its first re-election
 eta_e_V7 <- 1.17
 
 # A.6, "Neutral Value and Parameters": the source set

@@ -1,12 +1,12 @@
-# 02_Game/sheet/classify.R — v6 §2.2 and §5.1: the quarter's innovations classified as the issue reports them
+# 02_Game/sheet/classify.R — Section 4.3.1 with Table 1 and Section 4.2.2: the quarter's innovations classified as the issue reports them
 
-# v6 §5.1: the class of a size
+# Section 4.2.2: the class of a size
 size_class <- function(type, size, classes) {
   k <- findInterval(abs(size), c(0, classes$bounds[[type]]))
   classes$names[min(k, 3)]
 }
 
-# v6 §2.2: the quarter's events, the shocks with their classes, the foreseen slump and a vote due
+# Section 4.3.1 and Table 1: the quarter's events, the shocks with their classes, the foreseen slump and a vote due
 classify <- function(innovations, foreseen, votes, q, classes) {
   types  <- c(a = "technology", z = "demand", nu = "costs", g = "purchases")
   shocks <- list()
