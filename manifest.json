@@ -1601,10 +1601,10 @@
       "checksum": "9d2fc9e3ae8e67a1ee6c644912f45d4e"
     },
     "01_Engine/stage1_baseline/parameters.R": {
-      "checksum": "5173ad41f363b59fbe1f04b7519be6a9"
+      "checksum": "24a1e91d97c6bc30f4736cffd7495bbf"
     },
     "01_Engine/stage1_baseline/stage1.R": {
-      "checksum": "fd8f0f1302ccd3f93fd167d8e4f0e6cb"
+      "checksum": "44bea5f71fc893261fbbe2c27c34a050"
     },
     "01_Engine/stage2_costpush/parameters.R": {
       "checksum": "75f3789e18452f12446e469cdb6af607"
@@ -1628,10 +1628,10 @@
       "checksum": "80c405941cef23d198c33ab2cfffb61c"
     },
     "01_Engine/stage6_government/parameters.R": {
-      "checksum": "fd80b12abbcae578a0cdefcfc47c84b7"
+      "checksum": "1cf03d4142d6338ebe7633216c864795"
     },
     "01_Engine/stage6_government/stage6.R": {
-      "checksum": "387eafcb75617b31e57e8c2022f1b854"
+      "checksum": "b5548b17d17a44f1b05878d1c30f9ca3"
     },
     "02_Game/bank/fair_quarter.R": {
       "checksum": "c2ba2e1645b783bd0982af8289c8de95"
@@ -1958,7 +1958,7 @@
       "checksum": "58b589600bfd09464f176a20c065bcb7"
     },
     "02_Game/content/theory/economy.yaml": {
-      "checksum": "4e01c27acaec0f477283500c81b8ebe5"
+      "checksum": "1d38a7a8a80487d94c8b6fb6370f340a"
     },
     "02_Game/content/theory/labels.yaml": {
       "checksum": "e5f6e9187e42b346521de7b141698b3b"
@@ -2033,7 +2033,7 @@
       "checksum": "3d17b2ff8c9e236d7b375c83830847d0"
     },
     "02_Game/play/headless.R": {
-      "checksum": "3b8f97594d2d60c1a2c779810a7c269c"
+      "checksum": "d16cd121eee0c67508e5457b9d37cc94"
     },
     "02_Game/play/script.R": {
       "checksum": "2ef7817902c08979e99cfee5578ee86c"
@@ -2060,7 +2060,7 @@
       "checksum": "6c367795181eb4ab1fc2e11e5bff0238"
     },
     "02_Game/sheet/record.R": {
-      "checksum": "66cd9bc06d4d09f7c4200df5479c6db9"
+      "checksum": "3f07e94a89e0fc05657e9848136456fc"
     },
     "02_Game/ui/charts.R": {
       "checksum": "32a3f2f0443068c00aa3b67c3986e2d3"

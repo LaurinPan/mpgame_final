@@ -65,7 +65,7 @@ request_text <- function(body) c("## System block 1: the fixed part", "", body$s
                                  "## User message: the material", "", body$messages[[1]]$content, "",
                                  "## The structure of the answer", "", as.character(jsonlite::toJSON(body$output_config$format$schema, auto_unbox = TRUE)))
 
-# Section 3.2: a topic's walk-through recorded for the LLM appendix, the player deciding as the reference bank: the sheet, the plan and the issue of one quarter, the calls of that quarter and the debrief's as sent with their answers, one file for each piece, for the lead, for the chat and for the debrief with every call it took, and the record
+# Section 3.2: a topic's walk-through recorded for the verification appendix (Appendix E, Section E.3), the player deciding as the reference bank: the sheet, the plan and the issue of one quarter, the calls of that quarter and the debrief's as sent with their answers, one file for each piece, for the lead, for the chat and for the debrief with every call it took, and the record
 record_walkthrough <- function(id = "T5", at = 8, question = "Should I raise the policy rate above my announced plan this quarter?",
                                llm = TRUE, seed = 1, draw_seed = as.integer(sub("^T", "", id)), dir = "03_Verification/recordings/walkthrough") {
   dir.create(dir, showWarnings = FALSE, recursive = TRUE)

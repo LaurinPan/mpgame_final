@@ -1,6 +1,6 @@
 # 02_Game/sheet/record.R — Section 4.2.2, the Word block, and A.5 "Credibility and the Record"
 
-# A.1, "Steady State, Trend, and Parameters": the steady-state nominal rate in percent a year
+# A.1, "Steady State, Trend and Parameters": the steady-state nominal rate in percent a year
 steady_rate <- function(par) to_year(steady_state(par)$i_star)
 
 # A.5, "The Bank's Word": the standing path in percent a year

@@ -7,6 +7,7 @@ stage6_parameters <- function(par1, share, rho_g, stances, T_e, q_b, xi, eta_e, 
        T_e = T_e, q_b = q_b, rho_m = rho_m, eta_f = eta_f, eta = eta, eta_e = eta_e)
 }
 
+# The suffix V7 is a label from the game's development and has no meaning in the model, where the two values are xi and eta_e of A.6.
 # A.6, "Neutral Value and Parameters": xi_V7 and eta_e_V7 hold the game's calibration. xi_V7 is the boost before a vote, set so that the boost's effect on unemployment clearly exceeds that of ordinary shocks while the rule stays clear of the floor
 xi_V7    <- 3.75
 

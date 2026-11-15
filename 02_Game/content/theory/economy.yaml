@@ -1,4 +1,4 @@
-# 02_Game/content/theory/economy.yaml — the example economy of the theory section (scripts appendix §14): the datasets of
+# 02_Game/content/theory/economy.yaml — the example economy of the theory section (Section 4.3.2): the datasets of
 # chapters 2 to 6, one block per chapter. The economy is fictional
 # closed; amounts in its dollar, "$", in million a year at base-year prices unless a block says otherwise. The static figures
 # (02_Game/ui/theory.R) and the modules (02_Game/web/theory.js) are drawn from these numbers; the texts of the chapter files quote them.
@@ -30,7 +30,7 @@ P3:   # the goods market: P2's economy with taxes and a consumption function (Ch
   rounds: {change: 10, shown: 8}       # the multiplier rounds of a $10 million rise in government spending
   horizons:                            # the schematic output path of topic 1: a downturn fading back to a rising trend
     years: 40
-    trend_growth: 2                    # % a year (the trend of scripts appendix §8.2)
+    trend_growth: 2    # % a year, the same value as the trend growth of the game set (A.1, "Steady State, Trend and Parameters")
     downturn_start: 8                  # years
     trough_after: 2.5                  # years after the start
     depth: 14                          # % below the trend at the trough

@@ -21,7 +21,7 @@ taylor_condition <- function(par) {
 # (A5): the quarter's loss, the mandate
 loss <- function(pi, x, par) pi^2 + par$vartheta * x^2
 
-# A.1, "Steady State, Trend, and Parameters": the steady-state real and nominal rates
+# A.1, "Steady State, Trend and Parameters": the steady-state real and nominal rates
 steady_state <- function(par) {
   list(r_star = par$rho + par$g, i_star = par$rho + par$g + par$pi_bar)
 }

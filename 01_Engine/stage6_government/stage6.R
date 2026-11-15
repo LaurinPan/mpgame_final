@@ -1,4 +1,4 @@
-# 01_Engine/stage6_government/stage6.R — A.6 "Stage 6: Government, Parties, and Elections": spending, the natural levels with it, the standing, the poll and the election
+# 01_Engine/stage6_government/stage6.R — A.6 "Stage 6: Government, Parties and Elections": spending, the natural levels with it, the standing, the poll and the election
 
 # (A29): the party in office sets government spending
 purchases <- function(gov, eps_g, par) {
